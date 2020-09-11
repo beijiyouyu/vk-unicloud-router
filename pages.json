@@ -1,0 +1,94 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue",
+		"^vk-u-(.*)": "vk-unicloud-dynamic-components/components/vk-u-$1/vk-u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/uni-id/index/index",
+			"style": {
+				"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id"
+			}
+		},
+		{
+			"path": "pages/db-test/db-test",
+			"style": {}
+		},
+		{
+			"path": "pages/db-test/list/list",
+			"style": {}
+		},
+		{
+			"path": "pages/uni-id/password/password",
+			"style": {}
+		},
+		{
+			"path": "pages/uni-id/mobile/mobile",
+			"style": {}
+		}, 
+		{
+			"path": "pages/uni-id/weixin/weixin",
+			"style": {}
+		}, 
+		{
+			"path": "pages/uni-id/alipay/alipay",
+			"style": {}
+		}, 
+		{
+			"path": "pages/uni-id/util/util",
+			"style": {}
+		}, 
+		{
+			"path": "pages/uni-id/email/email",
+			"style": {}
+		},
+		{
+			"path": "pages/components-dynamic/index/index",
+			"style": {
+				"navigationBarTitleText": "动态数据组件"
+			}
+		},
+		{
+			"path": "pages/components-dynamic/vk-u-notice-bar/vk-u-notice-bar",
+			"style": {
+				"navigationBarTitleText": "动态数据组件 - 公告"
+			}
+		},
+		{
+			"path": "pages/components-dynamic/vk-u-swiper/vk-u-swiper",
+			"style": {
+				"navigationBarTitleText": "动态数据组件 - 图片轮播"
+			}
+		},
+		{
+			"path": "pages/components-dynamic/vk-u-grid-button/vk-u-grid-button",
+			"style": {
+				"navigationBarTitleText": "动态数据组件 - 图文导航"
+			}
+		},
+		{
+			"path": "pages/uni-id/login/forget/forget",
+			"style": {
+				"navigationBarTitleText": "找回密码"
+			}
+		},
+		{
+			"path": "pages/uni-id/login/index/index",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/uni-id/login/register/register",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
