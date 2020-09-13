@@ -12,6 +12,7 @@ node_modules/
 unpackage/
 .DS_Storer
 router.param.json
+.vscode
 
 
 # python
