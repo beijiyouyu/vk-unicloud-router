@@ -263,7 +263,7 @@ module.exports = {
 		let { data = {}, userInfo, util, originalParam } = event;
 		let { uniID, config, pubFun, vk , db, _ } = util;
 		let { uid } = data;
-		let res = { code : -1, msg : '' };
+		let res = { code : 0, msg : '' };
 		// 业务逻辑开始----------------------------------------------------------- 
 		// 可写与数据库的交互逻辑等等
 		
@@ -363,8 +363,7 @@ Vue.prototype.vk.callFunctionUtil.interceptor.login = (obj = {}) =>{
 };
 ```
 
-## 1.2.2 新增内容
-### 1、【新增】`vk.baseDao`数据库API文档
+## `vk.baseDao`数据库API
 ### 调用示例在`router/service/db_test/pub/`目录下
 ### 演示页面在`pages/db-test/db-test`
 ### `vk.baseDao`数据库API部分调用示例展示
@@ -513,9 +512,9 @@ let res = await vk.baseDao.select2({
 
 ```
 
-## 1.2.8 更新内容
-### 1、新增`列表渲染`前后端一体模板 `pages/db-test/list/list` 
-##  url 和 v-for循环内的核心点：前端只需要更改样式即可快速开发一个列表渲染功能
+## `列表渲染`前后端一体模板
+### 页面地址 `pages/db-test/list/list` 
+##  核心点：前端只需要更改v-for循环内的样式和请求的云函数地址即可快速开发一个列表渲染功能
 
 #### 列表渲染模板体验地址
 ![列表渲染体验地址](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-vk-cloud-router-test/97de21c0-e9ae-11ea-b997-9918a5dda011.png?x-oss-process=image/resize,h_250 "列表渲染体验地址")
@@ -559,8 +558,8 @@ export default {
 
 #### 开发一个列表渲染就是这么简单
 
-## 预告:
-### 会陆续新增一些 集成了`uview-ui`的`前后端一体动态数据组件`
+`前后端一体动态数据组件`
+### 已陆续新增一些 集成了`uview-ui`的`前后端一体动态数据组件`
 ### 如: 公告组件 图片轮播组件 等
 ### 前后端一体动态数据组件优势:
 
@@ -613,9 +612,10 @@ Vue.prototype.vk.callFunctionUtil.setConfig({
 ```js
 2、替换文件
 替换router目录下的index.js文件
-替换router目录下的user目录
+替换router/service目录下的user目录
+替换router/service目录下的db_test目录
+替换router/service目录下的components-dynamic目录
 替换router目录下的util目录下的checkIsLogin.js文件
-替换router目录下的util目录下的pubFunction.js文件
 ```
 
 ```js
@@ -631,7 +631,7 @@ Vue.prototype.vk.callFunctionUtil.setConfig({
 ## 前端（页面端）更新步骤
 在你的项目根目录执行npm命令：npm i vk-unicloud-page 进行安装
 
-1. `npm`方式安装
+1. `npm`方式安装 先删除 `node_modules`
 ```js
 npm i vk-unicloud-page
 （若提示失败，再执行一次该命令即可）
