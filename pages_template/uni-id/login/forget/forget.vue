@@ -52,7 +52,7 @@
 						placeholder-style="'color':'#8e8e8e'"
 					/>
 					<!-- 验证码倒计时开始 -->
-					<vk-pub-code seconds="60" :mobile="form1.mobile" type="reset"></vk-pub-code>
+					<vk-u-verification-code  seconds="60" :mobile="form1.mobile" type="reset"></vk-u-verification-code>
 					<!-- 验证码倒计时结束 -->
 					
 				</view>

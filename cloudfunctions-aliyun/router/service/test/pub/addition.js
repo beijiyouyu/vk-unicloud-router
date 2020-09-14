@@ -1,7 +1,7 @@
 module.exports = {
 	/**
 	 * 此函数名称
-	 * @url user/sys/test1 前端调用的url参数地址
+	 * @url test/pub/addition 前端调用的url参数地址
 	 * @description 此函数描述
 	 * @params {Object} data 请求参数
 	 * @params {String} uniIdToken 用户token
@@ -22,8 +22,16 @@ module.exports = {
 		let res = { code : 0, msg : '' };
 		// 业务逻辑开始----------------------------------------------------------- 
 		// 可写与数据库的交互逻辑等等
-		
-		
+		let { num1 , num2 } = data;
+		if(!num1 || !num2){
+			return {
+				code : -1,
+				msg : "参数不能为空！"
+			}
+		}
+		num1 = parseFloat(num1);
+		num2 = parseFloat(num2);
+		res.value = parseFloat((num1 + num2).toFixed(2));
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

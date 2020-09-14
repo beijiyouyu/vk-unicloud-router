@@ -5,84 +5,103 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/uni-id/index/index",
+			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id"
 			}
 		},
 		{
-			"path": "pages/db-test/db-test",
-			"style": {}
-		},
-		{
-			"path": "pages/db-test/list/list",
-			"style": {}
-		},
-		{
-			"path": "pages/uni-id/password/password",
-			"style": {}
-		},
-		{
-			"path": "pages/uni-id/mobile/mobile",
-			"style": {}
-		}, 
-		{
-			"path": "pages/uni-id/weixin/weixin",
-			"style": {}
-		}, 
-		{
-			"path": "pages/uni-id/alipay/alipay",
-			"style": {}
-		}, 
-		{
-			"path": "pages/uni-id/util/util",
-			"style": {}
-		}, 
-		{
-			"path": "pages/uni-id/email/email",
-			"style": {}
-		},
-		{
-			"path": "pages/components-dynamic/index/index",
+			"path": "pages/test/test",
 			"style": {
-				"navigationBarTitleText": "动态数据组件"
+				"navigationBarTitleText": "演示页面"
 			}
-		},
+		}
+	],
+	"subPackages": [
 		{
-			"path": "pages/components-dynamic/vk-u-notice-bar/vk-u-notice-bar",
-			"style": {
-				"navigationBarTitleText": "动态数据组件 - 公告"
-			}
-		},
-		{
-			"path": "pages/components-dynamic/vk-u-swiper/vk-u-swiper",
-			"style": {
-				"navigationBarTitleText": "动态数据组件 - 图片轮播"
-			}
-		},
-		{
-			"path": "pages/components-dynamic/vk-u-grid-button/vk-u-grid-button",
-			"style": {
-				"navigationBarTitleText": "动态数据组件 - 图文导航"
-			}
-		},
-		{
-			"path": "pages/uni-id/login/forget/forget",
-			"style": {
-				"navigationBarTitleText": "找回密码"
-			}
-		},
-		{
-			"path": "pages/uni-id/login/index/index",
-			"style": {
-				"navigationBarTitleText": "登录"
-			}
-		},
-		{
-			"path": "pages/uni-id/login/register/register",
-			"style": {
-				"navigationBarTitleText": "注册"
-			}
+			"root": "pages_template", 
+			"pages": [
+				{
+					"path": "uni-id/index/index",
+					"style": {
+						"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id"
+					}
+				},
+				{
+					"path": "db-test/db-test",
+					"style": {}
+				},
+				{
+					"path": "db-test/list/list",
+					"style": {}
+				},
+				{
+					"path": "uni-id/password/password",
+					"style": {}
+				},
+				{
+					"path": "uni-id/mobile/mobile",
+					"style": {}
+				}, 
+				{
+					"path": "uni-id/weixin/weixin",
+					"style": {}
+				}, 
+				{
+					"path": "uni-id/alipay/alipay",
+					"style": {}
+				}, 
+				{
+					"path": "uni-id/util/util",
+					"style": {}
+				}, 
+				{
+					"path": "uni-id/email/email",
+					"style": {}
+				},
+				{
+					"path": "components-dynamic/index/index",
+					"style": {
+						"navigationBarTitleText": "动态数据组件"
+					}
+				},
+				{
+					"path": "components-dynamic/vk-u-notice-bar/vk-u-notice-bar",
+					"style": {
+						"navigationBarTitleText": "动态数据组件 - 公告"
+					}
+				},
+				{
+					"path": "components-dynamic/vk-u-swiper/vk-u-swiper",
+					"style": {
+						"navigationBarTitleText": "动态数据组件 - 图片轮播"
+					}
+				},
+				{
+					"path": "components-dynamic/vk-u-grid-button/vk-u-grid-button",
+					"style": {
+						"navigationBarTitleText": "动态数据组件 - 图文导航"
+					}
+				},
+				{
+					"path": "uni-id/login/forget/forget",
+					"style": {
+						"navigationBarTitleText": "找回密码"
+					}
+				},
+				{
+					"path": "uni-id/login/index/index",
+					"style": {
+						"navigationBarTitleText": "登录"
+					}
+				},
+				{
+					"path": "uni-id/login/register/register",
+					"style": {
+						"navigationBarTitleText": "注册"
+					}
+				}
+			]
 		}
 	],
 	"globalStyle": {
