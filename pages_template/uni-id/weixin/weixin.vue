@@ -3,6 +3,7 @@
 		<!-- #ifdef MP-WEIXIN -->
 		<button type="default" @tap="loginByWeixin">微信登录</button>
 		<button type="default" @tap="code2SessionWeixin">获取微信openid</button>
+		<button type="default" @getuserinfo="setUserInfo" open-type="getUserInfo">获取并设置微信用户昵称头像</button>
 		<button type="default" @tap="bindWeixin">绑定微信</button>
 		<button type="default" @tap="unbindWeixin">解绑微信</button>
 		<!-- #endif -->
@@ -47,6 +48,20 @@
 					success:function(data){
 						vk.alert(JSON.stringify(data));
 					},
+				});
+			},
+			// 设置用户昵称头像
+			setUserInfo(res){
+				let rawData = JSON.parse(res.detail.rawData);
+				vk.userCenter.updateUser({
+					data:{
+						nickname : rawData.nickName,
+						avatar : rawData.avatarUrl,
+						gender : rawData.gender
+					},
+					success:function(data){
+						vk.alert("设置成功");
+					}
 				});
 			},
 			// 绑定微信

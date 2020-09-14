@@ -55,7 +55,7 @@
 				let form1 = that.form1;
 				// 开始调用云函数
 				vk.callFunction({
-					url: 'test/pub/addition',			// 云函数service目录下的地址
+					url: 'test/pub/addition',			// 云函数service目录下的地址，路径带/pub/的云函数不需要用户登录即可请求
 					title:'请求中...',	
 					//data : form1, // 这样写也可以，下面这样写是为了方便新手理解
 					data:{
