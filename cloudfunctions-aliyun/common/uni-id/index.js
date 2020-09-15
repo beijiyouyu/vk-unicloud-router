@@ -1842,7 +1842,7 @@ var ar = {
 
 function fr() {
 	const e = t.createHash("md5"),
-		r = /MicroMessenger/i.test(__ctx__.CLIENTUA) ? __ctx__.CLIENTUA.split(" Process/appbrand")[0] : __ctx__.CLIENTUA;
+		r = /MicroMessenger/i.test(__ctx__.CLIENTUA) ? __ctx__.CLIENTUA.replace(/(MicroMessenger\S+).*/i, "$1") : __ctx__.CLIENTUA;
 	return e.update(r), e.digest("hex")
 }
 const dr = {
