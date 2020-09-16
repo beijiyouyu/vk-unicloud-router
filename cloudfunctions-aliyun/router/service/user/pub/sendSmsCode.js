@@ -16,11 +16,12 @@ module.exports = {
 	 * @params {String} verifyCode 验证码
    */
   main: async (event) => {
-		let { data = {}, util } = event;
-		let { uniID } = util;
-		let { mobile, type } = data;
-		let res = {code : -1, msg : ''};
+		let { data = {}, userInfo, util, originalParam } = event;
+		let { uniID, config, pubFun, vk , db, _ } = util;
+		let { uid } = data;
+		let res = { code : 0, msg : '' };
     // 业务逻辑开始----------------------------------------------------------- 
+		let { mobile, type } = data;
 		const randomStr = '00000' + Math.floor(Math.random() * 1000000);
 		let code = randomStr.substring(randomStr.length - 6);
 		let param = {
@@ -28,7 +29,25 @@ module.exports = {
 			type,
 			mobile
 		};
-		res = await uniID.sendSmsCode(param);
+		if(vk.pubfn.getData(config, "vk.service.sms.aliyun.accessKeyId")){
+			// 使用阿里云-短信
+			let result = await vk.smsUtil.sendSmsVerifyCode({
+				provider : "aliyun",
+				mobile : mobile,
+				code : code,
+			}, event.util);
+			if(result.code != 0){
+				return {
+					code : -1,
+					msg : result.Message
+				};
+			}
+			// 发送验证码成功后,设置验证码
+			await uniID.setVerifyCode(param);
+		}else{
+			// 使用uni-短信
+			res = await uniID.sendSmsCode(param);
+		}
     // 业务逻辑结束-----------------------------------------------------------
     return res;
   }

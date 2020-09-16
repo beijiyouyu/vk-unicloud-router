@@ -58,6 +58,20 @@ module.exports = {
 						"user": "你的邮箱@qq.com",
 						"pass": "邮箱授权码"
 					}
+				},
+			},
+			// 短信服务
+			"sms": {
+				// 阿里云短信服务
+				"aliyun": {
+					"accessKeyId": "",															// 短信密钥key
+					"accessKeySecret": "",													// 短信密钥secret
+					"endpoint":"https://dysmsapi.aliyuncs.com",			// api请求地址
+					"apiVersion":"2017-05-25",																
+					"SignName":"", 																	// 默认签名
+					"TemplateCode":{
+						"verifyCode":""																// 验证码短信模板 - 配合uni-id需要
+					}
 				}
 			}
 		}

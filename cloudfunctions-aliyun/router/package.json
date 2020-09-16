@@ -1,7 +1,7 @@
 {
   "name": "router",
   "version": "1.0.0",
-  "description": "",
+  "description": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@alicloud/pop-core": "^1.7.9",
     "config": "file:../common/config",
     "nodemailer": "^6.4.11",
     "uni-id": "file:../common/uni-id",
-    "vk-unicloud": "^1.1.6"
-  }
+    "vk-unicloud": "^1.2.4"
+  },
+  "private": true
 }

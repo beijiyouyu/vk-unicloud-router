@@ -9,8 +9,7 @@ module.exports = {
 	 * @params {Object} util 公共工具包
 	 * @params {Object} originalParam 原始请求参数(包含了原始event和context)
 	 * data 请求参数 说明
-	 * @params {String} uid  当前登录用户id,若用户已登录且token有效,则data中会带uid参数
-	 * (此参数是后端过滤器通过token获取并添加到data中的,是可信任的)(只有kh函数才带此参数)
+	 * @params {String} uid  当前登录用户id,若用户已登录且token有效,则data中会带uid参数(此参数是后端过滤器通过token获取并添加到data中的,是可信任的)(只有kh函数才带此参数)
 	 * res 返回参数说明
 	 * @params {Number} code 错误码，0表示成功
 	 * @params {String} msg 详细信息

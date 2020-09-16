@@ -187,6 +187,9 @@
 							// 进入首页
 							vk.redirectTo("../index/index");
 						});
+					},
+					complete:function(){
+						that.isRotate = false;
 					}
 				});
 			}
