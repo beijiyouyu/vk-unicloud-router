@@ -14,13 +14,13 @@ module.exports = {
 	 * @params {String} msg 详细信息
 	 * @params {String} mobile 手机号  
 	 * @params {String} verifyCode 验证码
-   */
-  main: async (event) => {
+	 */
+	main: async (event) => {
 		let { data = {}, userInfo, util, originalParam } = event;
 		let { uniID, config, pubFun, vk , db, _ } = util;
 		let { uid } = data;
 		let res = { code : 0, msg : '' };
-    // 业务逻辑开始----------------------------------------------------------- 
+		// 业务逻辑开始----------------------------------------------------------- 
 		let { mobile, type } = data;
 		const randomStr = '00000' + Math.floor(Math.random() * 1000000);
 		let code = randomStr.substring(randomStr.length - 6);
@@ -48,7 +48,7 @@ module.exports = {
 			// 使用uni-短信
 			res = await uniID.sendSmsCode(param);
 		}
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }

@@ -15,13 +15,13 @@ module.exports = {
 	 * res 返回参数说明
 	 * @params {Number} code 错误码，0表示成功
 	 * @params {String} msg 详细信息
-   */
-  main: async (event) => {
+	 */
+	main: async (event) => {
 		let { data = {}, util, originalParam } = event;
 		let { uniID } = util;
 		let { uid } = data;
-    let res = {};
-    // 业务逻辑开始----------------------------------------------------------- 
+		let res = {};
+		// 业务逻辑开始----------------------------------------------------------- 
 		let updateKeys = ["nickname","avatar","gender"];
 		let dataJson = {};
 		for(let i in updateKeys){
@@ -30,8 +30,7 @@ module.exports = {
 		}
 		dataJson.uid = uid;
 		res = await uniID.updateUser(dataJson);
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }

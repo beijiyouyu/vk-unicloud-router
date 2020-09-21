@@ -17,16 +17,15 @@ module.exports = {
 	 * @params {String} refreshToken 客户端为APP时返回，用于刷新accessToken
 	 * @params {String} reExpiresIn refreshToken超时时间，单位（秒）
    */
-  main: async (event) => {
+	main: async (event) => {
 		let {uniID} = event.util;
-    let res = {};
-    // 业务逻辑开始----------------------------------------------------------- 
+		let res = {};
+		// 业务逻辑开始----------------------------------------------------------- 
 		// 用户登录(账号+密码)
-		 res = await uniID.code2SessionAlipay({
-		    code: event.data.code
-		 });
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		res = await uniID.code2SessionAlipay({
+			code: event.data.code
+		});
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }

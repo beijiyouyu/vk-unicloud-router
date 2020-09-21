@@ -15,12 +15,12 @@ module.exports = {
 	 * @params {String} token 注册完成自动登录之后返回的token信息
 	 * @params {String} tokenExpired token过期时间
    */
-  main: async (event) => {
+	main: async (event) => {
 		let { data = {}, userInfo, util, originalParam } = event;
 		let { uniID, config, pubFun, vk , db, _ } = util;
 		let { uid, username, password } = data;
 		let res = { code : -1, msg : '' };
-    // 业务逻辑开始----------------------------------------------------------- 
+		// 业务逻辑开始----------------------------------------------------------- 
 		// username必须以字母开头，长度在6~18之间，只能包含字母、数字和下划线
 		if(!vk.pubfn.checkStr(username,"username")){
 			return {
@@ -36,8 +36,7 @@ module.exports = {
 			};
 		}
 		res = await uniID.register(event.data);
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }

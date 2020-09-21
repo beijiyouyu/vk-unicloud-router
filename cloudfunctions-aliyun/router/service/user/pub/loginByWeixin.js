@@ -14,12 +14,12 @@ module.exports = {
 	 * @params {String} token 登录成功之后返回的token信息
 	 * @params {String} tokenExpired token过期时间
    */
-  main: async (event) => {
+	main: async (event) => {
 		let { data = {}, util, originalParam } = event;
 		let { uniID, config, pubFun, vk , db, _ } = util;
 		let { uid } = data;
 		let res = {};
-    // 业务逻辑开始----------------------------------------------------------- 
+		// 业务逻辑开始----------------------------------------------------------- 
 		// 微信登录(未绑定任何账号时,会新建账号)
 		res = await uniID.loginByWeixin(event.data.code);
 		if(res.token){
@@ -36,8 +36,7 @@ module.exports = {
 				"platform": originalParam.context.PLATFORM
 			},event.util);
 		}
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }

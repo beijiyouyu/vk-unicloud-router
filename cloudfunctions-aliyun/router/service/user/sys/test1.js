@@ -14,14 +14,13 @@ module.exports = {
    * @params {String} msg 详细信息
    * @params {String} token 注册完成自动登录之后返回的token信息
    * @params {String} tokenExpired token过期时间
-   */
-  main: async (event) => {
+	 */
+	main: async (event) => {
 		let {uniID} = event.util;
-    let res = {code :-1, msg : ''};
-    // 业务逻辑开始----------------------------------------------------------- 
+		let res = {code :-1, msg : ''};
+		// 业务逻辑开始----------------------------------------------------------- 
 		// res = await uniID.loginByAlipay(event.data.code);
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }

@@ -11,10 +11,10 @@ module.exports = {
 	 * @params {String} msg 详细信息
 	 * @params {String} password 加密后的字符串
    */
-  main: async (event) => {
+	main: async (event) => {
 		let {uniID} = event.util;
-    let res = {};
-    // 业务逻辑开始----------------------------------------------------------- 
+		let res = {};
+		// 业务逻辑开始----------------------------------------------------------- 
 		// 验证token是否有效(会返回uid)
 		const password = await uniID.encryptPwd('123456');
 		res = {
@@ -22,8 +22,7 @@ module.exports = {
 			msg: '密码加密完成',
 			password
 		}
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }

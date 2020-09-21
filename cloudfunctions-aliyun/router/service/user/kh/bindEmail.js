@@ -12,14 +12,13 @@ module.exports = {
 	 * res 返回参数说明
 	 * @params {Number} code 错误码，0表示成功
 	 * @params {String} msg 详细信息
-   */
-  main: async (event) => {
+	 */
+	main: async (event) => {
 		let {uniID} = event.util;
-    let res = {};
-    // 业务逻辑开始----------------------------------------------------------- 
+		let res = {};
+		// 业务逻辑开始----------------------------------------------------------- 
 		res = await uniID.bindEmail(event.data);
     // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		return res;
+	}
 }

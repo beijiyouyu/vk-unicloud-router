@@ -16,16 +16,15 @@ module.exports = {
 	 * @params {String} email 邮箱  
 	 * @params {String} mobile 手机号  
 	 * @params {String} verifyCode 验证码(uni 1.1.2开始不再返回verifyCode)
-   */
-  main: async (event) => {
+	 */
+	main: async (event) => {
 		let { data = {}, util } = event;
 		let { uniID } = util;
 		let { email, mobile, code, type } = data;
 		let res = {code : -1, msg : ''};
-    // 业务逻辑开始----------------------------------------------------------- 
+		// 业务逻辑开始----------------------------------------------------------- 
 		res = await uniID.setVerifyCode(data);
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }

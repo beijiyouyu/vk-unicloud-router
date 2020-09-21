@@ -22,21 +22,20 @@ module.exports = {
 	 * @params {String} mobile 被邀请者手机号
 	 * @params {String} invite_time 被邀请者注册时间，以时间戳形式返回
 	 * 
-   */
-  main: async (event) => {
+	 */
+	main: async (event) => {
 		let { data = {}, util, originalParam } = event;
 		let { uniID } = util;
 		let { uid, limit, offset, needTotal } = data;
-    let res = {};
-    // 业务逻辑开始----------------------------------------------------------- 
+		let res = {};
+		// 业务逻辑开始----------------------------------------------------------- 
 		res = await uniID.getInvitedUser({
 			uid:uid,
 			limit:limit,
 			offset:offset,
 			needTotal:needTotal
 		});
-    // 业务逻辑结束-----------------------------------------------------------
-    return res;
-  }
-
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	}
 }
