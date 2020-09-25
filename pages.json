@@ -84,6 +84,12 @@
 					}
 				},
 				{
+					"path": "components-dynamic/vk-u-goods-sku-popup/vk-u-goods-sku-popup",
+					"style": {
+						"navigationBarTitleText": "动态数据组件 - 商品SKU选择器"
+					}
+				},
+				{
 					"path": "uni-id/login/forget/forget",
 					"style": {
 						"navigationBarTitleText": "找回密码"

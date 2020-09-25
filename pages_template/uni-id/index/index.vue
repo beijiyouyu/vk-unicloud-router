@@ -4,7 +4,7 @@
 			当前集成的
 			<text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>
 			版本：
-			<text style="font-weight: bold;">1.1.6</text> 
+			<text style="font-weight: bold;">1.1.9</text> 
 		</view>
 		
 		<button type="default" @tap="pageTo('../password/password')">用户名和密码</button>
@@ -24,6 +24,8 @@
 		<button type="default" @tap="pageTo('../../components-dynamic/index/index')">动态数据组件</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.3.3 新增 登录/注册/找回密码/页面模板</view>
 		<button type="default" @tap="pageTo('../login/index/index')">登录注册找回密码页面模板</button>
+		<!-- <view style="margin-bottom: 20rpx;">插件版本1.3.8 新增 商品SKU选择器组件</view>
+		<button type="default" @tap="pageTo('../../components-dynamic/index/index')">商品SKU选择器组件</button> -->
 	</view>
 </template>
 

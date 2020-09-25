@@ -17,11 +17,12 @@ Vue.prototype.vk.callFunctionUtil.setConfig({
 
 // 自定义token拦截器
 Vue.prototype.vk.callFunctionUtil.interceptor.login = (obj = {}) =>{
-	let {params, res} = obj;
-	// 下方代码可自己修改，写成你自己的逻辑处理。
-	if(!params.noAlert){
-		Vue.prototype.vk.alert(res.result.msg);
-	}
+	//let {params, res} = obj;
+	setTimeout(function(){
+		uni.navigateTo({
+			url:"/pages_template/uni-id/login/index/index"
+		});
+	},300); 
 	console.log("跳自己的登录页面");
 	// 上方代码可自己修改，写成你自己的逻辑处理。
 };

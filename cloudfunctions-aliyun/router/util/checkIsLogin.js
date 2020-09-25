@@ -11,12 +11,17 @@ module.exports = {
 		if (payload.code && payload.code > 0) {
 			return payload;
 		}
+		// console.log("payload",payload);
 		let userInfo = payload.userInfo;
 		// 去除token字段和password字段
 		delete userInfo.token;
 		delete userInfo.password;
 		res.uid = payload.uid;
 		res.userInfo = userInfo;
+		if(payload.token){
+			res.token = payload.token;
+			res.tokenExpired = payload.tokenExpired;
+		}
 		res.code = 0;
 		res.msg = 'ok';
     // 业务逻辑结束-----------------------------------------------------------

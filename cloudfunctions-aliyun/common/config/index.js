@@ -3,6 +3,7 @@ module.exports = {
 		"passwordSecret": "passwordSecret",			// 加密密码所用的密钥
 		"tokenSecret": "tokenSecret",						// 生成token所用的密钥
 		"tokenExpiresIn": 2592000,							// 全平台token过期时间，未指定过期时间的平台会使用此值
+		"tokenExpiresThreshold": 3600,					// 新增于uni-id 1.1.7版本，checkToken时如果token有效期小于此值则自动获取新token，如果不配置此参数则不开启自动获取新token功能
 		"passwordErrorLimit": 6,								// 密码错误最大重试次数
 		"bindTokenToDevice": false,							// 是否将token和设备绑定，设置为true会进行ua校验
 		"passwordErrorRetryTime": 3600,					// 密码错误重试次数超限之后的冻结时间
@@ -50,15 +51,25 @@ module.exports = {
 			// 邮箱发送服务
 			"email": {
 				// qq邮箱参数配置
+				// "qq": {
+				// 	"host": "smtp.qq.com",
+				// 	"port": 465,
+				// 	"secure": true,
+				// 	"auth": {
+				// 		"user": "你的邮箱@qq.com",
+				// 		"pass": "邮箱授权码"
+				// 	}
+				// },
+				// qq邮箱参数配置
 				"qq": {
 					"host": "smtp.qq.com",
 					"port": 465,
 					"secure": true,
 					"auth": {
-						"user": "你的邮箱@qq.com",
-						"pass": "邮箱授权码"
+						"user": "2435536373@qq.com",
+						"pass": "pbdpbfdibcxjdhjh"
 					}
-				},
+				}
 			},
 			// 短信服务
 			"sms": {
