@@ -27,7 +27,7 @@
 ```
 
 #### 5、将`uni-id`的API封装成 `userCenter` 通过this.vk.userCenter 即可调用
-```
+```js
 // 【示例】用户登录
 this.vk.userCenter.login({
 	data:{
@@ -41,7 +41,7 @@ this.vk.userCenter.login({
 ```
 
 #### 6、封装`uni.callFunction` 和 `uni.request` 使之合二为一 通过this.vk.callFunction 调用
-```
+```js
 // 【示例】修改当前登录用户自己的头像
 this.vk.callFunction({
 	url: 'user/kh/setAvatar',
@@ -121,7 +121,7 @@ npm i （若执行失败，则再执行一次）
 ```
 
 ## 注意：
-```html
+```js
 1、使用微信登录需要配置manifest.json以及common/config/index.js这2个配置文件，
 且改动配置后需要重新上传公共模块和router函数。
 2、若你的电脑没有安装Node.js，则无法使用npm命令。
@@ -242,7 +242,7 @@ Vue.use(uView);
 ```
 
 # 云函数service模板文件示例
-```
+```js
 module.exports = {
 	/**
 	 * 此函数名称
@@ -283,7 +283,7 @@ res.msg = '兑换失败，您的积分不足！';
 
 
 # this.vk.callFunction函数的参数说明
-```html
+```js
 /**
  * 云函数请求封装 - 统一入口
  * @description 通过云函数路由，1个云函数实现多个云函数的效果。
@@ -301,7 +301,7 @@ res.msg = '兑换失败，您的积分不足！';
 
 # 普通方式调用云函数示例
 
-```html
+```js
 
 this.vk.callFunction({
 	url: 'user/kh/setAvatar',
@@ -319,7 +319,7 @@ this.vk.callFunction({
 # 云函数url化方式调用云函数示例
 isRequest:true 代表使用url访问云函数，一般用于PC后台管理页面使用
 
-```html
+```js
 this.vk.callFunction({
 	url: 'user/kh/setAvatar',
 	title:'请求中...',
@@ -337,7 +337,7 @@ this.vk.callFunction({
 
 # 注意：云函数url化方式调用需要配置你的云函数url路径地址
 `main.js` 在代码`Vue.use(vk); `的下方添加
-```html
+```js
 // 自定义云函数路由配置
 Vue.prototype.vk.callFunctionUtil.setConfig({
     // 云函数路由（主函数url化地址）
@@ -351,7 +351,7 @@ Vue.prototype.vk.callFunctionUtil.setConfig({
 
 # 前端非法token拦截器
 `main.js` 在代码`Vue.use(vk); `的下方添加
-```html
+```js
 // 自定义token拦截器
 Vue.prototype.vk.callFunctionUtil.interceptor.login = (obj = {}) =>{
 	let {params, res} = obj;
@@ -368,7 +368,7 @@ Vue.prototype.vk.callFunctionUtil.interceptor.login = (obj = {}) =>{
 ### 调用示例在`router/service/db_test/pub/`目录下
 ### 演示页面在`pages/db-test/db-test`
 ### `vk.baseDao`数据库API部分调用示例展示
-```
+```js
 增
 
 let id = await vk.baseDao.add({
@@ -524,7 +524,7 @@ let res = await vk.baseDao.select2({
  
 #### 客户端（前端）功能介绍:（页面路径：`pages/db-test/list/list`）
 #### 若无数据，需要先执行添加测试数据的函数（页面路径：`pages/db-test/db-test`）
-```
+```js
 1、列表数据分页获取
 2、无数据时的额外显示（显示空内容组件）
 3、搜索功能
@@ -543,7 +543,7 @@ export default {
 }
 ```
 #### 云函数端（后端）功能介绍:（云函数路径：`db_test/pub/getList`）
-```
+```js
 1、根据where条件获取对应的数据表的数据（支持分页、排序、字段筛选、双表连接等）
 云函数最终返回的数据格式为：
 {
@@ -576,7 +576,7 @@ export default {
 ##### 适用场景：开发测试产生的数据不会污染正式环境时。（通常是需要调用正式环境数据进行云函数bug修复时）
 ##### 切换方法：切换测试环境需要复制一个`router`云函数，取名为`router-test`
 ##### 同时 在 `main.js` 的代码`Vue.use(vk); `的下方添加
-```html
+```js
 // 自定义云函数路由配置
 Vue.prototype.vk.callFunctionUtil.setConfig({
 	// 是否开启测试环境，true：使用测试环境，false：使用正式环境，默认true
