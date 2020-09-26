@@ -51,25 +51,15 @@ module.exports = {
 			// 邮箱发送服务
 			"email": {
 				// qq邮箱参数配置
-				// "qq": {
-				// 	"host": "smtp.qq.com",
-				// 	"port": 465,
-				// 	"secure": true,
-				// 	"auth": {
-				// 		"user": "你的邮箱@qq.com",
-				// 		"pass": "邮箱授权码"
-				// 	}
-				// },
-				// qq邮箱参数配置
 				"qq": {
 					"host": "smtp.qq.com",
 					"port": 465,
 					"secure": true,
 					"auth": {
-						"user": "2435536373@qq.com",
-						"pass": "pbdpbfdibcxjdhjh"
+						"user": "你的邮箱@qq.com",
+						"pass": "邮箱授权码"
 					}
-				}
+				},
 			},
 			// 短信服务
 			"sms": {

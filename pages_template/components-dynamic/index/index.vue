@@ -49,6 +49,11 @@
 								path: '../vk-u-grid-button/vk-u-grid-button',
 								icon: 'grid',
 								title: 'vk-u-grid-button 图文导航',
+							},
+							{
+								path: '../vk-u-goods-sku-popup/vk-u-goods-sku-popup',
+								icon: 'swipeAction',
+								title: 'vk-u-goods-sku-popup 商品SKU组件',
 							}
 						]
 					}

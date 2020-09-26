@@ -9,10 +9,12 @@ Vue.use(vk);
 
 // 自定义云函数路由配置
 Vue.prototype.vk.callFunctionUtil.setConfig({
-    // 云函数路由（主函数url化地址）
-    functionPath:"https://xxxxx.bspapp.com/http/router",
-    // 云函数路由（开发测试函数url化地址）
-    testFunctionPath:"https://xxxxx.bspapp.com/http/router-test",
+		functionNameToUrl:{
+			// 云函数路由（主函数url化地址）
+			"router":"https://bbdf976b-a6a6-42b2-9429-db232ee80f13.bspapp.com/http/router",
+			// 云函数路由（开发测试函数url化地址）
+			"router-test":"https://bbdf976b-a6a6-42b2-9429-db232ee80f13.bspapp.com/http/router-test"
+		}
 });
 
 // 自定义token拦截器

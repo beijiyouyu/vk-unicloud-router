@@ -86,7 +86,7 @@
 				{
 					"path": "components-dynamic/vk-u-goods-sku-popup/vk-u-goods-sku-popup",
 					"style": {
-						"navigationBarTitleText": "动态数据组件 - 商品SKU选择器"
+						"navigationBarTitleText": "商品SKU选择器组件"
 					}
 				},
 				{
