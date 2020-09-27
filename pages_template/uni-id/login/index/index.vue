@@ -187,6 +187,8 @@
 				// 跳转到首页,或页面返回
 				var pages = getCurrentPages();
 				if(pages.length > 1){
+					const eventChannel = that.getOpenerEventChannel();
+					eventChannel.emit('loginSuccess', {});
 					vk.navigateBack();
 				}else{
 					// 进入首页
