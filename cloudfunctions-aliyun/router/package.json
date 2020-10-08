@@ -12,7 +12,7 @@
   "dependencies": {
     "config": "file:../common/config",
     "uni-id": "file:../common/uni-id",
-    "vk-unicloud": "^1.4.1"
+    "vk-unicloud": "^1.4.5"
   },
   "private": true
 }
