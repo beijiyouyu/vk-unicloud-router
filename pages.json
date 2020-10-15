@@ -106,6 +106,12 @@
 					"style": {
 						"navigationBarTitleText": "注册"
 					}
+				},
+				{
+					"path": "temporary-cache/temporary-cache",
+					"style": {
+						"navigationBarTitleText": "云函数缓存"
+					}
 				}
 			]
 		}

@@ -4,7 +4,7 @@
 			当前集成的
 			<text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>
 			版本：
-			<text style="font-weight: bold;">1.1.11</text> 
+			<text style="font-weight: bold;">1.1.13</text> 
 		</view>
 		
 		<button type="default" @tap="pageTo('../password/password')">用户名和密码</button>
@@ -18,14 +18,18 @@
 		<!-- #endif -->
 		<view style="margin-bottom: 20rpx;">uni-id 1.1.3 新增 分销裂变</view>
 		<button type="default" @tap="pageTo('../util/util')">通用方法</button>
-		<view style="margin-bottom: 20rpx;">插件版本1.2.2 新增 数据库调用方法</view>
-		<button type="default" @tap="pageTo('../../db-test/db-test')">数据库调用方法</button>
-		<view style="margin-bottom: 20rpx;">插件版本1.2.9 新增 动态数据组件</view>
-		<button type="default" @tap="pageTo('../../components-dynamic/index/index')">动态数据组件</button>
-		<view style="margin-bottom: 20rpx;">插件版本1.3.3 新增 登录/注册/找回密码/页面模板</view>
-		<button type="default" @tap="pageTo('../login/index/index')">登录注册找回密码页面模板</button>
+		<view style="margin-bottom: 20rpx;">插件版本1.4.3 新增 云函数临时缓存</view>
+		<button type="default" @tap="pageTo('../../temporary-cache/temporary-cache')">云函数临时缓存</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.3.8 新增 商品SKU选择器组件</view>
 		<button type="default" @tap="pageTo('../../components-dynamic/vk-u-goods-sku-popup/vk-u-goods-sku-popup')">商品SKU选择器组件</button>
+		<view style="margin-bottom: 20rpx;">插件版本1.3.3 新增 登录/注册/找回密码/页面模板</view>
+		<button type="default" @tap="pageTo('../login/index/index')">登录注册找回密码页面模板</button>
+		<view style="margin-bottom: 20rpx;">插件版本1.2.9 新增 动态数据组件</view>
+		<button type="default" @tap="pageTo('../../components-dynamic/index/index')">动态数据组件</button>
+		<view style="margin-bottom: 20rpx;">插件版本1.2.2 新增 数据库调用方法</view>
+		<button type="default" @tap="pageTo('../../db-test/db-test')">数据库调用方法</button>
+		
+		
 	</view>
 </template>
 

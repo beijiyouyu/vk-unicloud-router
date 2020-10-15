@@ -34,7 +34,7 @@
 		data() {
 			return {
 				form1:{
-					email: '370725567@qq.com',
+					email: '',
 					code: ''
 				}
 			}

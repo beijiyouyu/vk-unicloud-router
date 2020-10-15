@@ -181,18 +181,104 @@
 		]
 	},
 	"uni-id-log":{
-			"data": [],
-			"index": [
-				{
-					"IndexName": "user_id",
-					"MgoKeySchema": {
-						"MgoIndexKeys": [{
-							"Name": "user_id",
-							"Direction": "1"
-						}],
-						"MgoIsUnique": false
-					}
+		"data": [],
+		"index": [
+			{
+				"IndexName": "user_id",
+				"MgoKeySchema": {
+					"MgoIndexKeys": [{
+						"Name": "user_id",
+						"Direction": "1"
+					}],
+					"MgoIsUnique": false
 				}
-			]
-		}
+			}
+		]
+	},
+	"uni-id-roles":{
+		"data": [],
+		"index": [
+			{
+				"IndexName": "role_id",
+				"MgoKeySchema": {
+					"MgoIndexKeys": [
+						{
+							"Name": "role_id", 
+							"Direction": "1"
+						}
+					],
+					"MgoIsUnique": true
+				}
+			},
+			{
+				"IndexName": "permission",
+				"MgoKeySchema": {
+					"MgoIndexKeys": [
+						{
+							"Name": "permission", 
+							"Direction": "1"
+						}
+					],
+					"MgoIsUnique": false
+				}
+			},
+			{
+				"IndexName": "name",
+				"MgoKeySchema": {
+					"MgoIndexKeys": [{
+						"Name": "name",
+						"Direction": "1"
+					}],
+					"MgoIsUnique": false
+				}
+			}
+		]
+	},
+	"uni-id-permissions":{
+		"data": [],
+		"index": [
+			{
+				"IndexName": "permission_id",
+				"MgoKeySchema": {
+					"MgoIndexKeys": [
+						{
+							"Name": "permission_id", 
+							"Direction": "1"
+						}
+					],
+					"MgoIsUnique": true
+				}
+			},
+			{
+				"IndexName": "url",
+				"MgoKeySchema": {
+					"MgoIndexKeys": [{
+						"Name": "url",
+						"Direction": "1"
+					}],
+					"MgoIsUnique": false
+				}
+			},
+			{
+				"IndexName": "parent_id",
+				"MgoKeySchema": {
+					"MgoIndexKeys": [{
+						"Name": "parent_id",
+						"Direction": "1"
+					}],
+					"MgoIsUnique": false
+				}
+			},
+			{
+				"IndexName": "sort",
+				"MgoKeySchema": {
+					"MgoIndexKeys": [{
+						"Name": "sort",
+						"Direction": "1"
+					}],
+					"MgoIsUnique": false
+				}
+			}
+		]
+	}
 }
