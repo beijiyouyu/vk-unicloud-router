@@ -1,6 +1,10 @@
 <template>
 	<view class="content">
-		<button type="default" @tap="setAvatar">设置头像</button>
+		<view style="text-align: center;">
+			<u-avatar :src="avatar" v-if="avatar" size="140"></u-avatar>
+		</view>
+		<button type="default" @tap="setAvatar">直接设置头像</button>
+		<button type="default" @tap="uploadAvatar">上传到云储存(并设置为头像)</button>
 		<button type="default" @tap="updateUser">更新用户信息</button>
 		<button type="default" @tap="checkToken">token校验</button>
 		
@@ -22,7 +26,8 @@
 			return {
 				form1:{
 					inviteCode:""
-				}
+				},
+				avatar:""
 			}
 		},
 		onLoad(options) {
@@ -32,12 +37,14 @@
 		methods: {
 			// 设置头像
 			setAvatar(){
+				let avatar = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594798658581&di=bcd5486940ad88cf88a904f411c53e94&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn15%2F600%2Fw1920h1080%2F20180505%2Fad66-hacuuvt5802647.jpg";
 				var form1 = that.form1;
 				vk.userCenter.setAvatar({
 					data:{
-						avatar:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594798658581&di=bcd5486940ad88cf88a904f411c53e94&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn15%2F600%2Fw1920h1080%2F20180505%2Fad66-hacuuvt5802647.jpg",
+						avatar:avatar
 					},
 					success:function(data){
+						that.avatar = avatar;
 						vk.alert("设置成功");
 					}
 				});
@@ -86,6 +93,33 @@
 					data:form1,
 					success:function(data){
 						vk.alert("接收邀请成功");
+					}
+				});
+			},
+			// 上传头像到云储存,并设置为头像
+			uploadAvatar(){
+				// 选择图片
+				uni.chooseImage({
+					count: 1, 
+					sizeType: ['compressed'],
+					success: function (res) {
+						// 上传图片到云储存
+						vk.callFunctionUtil.uploadFile({
+							title:"上传中...",
+							filePath: res.tempFilePaths[0],
+							fileType: "image",
+							success(res) {
+								// 执行绑定头像
+								vk.userCenter.setAvatar({
+									data: {
+										avatar: res.fileID,
+									},
+									success() {
+										that.avatar = res.fileID;
+									}
+								});
+							}
+						});
 					}
 				});
 			}

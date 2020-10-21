@@ -186,14 +186,18 @@
 			login_success(){
 				// 跳转到首页,或页面返回
 				var pages = getCurrentPages();
-				if(pages.length > 1){
+				console.log(pages.length,pages[pages.length-1].route);
+				if(pages.length > 1 
+					&& pages[pages.length-2] 
+					&& pages[pages.length-2].route
+					&& pages[pages.length-2].route.indexOf('login/index') == -1
+				){
 					const eventChannel = that.getOpenerEventChannel();
 					eventChannel.emit('loginSuccess', {});
 					vk.navigateBack();
 				}else{
 					// 进入首页
 					vk.reLaunch("../../index/index");
-					//vk.switchTab("../../index/index");
 				}
 			},
 			// 第三方登录 - 微信

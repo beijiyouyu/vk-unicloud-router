@@ -18,6 +18,8 @@
 		<!-- #endif -->
 		<view style="margin-bottom: 20rpx;">uni-id 1.1.3 新增 分销裂变</view>
 		<button type="default" @tap="pageTo('../util/util')">通用方法</button>
+		<view style="margin-bottom: 20rpx;">插件版本1.4.4 新增 Vuex状态管理</view>
+		<button type="default" @tap="pageTo('../../vuex/vuex')">Vuex状态管理演示示例</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.4.3 新增 云函数临时缓存</view>
 		<button type="default" @tap="pageTo('../../temporary-cache/temporary-cache')">云函数临时缓存</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.3.8 新增 商品SKU选择器组件</view>

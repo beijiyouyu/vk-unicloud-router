@@ -20,7 +20,7 @@
 		<button type="default" @tap="temporaryCache('set')">缓存 - 保存</button>
 		<button type="default" @tap="temporaryCache('get')">缓存 - 获取</button>
 		<button type="default" @tap="temporaryCache('del')">缓存 - 删除</button>
-		<button type="default" @tap="temporaryCache('clear')">缓存 - 清空</button>
+		<!-- <button type="default" @tap="temporaryCache('clear')">缓存 - 清空</button> -->
 		<button type="default" @tap="getAll()">缓存 - 获取所有缓存</button>
 		<!-- 页面内容结束 -->
 	</view>
@@ -110,8 +110,11 @@
 					title:'请求中...',
 					data:form1,
 					success:function(data) {
-						//vk.alert(JSON.stringify(data));
-						that.getAll();
+						if("get" === mode){
+							vk.alert(JSON.stringify(data.value));
+						}else{
+							that.getAll();
+						}
 					}
 				});
 			}

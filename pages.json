@@ -112,6 +112,12 @@
 					"style": {
 						"navigationBarTitleText": "云函数缓存"
 					}
+				},
+				{
+					"path": "vuex/vuex",
+					"style": {
+						"navigationBarTitleText": "vuex演示示例"
+					}
 				}
 			]
 		}
