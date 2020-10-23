@@ -4,14 +4,28 @@
 			Vuex可以用来做全局状态管理。
 			而此例子是演示将当前登录用户信息存入Vuex，以便于在其他页面中也能直接渲染或获取用户信息
 		</view>
-		<view v-if="$store.state.user.userInfo" style="color: red;margin-top: 20rpx;font-size: 36rpx;">
-			当前登录用户：{{ $store.state.user.userInfo.nickname || $store.state.user.userInfo.username}}
+		<view style="margin-top: 10rpx;">
+			说明:
+			<view style="margin-top: 10rpx;">
+				1、<text>$user</text> 对应 store/modules 目录下的js文件，同理，你可以在store/modules目录下新建一个$cart.js文件来专门储存购物车信息<br/>
+				2、页面上直接渲染Vuex数据：<br/>
+				$user.userInfo<br/>
+				3、js 内获得Vuex数据：<br/>
+				let userInfo = vk.state('$user').userInfo;<br/>
+				4、js 内更新Vuex数据：<br/>
+				vk.vuex('$user.userInfo.avatar', avatar);<br/>
+			</view>
+		</view>
+		<view v-if="$user.userInfo" style="color: red;margin-top: 10rpx;font-size: 36rpx;">
+			当前登录用户：{{ $user.userInfo.nickname || $user.userInfo.username}}
+			<u-avatar :src="$user.userInfo.avatar" size="70"></u-avatar>
 		</view>
 		<view style="margin-top: 20rpx;">
 			<input type="text" v-model="form1.username" placeholder="用户名/邮箱/手机号" />
 			<input type="text" v-model="form1.password" password="true" placeholder="密码" />
 			<button type="default" @tap="register">注册</button>
 			<button type="default" @tap="login">登录</button>
+			<button type="default" @tap="uploadAvatar">上传到云储存(并设置为头像)</button>
 			<button type="default" @tap="logout">退出</button>
 		</view>
 	</view>
@@ -52,7 +66,7 @@
 					data:form1,
 					success:function(data){
 						// 登录成功后将用户信息写入$store
-						that.$store.dispatch('user/setUserInfo',data.userInfo);
+						vk.vuex('$user.userInfo', data.userInfo);
 						vk.alert("登陆成功!");
 					}
 				});
@@ -62,11 +76,43 @@
 				vk.userCenter.logout({
 					success:function(data){
 						// 退出成功后清楚$store的用户信息
-						that.$store.dispatch('user/setUserInfo',"");
+						vk.vuex('$user.userInfo', '');
 						vk.alert("退出成功");
 					}
 				});
 			},
+			// 上传头像到云储存,并设置为头像
+			uploadAvatar(){
+				// 选择图片
+				uni.chooseImage({
+					count: 1, 
+					sizeType: ['compressed'],
+					success: function (res) {
+						// 上传图片到云储存
+						vk.callFunctionUtil.uploadFile({
+							title:"上传中...",
+							filePath: res.tempFilePaths[0],
+							fileType: "image",
+							success(res) {
+								// 执行绑定头像
+								vk.userCenter.setAvatar({
+									data: {
+										avatar: res.fileID,
+									},
+									success() {
+										// 修改Vuex用户状态
+										vk.vuex('$user.userInfo.avatar', res.fileID);
+									}
+								});
+							}
+						});
+					}
+				});
+			}
+		},
+		// 计算属性
+		computed:{
+			
 		}
 	}
 </script>
@@ -101,4 +147,3 @@
 		margin-bottom: 20px;
 	}
 </style>
-

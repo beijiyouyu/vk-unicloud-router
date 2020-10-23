@@ -8,6 +8,10 @@ Vue.use(uView);
 import vk from 'vk-unicloud-page';
 Vue.use(vk);
 
+// 引入vk实例提供的对vuex的简写法文件
+import mixin from './store/mixin/mixin.js'
+Vue.mixin(mixin);
+
 // 自定义云函数路由配置
 Vue.prototype.vk.callFunctionUtil.setConfig({
 	debug:true,

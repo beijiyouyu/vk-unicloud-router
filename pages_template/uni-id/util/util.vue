@@ -113,6 +113,7 @@
 								vk.userCenter.setAvatar({
 									data: {
 										avatar: res.fileID,
+										deleteOldFile:true
 									},
 									success() {
 										that.avatar = res.fileID;
