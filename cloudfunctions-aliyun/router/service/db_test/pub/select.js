@@ -19,15 +19,14 @@ module.exports = {
 		// 业务逻辑开始----------------------------------------------------------- 
 		res = await vk.baseDao.select({
 			dbName:"vk-test",
-			pageKey:true,
 			pageIndex:1,
 			pageSize:100,
 			whereJson:{
-				kehuid:"001"
+				user_id:"001"
 			},
 		}, event.util);
 		// 对应的sql:
-		// select * from vk-test where kehuid == '001' limit 0,100;
+		// select * from vk-test where user_id == '001' limit 0,100;
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

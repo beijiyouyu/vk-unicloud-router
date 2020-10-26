@@ -21,11 +21,10 @@ module.exports = {
 		let { data = {}, util, originalParam } = event;
 		let { uniID, pubFun, vk , db, _ } = util;
 		let { uid } = data;
-		let res = {code : -1, msg : ''};
+		let res = {code : 0, msg : ''};
     // 业务逻辑开始----------------------------------------------------------- 
 		// 可写与数据库的交互逻辑等等
-		let {pageNum, pageSize, addTimeLong ,endTimeLong, searchvalue} = data;
-		// 仅限以下表允许不登录查看
+		let { pageNum, pageSize, addTimeLong ,endTimeLong, searchvalue } = data;
 		let dbName = "vk-test";
 		let fieldJson = {};
 		let whereJson = {};
@@ -55,7 +54,6 @@ module.exports = {
 		// 查询条件结束-----------------------------------------------------------
 		res = await vk.baseDao.select({
 			dbName:dbName,
-			pageKey:true,
 			pageIndex:pageNum,
 			pageSize:pageSize,
 			fieldJson:fieldJson,

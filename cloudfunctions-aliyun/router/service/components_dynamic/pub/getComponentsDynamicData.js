@@ -25,7 +25,7 @@ module.exports = {
 		// 根据ids获取组件动态数据列表
 		let res_select = await vk.baseDao.select({
 			dbName:"opendb-components-dynamic",
-			pageKey:false,
+			getCount:false,
 			pageSize:100,
 			whereJson:{
 				data_id : _.in(ids)

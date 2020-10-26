@@ -21,10 +21,10 @@ module.exports = {
 			dbName:"vk-test",
 			dbName2:"uni-id-users",
 			foreignKeyType:"many-to-one",					// one-to-many 一对多 many-to-one 多对一
-			foreignKey:"kehuid",
+			foreignKey:"user_id",
 			foreignKey2:"_id",
 			as:"kehuInfo",
-			pageKey:true,
+			getCount:true,
 			pageIndex:1,
 			pageSize:10,
 			whereJson:{

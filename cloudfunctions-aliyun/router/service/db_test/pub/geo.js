@@ -19,7 +19,6 @@ module.exports = {
 		// 业务逻辑开始----------------------------------------------------------- 
 		res = await vk.baseDao.select({
 			dbName:"vk-test",
-			pageKey:true,
 			pageIndex:1,
 			pageSize:100,
 			whereJson:{

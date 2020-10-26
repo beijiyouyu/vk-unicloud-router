@@ -1,7 +1,7 @@
 module.exports = {
 	/**
 	 * 连表查询(仅限两表查询)(VK版本)
-	 * @url db_test/pub/select2 前端调用的url参数地址
+	 * @url db_test/pub/select2_one-to-many 前端调用的url参数地址
 	 * @description 此函数描述
 	 * @params {Object} data 请求参数
 	 * @params {String} uniIdToken 用户token
@@ -22,11 +22,17 @@ module.exports = {
 			dbName2:"vk-test",                // 副表名
 			foreignKeyType:"one-to-many",     // one-to-many 一对多 many-to-one 多对一
 			foreignKey:"_id",                 // 主表外键字段名
-			foreignKey2:"kehuid",             // 副表外键字段名
-			as:"kehuInfo",                    // 副表数据插入到主表的字段名
-			pageKey:true,                     // 是否分页(会返回count和hasMore)
+			foreignKey2:"user_id",            // 副表外键字段名
+			as:"testList",                    // 副表数据插入到主表的字段名
+			getCount:false,                   // 是否同时返回总数(会执行count)
 			pageIndex:1,                      // 当前第几页
 			pageSize:10,                      // 每页显示数据
+			whereJson:{                       // 主表where条件
+				
+			},
+			whereJson2:{                      // 副表where条件
+				
+			},
 			fieldJson:{                       // 主表字段显示规则
 				token:false,
 				password:false,
@@ -34,13 +40,10 @@ module.exports = {
 			fieldJson2:{                      // 副表字段显示规则
 				
 			},
-			whereJson:{                       // 主表where条件
+			sortArr:[                         // 主表排序规则
 				
-			},
-			whereJson2:{                      // 副表where条件
-				money:1
-			},
-			sortArr:[                         // 排序规则
+			],
+			sortArr2:[                        // 副表排序规则
 				{
 					"name":"money",
 					"type":"desc"

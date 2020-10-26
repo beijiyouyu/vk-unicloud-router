@@ -20,16 +20,16 @@ module.exports = {
 		/**
 		 * 这里为了防止误删,故vk.baseDao.del API 
 		 * 会判断如果whereJson为空,则不执行删除操作
-		 * 所以这里加了个kehuid:_.neq("___")条件来达到删除全部的功能(实际开发时慎用删除全部功能)
+		 * 所以这里加了个user_id:_.neq("___")条件来达到删除全部的功能(实际开发时慎用删除全部功能)
 		 */
 		res.num = await vk.baseDao.del({
 			dbName:"vk-test",
 			whereJson:{
-				kehuid:_.neq("___")
+				user_id:_.neq("___")
 			}
 		},event.util);
 		// 对应的sql:
-		// delete from vk-test where kehuid != '___'
+		// delete from vk-test where user_id != '___'
     // 业务逻辑结束-----------------------------------------------------------
     return res;
   }

@@ -32,7 +32,7 @@ module.exports = {
 		};
 		res = await vk.baseDao.select({
 			dbName:dbName,
-			pageKey:true,
+			getCount:true,
 			pageIndex:1,
 			pageSize:100,
 			whereJson:whereJson
