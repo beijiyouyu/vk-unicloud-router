@@ -1,7 +1,7 @@
 ### uniCloud云函数路由框架研究Q群:22466457 如有问题或建议可以在群内讨论。
 ### 插件名称：`vk-unicloud-router`
 ### 作者：VK
-### 更新时间：2020-10-26
+### 更新时间：2020-10-28
 ## 主要功能 以及 对开发者的价值
 
 #### 1、实现云函数路由模式
@@ -18,7 +18,7 @@
 
 #### 4、全面支持`url化`的云函数请求，您无需关心url化后参数的获取问题
 
-#### 5、已集成`uni-id` 当前版本:`1.1.13`（已支持真实发送邮箱验证码和阿里云短信验证码）
+#### 5、已集成`uni-id` 当前版本:`1.1.14`（已支持真实发送邮箱验证码和阿里云短信验证码）
 ```
 5.1、由于每个应用基本都会用上用户系统，官方建议所有`uniCloud`应用均使用`uni-id`作为用户体系，
 有了统一的账户规范，并且围绕这套账户规范，有各种各样插件，那么开发者可以随意整合这些插件，让数据连同。
@@ -48,9 +48,11 @@
 
 #### 13、【1.4.6 新增】对 `Vuex` 进行了深度封装（支持持久化），现在可以很方便的使用Vuex进行读取和储存。
 
-#### 14、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+#### 14、【1.4.8 新增】自定义过滤器（在业务云函数执行之前，统一拦截，进行过滤后再放行，支持设置多个过滤器，并按指定顺序执行）
 
-#### 15、其他好处…
+#### 15、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+
+#### 16、其他好处…
 
 ##### 插件首页体验地址
 
@@ -118,6 +120,7 @@ module.exports = {
   * @params {String} uniIdToken 用户token
   * @params {String} userInfo 当前登录用户信息(同理,是可信任的)(只有kh函数才带此参数)
   * @params {Object} util 公共工具包
+	* @params {Object} filterResponse 过滤器返回的数据
   * @params {Object} originalParam 原始请求参数(包含了原始event和context)
   * data 请求参数 说明
   * @params {String} uid  当前登录用户id,若用户已登录且token有效,则data中会带uid参数
@@ -127,7 +130,7 @@ module.exports = {
   * @params {String} msg 详细信息
   */
   main: async (event) => {
-    let { data = {}, userInfo, util, originalParam } = event;
+    let { data = {}, userInfo, util, filterResponse, originalParam } = event;
     let { customUtil, uniID, config, pubFun, vk , db, _ } = util;
     let { uid } = data;
     let res = { code : 0, msg : '' };

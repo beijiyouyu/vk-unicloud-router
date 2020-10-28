@@ -75,6 +75,11 @@ module.exports = {
 					}
 				}
 			}
+		},
+		"db":{
+			"unicloud":{
+				"max_limit" : 500 // 最大limit限制(目前腾讯云最大1000,阿里云最大500)
+			}
 		}
 	}
 };

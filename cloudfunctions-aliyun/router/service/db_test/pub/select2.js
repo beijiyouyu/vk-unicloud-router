@@ -16,7 +16,8 @@ module.exports = {
 		let { uniID, pubFun, vk , db, _ } = util;
 		let { uid } = data;
 		let res = { code : 0, msg : 'ok' };
-		// 业务逻辑开始----------------------------------------------------------- 
+		// 业务逻辑开始-----------------------------------------------------------
+		 // 想要两表以上的连接,请使用vk.baseDao.selects
 		res = await vk.baseDao.select2({
 			dbName:"vk-test",
 			dbName2:"uni-id-users",
