@@ -16,15 +16,15 @@ module.exports = {
 		let { uniID, pubFun, vk , db, _ } = util;
 		let { uid } = data;
 		let res = { code : 0, msg : 'ok' };
-		// 业务逻辑开始-----------------------------------------------------------
-		 // 想要两表以上的连接,请使用vk.baseDao.selects
+		// 业务逻辑开始----------------------------------------------------------- 
+		// 想要两表以上的连接,请使用vk.baseDao.selects
 		res = await vk.baseDao.select2({
 			dbName:"vk-test",
 			dbName2:"uni-id-users",
 			foreignKeyType:"many-to-one",					// one-to-many 一对多 many-to-one 多对一
 			foreignKey:"user_id",
 			foreignKey2:"_id",
-			as:"kehuInfo",
+			as:"userInfo",
 			getCount:true,
 			pageIndex:1,
 			pageSize:10,
@@ -36,8 +36,6 @@ module.exports = {
 				password:false,
 			}
 		}, event.util);
-		console.log(res.rows.length);
-		 
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

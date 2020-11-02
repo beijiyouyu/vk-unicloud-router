@@ -39,6 +39,7 @@ module.exports = {
 					dbName:"vk-test",
 					foreignKey:"user_id",
 					as:"testList",
+					limit:1,
 					// 副表where条件
 					whereJson:{ },
 					// 副表字段显示规则
@@ -56,8 +57,7 @@ module.exports = {
 					// 副表字段显示规则
 					fieldJson:{ },
 					// 副表排序规则
-					sortArr:[{"name":"id", "type":"desc"}
-					],
+					sortArr:[{"name":"id", "type":"desc"}],
 				},
 			]
 		}, event.util);
