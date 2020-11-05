@@ -19,45 +19,47 @@ module.exports = {
 		// 业务逻辑开始-----------------------------------------------------------
 		// 演示3表连接
 		res = await vk.baseDao.selects({
-			dbName:"uni-id-users",
-			foreignKey:"_id",
-			getCount:false,
-			pageIndex:1,
-			pageSize:10,
+			dbName: "uni-id-users",
+			foreignKey: "_id",
+			getCount: false,
+			pageIndex: 1,
+			pageSize: 10,
 			// 主表where条件
-			whereJson:{ 
-				
+			whereJson: {
+		
 			},
 			// 主表字段显示规则
-			fieldJson:{token:false, password:false},
+			fieldJson: {
+				token: false,
+				password: false,
+			},
 			// 主表排序规则
-			sortArr:[{"name":"_id", "type":"desc"}
-			],
+			sortArr: [{ "name": "_id", "type": "desc" }],
 			// 副表列表
-			foreignDB:[
+			foreignDB: [
 				{
-					dbName:"vk-test",
-					foreignKey:"user_id",
-					as:"testList",
-					limit:1,
+					dbName: "order",
+					foreignKey: "user_id",
+					as: "orderList",
+					limit: 10,
 					// 副表where条件
-					whereJson:{ },
+					whereJson: { },
 					// 副表字段显示规则
-					fieldJson:{ },
+					fieldJson: { },
 					// 副表排序规则
-					sortArr:[{"name":"money", "type":"desc"}],
+					sortArr: [{ "name": "time", "type": "desc" }],
 				},
 				{
-					dbName:"gy-shop",
-					foreignKey:"user_id",
-					as:"shopList",
-					limit:1,
+					dbName: "vip",
+					foreignKey: "user_id",
+					as: "vipInfo",
+					limit: 1, // 当limit = 1时，以对象形式返回，否则以数组形式返回
 					// 副表where条件
-					whereJson:{ },
+					whereJson: { },
 					// 副表字段显示规则
-					fieldJson:{ },
+					fieldJson: { },
 					// 副表排序规则
-					sortArr:[{"name":"id", "type":"desc"}],
+					sortArr: [{ "name": "id", "type": "desc" }],
 				},
 			]
 		}, event.util);

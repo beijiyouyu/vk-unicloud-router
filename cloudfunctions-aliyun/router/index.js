@@ -6,6 +6,15 @@ const config = require('config'); // 全局配置信息
 const uniID = require('uni-id'); // uni-id 公共模块
 uniID.init(config["uni"]);
 const db = uniCloud.database();
+vk.require = function(path){
+	if(vk.requireCache && vk.requireCache[path]){
+		return vk.requireCache[path];
+	}else{
+		const requireItem = require(__dirname+"/"+path);
+		vk.requireCache[path] = requireItem;
+		return requireItem;
+	}
+}
 const customFilterService = require(__dirname + '/util/customFilterService'); // 自定义过滤器
 vk.init({
 	config,
