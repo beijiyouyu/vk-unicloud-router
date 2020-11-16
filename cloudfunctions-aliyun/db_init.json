@@ -127,7 +127,7 @@
 			}
 		}]
 	},
-	"uni-verify": {
+	"opendb-verify-codes": {
 		"data": [],
 		"index": [{
 			"IndexName": "mobile",
@@ -149,6 +149,24 @@
 					"Direction": "1"
 				}, {
 					"Name": "code",
+					"Direction": "1"
+				}],
+				"MgoIsUnique": false
+			}
+		},{
+			"IndexName": "type",
+			"MgoKeySchema": {
+				"MgoIndexKeys": [{
+					"Name": "type",
+					"Direction": "1"
+				}],
+				"MgoIsUnique": false
+			}
+		},{
+			"IndexName": "state",
+			"MgoKeySchema": {
+				"MgoIndexKeys": [{
+					"Name": "state",
 					"Direction": "1"
 				}],
 				"MgoIsUnique": false

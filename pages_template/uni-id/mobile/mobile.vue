@@ -4,12 +4,16 @@
 		<input type="text" placeholder="验证码" v-model="form1.code" />
 		<view class="tips" style="color: red;">上次发送的验证码：{{form1.code}}</view>
 		<view class="title">手机号注册&登录相关</view>
+		<view class="tips" style="text-align: left;">如需要使用此功能，先确保已安装npm包
+			<view>"@alicloud/pop-core": "^1.7.9",</view>
+			<view>"form-data": "^3.0.0"</view>
+		</view>
 		<view style="display: flex;">
 			<button type="default" @tap="sendSmsCode('login')">真实-发送验证码</button>
 			<button type="default" @tap="setVerifyCode('login')">模拟-发送验证码</button>
 		</view>
 		<button type="default" @tap="loginBySms">短信验证码登录（不存在则注册）</button>
-		<view class="tips">如果不使用uni-id自带的发送验证码功能，可以自行调用接口设置验证码，参数与发送验证码一致</view>
+		<view class="tips">已支持阿里云短信发送，如果不使用uni-id自带的发送验证码功能，可以修改公共模块config中的vk.service.sms.aliyun参数</view>
 		<view class="title">绑定手机相关</view>
 		<view style="display: flex;">
 			<button type="default" @tap="sendSmsCode('bind')">真实-发送验证码</button>
@@ -42,7 +46,7 @@
 		data() {
 			return {
 				form1:{
-					mobile: '15200000001',
+					mobile: '',
 					code: '',
 					password:"123456"
 				}

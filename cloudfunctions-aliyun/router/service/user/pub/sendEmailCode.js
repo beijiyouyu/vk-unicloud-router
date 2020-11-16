@@ -31,6 +31,9 @@ module.exports = {
 		};
 		// 发送验证码开始
 		var emailConfig = config.vk.service.email;
+		if(typeof nodemailer === "undefined"){
+			return { code : -1, msg : '请先安装npm包"nodemailer": "^6.4.11"' };
+		}
 		let emailService = nodemailer.createTransport({
 			"host": emailConfig[data.serviceType].host,
 			"port": emailConfig[data.serviceType].port,
