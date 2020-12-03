@@ -1,7 +1,7 @@
 module.exports = {
   /**
    * 修改数据
-   * @url components_dynamic/pub/update 前端调用的url参数地址
+   * @url plugs/components_dynamic/pub/update 前端调用的url参数地址
    * @description 此函数描述
    * @params {Object} data 请求参数
    * @params {String} uniIdToken 用户token

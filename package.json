@@ -4,7 +4,7 @@
   "description": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id",
   "main": "main.js",
   "dependencies": {
-    "vk-unicloud-page": "^1.11.8",
+    "vk-unicloud-page": "^1.11.9",
     "uview-ui": "~1.7.8"
   },
   "devDependencies": {},

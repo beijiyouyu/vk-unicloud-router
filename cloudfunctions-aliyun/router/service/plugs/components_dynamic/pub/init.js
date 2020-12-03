@@ -1,7 +1,7 @@
 module.exports = {
   /**
    * 初始化数据
-   * @url components_dynamic/pub/init 前端调用的url参数地址
+   * @url plugs/components_dynamic/pub/init 前端调用的url参数地址
    * @description  初始化测试数据（便于演示）
    * @params {Object} data 请求参数
    * @params {String} uniIdToken 用户token

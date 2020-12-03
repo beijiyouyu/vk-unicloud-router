@@ -79,7 +79,7 @@
 			init(options = {}){
 				// 检查数据库,若没有测试数据,则自动添加测试数据
 				vk.callFunction({
-					url: 'components_dynamic/pub/init',
+					url: 'plugs/components_dynamic/pub/init',
 					title:'检查数据库...'
 				});
 			},

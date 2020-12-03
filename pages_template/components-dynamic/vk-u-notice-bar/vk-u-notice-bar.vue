@@ -118,7 +118,7 @@
 			},
 			callFunction(obj){
 				vk.callFunction({
-					url: 'components_dynamic/pub/update',
+					url: 'plugs/components_dynamic/pub/update',
 					title:'请求中...',
 					data:{
 						data_id:obj.data_id,
