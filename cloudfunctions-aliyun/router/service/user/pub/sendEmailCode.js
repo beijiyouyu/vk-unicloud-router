@@ -1,4 +1,7 @@
-const nodemailer = require('nodemailer');	
+var nodemailer;
+try {
+	nodemailer = require('nodemailer');	
+} catch (err) {}
 module.exports = {
 	/**
 	 * 发送邮箱验证码
