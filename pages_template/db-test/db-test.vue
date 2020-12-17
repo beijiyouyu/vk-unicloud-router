@@ -20,6 +20,7 @@
 			<button @click="getList1()">select(获取多条数据)</button>
 			<button @click="getList2()">select2(连表查询)</button>
 		</view>
+		<button @click="sample">随机获取1条记录（一般用于抽奖）</button>
 		<button @click="test('update')">update(修改记录)</button>
 		<view style="display: flex;">
 			<button @click="test('sum')">sum(取总和值)</button>
@@ -128,6 +129,19 @@
 					}
 				});
 			},
+			// 随机取1条记录
+			sample(){
+				vk.callFunction({
+					url: 'db_test/pub/sample',
+					title:'请求中...',
+					data:{},
+					success(data) {
+						if(data.list[0]){
+							vk.alert(JSON.stringify(data.list[0]));
+						}
+					}
+				});
+			},
 			getGeoList(name){
 				vk.callFunction({
 					url: 'db_test/pub/geo',
@@ -144,7 +158,7 @@
 				if(myPosition.longitude == undefined || myPosition.latitude  == undefined){
 					return "";
 				}
-				console.log(mbPosition,myPosition);
+				//console.log(mbPosition,myPosition);
 				var res = {};
 				var m = 0;  
 				var km = 0;  
