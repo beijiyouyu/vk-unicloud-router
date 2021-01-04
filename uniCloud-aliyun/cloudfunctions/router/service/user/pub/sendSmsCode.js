@@ -31,15 +31,16 @@ module.exports = {
 		};
 		if(vk.pubfn.getData(config, "vk.service.sms.aliyun.accessKeyId")){
 			// 使用阿里云-短信
-			let result = await vk.smsUtil.sendSmsVerifyCode({
+			const smsUtil = vk.require("util/smsUtil");
+			let sendSmsRes = await smsUtil.sendSmsVerifyCode({
 				provider : "aliyun",
 				mobile : mobile,
 				code : code,
 			}, event.util);
-			if(result.code != 0){
+			if(sendSmsRes.code != 0){
 				return {
 					code : -1,
-					msg : result.Message
+					msg : sendSmsRes.Message
 				};
 			}
 			// 发送验证码成功后,设置验证码
