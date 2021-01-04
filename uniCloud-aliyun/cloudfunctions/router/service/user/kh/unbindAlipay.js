@@ -13,10 +13,20 @@ module.exports = {
 	 * @params {String} msg 详细信息
    */
 	main: async (event) => {
-		let {uniID} = event.util;
-		let res = {};
-		// 业务逻辑开始----------------------------------------------------------- 
+		// 业务逻辑开始-----------------------------------------------------------
+		let { data = {}, userInfo, util } = event;
+		let { uniID, vk, _ } = util;
+		let { uid } = data;
+		let res = { code : 0, msg : '' };
+		// 解绑
 		res = await uniID.unbindAlipay(event.data);
+		if(res.code === 0){
+			res.userInfo = await vk.baseDao.findById({
+				dbName:"uni-id-users",
+				id:uid,
+				fieldJson:{ token:false, password:false },
+			},event.util);
+		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}
