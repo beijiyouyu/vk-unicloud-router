@@ -21,11 +21,7 @@ module.exports = {
 		// 解绑
 		res = await uniID.unbindAlipay(event.data);
 		if(res.code === 0){
-			res.userInfo = await vk.baseDao.findById({
-				dbName:"uni-id-users",
-				id:uid,
-				fieldJson:{ token:false, password:false },
-			},event.util);
+			res.userInfo = await vk.daoCenter.userDao.findById(uid, util);
 		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
