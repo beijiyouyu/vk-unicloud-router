@@ -20,7 +20,7 @@ export default {
 		 * js更新示例
 		 * vk.vuex('$user.userInfo.avatar', res.fileID);
 		 */
-		userInfo: lifeData.$user.userInfo
+		userInfo: lifeData.$user.userInfo || {}
 	},
 	/**
 	 * 从基本数据(state)派生的数据，相当于state的计算属性

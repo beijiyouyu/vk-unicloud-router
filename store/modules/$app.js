@@ -1,6 +1,7 @@
 /**
  * vuex 系统状态管理模块
  */
+import config from '@/app.config.js'
 let lifeData = uni.getStorageSync('lifeData') || {};
 
 export default {
@@ -20,14 +21,8 @@ export default {
 		 * vk.vuex('$app.inited', true);
 		 */
 		inited: lifeData.$app.inited || false,
-		/**
-		 * app主题颜色 
-		 * $app.color.main
-		 * $app.color.secondary
-		 */
-		color:{
-			main:"#ff4444",
-			secondary:"#555555"
+		config:{
+			...config
 		}
 	},
 	/**

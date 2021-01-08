@@ -82,7 +82,7 @@
 				let form1 = that.form1;
 				form1.mode = "getAll";
 				vk.callFunction({
-					url: 'test/pub/temporaryCache',
+					url: 'template/test/pub/temporaryCache',
 					title:'',
 					data:form1,
 					success:function(data) {
@@ -106,7 +106,7 @@
 					}
 				}
 				vk.callFunction({
-					url: 'test/pub/temporaryCache',
+					url: 'template/test/pub/temporaryCache',
 					title:'请求中...',
 					data:form1,
 					success:function(data) {

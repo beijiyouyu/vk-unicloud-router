@@ -13,6 +13,7 @@ unpackage/
 .DS_Storer
 router.param.json
 .vscode
+.hbuilderx
 
 
 # python

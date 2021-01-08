@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import store from './store'
+import config from '@/app.config.js'
 
 import uView from 'uview-ui';
 Vue.use(uView);
@@ -14,14 +15,11 @@ Vue.mixin(mixin);
 
 // 自定义云函数路由配置
 Vue.prototype.vk.callFunctionUtil.setConfig({
-	debug:true,
-	loginPagePath:"/pages_template/uni-id/login/index/index",
-	functionNameToUrl:{
-		// 云函数路由（主函数url化地址）
-		"router":"https://bbdf976b-a6a6-42b2-9429-db232ee80f13.bspapp.com/http/router",
-		// 云函数路由（开发测试函数url化地址）
-		"router-test":"https://bbdf976b-a6a6-42b2-9429-db232ee80f13.bspapp.com/http/router-test"
-	}
+	debug:config.debug,
+	// 登录页面地址
+	loginPagePath:config.login.url,
+	// 主函数名称
+	functionName:config.functionName
 });
 
 // 自定义token拦截器

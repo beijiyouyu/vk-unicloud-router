@@ -178,12 +178,17 @@
 						vk.toast("登陆成功!");
 						setTimeout(function(){
 							// 跳转到首页,或页面返回
-							that.login_success();
+							that.login_success(data);
 						},1000); 
 					}
 				});
 			},
-			login_success(){
+			login_success(data){
+				// 检查是否有指定跳转的页面
+				if(vk.navigate.originalPage){
+					vk.navigate.originalTo();
+					return false;
+				}
 				// 跳转到首页,或页面返回
 				var pages = getCurrentPages();
 				console.log(pages.length,pages[pages.length-1].route);
@@ -207,7 +212,7 @@
 						vk.toast("登陆成功!");
 						setTimeout(function(){
 							// 跳转到首页,或页面返回
-							that.login_success();
+							that.login_success(data);
 						},1000); 
 					}
 				});

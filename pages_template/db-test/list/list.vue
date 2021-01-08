@@ -45,7 +45,7 @@
 		data() {
 			// 页面数据变量
 			return {
-				url:"db_test/pub/getList",		// 获取list数据的云函数请求路径
+				url:"template/db_api/pub/getList",		// 获取list数据的云函数请求路径
 				// init请求返回的数据
 				data:{
 					list:[],							// 列表数据
@@ -57,7 +57,7 @@
 					addTime:"",
 					endTime:"",
 					searchvalue:"",
-					pageNum:1,    //当前页码
+					pageIndex:1,    //当前页码
 					pageSize:10,  //每页显示数量
 				},
 				scrollTop:0,
@@ -140,14 +140,14 @@
 			nextPage() {
 				if(that.data.loadmore == "loadmore"){
 					that.data.loadmore = "loading";
-					that.form1.pageNum++;
+					that.form1.pageIndex++;
 					that.getList();
 				}
 			},
 			// 搜索
 			onSearch(e){
 				console.log("搜索",that.form1.searchvalue);
-				that.form1.pageNum = 1;
+				that.form1.pageIndex = 1;
 				that.data.pageKey = true;
 				that.getList();
 			},
@@ -170,6 +170,7 @@
 <style lang="scss" scoped>
 page{
 	background-color: #f8f8fa;
+	min-height: 100vh;
 }
 /* list 开始 */
 .vk-list-view {

@@ -190,7 +190,7 @@
 			findGoodsInfo(){
 				return new Promise(function (resolve, reject) {
 					vk.callFunction({
-						url: 'test/pub/findGoodsInfo',
+						url: 'template/test/pub/findGoodsInfo',
 						title:'请求中...',
 						data:{
 							goods_id : that.goods_id

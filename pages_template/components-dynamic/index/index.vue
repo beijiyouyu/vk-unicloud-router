@@ -49,11 +49,6 @@
 								path: '../vk-u-grid-button/vk-u-grid-button',
 								icon: 'grid',
 								title: 'vk-u-grid-button 图文导航',
-							},
-							{
-								path: '../vk-u-goods-sku-popup/vk-u-goods-sku-popup',
-								icon: 'swipeAction',
-								title: 'vk-u-goods-sku-popup 商品SKU组件',
 							}
 						]
 					}
@@ -79,7 +74,7 @@
 			init(options = {}){
 				// 检查数据库,若没有测试数据,则自动添加测试数据
 				vk.callFunction({
-					url: 'plugs/components_dynamic/pub/init',
+					url: 'plugs/client/components_dynamic/pub/init',
 					title:'检查数据库...'
 				});
 			},

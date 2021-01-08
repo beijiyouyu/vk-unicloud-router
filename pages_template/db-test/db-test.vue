@@ -16,9 +16,10 @@
 		<button @click="test('del')">del(删除集合所有数据)</button>
 		<button @click="test('findById')">findById(根据id获取一条记录)</button>
 		<button @click="test('findByWhereJson')">findByWhereJson(根据条件获取一条记录)</button>
-		<view style="display: flex;">
+		<view>
 			<button @click="getList1()">select(获取多条数据)</button>
-			<button @click="getList2()">select2(连表查询)</button>
+			<button @click="selects()">selects(连表查询)</button>
+			<button @click="selects2()">selects2.0(连表查询)</button>
 		</view>
 		<button @click="sample">随机获取1条记录（一般用于抽奖）</button>
 		<button @click="test('update')">update(修改记录)</button>
@@ -79,7 +80,7 @@
 					data._id = that.data.rows[0]._id;
 				}
 				vk.callFunction({
-					url: 'db_test/pub/'+name,
+					url: 'template/db_api/pub/'+name,
 					title:'请求中...',
 					data:data,
 					success(data) {
@@ -93,7 +94,7 @@
 			},
 			getList(){
 				vk.callFunction({
-					url: 'db_test/pub/select',
+					url: 'template/db_api/pub/select',
 					title:'请求中...',
 					data:{},
 					success(data) {
@@ -103,7 +104,7 @@
 			},
 			getList1(){
 				vk.callFunction({
-					url: 'db_test/pub/select',
+					url: 'template/db_api/pub/select',
 					title:'请求中...',
 					data:{},
 					success(data) {
@@ -115,9 +116,9 @@
 					}
 				});
 			},
-			getList2(){
+			selects(){
 				vk.callFunction({
-					url: 'db_test/pub/select2',
+					url: 'template/db_api/pub/selects',
 					title:'请求中...',
 					data:{},
 					success(data) {
@@ -125,6 +126,18 @@
 						setTimeout(function(){
 							vk.alert(JSON.stringify(data));
 						},300); 
+						that.item = data;
+					}
+				});
+			},
+			selects2(){
+				vk.callFunction({
+					url: 'template/db_api/pub/selects_mode_2',
+					title:'请求中...',
+					data:{},
+					success(data) {
+						console.log(data.rows);
+						that.data = data;
 						that.item = data;
 					}
 				});
@@ -132,7 +145,7 @@
 			// 随机取1条记录
 			sample(){
 				vk.callFunction({
-					url: 'db_test/pub/sample',
+					url: 'template/db_api/pub/sample',
 					title:'请求中...',
 					data:{},
 					success(data) {
@@ -144,7 +157,7 @@
 			},
 			getGeoList(name){
 				vk.callFunction({
-					url: 'db_test/pub/geo',
+					url: 'template/db_api/pub/geo',
 					title:'请求中...',
 					data:{
 						
