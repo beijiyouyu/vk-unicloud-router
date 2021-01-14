@@ -5,20 +5,25 @@ module.exports = {
 	 add: async (event,util) => {
 		let { uniID, config, pubFun, vk , db, _ } = util;
 		let res = { code : 0, msg : '' };
-		// 业务逻辑开始----------------------------------------------------------- 
+		// 业务逻辑开始-----------------------------------------------------------
+		let {
+			type, login_type, user_id,
+			ip, ua, os, platform, context
+		} = event;
+		if(context){
+			ip = context.CLIENTIP;
+			ua = context.CLIENTUA;
+			os = context.OS;
+			platform = context.PLATFORM;
+		}
 		if(vk.pubfn.getData(config, "vk.service.log.login.status")){
 			// 增加登录日志
 			try {
 				await vk.baseDao.add({
 					dbName:"uni-id-log",
 					dataJson:{
-						"type":  event.type,
-						"login_type": event.login_type,
-						"user_id": event.uid,
-						"ip": event.ip,
-						"ua": event.ua,
-						"os": event.os,
-						"platform": event.platform
+						type, login_type, user_id,
+						ip, ua, os, platform, context
 					}
 				},util);
 			}catch(err){

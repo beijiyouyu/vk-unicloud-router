@@ -17,22 +17,21 @@ module.exports = {
 		let { uniID, config, pubFun, vk , db, _ } = util;
 		let { uid } = data;
 		let res = {};
-		// 业务逻辑开始----------------------------------------------------------- 
+		// 业务逻辑开始-----------------------------------------------------------
 		// 微信登录(未绑定任何账号时,会新建账号)
 		res = await uniID.loginByWeixin(event.data);
 		if(res.token){
 			// 日志服务
-			const loginLogService = vk.require("service/user/util/login_log");	
+			const loginLogService = vk.require("service/user/util/login_log");
 			await loginLogService.add({
-				"type": "login",
-				"login_type": "weixin",
-				"user_id": res.uid,
-				"ip": originalParam.context.CLIENTIP,
-				"ua": originalParam.context.CLIENTUA,
-				"context" :  originalParam.context,
-				"os": originalParam.context.OS,
-				"platform": originalParam.context.PLATFORM
+				type: "login",
+				login_type: "weixin",
+				user_id: res.uid,
+				context: originalParam.context
 			},event.util);
+			if(vk.pubfn.isNull(res.userInfo)){
+				res.userInfo = await vk.daoCenter.userDao.findById(res.uid, util);
+			}
 		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
