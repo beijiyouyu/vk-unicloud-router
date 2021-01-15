@@ -28,9 +28,6 @@ module.exports = {
 				user_id: res.uid,
 				context: originalParam.context
 			},event.util);
-			if(vk.pubfn.isNull(res.userInfo)){
-				res.userInfo = await vk.daoCenter.userDao.findById(res.uid, util);
-			}
 		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;

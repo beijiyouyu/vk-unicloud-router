@@ -3,9 +3,6 @@ module.exports = {
    * 发送短信的验证码
    * @url user/pub/sendSmsCode 前端调用的url参数地址
    * @description 发送验证码
-   * @params {Object} data 请求参数
-   * @params {String} uniIdToken 用户token
-   * @params {Object} util 公共工具包
 	 * data 请求参数 说明
 	 * @params {String} mobile 手机号  
 	 * @params {String} type  验证码类型
@@ -29,7 +26,7 @@ module.exports = {
 			type,
 			mobile
 		};
-		if(vk.pubfn.getData(config, "vk.service.sms.aliyun.accessKeyId")){
+		if(vk.pubfn.getData(config, "vk.service.sms.aliyun.enable")){
 			// 使用阿里云-短信
 			const smsUtil = vk.require("util/smsUtil");
 			let sendSmsRes = await smsUtil.sendSmsVerifyCode({
@@ -47,6 +44,11 @@ module.exports = {
 			await uniID.setVerifyCode(param);
 		}else{
 			// 使用uni-短信
+			let templateId = vk.pubfn.getData(config, "uni.service.sms.templateId");
+			if(!templateId){
+				return  { code : -1, msg : '请先设置短信模板ID' };
+			}
+			param.templateId = templateId;
 			res = await uniID.sendSmsCode(param);
 		}
 		// 业务逻辑结束-----------------------------------------------------------

@@ -4,7 +4,7 @@
 			当前集成的
 			<text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>
 			版本：
-			<text style="font-weight: bold;">2.0.3</text> 
+			<text style="font-weight: bold;">2.0.4</text> 
 		</view>
 		
 		<button type="default" @tap="pageTo('../password/password')">用户名和密码</button>

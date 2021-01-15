@@ -3,9 +3,6 @@ module.exports = {
    * 手机号登陆(手机号+手机验证码)
    * @url user/pub/loginBySms 前端调用的url参数地址
    * @description 手机号登陆(手机号+手机验证码)
-   * @params {Object} data 请求参数
-   * @params {String} uniIdToken 用户token
-   * @params {Object} util 公共工具包
 	 * data 请求参数 说明
 	 * @params {String} mobile 手机号
 	 * @params {String} code 验证码
@@ -43,9 +40,6 @@ module.exports = {
 				user_id: res.uid,
 				context: originalParam.context
 			},event.util);
-			if(vk.pubfn.isNull(res.userInfo)){
-				res.userInfo = await vk.daoCenter.userDao.findById(res.uid, util);
-			}
 		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;

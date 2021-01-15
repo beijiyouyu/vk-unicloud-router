@@ -39,10 +39,11 @@ module.exports = {
 		},
 		"service": {
 			"sms": {
-				"name": "重要",																		// 应用名称，对应短信模版的name
-				"codeExpiresIn": 180,															// 验证码过期时间，单位为秒，注意一定要是60的整数倍
-				"smsKey": "你的smsKey",														// 短信密钥key，开通短信服务处可以看到 https://dev.dcloud.net.cn/uniSms
-				"smsSecret": "你的smsSecret"												// 短信密钥secret，开通短信服务处可以看到 https://dev.dcloud.net.cn/uniSms
+				"name": "重要",										// 应用名称，对应短信模版的name
+				"codeExpiresIn": 180,							// 验证码过期时间，单位为秒，注意一定要是60的整数倍
+				"smsKey": "你的smsKey",						// 短信密钥key，开通短信服务处可以看到 https://dev.dcloud.net.cn/uniSms
+				"smsSecret": "你的smsSecret",			// 短信密钥secret，开通短信服务处可以看到 https://dev.dcloud.net.cn/uniSms
+				"templateId":"你的短信模板ID"				// 短信模板ID
 			}
 		}
 	},

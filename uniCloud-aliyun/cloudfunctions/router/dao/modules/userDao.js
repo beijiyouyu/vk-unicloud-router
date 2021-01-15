@@ -81,9 +81,8 @@ dao.findByUserInfo = async (userInfo, util) => {
 	return res;
 };
 /**
- * 根据手机号直接注册账号
- * 若手机号已存在,则直接返回用户信息
- * 若不存在,则注册
+ * 根据手机号直接注册账号并登录
+ * 若手机号已存在,则直接登录
  * @params {Object} data 参数
  * mobile          手机号  必填
  * password        初始密码
@@ -106,29 +105,18 @@ dao.registerUserByMobile = async (data, util) => {
 		needPermission
 	} = data;
 	// 数据库操作开始-----------------------------------------------------------
-	let userInfo = await vk.daoCenter.userDao.findByUserInfo({ mobile }, util);
-	if(vk.pubfn.isNotNull(userInfo)){
-		return {
-			code: 0,
-			msg: "已经注册",
-			uid: userInfo._id,
-			mobile: userInfo.mobile,
-			userInfo
-		};
-	}
 	let code = vk.pubfn.random(6);
 	// 设置验证码
 	await uniID.setVerifyCode({
 		mobile,
 		code,
 		expiresIn:60,
-		type:"register"
+		type:"login"
 	});
-	// 进行注册
+	// 若手机号不存在，则注册并登录。存在，则直接登录。
 	res = await uniID.loginBySms({
 		mobile,
 		code,
-		type:"register",
 		password,
 		inviteCode,
 		myInviteCode,
@@ -140,6 +128,5 @@ dao.registerUserByMobile = async (data, util) => {
 	// 数据库操作结束-----------------------------------------------------------
 	return res;
 };
-
 
 module.exports = dao;

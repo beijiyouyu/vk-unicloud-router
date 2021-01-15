@@ -27,10 +27,7 @@ module.exports = {
 		if(!vk.pubfn.test(password,"pwd")){
 			return { code : -1, msg : "密码长度在6~18之间，只能包含字母、数字和下划线" };
 		}
-		res = await uniID.register(event.data);
-		if(res.code === 0){
-			res.userInfo = await vk.daoCenter.userDao.findById(res.uid, util);
-		}
+		 res = await uniID.register(event.data);
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

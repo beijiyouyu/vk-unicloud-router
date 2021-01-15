@@ -11,6 +11,13 @@ module.exports = {
 	error: {
 		url: '/pages/error/404/404'
 	},
+	// 日志风格
+	logger:{
+		colorArr:[
+			"#0095f8",
+			"#67C23A"
+		]
+	},
 	/**
 	 * app主题颜色 
 	 * $app.config.color.main
@@ -29,8 +36,10 @@ module.exports = {
 		 */
 		mode:2, 
 		list:[
+			"/pages_template/*",
 			"/pages/login/*",
-			"/pages_template/*"
+			"/pages/index/*",
+			"/pages/error/*"
 		]
 	},
 	// 静态文件的资源URL地址
