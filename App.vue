@@ -4,8 +4,8 @@
 		methods: {
 			// 监听本地缓存
 			watchLocalStorage: function() {
-				let app = this;
-				let vk = app.globalData.vk;
+				let that = this;
+				let { vk } = that;
 				vk.localStorage.watch = function(obj){
 					let { type, key, data } = obj;
 					if(key === "uni_id_user_info"){
