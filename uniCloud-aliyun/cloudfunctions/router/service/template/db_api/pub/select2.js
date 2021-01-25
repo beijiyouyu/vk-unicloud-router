@@ -1,6 +1,6 @@
 module.exports = {
 	/**
-	 * 连表查询(两表查询)(VK版本)
+	 * 连表查询(仅限两表查询)(VK版本)
 	 * @url template/db_api/pub/select2 前端调用的url参数地址
 	 * data 请求参数 说明
 	 * res 返回参数说明
@@ -43,7 +43,7 @@ module.exports = {
 					sortArr:[{"name":"money", "type":"desc"}],
 				}
 			]
-		}, event.util);
+		});
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

@@ -27,7 +27,7 @@ module.exports = {
 					"_add_time": 1597456395010+i,
 					"user_id": "001"
 				}
-			}, event.util);
+			});
 			tasks.push(promise);
 		}
 		// 等待所有

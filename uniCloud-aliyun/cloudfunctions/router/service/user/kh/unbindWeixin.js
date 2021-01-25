@@ -19,10 +19,7 @@ module.exports = {
 		let { uid } = data;
 		let res = { code : 0, msg : '' };
 		// 解绑
-		res = await uniID.unbindWeixin(event.data);
-		if(res.code === 0){
-			res.userInfo = await vk.daoCenter.userDao.findById(uid, util);
-		}
+		res = await uniID.unbindWeixin(uid);
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

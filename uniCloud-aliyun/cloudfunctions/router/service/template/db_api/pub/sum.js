@@ -19,7 +19,7 @@ module.exports = {
 			whereJson:{
 				
 			}
-		},event.util);
+		});
 		// 对应的sql:
 		// select sum(money) from vk-test
     // 业务逻辑结束-----------------------------------------------------------

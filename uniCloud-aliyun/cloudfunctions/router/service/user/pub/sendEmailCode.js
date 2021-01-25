@@ -7,9 +7,6 @@ module.exports = {
 	 * 发送邮箱验证码
 	 * @url user/pub/sendEmailCode 前端调用的url参数地址
 	 * @description 发送邮箱验证码
-	 * @params {Object} data 请求参数
-	 * @params {String} uniIdToken 用户token
-	 * @params {Object} util 公共工具包
 	 * data 请求参数 说明
 	 * @params {String} email 邮箱
 	 * @params {String} type  验证码类型

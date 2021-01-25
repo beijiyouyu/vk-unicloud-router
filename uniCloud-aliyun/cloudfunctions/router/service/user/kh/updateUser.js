@@ -20,7 +20,7 @@ module.exports = {
 		let res = {};
 		// 业务逻辑开始-----------------------------------------------------------
 		// 允许修改的字段列表
-		let updateKeys = ["nickname","avatar","gender"];
+		let updateKeys = ["nickname","avatar","gender","social_info"];
 		let dataJson = {};
 		for(let i in updateKeys){
 			let key = updateKeys[i];

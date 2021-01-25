@@ -18,7 +18,10 @@ module.exports = {
 		let { uid } = data;
 		let res = {};
 		// 业务逻辑开始-----------------------------------------------------------
-		res = await uniID.loginByAlipay(event.data);
+		let { code, needPermission } = data;
+		res = await uniID.loginByAlipay({
+			 code, needPermission
+		});
 		if(res.token){
 			// 日志服务
 			const loginLogService = vk.require("service/user/util/login_log");

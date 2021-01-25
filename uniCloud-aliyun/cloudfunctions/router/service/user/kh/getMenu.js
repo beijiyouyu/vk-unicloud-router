@@ -26,6 +26,7 @@ module.exports = {
 		// 业务逻辑开始----------------------------------------------------------- 
 		let tokenRes = await uniID.checkToken(event.uniIdToken);
 		let { permission } = tokenRes;
+		userInfo.permission = permission;
 		res.userInfo = userInfo;
 		if(vk.pubfn.isNotNull(permission)){
 			let perRes = await vk.baseDao.select({
@@ -36,54 +37,20 @@ module.exports = {
 					type : 0
 				},
 				sortArr:[{"name":"sort","type":"asc"}]
-			}, event.util);
+			});
 			// 将子菜单合并到父菜单的children字段中
 			for(let i in perRes.rows){
 				perRes.rows[i].menu_id = perRes.rows[i].permission_id;
 				perRes.rows[i].name = perRes.rows[i].permission_name;
 			}
-			res.menus = buildMenus(perRes.rows);
+			res.menus = vk.pubfn.arrayToTree(perRes.rows,{ 
+				id:"menu_id", 
+				parent_id:"parent_id", 
+				children:"children",
+			});
 			res.menuList = perRes.rows;
 		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}
-}
-
-
-function buildMenus(menuList) {
-    // 保证父子级顺序
-    menuList = menuList.sort(function(a, b) {
-        if (a.parent_id === b.permission_id) {
-            return 1
-        }
-        return -1
-    })
-    // 删除无subMenu且无url的菜单项
-    for (let i = menuList.length - 1; i > -1; i--) {
-        const currentMenu = menuList[i]
-        const subMenu = menuList.filter(subMenuItem => subMenuItem.parent_id === currentMenu.permission_id)
-        if (!currentMenu.url && !subMenu.length) {
-            menuList.splice(i, 1)
-        }
-    }
-    const menu = menuList.filter(item => !item.parent_id)
-
-    function buildMenu(menu) {
-        let nextLayer = []
-        for (let i = menu.length - 1; i > -1; i--) {
-            const currentMenu = menu[i]
-            if (currentMenu.url) {
-                continue
-            }
-            const subMenu = menuList.filter(item => item.parent_id === currentMenu.permission_id)
-            nextLayer = nextLayer.concat(subMenu)
-            currentMenu.children = subMenu
-        }
-        if (nextLayer.length) {
-            buildMenu(nextLayer)
-        }
-    }
-    buildMenu(menu)
-    return menu
 }

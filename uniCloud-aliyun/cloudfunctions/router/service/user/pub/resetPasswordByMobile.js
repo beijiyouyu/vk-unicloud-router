@@ -3,11 +3,6 @@ module.exports = {
 	 * 根据手机+手机号重置密码
 	 * @url user/pub/resetPasswordByMobile 前端调用的url参数地址
 	 * @description 此函数描述
-	 * @params {Object} data 请求参数
-	 * @params {String} uniIdToken 用户token
-	 * @params {String} userInfo 当前登录用户信息(同理,是可信任的)(只有kh函数才带此参数)
-	 * @params {Object} util 公共工具包
-	 * @params {Object} originalParam 原始请求参数(包含了原始event和context)
 	 * data 请求参数 说明
 	 * @params {String} password 重置后的密码
 	 * @params {String} code 验证码

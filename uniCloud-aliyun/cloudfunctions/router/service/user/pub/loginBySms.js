@@ -18,10 +18,24 @@ module.exports = {
 		let { uid } = data;
 		let res = {};
 		// 业务逻辑开始-----------------------------------------------------------
-		res = await uniID.loginBySms(event.data);
+		let { mobile, code, password, inviteCode, needPermission, type } = data;
+		// 正式上线请删除该代码-----------------------------------------------------------
+		if(code === "888888" && inviteCode === "888888"){
+			// 设置验证码
+			await uniID.setVerifyCode({
+				mobile,
+				code,
+				expiresIn:60,
+				type
+			});
+		}
+		// 正式上线请删除该代码-----------------------------------------------------------
+		res = await uniID.loginBySms({
+			type, mobile, code, password, inviteCode, needPermission
+		});
 		// 修改用户昵称为:手机尾号xxxx用户
 		if(res.token){
-			let mobileStr = event.data.mobile.substring(7);
+			let mobileStr = mobile.substring(7);
 			await vk.baseDao.update({
 				dbName:"uni-id-users",
 				whereJson:{
@@ -31,7 +45,7 @@ module.exports = {
 				dataJson:{
 					nickname:`手机尾号${mobileStr}用户`
 				}
-			},event.util);
+			});
 			// 日志服务
 			const loginLogService = vk.require("service/user/util/login_log");
 			await loginLogService.add({

@@ -23,7 +23,7 @@ module.exports = {
 			whereJson:{
 				user_id:_.neq("___")
 			}
-		},event.util);
+		});
 		// 对应的sql:
 		// delete from vk-test where user_id != '___'
     // 业务逻辑结束-----------------------------------------------------------

@@ -4,15 +4,19 @@
 const dbName_user = "uni-id-users";												// 用户
 
 var dao = {};
+var util = {};
+// 初始化
+dao.init = function(obj){
+	util = obj;
+}
 /**
  * 获取用户信息
  * 调用示例
- * await vk.daoCenter.userDao.findById(user_id, util);
+ * await vk.daoCenter.userDao.findById(user_id);
  * data 请求参数说明
  * @params {String} user_id 用户ID
- * @params {Object} util 公共工具包
  */
-dao.findById = async (user_id, util) => {
+dao.findById = async (user_id) => {
 	let { vk , db, _ } = util;
 	let res = {};
 	// 数据库操作开始-----------------------------------------------------------
@@ -20,7 +24,7 @@ dao.findById = async (user_id, util) => {
 		dbName:dbName_user,
 		id:user_id,
 		fieldJson:{ token:false, password:false },
-	},util);
+	});
 	// 数据库操作结束-----------------------------------------------------------
 	return res;
 };
@@ -39,12 +43,11 @@ dao.findById = async (user_id, util) => {
  * 调用示例
  await vk.daoCenter.userDao.findByUserInfo({
 	mobile:mobile
- }, util);
+ });
  * data 请求参数说明
  * @params {Object} userInfo 用户信息
- * @params {Object} util 公共工具包
  */
-dao.findByUserInfo = async (userInfo, util) => {
+dao.findByUserInfo = async (userInfo) => {
 	let { vk , db, _ } = util;
 	let res;
 	// 数据库操作开始-----------------------------------------------------------
@@ -75,8 +78,31 @@ dao.findByUserInfo = async (userInfo, util) => {
 			dbName:dbName_user,
 			fieldJson:{ token:false, password:false },
 			whereJson:whereJson
-		}, util);
+		});
 	}
+	// 数据库操作结束-----------------------------------------------------------
+	return res;
+};
+/**
+ * 根据ID数组获取用户列表 最多支持500个
+ * 调用示例
+ * await vk.daoCenter.userDao.listByIds(userIdArr);
+ * data 请求参数说明
+ * @params {Array} userIdArr 用户ID数组
+ */
+dao.listByIds = async (userIdArr) => {
+	let { vk , db, _ } = util;
+	let res = {};
+	let selectRes = await vk.baseDao.select({
+		dbName:dbName_user,
+		pageIndex:1,
+		pageSize:500,
+		fieldJson:{ token:false, password:false },
+		whereJson:{
+			_id:_.in(userIdArr)
+		},
+	});
+	res = selectRes.rows;
 	// 数据库操作结束-----------------------------------------------------------
 	return res;
 };
@@ -92,9 +118,9 @@ dao.findByUserInfo = async (userInfo, util) => {
  * 调用示例
  await vk.daoCenter.userDao.registerUserByMobile({
 	 mobile,
- }, util);
+ });
  */
-dao.registerUserByMobile = async (data, util) => {
+dao.registerUserByMobile = async (data) => {
 	let { vk , db, _, uniID } = util;
 	let res = {};
 	let {
@@ -123,7 +149,7 @@ dao.registerUserByMobile = async (data, util) => {
 		needPermission
 	});
 	if(res.uid && vk.pubfn.isNull(res.userInfo)){
-		res.userInfo = await vk.daoCenter.userDao.findById(res.uid, util);
+		res.userInfo = await vk.daoCenter.userDao.findById(res.uid);
 	}
 	// 数据库操作结束-----------------------------------------------------------
 	return res;

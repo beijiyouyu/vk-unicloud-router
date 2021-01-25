@@ -1,4 +1,4 @@
-// 加载模块 - 中间件
+// 加载模块 - 中间件 请勿改动此文件-----------------------------------
 const modulesPath = __dirname+"/modules";
 const fs = require('fs');
 const fileList = fs.readdirSync(modulesPath);
@@ -20,3 +20,4 @@ moduleList.map((moduleItem, index) => {
 	middlewareList = middlewareList.concat(moduleItem);
 });
 module.exports = middlewareList;
+// 加载模块 - 中间件 请勿改动此文件-----------------------------------

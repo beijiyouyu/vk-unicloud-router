@@ -1,7 +1,7 @@
 module.exports = {
 	"uni":{
-		"passwordSecret": "passwordSecret",			// 加密密码所用的密钥
-		"tokenSecret": "tokenSecret",						// 生成token所用的密钥
+		"passwordSecret": "passwordSecret",			// 加密密码所用的密钥，修改会导致所用户之前的密码失效。如一定要修改，请查看https://uniapp.dcloud.io/uniCloud/uni-id?id=modifysecret
+		"tokenSecret": "tokenSecret",						// 生成token所用的密钥，修改会导致所有用户之前的token失效。
 		"tokenExpiresIn": 2592000,							// 全平台token过期时间，未指定过期时间的平台会使用此值
 		"tokenExpiresThreshold": 3600,					// 新增于uni-id 1.1.7版本，checkToken时如果token有效期小于此值则自动获取新token，如果不配置此参数则不开启自动获取新token功能
 		"passwordErrorLimit": 6,								// 密码错误最大重试次数
@@ -48,6 +48,12 @@ module.exports = {
 		}
 	},
 	"vk":{
+		"system":{
+			// 若serviceShutdow:true，则所有云函数无法访问（适用于需要临时关闭后端服务的情况，如迁移数据）
+			// 注意：本地调试时，需要重新启动本地服务才能生效。
+			"serviceShutdown":false,
+			"serviceShutdownDescription":"系统维护中，预计2小时恢复!"
+		},
 		"service": {
 			// 邮箱发送服务
 			"email": {
@@ -66,6 +72,7 @@ module.exports = {
 			"sms": {
 				// 阿里云短信服务
 				"aliyun": {
+					"enable":false,																	// 是否使用阿里云短信代替unicloud短信发送短信验证码
 					"accessKeyId": "",															// 短信密钥key
 					"accessKeySecret": "",													// 短信密钥secret
 					"endpoint":"https://dysmsapi.aliyuncs.com",			// api请求地址

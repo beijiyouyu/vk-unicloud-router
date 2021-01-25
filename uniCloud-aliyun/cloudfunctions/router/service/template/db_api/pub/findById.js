@@ -19,7 +19,7 @@ module.exports = {
 			fieldJson:{
 				
 			}
-		},event.util);
+		});
 		// 上面的 fieldJson 可以设置 显示什么字段或设置不显示什么字段 如 money:false 代表不显示money字段
 		// 对应的sql:
 		// select * from vk-test where _id = "5f3a125b3d11c6000106d338"

@@ -18,7 +18,7 @@ module.exports = {
 			whereJson:{
 				
 			}
-		},event.util);
+		});
 		// 对应的sql:
 		// count * from vk-test
     // 业务逻辑结束-----------------------------------------------------------

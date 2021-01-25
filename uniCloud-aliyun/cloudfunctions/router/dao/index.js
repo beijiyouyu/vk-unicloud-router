@@ -1,4 +1,4 @@
-// 加载模块 - 数据库dao层 API
+// 加载模块 - 数据库dao层 API 请勿改动此文件-----------------------------------
 const modulesPath = __dirname+"/modules";
 const fs = require('fs');
 const fileList = fs.readdirSync(modulesPath);
@@ -12,4 +12,12 @@ fileList.map((file, index) => {
 modulesNames.map((modulesName, index) => {
 	moduleObj[modulesName] = require(modulesPath+"/"+modulesName);
 });
+moduleObj.init = function(obj){
+	modulesNames.map((modulesName, index) => {
+		if(typeof moduleObj[modulesName].init === "function"){
+			moduleObj[modulesName].init(obj);
+		}
+	});
+}
 module.exports = moduleObj;
+// 加载模块 - 数据库dao层 API 请勿改动此文件-----------------------------------

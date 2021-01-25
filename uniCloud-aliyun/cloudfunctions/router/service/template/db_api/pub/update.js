@@ -13,14 +13,16 @@ module.exports = {
 		let { uid } = data;
 		let res = { code : 0, msg : 'ok' };
 		// 业务逻辑开始----------------------------------------------------------- 
-		let { id = "___", dataJson } = data;
+		let { _id = "___" } = data;
 		res.num = await vk.baseDao.update({
 			dbName:"vk-test",
 			whereJson:{
-				_id:id,
+				_id:_id,
 			},
-			dataJson:dataJson
-		},event.util);
+			dataJson:{
+				money:1
+			}
+		});
 		// 业务逻辑结束-----------------------------------------------------------
     return res;
   }

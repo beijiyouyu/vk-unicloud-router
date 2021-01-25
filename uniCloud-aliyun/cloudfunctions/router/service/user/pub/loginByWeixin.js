@@ -19,7 +19,10 @@ module.exports = {
 		let res = {};
 		// 业务逻辑开始-----------------------------------------------------------
 		// 微信登录(未绑定任何账号时,会新建账号)
-		res = await uniID.loginByWeixin(event.data);
+		let { code, needPermission } = data;
+		res = await uniID.loginByWeixin({
+			code, needPermission
+		});
 		if(res.token){
 			// 日志服务
 			const loginLogService = vk.require("service/user/util/login_log");

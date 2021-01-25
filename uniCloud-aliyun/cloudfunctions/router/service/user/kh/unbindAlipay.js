@@ -20,9 +20,6 @@ module.exports = {
 		let res = { code : 0, msg : '' };
 		// 解绑
 		res = await uniID.unbindAlipay(event.data);
-		if(res.code === 0){
-			res.userInfo = await vk.daoCenter.userDao.findById(uid, util);
-		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

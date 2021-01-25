@@ -56,7 +56,7 @@ module.exports = {
 					sortArr:[{"name":"id", "type":"desc"}],
 				},
 			]
-		}, event.util);
+		});
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

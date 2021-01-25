@@ -10,7 +10,11 @@ module.exports = [
 		regExp: [
 			"^user/pub/login(.*)",
 			"^user/pub/register$",
-			"^user/kh/(.*)",
+			"^user/kh/bind(.*)",
+			"^user/kh/unbind(.*)",
+			"^user/kh/update(.*)",
+			"^user/kh/set(.*)",
+			"^user/kh/acceptInvite$"
 		],
 		description: "可用于指定哪些云函数需要返回给前端userInfo",
 		index: 210,

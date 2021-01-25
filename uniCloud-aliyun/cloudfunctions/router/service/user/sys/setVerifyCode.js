@@ -1,11 +1,8 @@
 module.exports = {
   /**
    * 设置验证码
-   * @url user/pub/setVerifyCode 前端调用的url参数地址
-   * @description 设置验证码
-   * @params {Object} data 请求参数
-   * @params {String} uniIdToken 用户token
-   * @params {Object} util 公共工具包
+   * @url user/sys/setVerifyCode 前端调用的url参数地址
+   * @description 设置验证码(此接口正式环境不要暴露,故写在了sys目录下)
 	 * data 请求参数 说明
    * @params {String} email  邮箱  
 	 * @params {String} mobile 手机号  

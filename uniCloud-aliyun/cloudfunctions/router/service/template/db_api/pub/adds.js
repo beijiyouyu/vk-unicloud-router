@@ -39,7 +39,7 @@ module.exports = {
 		await vk.baseDao.adds({
 			dbName:dbName,
 			dataJson:dataArr
-		},event.util);
+		});
 		
 		let runTime2 = new Date().getTime();
 		let runTime = ((runTime2 - runTime1) / 1000 + "秒");

@@ -18,7 +18,10 @@ module.exports = {
 		let { uid } = data;
 		let res = {};
 		// 业务逻辑开始-----------------------------------------------------------
-		res = await uniID.loginByEmail(event.data);
+		let { email, code, type, password, needPermission } = data;
+		res = await uniID.loginByEmail({
+			email, code, type, password, needPermission
+		});
 		if(res.token){
 			// 日志服务
 			const loginLogService = vk.require("service/user/util/login_log");

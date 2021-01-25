@@ -65,7 +65,7 @@ module.exports = {
 			fieldJson:fieldJson,
 			whereJson:whereJson,
 			sortArr:sortArr
-		}, util);
+		});
     // 业务逻辑结束-----------------------------------------------------------
     return res;
   }

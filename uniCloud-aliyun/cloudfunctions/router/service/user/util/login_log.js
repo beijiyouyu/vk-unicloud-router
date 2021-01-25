@@ -23,9 +23,9 @@ module.exports = {
 					dbName:"uni-id-log",
 					dataJson:{
 						type, login_type, user_id,
-						ip, ua, os, platform, context
+						ip, ua, os, platform
 					}
-				},util);
+				});
 			}catch(err){
 				console.log("日志写入错误");
 			}

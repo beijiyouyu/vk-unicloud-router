@@ -20,7 +20,7 @@ module.exports = {
 			whereJson:{
 				user_id:"001"
 			},
-		}, event.util);
+		});
 		// 对应的sql:
 		// select * from vk-test where user_id == '001' limit 0,100;
 		// 业务逻辑结束-----------------------------------------------------------

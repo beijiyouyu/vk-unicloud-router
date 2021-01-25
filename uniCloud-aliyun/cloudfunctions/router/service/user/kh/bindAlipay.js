@@ -19,9 +19,6 @@ module.exports = {
 		let res = { code : 0, msg : '' };
 		// 绑定
 		res = await uniID.bindAlipay(event.data);
-		if(res.code === 0){
-			res.userInfo = await vk.daoCenter.userDao.findById(uid, util);
-		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

@@ -10,7 +10,7 @@ const daoCenter = require('./dao/index');
 const requireFn = function(path){
 	return require(path);
 }
-const initRes = {
+const initConfig = {
 	baseDir:__dirname, // 云函数根目录地址
 	requireFn,
 	config,
@@ -24,4 +24,4 @@ const initRes = {
 	// }
 };
 
-module.exports = initRes;
+module.exports = initConfig;

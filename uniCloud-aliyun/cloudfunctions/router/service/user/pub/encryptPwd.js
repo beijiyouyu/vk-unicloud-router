@@ -15,7 +15,6 @@ module.exports = {
 		let {uniID} = event.util;
 		let res = {};
 		// 业务逻辑开始----------------------------------------------------------- 
-		// 验证token是否有效(会返回uid)
 		const password = await uniID.encryptPwd('123456');
 		res = {
 			code: 0,
