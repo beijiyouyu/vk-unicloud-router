@@ -9,7 +9,7 @@ module.exports = {
 		let { uniID, vk, _ } = util;
 		let { uid } = data;
 		let res = { code : 0, msg : '' };
-		res.userInfo = await vk.daoCenter.userDao.findById(uid);
+		res.userInfo = userInfo;
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

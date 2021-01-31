@@ -33,7 +33,7 @@ module.exports = {
 				provider : "aliyun",
 				mobile : mobile,
 				code : code,
-			});
+			}, util);
 			if(sendSmsRes.code != 0){
 				return {
 					code : -1,

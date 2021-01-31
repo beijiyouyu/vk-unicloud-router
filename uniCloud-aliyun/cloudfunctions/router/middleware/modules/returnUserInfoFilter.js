@@ -28,7 +28,7 @@ module.exports = [
 			if(res.code === 0){
 				if(vk.pubfn.isNull(res.userInfo)){
 					if(vk.pubfn.isNotNull(res.uid)){
-						res.userInfo = await vk.daoCenter.userDao.findById(res.uid, util);
+						res.userInfo = await vk.daoCenter.userDao.findById(res.uid);
 						res.needUpdateUserInfo = true;
 					}else if(vk.pubfn.isNotNull(uniIdToken)){
 						let tokenRes = await uniID.checkToken(uniIdToken);

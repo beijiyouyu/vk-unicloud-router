@@ -6,13 +6,14 @@
 		<button type="default" @tap="setAvatar">直接设置头像</button>
 		<button type="default" @tap="uploadAvatar">上传到云储存(并设置为头像)</button>
 		<button type="default" @tap="updateUser">更新用户信息</button>
+		<button type="default" @tap="getMyUserInfo">获取用户信息</button>
 		<button type="default" @tap="checkToken">token校验</button>
-		
+
 		<button type="default" @tap="setUserInviteCode">设置邀请码</button>
 		<view class="tips">设置邀请码时如果传入邀请码则设置传入的邀请码，如果不传则随机生成6位邀请码</view>
 		<input type="text" v-model="form1.inviteCode" placeholder="邀请码" />
 		<button type="default" @tap="acceptInvite">接受邀请</button>
-				
+
 		<button type="default" @tap="logout">退出</button>
 	</view>
 </template>
@@ -60,6 +61,14 @@
 					}
 				});
 			},
+			getMyUserInfo() {
+				var form1 = that.form1;
+				vk.userCenter.getCurrentUserInfo({
+					success:function(data){
+						vk.alert(JSON.stringify(data.userInfo));
+					}
+				});
+			},
 			// token校验
 			checkToken(){
 				vk.userCenter.checkToken({
@@ -100,7 +109,7 @@
 			uploadAvatar(){
 				// 选择图片
 				uni.chooseImage({
-					count: 1, 
+					count: 1,
 					sizeType: ['compressed'],
 					success: function (res) {
 						// 上传图片到云储存
