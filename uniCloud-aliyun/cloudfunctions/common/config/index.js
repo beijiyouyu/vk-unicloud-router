@@ -66,7 +66,14 @@ module.exports = {
 						"user": "你的邮箱@qq.com",
 						"pass": "邮箱授权码"
 					}
-				},
+				}
+			},
+			// 日志服务
+			"log":{
+				// 用户登录日志
+				"login":{
+					"status":true	// 是否开启用户登录日志
+				}
 			},
 			// 短信服务
 			"sms": {
@@ -76,7 +83,7 @@ module.exports = {
 					"accessKeyId": "",															// 短信密钥key
 					"accessKeySecret": "",													// 短信密钥secret
 					"endpoint":"https://dysmsapi.aliyuncs.com",			// api请求地址
-					"apiVersion":"2017-05-25",																
+					"apiVersion":"2017-05-25",
 					"SignName":"", 																	// 默认签名
 					"TemplateCode":{
 						"verifyCode":""																// 验证码短信模板 - 配合uni-id需要
@@ -86,7 +93,8 @@ module.exports = {
 		},
 		"db":{
 			"unicloud":{
-				"max_limit" : 500 // 最大limit限制(目前腾讯云最大1000,阿里云最大500)
+				"maxLimit" : 500,	// 最大limit限制(目前腾讯云最大1000,阿里云最大500)
+				"cancelAddTime" : false,// 取消vk.baseDao.add 时自动生成_add_time和_add_time_str
 			}
 		}
 	}

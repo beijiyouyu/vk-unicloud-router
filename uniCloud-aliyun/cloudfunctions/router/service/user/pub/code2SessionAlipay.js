@@ -21,6 +21,12 @@ module.exports = {
 		// 业务逻辑开始----------------------------------------------------------- 
 		// 用户登录(账号+密码)
 		res = await uniID.code2SessionAlipay(event.data);
+		if(res.code === 0){
+			let { needCache } = data;
+			if(needCache){
+				await vk.globalDataCache.set(`sys-alipay-session2openid-${res.sessionKey}`, res, 60*5);
+			}
+		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

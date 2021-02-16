@@ -1,21 +1,89 @@
 {
-  "name": "vk-unicloud-router",
-  "version": "1.0.0",
-  "description": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id",
-  "main": "main.js",
+	"id": "vk-cloud-router",
+	"displayName": "【开箱即用】vk-unicloud-router - 云函数路由模式开发框架 - 已集成uni-id 框架内置了众多API、工具包，为你的业务扫平障碍。使你的项目刚起步进度就是50%",
+  "version": "1.8.0",
+  "description": "不仅仅局限于框架，也是云端一体项目模板，已集成uni-id支持云函数url化。众多现成API供你使用（登录、注册、短信、微信API等等）为你的业务扫平障碍。使你的项目刚起步进度就是50% ，内置小白也能轻松上手的数据库API。",
+  "keywords": [
+    "vk-unicloud-router",
+    "云函数路由",
+    "vk云开发",
+    "内置uni-id、uview、数据库baseDao",
+    "内置众多API、工具包"
+],
+	"main": "main.js",
   "dependencies": {
-    "vk-unicloud-page": "^1.17.3",
     "uview-ui": "~1.8.3"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "VK",
   "license": "Apache",
-  "repository": {
-    "type": "git",
-    "url": "https://gitee.com/vk-uni/vk-uni-cloud-router.git"
-  }
+  "repository": "https://gitee.com/vk-uni/vk-uni-cloud-router",
+    "name": "vk-unicloud-router",
+    "engines": {
+        "HBuilderX": "^3.1.2"
+    },
+    "dcloudext": {
+        "category": [
+            "uniCloud",
+            "云端一体项目模板"
+        ],
+        "sale": {
+            "regular": {
+                "price": "0.00"
+            },
+            "sourcecode": {
+                "price": "0.00"
+            }
+        },
+        "contact": {
+            "qq": "370725567"
+        },
+        "declaration": {
+            "ads": "无",
+            "data": "插件不采集任何数据",
+            "permissions": "无"
+        },
+        "npmurl": ""
+    },
+    "uni_modules": {
+        "platforms": {
+            "cloud": {
+                "tcb": "y",
+                "aliyun": "y"
+            },
+            "client": {
+                "App": {
+                    "app-vue": "y",
+                    "app-nvue": "y"
+                },
+                "H5-mobile": {
+                    "Safari": "y",
+                    "Android Browser": "y",
+                    "微信浏览器(Android)": "y",
+                    "QQ浏览器(Android)": "y"
+                },
+                "H5-pc": {
+                    "Chrome": "y",
+                    "IE": "y",
+                    "Edge": "y",
+                    "Firefox": "y",
+                    "Safari": "y"
+                },
+                "小程序": {
+                    "微信": "y",
+                    "阿里": "y",
+                    "百度": "y",
+                    "字节跳动": "y",
+                    "QQ": "y"
+                },
+                "快应用": {
+                    "华为": "y",
+                    "联盟": "y"
+                }
+            }
+        }
+    }
 }

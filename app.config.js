@@ -19,7 +19,7 @@ module.exports = {
 		]
 	},
 	/**
-	 * app主题颜色 
+	 * app主题颜色
 	 * $app.config.color.main
 	 * $app.config.color.secondary
 	 */
@@ -33,8 +33,10 @@ module.exports = {
 		 * mode = 0 代表自动检测
 		 * mode = 1 代表list内的页面需要登录
 		 * mode = 2 代表list内的页面不需要登录
+		 * 注意1: list内是通配符表达式,非正则表达式
+		 * 注意2: 需要使用 vk.navigateTo 代替 uni.navigateTo 进行页面跳转才会生效
 		 */
-		mode:2, 
+		mode:2,
 		list:[
 			"/pages_template/*",
 			"/pages/login/*",
@@ -47,4 +49,27 @@ module.exports = {
 		// Logo
 		logo: '/static/logo.png',
 	},
+	// 自定义拦截器
+	interceptor:{
+
+		// login:function(obj){
+		// 	let { vk, params, res } = obj;
+		// 	//console.log("params:",params);
+		// 	//console.log("res:",res);
+		// 	if(!params.noAlert){
+		// 		vk.alert(res.msg);
+		// 	}
+		// 	console.log("跳自己的登录页面");
+		// 	// 上方代码可自己修改，写成你自己的逻辑处理。
+		// },
+
+		// fail:function(obj){
+		// 	let { vk, params, res } = obj;
+		// 	//console.log("params:",params);
+		// 	//console.log("res:",res);
+		// 	return false;// 返回false则取消框架内置fail的逻辑,返回true则会继续执行框架内置fail的逻辑
+		// 	// 上方代码可自己修改，写成你自己的逻辑处理。
+		// }
+		
+	}
 }

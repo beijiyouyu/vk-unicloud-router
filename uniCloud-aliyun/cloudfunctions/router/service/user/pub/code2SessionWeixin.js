@@ -17,11 +17,20 @@ module.exports = {
 	 * @params {String} refreshToken 客户端为APP时返回，用于刷新accessToken
    */
 	main: async (event) => {
-		let {uniID} = event.util;
-		let res = {};
+		let { data = {}, userInfo, util } = event;
+		let { uniID, vk } = util;
+		let { uid } = data;
+		let res = { code : 0, msg : '' };
 		// 业务逻辑开始----------------------------------------------------------- 
 		// 用户登录(账号+密码)
-		res = await uniID.code2SessionWeixin(event.data);
+		res = await uniID.code2SessionWeixin(data);
+		if(res.code === 0){
+			let { needCache } = data;
+			if(needCache){
+				// 缓存5分钟，可以用于配合loginByWeixinPhoneNumber使用，达到效果为：绑定手机号+微信
+				await vk.globalDataCache.set(`sys-weixin-session2openid-${res.sessionKey}`, res, 60*5);
+			}
+		}
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

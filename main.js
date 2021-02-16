@@ -3,41 +3,30 @@ import App from './App'
 import store from './store'
 import config from '@/app.config.js'
 
+// 引入 uView UI
 import uView from 'uview-ui';
 Vue.use(uView);
 
-import vk from 'vk-unicloud-page';
+// 引入 vk框架前端
+import vk from 'uni_modules/vk-unicloud/vk_modules/vk-unicloud-page';
 Vue.use(vk);
 
-// 引入vk实例提供的对vuex的简写法文件
-import mixin from './store/mixin/mixin.js'
-Vue.mixin(mixin);
+// 引入 vk框架 提供的对 vuex 的简写法则
+import storeUtil from './store/lib/index'
 
-// 自定义云函数路由配置
-Vue.prototype.vk.callFunctionUtil.setConfig({
-	debug:config.debug,
-	// 登录页面地址
-	loginPagePath:config.login.url,
-	// 主函数名称
-	functionName:config.functionName
+// 初始化 vk框架
+Vue.prototype.vk.init({
+  Vue,               // Vue实例
+  config,	           // 配置
+  store : storeUtil, // vuex简写法则
 });
-
-// 自定义token拦截器
-// Vue.prototype.vk.callFunctionUtil.interceptor.login = (obj = {}) =>{
-//   let { params, res } = obj;
-// 	if(!params.noAlert){
-// 		Vue.prototype.vk.alert(res.result.msg);
-// 	}
-//   console.log("跳自己的登录页面");
-//   // 上方代码可自己修改，写成你自己的逻辑处理。
-// };
 
 Vue.config.productionTip = false
 
 App.mpType = 'app'
 
 const app = new Vue({
-	store,
+  store,
   ...App
-})
-app.$mount()
+});
+app.$mount();

@@ -17,6 +17,9 @@ module.exports = {
 		let {uniID} = event.util;
 		let res = {};
 		// 业务逻辑开始----------------------------------------------------------- 
+		if(vk.pubfn.isNullAll(userInfo.mobile, userInfo.username, userInfo.wx_openid)){
+			return { code : -1, msg : '为了您的账号安全，请绑定手机号后再解绑邮箱！' };
+		}
 		res = await uniID.unbindEmail(event.data);
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;

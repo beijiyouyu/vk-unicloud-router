@@ -17,6 +17,9 @@ module.exports = {
 		let {uniID} = event.util;
 		let res = {};
 		// 业务逻辑开始----------------------------------------------------------- 
+		if(vk.pubfn.isNullAll(userInfo.wx_openid, userInfo.username)){
+			return { code : -1, msg : '为了您的账号安全，请绑定微信或设置用户名后再解绑手机号！' };
+		}
 		res = await uniID.unbindMobile(event.data);
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;

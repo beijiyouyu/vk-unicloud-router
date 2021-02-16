@@ -19,6 +19,9 @@ module.exports = {
 		let { uid } = data;
 		let res = { code : 0, msg : '' };
 		// 解绑
+		if(vk.pubfn.isNullAll(userInfo.mobile, userInfo.username)){
+			return { code : -1, msg : '为了您的账号安全，请绑定手机号后再解绑支付宝！' };
+		}
 		res = await uniID.unbindAlipay(event.data);
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;

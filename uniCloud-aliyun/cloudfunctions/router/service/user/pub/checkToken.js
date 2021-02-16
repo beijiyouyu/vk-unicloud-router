@@ -12,10 +12,13 @@ module.exports = {
 	 * @params {String} exp 当前token过期时间
 	 */
 	main: async (event) => {
-		let {uniID} = event.util;
+		let { uniID } = event.util;
 		let res = {};
-		// 业务逻辑开始----------------------------------------------------------- 
-		res = await uniID.checkToken(event.uniIdToken);
+		// 业务逻辑开始-----------------------------------------------------------
+		res = await uniID.checkToken(event.uniIdToken,{
+			needPermission:false,
+			needUserInfo:true
+		});
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

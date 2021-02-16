@@ -1,68 +1,74 @@
 ### uniCloud云函数路由框架研究Q群:22466457 如有问题或建议可以在群内讨论。
 ### 插件名称：`vk-unicloud-router`
 ### 作者：VK
-### 更新时间：2021-01-31
+### 更新时间：2021-02-16
+
+## 序
+##### 如果你热爱编程，想快速入门云开发，欢迎使用`vk-cloud-router`开发框架
+##### 无需转变开发习惯，0成本上手云开发。
+##### 框架内置了众多API、工具包，为你的业务扫平障碍。使你的项目刚起步进度就是50%（微信登录、短信、验证码、缓存、生成小程序码等等）
+##### 从此你又get一个新技能，只需用js，轻松搞定前后台整体业务。
+##### 框架地址：`https://ext.dcloud.net.cn/plugin?id=2204` [点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+##### 框架学习Q群：22466457 欢迎萌新和大佬来使用和共同改进框架
+
 ## 主要功能 以及 对开发者的价值
 
 #### 1、实现云函数路由模式
 ```
 1.1、路由模式不使用任何第三方包，兼容性强，运行稳定
 1.2、减少云函数数量，云函数有个数限制（用一个云函数即可实现多个云函数效果）
-1.3、部分通用的代码块可以放在公共区执行，类似公共函数的效果
+1.3、部分通用的代码块可以放在公共区执行，具有公共函数的效果，增加代码复用率，便于维护。
 1.4、可以在开发环境和生产环境中任意切换，开发时，用开发环境，开发过程中不会影响到线上环境。（具体切换方法在文档最后）
-1.5、美化云函数请求过程中的日志排版，使请求日志一目了然。
+1.5、美化云函数请求过程中的日志排版，使请求日志一目了然。（再也不用为日志分散，难找而头疼）
 1.6、可以强制关闭云端服务（适用于需要临时关闭后端服务的情况，如腾讯云迁移数据到阿里云时需要先关闭服务，否则迁移过程中会有新数据产生）
 ```
 
-#### 2、实现`全局过滤器`，过滤非法请求
+#### 2、实现`全局过滤器`，过滤非法请求。您无需关心用户角色权限问题。
 
-#### 3、众多现成的`JS API`，让你无需重复造轮子。（持续增加中）
+#### 3、众多现成的`JS API`，让您无需重复造轮子。（持续增加中）
 
-#### 4、全面支持`url化`的云函数请求，您无需关心url化后参数的获取问题
+#### 4、众多现成的`云函数 API`，为您的业务扫平障碍，让您可以专注于自身业务开发。（微信登录、短信、验证码、缓存、生成小程序码等等）（持续增加中）
 
-#### 5、已集成`uni-id` 当前版本:`3.0.4`（已支持真实发送邮箱验证码和阿里云短信验证码）
+#### 5、全面支持`url化`的云函数请求，您无需关心url化后参数的获取问题
+
+#### 6、已集成`uni-id` 当前版本:`3.0.5`（已支持真实发送邮箱验证码和阿里云短信验证码）
 ```
-5.1、由于每个应用基本都会用上用户系统，官方建议所有`uniCloud`应用均使用`uni-id`作为用户体系，
+6.1、由于每个应用基本都会用上用户系统，官方建议所有`uniCloud`应用均使用`uni-id`作为用户体系，
 有了统一的账户规范，并且围绕这套账户规范，有各种各样插件，那么开发者可以随意整合这些插件，让数据连同。
 
-5.2、同时方便其他用户使用`unicloud`插件发布者发布的前后端一体插件，只需要导入一个云函数即可。
+6.2、同时方便其他用户使用`unicloud`插件发布者发布的前后端一体插件，只需要导入一个云函数即可。
 (如导入一个社区插件，可能要导入几十个云函数，而使用此云函数路由后，只需导入一个云函数，且已集成`uni-id`，打通账号体系)。
 ```
 
-#### 6、将`uni-id`的API封装成 `userCenter` 通过this.vk.userCenter 即可调用
+#### 7、在`uni-id`基础上升级为 `vk.userCenter` 用户中心API 通过this.vk.userCenter 即可调用
  
-#### 7、封装`uni.callFunction` 和 `uni.request` 使之合二为一 通过this.vk.callFunction 调用
+#### 8、封装`uni.callFunction` 和 `uni.request` 使之合二为一 通过this.vk.callFunction 调用
 
-#### 8、【1.2.2 新增】 `vk.baseDao`数据库工具包，使小白也能轻松上手对数据库的调用。`1.7.0`起支持`数据库事务`
+#### 9、`vk.baseDao` 数据库API，使小白也能轻松上手对数据库的调用。`1.7.0`起支持`数据库事务`
 
-#### 9、【1.2.7 新增】 集成`uview-ui` UI框架（感谢`uview-ui`作者）。
+#### 10、集成`uview-ui` UI框架（感谢`uview-ui`作者）。
 
-#### 10、【1.2.9 新增】 前后端一体动态数据组件
+#### 11、前后端一体动态数据组件
 
-#### 10.1、`vk-u-notice-bar` `uniCloud`动态数据组件 - `公告`
+#### 12、`商品SKU选择器组件`（打造uni插件市场功能最全的SKU选择器组件）
 
-#### 10.2、`vk-u-swiper` `uniCloud`动态数据组件 - `图片轮播`
+#### 13、对 `Vuex` 进行了深度封装（支持持久化），现在可以很方便的使用Vuex进行读取和储存。
 
-#### 10.3、`vk-u-grid-button` `uniCloud`动态数据组件 - `图文导航（宫格按钮）`
+#### 14、自定义过滤器（在业务云函数执行之前(或之后)，统一拦截，进行过滤后再放行，支持设置多个过滤器，并按指定顺序执行）
 
-#### 11、【1.3.8 新增】 `商品SKU选择器组件`（打造uni插件市场功能最全的SKU选择器组件）
-#### 12、【1.4.3 新增】 全网首家云函数临时缓存功能(数据储存在内存中,不依赖云数据库,也不依赖redis等缓存数据库)
-
-#### 13、【1.4.6 新增】对 `Vuex` 进行了深度封装（支持持久化），现在可以很方便的使用Vuex进行读取和储存。
-
-#### 14、【1.4.8 新增】自定义过滤器（在业务云函数执行之前(或之后)，统一拦截，进行过滤后再放行，支持设置多个过滤器，并按指定顺序执行）
-
-#### 15、【1.6.5 新增】`vk.localStorage` 封装本地缓存的curd，同时具有监听缓存被更新和被删除的功能。[点击查看用法](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E7%9B%91%E5%90%AC%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98?sort_id=3415898)
+#### 15、【1.6.5 新增】`vk.localStorage` 封装本地缓存的curd，同时具有监听缓存被更新和被删除的功能。[点击查看用法](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3415898&doc_id=975983)
 
 #### 16、【1.6.5 新增】美化云函数请求过程中的日志排版，使请求日志一目了然。
 
 #### 17、【1.7.0 新增】可以`强制关闭`云端服务（适用于需要临时关闭后端服务的情况，如腾讯云迁移数据到阿里云时需要先关闭服务，否则迁移过程中会有新数据产生）
 
-#### 18、【1.7.0 新增】全局数据缓存API，现在可以很方便的在云函数中使用缓存。 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98vk.globalDataCache?sort_id=3442025)
+#### 18、【1.7.0 新增】全局数据缓存API，现在可以很方便的在云函数中使用缓存。 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3442025&doc_id=975983)
 
-#### 19、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+#### 19、【1.8.0 新增】微信小程序服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3569379&doc_id=975983)
 
-#### 20、其他好处…
+#### 20、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+
+#### 21、其他好处…
 
 ##### 插件首页体验地址
 
@@ -70,7 +76,7 @@
  
 ## 快速上手
 
-[点击查看『安装步骤』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%20-%20%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4?sort_id=2912167)
+[点击查看『安装步骤』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912167&doc_id=975983)
 
 ## 云函数框架目录结构
 
@@ -235,38 +241,38 @@ this.vk.callFunction({
 
 ## 云函数url化方式调用云函数示例
 
-[点击查看『云函数url化』方式调用云函数示例](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E4%BA%91%E5%87%BD%E6%95%B0url%E5%8C%96%E6%96%B9%E5%BC%8F%E8%B0%83%E7%94%A8%E4%BA%91%E5%87%BD%E6%95%B0%E7%A4%BA%E4%BE%8B?sort_id=2912174)
+[点击查看『云函数url化』方式调用云函数示例](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912174&doc_id=975983)
 
 ## 前端非法token拦截器
 
-[点击查看『前端非法token拦截器』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E9%85%8D%E7%BD%AE%E5%89%8D%E7%AB%AF%E9%9D%9E%E6%B3%95token%E6%8B%A6%E6%88%AA%E5%99%A8?sort_id=2912176)
+[点击查看『前端非法token拦截器』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912176&doc_id=975983)
 
 ## vk.baseDao数据库API
 
-[点击查看『vk.baseDao』数据库API](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%60vk.baseDao%60%E6%95%B0%E6%8D%AE%E5%BA%93API?sort_id=2912178)
+[点击查看『vk.baseDao』数据库API](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3065608&doc_id=975983)
 
 ## 设置全局请求参数
 
-[点击查看『设置全局请求参数』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E8%AE%BE%E7%BD%AE%E5%85%A8%E5%B1%80%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0?sort_id=3046816)
+[点击查看『设置全局请求参数』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3046816&doc_id=975983)
 
 ## 列表渲染前后端一体模板
 
-[点击查看『列表渲染』前后端一体模板](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%60%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93%60%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%80%E4%BD%93%E6%A8%A1%E6%9D%BF?sort_id=2912179)
+[点击查看『列表渲染』前后端一体模板](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912179&doc_id=975983)
 
 ## 前后端一体动态数据组件
 
-[点击查看『前后端一体动态数据组件』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E8%AF%B4%E6%98%8E?sort_id=2912181)
+[点击查看『前后端一体动态数据组件』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912181&doc_id=975983)
 
 ## 商品SKU选择器组件
 
-[点击查看『商品SKU选择器组件』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E6%96%B0%20-%20%E5%95%86%E5%93%81SKU%E9%80%89%E6%8B%A9%E5%99%A8%E7%BB%84%E4%BB%B6?sort_id=2912199)
+[点击查看『商品SKU选择器组件』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912199&doc_id=975983)
 
 ## 如何切换 正式环境 和 开发环境
 
-[点击查看如何『切换正式环境和开发环境』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%AD%A3%E5%BC%8F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83?sort_id=2912182)
+[点击查看如何『切换正式环境和开发环境』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912182&doc_id=975983)
 
 ## 本插件更新步骤
-[点击查看本插件『更新步骤』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/%E6%8F%92%E4%BB%B6%E6%9B%B4%E6%96%B0%E6%AD%A5%E9%AA%A4?sort_id=2912183)
+[点击查看本插件『更新步骤』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912183&doc_id=975983)
 
 ## uniCloud云函数路由框架研究Q群:`22466457` 如有问题或建议可以在群内讨论。
 ## 你也可以在评论区发布留言交流心得。

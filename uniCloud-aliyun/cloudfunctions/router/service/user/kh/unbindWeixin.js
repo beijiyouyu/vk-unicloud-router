@@ -18,6 +18,9 @@ module.exports = {
 		let { uniID, vk, _ } = util;
 		let { uid } = data;
 		let res = { code : 0, msg : '' };
+		if(vk.pubfn.isNullAll(userInfo.mobile, userInfo.username)){
+			return { code : -1, msg : '为了您的账号安全，请绑定手机号后再解绑微信！' };
+		}
 		// 解绑
 		res = await uniID.unbindWeixin(uid);
 		// 业务逻辑结束-----------------------------------------------------------

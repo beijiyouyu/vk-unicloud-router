@@ -1,11 +1,19 @@
 <template>
 	<view class="content">
+		<button type="default" @tap="vk.navigateTo('../../openapi/weixin/weixin')">小程序API</button>
 		<!-- #ifdef MP-WEIXIN -->
 		<button type="default" @tap="loginByWeixin">微信登录</button>
+		<view class="tips">静默授权，无弹窗。</view>
 		<button type="default" @tap="code2SessionWeixin">获取微信openid</button>
+		<view class="tips">静默授权，无弹窗。</view>
 		<button type="default" @getuserinfo="setUserInfo" open-type="getUserInfo">获取并设置微信用户昵称头像</button>
+		<view class="tips">需要授权，有弹窗。</view>
 		<button type="default" @tap="bindWeixin">绑定微信</button>
 		<button type="default" @tap="unbindWeixin">解绑微信</button>
+		<button type="default" open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber">获取微信绑定的手机号</button>
+		<view class="tips">仅获取手机号</view>
+		<button type="default" open-type="getPhoneNumber"  @getphonenumber="loginByWeixinPhoneNumber">使用微信绑定的手机号登录/注册</button>
+		<view class="tips">此操作能同时绑定微信和手机号</view>
 		<!-- #endif -->
 		<!-- #ifdef APP-PLUS -->
 		<template v-if="hasWeixinAuth">
@@ -21,25 +29,37 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var app = getApp();						// 可获取全局配置
-	var vk;												// 自定义函数集
+	var that;														// 当前页面对象
+	var vk = getApp().globalData.vk;		// vk依赖
 	export default {
 		data() {
 			return {
-				hasWeixinAuth: false
+				hasWeixinAuth: false,
+				sessionKey:"",
+				image:""
 			}
 		},
 		onLoad(options) {
 			that = this;
 			vk = that.vk;
+			that.init();
 		},
 		methods: {
+			init(){
+				vk.userCenter.code2SessionWeixin({
+					data:{
+						needCache:true
+					},
+					success:function(data){
+						that.sessionKey = data.sessionKey;
+					},
+				});
+			},
 			// 微信登陆
 			loginByWeixin(){
 				vk.userCenter.loginByWeixin({
 					success:function(data){
-						vk.alert("登录成功");
+						vk.alert(data.msg);
 					}
 				});
 			},
@@ -80,6 +100,40 @@
 					}
 				});
 			},
+			// 获取微信绑定的手机号码
+			getPhoneNumber(e){
+				let { encryptedData, iv } = e.detail;
+				if (!encryptedData || !iv) {
+					return false;
+				}
+				vk.userCenter.getPhoneNumber({
+					data:{
+						encryptedData,
+						iv,
+						sessionKey:that.sessionKey
+					},
+					success:function(data){
+						vk.alert("手机号:" + data.phone);
+					}
+				});
+			},
+			// 使用微信绑定的手机号登录/注册
+			loginByWeixinPhoneNumber(e){
+				let { encryptedData, iv } = e.detail;
+				if (!encryptedData || !iv) {
+					return false;
+				}
+				vk.userCenter.loginByWeixinPhoneNumber({
+					data: {
+						encryptedData,
+						iv,
+						sessionKey : that.sessionKey
+					},
+					success(data) {
+						vk.alert(data.msg);
+					}
+				});
+			}
 		}
 	}
 </script>
@@ -107,10 +161,8 @@
 		margin-bottom: 15px;
 	}
 	.tips {
-		text-align: center;
-		line-height: 20px;
 		font-size: 14px;
 		color: #999999;
-		margin-bottom: 20px;
+		margin-bottom: 16px;
 	}
 </style>

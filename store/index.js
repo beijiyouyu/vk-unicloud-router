@@ -6,7 +6,6 @@ Vue.use(Vuex)
 // 定义不需要永久存储的目录，即下次APP启动数据会自动清空，值为在modules目录下的文件名
 let notSaveStateKeys = ['$test'];
 
-
 let lifeData = uni.getStorageSync('lifeData') || {};
 
 const modulesFiles = require.context('./modules', true, /\.js$/);

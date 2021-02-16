@@ -1,65 +1,65 @@
 <template>
 	<view class="app forget">
 		<!-- 页面内容开始 -->
-		
+
 		<view class="content">
 			<!-- 主体 -->
-			<view class="main">
+			<view class="form-view">
 				<view class="tips">若你忘记了密码，可在此重置新密码。</view>
-				
-				<view class="main-list oBorder">
+
+				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input 
-						class="main-input" 
+					<u-input
+						class="main-input"
 						v-model="form1.mobile"
-						type="text" 
-						:maxlength="11" 
-						placeholder="请输入手机号码" 
+						type="text"
+						:maxlength="11"
+						placeholder="请输入手机号码"
 						placeholder-style="'color':'#8e8e8e'"
 					/>
 				</view>
-				
-				<view class="main-list oBorder">
+
+				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input 
-						class="main-input" 
+					<u-input
+						class="main-input"
 						v-model="form1.password"
-						type="password" 
-						placeholder="请输入新密码" 
+						type="password"
+						placeholder="请输入新密码"
 						placeholder-style="'color':'#8e8e8e'"
 					/>
 				</view>
-				<view class="main-list oBorder">
+				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input 
-						class="main-input" 
+					<u-input
+						class="main-input"
 						v-model="form1.password2"
-						type="password" 
-						placeholder="请再次输入新密码" 
+						type="password"
+						placeholder="请再次输入新密码"
 						placeholder-style="'color':'#8e8e8e'"
 					/>
 				</view>
-				
-			
-				<view class="main-list oBorder">
+
+
+				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input 
-						class="main-input" 
+					<u-input
+						class="main-input"
 						v-model="form1.code"
-						type="number" 
-						:maxlength="6" 
-						placeholder="请输入验证码" 
+						type="number"
+						:maxlength="6"
+						placeholder="请输入验证码"
 						placeholder-style="'color':'#8e8e8e'"
 					/>
 					<!-- 验证码倒计时开始 -->
 					<vk-u-verification-code  seconds="60" :mobile="form1.mobile" type="reset"></vk-u-verification-code>
 					<!-- 验证码倒计时结束 -->
-					
+
 				</view>
-				
+
 			</view>
 			<u-button shape="circle" class="login-btn" @click="resetPassword" :plain="false" :hair-line="false" type="success">重置密码</u-button>
-		
+
 		</view>
 		<!-- 页面内容结束 -->
 	</view>
@@ -75,7 +75,7 @@
 			return {
 				// init请求返回的数据
 				data:{
-					
+
 				},
 				// 表单请求数据
 				form1:{
@@ -87,15 +87,6 @@
 				scrollTop:0,
 				isRotate:false
 			}
-		},
-		// 监听 - 原生导航自定义菜单(仅限:App、H5)
-		onNavigationBarButtonTap(e) {
-			vk.onNavigationBarButtonTap({e,that});
-		},
-		// 监听 - 原生返回按钮
-		onBackPress(e) {
-			console.log("返回按钮",e);
-			
 		},
 		onPageScroll(e) {
 			that.scrollTop = e.scrollTop;
@@ -109,16 +100,16 @@
 		},
 		// 监听 - 页面【首次渲染完成时】执行。注意如果渲染速度快，会在页面进入动画完成前触发
 		onReady(){
-			
+
 		},
 		// 监听 - 页面每次【显示时】执行(如：前进和返回) (页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面)
 		onShow() {
-			
+
 		},
 		// 监听 - 页面每次【隐藏时】执行(如：返回)
 		onHide() {
-			
-			
+
+
 		},
 		// 监听 - 页面下拉刷新
 		onPullDownRefresh() {
@@ -128,19 +119,19 @@
 		},
 		// 监听 - 页面触底部
 		onReachBottom(){
-			
+
 		},
 		// 监听 - 窗口尺寸变化(仅限:App、微信小程序)
 		onResize(){
-			
+
 		},
 		// 监听 - 点击右上角转发时
 		onShareAppMessage(options) {
-			
+
 		},
 		// 监听 - 页面创建时
 		created() {
-			
+
 		},
 		// 函数
 		methods: {
@@ -196,11 +187,11 @@
 		},
 		// 过滤器
 		filters:{
-			
+
 		},
 		// 计算属性
 		computed:{
-			
+
 		}
 	}
 </script>

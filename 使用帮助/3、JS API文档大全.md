@@ -1,5 +1,22 @@
 ### 前后端通用
 ```js
+
+
+/**
+ * 数组结构转树形结构
+ * @params {Array} treeData  数据源
+ * @params {Object} treeProps 树结构配置
+ * { id:"_id", parent_id:"parent_id", children:"children",need_field:["_id","name"],deleteParentId:true }
+ */
+vk.pubfn.arrayToTree(treeData, treeProps);
+/**
+ * 树形结构转数组结构
+ * @params {Array} treeData  数据源
+ * @params {Object} treeProps 树结构配置 
+ * { id:"_id", parent_id:"parent_id", children:"children", deleteChildren:true }
+ */
+vk.pubfn.treeToArray(treeData, treeProps);
+
 /**
  * 日期格式化
  * @params {Date || Number} date 需要格式化的时间
@@ -95,8 +112,9 @@ let arr = vk.pubfn.arr_concat(arr1, arr2, "_id");
  * 自动根据字符串路径获取对象中的值支持.和[] , 且任意一个值为undefined时,不会报错,会直接返回undefined
  * @params	{Object} dataObj 数据源
  * @params	{String} name 支持a.b 和 a[b]
+ * @params	{String} defaultValue undefined时的默认值
  */
-let data = vk.pubfn.getData(dataObj, name);
+let data = vk.pubfn.getData(dataObj, name, defaultValue);
 
 /**
  * 自动根据字符串路径设置对象中的值 支持.和[]
@@ -293,6 +311,26 @@ vk.pubfn.getListData({
 this.vk.pubfn.getComponentsDynamicData({
   that : this,
   ids : ["notice-bar-01","index-swiper-01"]
+});
+
+/**
+ * 获取当前页面实例
+ * 返回数据
+ * fullPath 当前打开页面的完整路径(带页面参数)
+ * options  当前打开页面的参数
+ * route    当前打开页面的路径(不含参数)
+ * $vm      当前打开页面的vue实例
+ */
+vk.pubfn.getCurrentPage();
+
+/**
+ * 文件转base64
+ */
+vk.pubfn.fileToBase64({
+  file:res.tempFiles[0],
+  success:function(base64){
+
+  }
 });
 
 ```

@@ -1,6 +1,6 @@
 // 将下方代码复制到 hbx 工具 - 代码块设置 - javascript代码块
 {
-	"vk.callFunction(发起云函数请求)": {
+	"发起云函数请求(常用形式)": {
 	 "prefix": "vk.callFunction",
 	 "body": [
 			 "vk.callFunction({",
@@ -9,9 +9,39 @@
 			 "\tdata:{",
 			 "\t\t",
 			 "\t},",
-			 "\tsuccess(data) => {",
+			 "\tsuccess:function(data){",
 			 "\t\t$0",
 			 "\t}",
+			 "});"
+		],
+		"triggerAssist": false,
+		"description": "发起一个云函数请求"
+	},
+	"发起云函数请求(promise形式)": {
+	 "prefix": "vk.callFunction",
+	 "body": [
+			 "vk.callFunction({",
+			 "\turl: '云函数路径',",
+			 "\ttitle:'请求中...',",
+			 "\tdata:{",
+			 "\t\t",
+			 "\t},",
+			 "}).then((data) => {",
+			 "\t\t$0",
+			 "});"
+		],
+		"triggerAssist": false,
+		"description": "发起一个云函数请求"
+	},
+	"发起云函数请求(async/await形式)": {
+	 "prefix": "vk.callFunction",
+	 "body": [
+			 "let data = await vk.callFunction({",
+			 "\turl: '云函数路径',",
+			 "\ttitle:'请求中...',",
+			 "\tdata:{",
+			 "\t\t",
+			 "\t},",
 			 "});"
 		],
 		"triggerAssist": false,
@@ -184,7 +214,7 @@
 	"vk.pubfn.isNull": {
 	 "prefix": "vk.pubfn.isNull",
 	 "body": [
-			"vk.pubfn.isNull($0);"
+			"vk.pubfn.isNull($0)"
 		],
 		"triggerAssist": false,
 		"description": "检测参数是否为空"
@@ -192,7 +222,7 @@
 	"vk.pubfn.isNotNull": {
 	 "prefix": "vk.pubfn.isNotNull",
 	 "body": [
-			"vk.pubfn.isNotNull($0);"
+			"vk.pubfn.isNotNull($0)"
 		],
 		"triggerAssist": false,
 		"description": "检测参数是否不为空"
@@ -200,7 +230,7 @@
 	"vk.pubfn.isNullOne": {
 	 "prefix": "vk.pubfn.isNullOne",
 	 "body": [
-			"vk.pubfn.isNullOne($0);"
+			"vk.pubfn.isNullOne($0)"
 		],
 		"triggerAssist": false,
 		"description": "检测所有参数 - 是否至少有一个为空"
@@ -213,10 +243,20 @@
 		"triggerAssist": false,
 		"description": "检测整个对象是否没有一个属性是空值,如果有空值,则返回首个是空值的属性名"
 	},
+	"参数一个都不能为空检测": {
+	 "prefix": "qq.",
+	 "body": [
+			"// 参数非空检测",
+			"let nullKey = vk.pubfn.isNullOneByObject({ params1$0, params2 });",
+			"if(nullKey) return { code:-1, msg:'参数 '+nullKey+' 不能为空' };"
+		],
+		"triggerAssist": false,
+		"description": "检测整个对象是否没有一个属性是空值,如果有空值,则返回首个是空值的属性名"
+	},
 	"vk.pubfn.isNullAll": {
 	 "prefix": "vk.pubfn.isNullAll",
 	 "body": [
-			"vk.pubfn.isNullAll($0);"
+			"vk.pubfn.isNullAll($0)"
 		],
 		"triggerAssist": false,
 		"description": "检测所有参数 - 是否全部为空"
@@ -224,7 +264,7 @@
 	"vk.pubfn.isNotNullAll": {
 	 "prefix": "vk.pubfn.isNotNullAll",
 	 "body": [
-			"vk.pubfn.isNotNullAll($0);"
+			"vk.pubfn.isNotNullAll($0)"
 		],
 		"triggerAssist": false,
 		"description": "检测所有参数 - 是否全部都不为空"
@@ -320,7 +360,7 @@
 	"userDao.findById": {
 	 "prefix": "dao.",
 	 "body": [
-			"await vk.daoCenter.userDao.findById(user_id$0, util);"
+			"await vk.daoCenter.userDao.findById(user_id$0);"
 		],
 		"triggerAssist": false,
 		"description": "获取用户信息"
@@ -377,6 +417,9 @@
 		"triggerAssist": false,
 		"description": "try-catch"
 	}
+	
+	
+		
 	
 		
 	

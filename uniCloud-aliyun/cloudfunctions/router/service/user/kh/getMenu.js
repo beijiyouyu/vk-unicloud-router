@@ -3,14 +3,6 @@ module.exports = {
 	/**
 	 * 获取我的菜单列表
 	 * @url user/kh/getMenu 前端调用的url参数地址
-	 * @description 此函数描述
-	 * @params {Object} data 请求参数
-	 * @params {String} uniIdToken 用户token
-	 * @params {String} userInfo 当前登录用户信息（可信任，仅kh目录下的函数有此值）
-	 * pub目录下请求参数需要带上need_user_info = true
-	 * @params {Object} util 公共工具包
-	 * @params {Object} filterResponse 过滤器返回的数据
-	 * @params {Object} originalParam 原始请求参数（包含了原始event和context）
 	 * data 请求参数 说明
 	 * @params {String} uid  当前登录用户id（可信任，仅kh目录下的函数有此值）
 	 * res 返回参数说明
@@ -23,33 +15,33 @@ module.exports = {
 		let { customUtil, uniID, config, pubFun, vk , db, _ } = util;
 		let { uid } = data;
 		let res = { code : 0, msg : '' };
-		// 业务逻辑开始----------------------------------------------------------- 
-		let tokenRes = await uniID.checkToken(event.uniIdToken);
-		let { permission } = tokenRes;
-		userInfo.permission = permission;
+		// 业务逻辑开始-----------------------------------------------------------
 		res.userInfo = userInfo;
-		if(vk.pubfn.isNotNull(permission)){
-			let perRes = await vk.baseDao.select({
-				dbName:"uni-id-permissions",
-				pageSize:-1,
-				whereJson:{
-					permission_id : _.in(permission),
-					type : 0
-				},
-				sortArr:[{"name":"sort","type":"asc"}]
-			});
-			// 将子菜单合并到父菜单的children字段中
-			for(let i in perRes.rows){
-				perRes.rows[i].menu_id = perRes.rows[i].permission_id;
-				perRes.rows[i].name = perRes.rows[i].permission_name;
-			}
-			res.menus = vk.pubfn.arrayToTree(perRes.rows,{ 
-				id:"menu_id", 
-				parent_id:"parent_id", 
-				children:"children",
-			});
-			res.menuList = perRes.rows;
+		if(userInfo.role.indexOf("admin") === -1 && vk.pubfn.isNull(userInfo.permission)){
+			return res;
 		}
+		let whereJson = {};
+		if(userInfo.role.indexOf("admin") === -1){
+			whereJson["permission_id"] =  _.in(userInfo.permission);
+		}
+		whereJson["type"] = 0;
+		let perRes = await vk.baseDao.select({
+			dbName:"uni-id-permissions",
+			pageSize:500,
+			whereJson,
+			sortArr:[{ "name":"sort","type":"asc" }]
+		});
+		// 将子菜单合并到父菜单的children字段中
+		for(let i in perRes.rows){
+			perRes.rows[i].menu_id = perRes.rows[i].permission_id;
+			perRes.rows[i].name = perRes.rows[i].permission_name;
+		}
+		res.menus = vk.pubfn.arrayToTree(perRes.rows,{
+			id:"menu_id",
+			parent_id:"parent_id",
+			children:"children",
+		});
+		res.menuList = perRes.rows;
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}

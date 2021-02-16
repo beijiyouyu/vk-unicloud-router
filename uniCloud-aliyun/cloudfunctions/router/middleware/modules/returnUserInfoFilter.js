@@ -9,12 +9,14 @@ module.exports = [
 		id: "returnUserInfo",
 		regExp: [
 			"^user/pub/login(.*)",
-			"^user/pub/register$",
+			"^user/pub/register(.*)",
 			"^user/kh/bind(.*)",
 			"^user/kh/unbind(.*)",
 			"^user/kh/update(.*)",
 			"^user/kh/set(.*)",
-			"^user/kh/acceptInvite$"
+			"^user/kh/acceptInvite$",
+			"^client/user/pub/register(.*)",
+			"^client/user/pub/login(.*)"
 		],
 		description: "可用于指定哪些云函数需要返回给前端userInfo",
 		index: 210,
@@ -29,19 +31,27 @@ module.exports = [
 				if(vk.pubfn.isNull(res.userInfo)){
 					if(vk.pubfn.isNotNull(res.uid)){
 						res.userInfo = await vk.daoCenter.userDao.findById(res.uid);
-						res.needUpdateUserInfo = true;
 					}else if(vk.pubfn.isNotNull(uniIdToken)){
 						let tokenRes = await uniID.checkToken(uniIdToken);
 						if(tokenRes.code === 0){
 							delete tokenRes.userInfo.token;
 							delete tokenRes.userInfo.password;
 							res.userInfo = tokenRes.userInfo;
-							res.needUpdateUserInfo = true;
 						}
 					}
+				}
+				if(vk.pubfn.isNotNull(res.userInfo)){
+					res.needUpdateUserInfo = true;
+				} 
+				if(vk.pubfn.isNotNullAll(res.token,res.tokenExpired)){
+					// 当返回vk_uni_token对象后，框架会让token自动被前端缓存，前端不需要手动再保存token至本地缓存了。
+					res.vk_uni_token = {
+						token: res.token,
+						tokenExpired: res.tokenExpired
+					};
 				}
 			}
 			return res;
 		}
-	}
+	} 
 ]
