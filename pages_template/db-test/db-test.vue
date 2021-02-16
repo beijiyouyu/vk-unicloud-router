@@ -9,27 +9,28 @@
 		<view style="margin-bottom: 20rpx;font-size: 36rpx;">当前共有: {{data.total}} 条记录</view>
 		<button style="margin-left: 50rpx;" @click="pageTo('list/list')">查看更多</button>
 		<view style="display: flex;">
-			<button @click="test('add')">add(添加一条记录)</button>
-			<button @click="test('adds')">adds(添加多条记录)</button>
+			<button @click="add()">add(添加一条记录)</button>
+			<button @click="adds()">adds(添加多条记录)</button>
 		</view>
-		<button @click="test('count')">count(获取集合共有多少条记录)</button>
-		<button @click="test('del')">del(删除集合所有数据)</button>
-		<button @click="test('findById')">findById(根据id获取一条记录)</button>
-		<button @click="test('findByWhereJson')">findByWhereJson(根据条件获取一条记录)</button>
+		<button @click="count();">count(获取集合共有多少条记录)</button>
+		<button @click="del()">del(删除集合所有数据)</button>
+		<button @click="findById()">findById(根据id获取一条记录)</button>
+		<button @click="findByWhereJson()">findByWhereJson(根据条件获取一条记录)</button>
 		<view>
 			<button @click="getList1()">select(获取多条数据)</button>
 			<button @click="selects()">selects(连表查询)</button>
 			<button @click="selects2()">selects2.0(连表查询)</button>
 		</view>
-		<button @click="sample">随机获取1条记录（一般用于抽奖）</button>
-		<button @click="test('update')">update(修改记录)</button>
+		<button @click="sample()">随机获取1条记录（一般用于抽奖）</button>
+		<button @click="update()">update(修改记录)</button>
+		<button @click="updateById()">updateById(修改并返回修改后的数据)</button>
 		<view style="display: flex;">
-			<button @click="test('sum')">sum(取总和值)</button>
-			<button @click="test('avg')">avg(取平均值)</button>
+			<button @click="sum()">sum(取总和值)</button>
+			<button @click="avg()">avg(取平均值)</button>
 		</view>
 		<view style="display: flex;">
-			<button @click="test('max')">max(取最大值)</button>
-			<button @click="test('min')">min(取最小值)</button>
+			<button @click="max()">max(取最大值)</button>
+			<button @click="min()">min(取最小值)</button>
 		</view>
 		<button @click="getGeoList()">geo(地理位置 搜索4公里内)</button>
 		<view>
@@ -47,10 +48,10 @@
 		data() {
 			return {
 				form1:{
-				
+
 				},
 				data:{
-					
+
 				},
 				item:{},
 				myPosition:{
@@ -70,25 +71,78 @@
 				that.getList();
 			},
 			pageTo(url){
-				uni.navigateTo({
-					url:url
-				})
+				vk.navigateTo(url);
 			},
-			test(name){
+			add(){
+				vk.callFunction({
+					url: 'template/db_api/pub/add',
+					title:'请求中...',
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+						that.getList();
+					}
+				});
+			},
+			adds(){
+				vk.callFunction({
+					url: 'template/db_api/pub/adds',
+					title:'请求中...',
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+						that.getList();
+					}
+				});
+			},
+			count(){
+				vk.callFunction({
+					url: 'template/db_api/pub/count',
+					title:'请求中...',
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+					}
+				});
+			},
+			del(){
+				vk.callFunction({
+					url: 'template/db_api/pub/del',
+					title:'请求中...',
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+						that.getList();
+					}
+				});
+			},
+			findById(){
 				let data = {};
 				if(that.data && that.data.rows[0] && that.data.rows[0]._id){
 					data._id = that.data.rows[0]._id;
 				}
 				vk.callFunction({
-					url: 'template/db_api/pub/'+name,
+					url: 'template/db_api/pub/findById',
 					title:'请求中...',
 					data:data,
 					success(data) {
-						setTimeout(function(){
-							vk.alert(JSON.stringify(data));
-						},300); 
+						vk.alert(JSON.stringify(data));
 						that.item = data;
-						that.getList();
+					}
+				});
+			},
+			findByWhereJson(){
+				let data = {};
+				if(that.data && that.data.rows[0] && that.data.rows[0]._id){
+					data._id = that.data.rows[0]._id;
+				}
+				vk.callFunction({
+					url: 'template/db_api/pub/findById',
+					title:'请求中...',
+					data:data,
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
 					}
 				});
 			},
@@ -109,9 +163,7 @@
 					data:{},
 					success(data) {
 						that.data = data;
-						setTimeout(function(){
-							vk.alert(JSON.stringify(data));
-						},300); 
+						vk.alert(JSON.stringify(data));
 						that.item = data;
 					}
 				});
@@ -123,9 +175,7 @@
 					data:{},
 					success(data) {
 						that.data = data;
-						setTimeout(function(){
-							vk.alert(JSON.stringify(data));
-						},300); 
+						vk.alert(JSON.stringify(data));
 						that.item = data;
 					}
 				});
@@ -136,8 +186,8 @@
 					title:'请求中...',
 					data:{},
 					success(data) {
-						console.log(data.rows);
 						that.data = data;
+						vk.alert(JSON.stringify(data));
 						that.item = data;
 					}
 				});
@@ -155,12 +205,84 @@
 					}
 				});
 			},
+			update(){
+				let data = {};
+				if(that.data && that.data.rows[0] && that.data.rows[0]._id){
+					data._id = that.data.rows[0]._id;
+				}
+				vk.callFunction({
+					url: 'template/db_api/pub/update',
+					title:'请求中...',
+					data:data,
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+						that.getList();
+					}
+				});
+			},
+			updateById(){
+				let data = {};
+				if(that.data && that.data.rows[0] && that.data.rows[0]._id){
+					data._id = that.data.rows[0]._id;
+				}
+				vk.callFunction({
+					url: 'template/db_api/pub/updateById',
+					title:'请求中...',
+					data:data,
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+						that.getList();
+					}
+				});
+			},
+			sum(){
+				vk.callFunction({
+					url: 'template/db_api/pub/sum',
+					title:'请求中...',
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+					}
+				});
+			},
+			avg(){
+				vk.callFunction({
+					url: 'template/db_api/pub/avg',
+					title:'请求中...',
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+					}
+				});
+			},
+			max(){
+				vk.callFunction({
+					url: 'template/db_api/pub/max',
+					title:'请求中...',
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+					}
+				});
+			},
+			min(){
+				vk.callFunction({
+					url: 'template/db_api/pub/min',
+					title:'请求中...',
+					success(data) {
+						vk.alert(JSON.stringify(data));
+						that.item = data;
+					}
+				});
+			},
 			getGeoList(name){
 				vk.callFunction({
 					url: 'template/db_api/pub/geo',
 					title:'请求中...',
 					data:{
-						
+
 					},
 					success(data) {
 						that.data = data;
@@ -173,13 +295,13 @@
 				}
 				//console.log(mbPosition,myPosition);
 				var res = {};
-				var m = 0;  
-				var km = 0;  
+				var m = 0;
+				var km = 0;
 				var lng1 = myPosition.longitude;
 				var lat1 = myPosition.latitude;
 				var lng2 = mbPosition.longitude;
 				var lat2 = mbPosition.latitude;
-				m = Math.sqrt((lng1 - lng2) * (lng1 - lng2) + (lat1 - lat2) * (lat1 - lat2)) / 180 * Math.PI * 6300000; 
+				m = Math.sqrt((lng1 - lng2) * (lng1 - lng2) + (lat1 - lat2) * (lat1 - lat2)) / 180 * Math.PI * 6300000;
 				m = m.toFixed(1);
 				km = (m / 1000).toFixed(2);
 				if(m >= 1000000){
