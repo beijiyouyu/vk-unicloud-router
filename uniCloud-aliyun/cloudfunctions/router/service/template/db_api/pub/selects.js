@@ -16,23 +16,22 @@ module.exports = {
 		// 演示3表连接
 		res = await vk.baseDao.selects({
 			dbName:"uni-id-users",
-			foreignKey:"_id",
 			getCount:false,
 			pageIndex:1,
 			pageSize:10,
 			// 主表where条件
-			whereJson:{ 
-				
+			whereJson:{
+
 			},
 			// 主表字段显示规则
-			fieldJson:{token:false, password:false},
+			fieldJson:{ token:false, password:false },
 			// 主表排序规则
-			sortArr:[{"name":"_id", "type":"desc"}
-			],
+			sortArr:[{ "name":"_id", "type":"desc" }],
 			// 副表列表
 			foreignDB:[
 				{
 					dbName:"vk-test",
+					localKey:"_id",
 					foreignKey:"user_id",
 					as:"testList",
 					limit:1,
@@ -41,19 +40,14 @@ module.exports = {
 					// 副表字段显示规则
 					fieldJson:{ },
 					// 副表排序规则
-					sortArr:[{"name":"money", "type":"desc"}],
+					sortArr:[{ "name":"money", "type":"desc" }],
 				},
 				{
 					dbName:"gy-shop",
+					localKey:"_id",
 					foreignKey:"user_id",
 					as:"shopList",
-					limit:1,
-					// 副表where条件
-					whereJson:{ },
-					// 副表字段显示规则
-					fieldJson:{ },
-					// 副表排序规则
-					sortArr:[{"name":"id", "type":"desc"}],
+					limit:1
 				},
 			]
 		});

@@ -1,7 +1,7 @@
 module.exports = {
 	/**
-	 * 多表查询(支持多张表连接查询)(VK2.0版本)
-	 * @url template/db_api/pub/selects_mode_2 前端调用的url参数地址
+	 * 多表查询(支持多张表连接查询)(VK3.0版本)
+	 * @url template/db_api/pub/selects_mode_3 前端调用的url参数地址
 	 * data 请求参数 说明
 	 * res 返回参数说明
 	 * @params {Number} code 错误码，0表示成功
@@ -14,26 +14,27 @@ module.exports = {
 		let res = { code : 0, msg : 'ok' };
 		// 业务逻辑开始-----------------------------------------------------------
 		/**
-		 * 此为简化版
-		 * 此版本支持无限张表和主表进行连接
+		 * 此为演示竖向无限层连接
 		 */
 		res = await vk.baseDao.selects({
 			dbName:"opendb-mall-comments",
 			// 副表列表
 			foreignDB:[
 				{
-					dbName:"opendb-mall-goods",
-					localKey:"goods_id",
-					foreignKey:"_id",
-					as:"goodsInfo",
-					limit:1
-				},
-				{
 					dbName:"uni-id-users",
 					localKey:"user_id",
 					foreignKey:"_id",
 					as:"userInfo",
-					limit:1
+					limit:1,
+					foreignDB:[
+						{
+							dbName:"opendb-mall-orders",
+							localKey:"_id",
+							foreignKey:"user_id",
+							as:"orderList",
+							limit:3,
+						},
+					]
 				}
 			]
 		});

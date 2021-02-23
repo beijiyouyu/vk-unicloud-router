@@ -1106,8 +1106,9 @@ pubfn.getListData = function (obj = {}){
 		form1.pageIndex--;
 		return false;
 	}
-	form1.addTimeLong = pubfn.toTimeLong(addTime);
-	form1.endTimeLong = pubfn.toTimeLong(endTime);
+	
+	if(addTime) form1.addTimeLong = pubfn.toTimeLong(addTime);
+	if(endTime) form1.endTimeLong = pubfn.toTimeLong(endTime);
 	if(obj.data && JSON.stringify(obj.data) != "{}"){
 		pubfn.objectAssign(form1,obj.data);
 	}

@@ -336,7 +336,7 @@ export default {
 	 */
 	code2SessionWeixin(obj = {}) {
 		let that = this;
-		if(!obj.loading && !obj.title) obj.title = "请求中...";
+		if(!obj.loading && typeof obj.title === "undefined") obj.title = "请求中...";
 		let { data={} } = obj;
 		that.getWeixinCode().then((code) => {
 			callFunction({
