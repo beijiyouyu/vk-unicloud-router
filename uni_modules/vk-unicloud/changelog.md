@@ -1,3 +1,12 @@
+## 1.8.7（2021-02-24）
+### 更新内容
+#### 【修复】`vk.openapi.weixin.auth.code2Session` 会报`vk is not defined`的错误。
+
+## 1.8.6（2021-02-24）
+### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+### 更新内容
+#### 【修复】`vk.baseDao.deleteById` 会报`vk is not defined`的错误。
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 1.8.5（2021-02-23）
 ### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
 ### 更新内容
