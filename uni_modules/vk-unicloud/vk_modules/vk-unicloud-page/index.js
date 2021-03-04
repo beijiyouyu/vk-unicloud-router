@@ -12,6 +12,8 @@ import localStorage 			from './libs/function/vk.localStorage'
 import filters 						from './libs/function/vk.filters'
 import mixin 							from './libs/mixin/mixin.js'
 import initPermission			from './libs/function/permission'
+import storeMixin 				from './libs/store/mixin/mixin'
+import initGlobalError		from './libs/store/libs/error'
 
 
 var vk = {
@@ -52,9 +54,18 @@ vk.init = function(obj={}){
 	let {
 		Vue,      // Vue实例
 		config,	  // 配置
-		store     // vuex简写法则
+		store,    // vuex简写法则(新版本无需传store)
 	} = obj;
-	Vue.use(store);
+	if(typeof store !== "undefined"){
+		// 兼容旧版本
+		Vue.use(store);
+	}else{
+		// 新版本无需传store
+		Vue.mixin(storeMixin);
+		if(config.globalError){
+			Vue.use(initGlobalError);
+		}
+	}
 	// 自定义云函数路由配置
 	vk.callFunctionUtil.setConfig(config);
 };

@@ -20,8 +20,8 @@ module.exports = {
 	},
 	/**
 	 * app主题颜色
-	 * $app.config.color.main
-	 * $app.config.color.secondary
+	 * vk.getVuex('$app.config.color.main')
+	 * vk.getVuex('$app.config.color.secondary')
 	 */
 	color:{
 		main:"#ff4444",

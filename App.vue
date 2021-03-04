@@ -10,8 +10,8 @@
 					let { type, key, data } = obj;
 					if(key === "uni_id_user_info"){
 						switch(type) {
-							case "set": vk.vuex('$user.userInfo', data); break;
-							case "remove": vk.vuex('$user.userInfo', {}); break;
+							case "set": vk.setVuex('$user.userInfo', data); break;
+							case "remove": vk.setVuex('$user.userInfo', {}); break;
 						} 
 					}
 				}

@@ -2,6 +2,7 @@
  * vuex 系统状态管理模块
  */
 import config from '@/app.config.js'
+
 let lifeData = uni.getStorageSync('lifeData') || {};
 
 export default {
@@ -14,11 +15,11 @@ export default {
 		/**
 		 * 是否已经初始化
 		 * js调用示例
-		 * vk.state('$app').inited;
+		 * vk.getVuex('$app.inited');
 		 * 页面上直接使用示例
-		 * {{ $app.inited }}
+		 * {{ vk.getVuex('$app.inited') }}
 		 * js更新示例
-		 * vk.vuex('$app.inited', true);
+		 * vk.setVuex('$app.inited', true);
 		 */
 		inited: lifeData.$app.inited || false,
 		config:{

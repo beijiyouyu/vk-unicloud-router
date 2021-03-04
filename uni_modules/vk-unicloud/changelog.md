@@ -1,3 +1,8 @@
+## 1.8.8（2021-03-04）
+### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+### 更新内容
+#### 【重要】`vuex` 的使用方式有较大更新。(有性能提升)[点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3654596&doc_id=975983)
+
 ## 1.8.7（2021-02-24）
 ### 更新内容
 #### 【修复】`vk.openapi.weixin.auth.code2Session` 会报`vk is not defined`的错误。

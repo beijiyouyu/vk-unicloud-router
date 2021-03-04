@@ -13,12 +13,12 @@ export default {
 		/**
 		 * 登录用户信息
 		 * js调用示例
-		 * (推荐) vk.state('$user').userInfo; 
-		 * 或 that.$store.state.$user.userInfo;
+		 * (推荐) vk.getVuex('$user.userInfo');
+		 * 或 vk.vuex.get('$user.userInfo');
 		 * 页面上直接使用示例
-		 * {{ $user.userInfo }}
+		 * {{ vk.getVuex('$user.userInfo') }}
 		 * js更新示例
-		 * vk.vuex('$user.userInfo.avatar', res.fileID);
+		 * vk.setVuex('$user.userInfo.avatar', avatar);
 		 */
 		userInfo: lifeData.$user.userInfo || {}
 	},
@@ -29,9 +29,9 @@ export default {
 		/**
 		 * 获取用户信息（使用计算属性获取）
 		 * js调用示例
+		 * vk.vuex.getters('$user/getUserInfo');
+		 * 或
 		 * that.$store.getters['$user/getUserInfo'];
-		 * 页面上直接使用示例
-		 * {{ $user_getUserInfo }}
 		 */
 		getUserInfo: (state) => {
 			return state.userInfo;

@@ -7,18 +7,27 @@
 		<view style="margin-top: 10rpx;">
 			说明:
 			<view style="margin-top: 10rpx;">
-				1、<text>$user</text> 对应 store/modules 目录下的js文件，同理，你可以在store/modules目录下新建一个$cart.js文件来专门储存购物车信息<br/>
-				2、页面上直接渲染Vuex数据：<br/>
-				$user.userInfo<br/>
-				3、js 内获得Vuex数据：<br/>
-				let userInfo = vk.state('$user').userInfo;<br/>
-				4、js 内更新Vuex数据：<br/>
-				vk.vuex('$user.userInfo.avatar', avatar);<br/>
+				1、<text>$user</text> 对应 store/modules 目录下的js文件<br/>
+				以下两个方式均可以对 vuex 数据进行操作<br/><br/>
+				方式一：<br/>
+				获取 Vuex 数据：<br/>
+				vk.getVuex('$user.userInfo')<br/>
+				更新 Vuex 数据：<br/>
+				vk.setVuex('$user.userInfo.avatar', avatar)<br/><br/>
+				
+				方式二：<br/>
+				获取 Vuex 数据：<br/>
+				vk.vuex.get('$user.userInfo')<br/>
+				更新 Vuex 数据：<br/>
+				vk.vuex.set('$user.userInfo.avatar', avatar);<br/>
+				触发 Vuex action：<br/>
+				vk.vuex.dispatch('$user/addFootprint', data);<br/>
+				
 			</view>
 		</view>
-		<view v-if="$user.userInfo" style="color: red;margin-top: 10rpx;font-size: 36rpx;">
-			当前登录用户：{{ $user.userInfo.nickname || $user.userInfo.username}}
-			<u-avatar :src="$user.userInfo.avatar" size="70"></u-avatar>
+		<view v-if="vk.getVuex('$user.userInfo')" style="color: red;margin-top: 10rpx;font-size: 36rpx;">
+			当前登录用户：{{ vk.getVuex('$user.userInfo.nickname') || vk.getVuex('$user.userInfo.username') }}
+			<u-avatar :src="vk.getVuex('$user.userInfo.avatar')" size="70"></u-avatar>
 		</view>
 		<view style="margin-top: 20rpx;">
 			<input type="text" v-model="form1.username" placeholder="用户名/邮箱/手机号" />
@@ -66,7 +75,7 @@
 					data:form1,
 					success:function(data){
 						// 登录成功后将用户信息写入$store
-						vk.vuex('$user.userInfo', data.userInfo);
+						vk.setVuex('$user.userInfo', data.userInfo);
 						vk.alert("登陆成功!");
 					}
 				});
@@ -76,7 +85,7 @@
 				vk.userCenter.logout({
 					success:function(data){
 						// 退出成功后清楚$store的用户信息
-						vk.vuex('$user.userInfo', '');
+						vk.setVuex('$user.userInfo', {});
 						vk.alert("退出成功");
 					}
 				});
@@ -101,7 +110,7 @@
 									},
 									success() {
 										// 修改Vuex用户状态
-										vk.vuex('$user.userInfo.avatar', res.fileID);
+										vk.setVuex('$user.userInfo.avatar', res.fileID);
 									}
 								});
 							}
