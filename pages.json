@@ -129,6 +129,10 @@
 				{
 					"path": "openapi/weixin/imgSecCheck/imgSecCheck",
 					"style": {}
+				},
+				{
+					"path": "openapi/weixin/sendMessage/sendMessage",
+					"style": {}
 				}
 			]
 		}

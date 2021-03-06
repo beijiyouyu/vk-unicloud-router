@@ -54,9 +54,10 @@ const store = new Vuex.Store({
 			if(len >= 2) {
 				let obj = state[nameArr[0]];
 				for(let i = 1; i < len - 1; i ++) {
-					obj = obj[nameArr[i]];
+					let keyName = nameArr[i];
+					if(typeof obj[keyName] !== "object") obj[keyName] = {};
+					obj = obj[keyName];
 				}
-				//Vue.set(obj,nameArr[len - 1],payload.value)
 				obj[nameArr[len - 1]] = JSON.parse(JSON.stringify(payload.value));
 				saveKey = nameArr[0];
 			} else {

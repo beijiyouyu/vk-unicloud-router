@@ -299,13 +299,15 @@ pubfn.getData = function (dataObj, name, defaultValue) {
  */
 pubfn.setData = function (dataObj, name, value) {
 	// 通过正则表达式  查找路径数据
-	const regex = /([\w$]+)|\[(:\d)\]/g;
-	const patten = name.match(regex);
+	let regExp = new RegExp("([\\w$]+)|\\[(:\\d)\\]","g");
+	const patten = name.match(regExp);
 	// 遍历路径  逐级查找  最后一级用于直接赋值
 	for (let i = 0; i < patten.length - 1; i++) {
-		const key = patten[i];
-		dataObj = dataObj[key];
+		let keyName = patten[i];
+		if(typeof dataObj[keyName] !== "object") dataObj[keyName] = {};
+		dataObj = dataObj[keyName];
 	}
+	// 最后一级
 	dataObj[patten[patten.length - 1]] = value;
 };
 
@@ -995,7 +997,13 @@ pubfn.toTimeLong = function (dateString){
 	});
  */
 pubfn.getListData2 = function (obj = {}){
-	let { that, listName = "rows", url, dataPreprocess } = obj;
+	let { 
+		that, 
+		listName = "rows", 
+		url, 
+		dataPreprocess, 
+		idKeyName = "_id"
+	} = obj;
 	let { vk, queryForm1 } = that;
 	// 标记为请求中
 	that.loading = true;
@@ -1025,7 +1033,7 @@ pubfn.getListData2 = function (obj = {}){
 						hasMore = false;
 					}
 					// 数据合并
-					list = vk.pubfn.arr_concat(that.data.list, list, "_id");
+					list = vk.pubfn.arr_concat(that.data.list, list, idKeyName);
 				}
 			} else if (queryForm1.pagination.pageIndex == 1) {
 				// 第一页

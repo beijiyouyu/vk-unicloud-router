@@ -2,30 +2,30 @@
 	<view class="vk-u-swiper">
 		<view v-if="datas && datas.list && datas.list.length > 0">
 			<u-swiper 
-				:list="customDatas['list'] || datas['list']"
-				:title="customDatas['title'] || datas['title']"
-				:mode="customDatas['mode'] || datas['mode'] || 'round'"
-				:height="customDatas['height'] || datas['height'] || 300"
-				:indicator-pos="customDatas['indicator-pos'] || datas['indicator-pos'] || 'bottomCenter'"
-				:autoplay="customDatas['autoplay'] || datas['autoplay'] || true"
-				:interval="customDatas['interval'] || datas['interval'] || 2500"
-				:circular="customDatas['circular'] || datas['circular'] || true"
-				:duration="customDatas['duration'] || datas['duration'] || 500"
-				:border-radius="customDatas['border-radius'] || datas['border-radius'] || 8"
-				:title-style="customDatas['title-style'] || datas['title-style']"
-				:img-mode="customDatas['img-mode'] || datas['img-mode'] || 'aspectFill'"
-				:name="customDatas['name'] || datas['name'] || 'image'"
-				:bg-color="customDatas['bg-color'] || datas['bg-color'] || '#f3f4f6'"
-				:current ="customDatas['current'] || datas['current '] || 0"
-				:effect3d="customDatas['effect3d'] || datas['effect3d']"
-				:effect3d-previous-margin="customDatas['effect3d-previous-margin'] || datas['effect3d-previous-margin'] || 50"
+				:list="getValue('list')"
+				:title="getValue('title')"
+				:mode="getValue('mode','round')"
+				:height="getValue('height',300)"
+				:indicator-pos="getValue('indicator-pos','bottomCenter')"
+				:autoplay="getValue('autoplay',true)"
+				:interval="getValue('interval',2500)"
+				:circular="getValue('circular',true)"
+				:duration="getValue('duration',500)"
+				:border-radius="getValue('border-radius',8)"
+				:title-style="getValue('title-style')"
+				:img-mode="getValue('img-mode','aspectFill')"
+				:name="getValue('name','image')"
+				:bg-color="getValue('bg-color','#f3f4f6')"
+				:current ="getValue('current',0)"
+				:effect3d="getValue('effect3d')"
+				:effect3d-previous-margin="getValue('effect3d-previous-margin',50)"
 				
-				@click="click"
-				@change="change"
+				@click="onClick"
+				@change="onChange"
 			></u-swiper>
 		</view>
 		<view v-else 
-			:style="'height: '+(customDatas['height'] || 300)+'rpx;'"
+			:style="'height: '+getValue('height',300)+'rpx;'"
 			style="display: block;"
 			>
 			<u-image width="100%" height="100%" mode="scaleToFill"></u-image>
@@ -62,15 +62,31 @@
 				
 			}
 		},
+		mounted() {
+			
+		},
 		methods: {
 			// 点击轮播图时触发 index：点击了第几张图片，从0开始
-			click(index){
+			onClick(index){
 				this.$emit("click",index);
 			},
 			// 轮播图切换时触发(自动或者手动切换) index：切换到了第几张图片，从0开始
-			change(index){
+			onChange(index){
 				this.$emit("change",index);
-			}
+			},
+			getValue(key, defaultValue){
+				let { customDatas, datas } = this;
+				if(!customDatas) customDatas = {};
+				if(!datas) datas = {};
+				let value = customDatas[key];
+				if(typeof value === "undefined"){
+					value = datas[key];
+					if(typeof value === "undefined"){
+						value = defaultValue;
+					}
+				}
+				return value;
+			},
 		}
 	}
 </script>

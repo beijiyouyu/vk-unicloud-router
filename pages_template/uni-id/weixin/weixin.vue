@@ -29,8 +29,8 @@
 </template>
 
 <script>
-	var that;														// 当前页面对象
-	var vk = getApp().globalData.vk;		// vk依赖
+	var that;		// 当前页面对象
+	var vk;			// vk依赖
 	export default {
 		data() {
 			return {

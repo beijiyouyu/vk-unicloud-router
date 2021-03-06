@@ -1,3 +1,31 @@
+## 1.8.10（2021-03-06）
+###  更新内容
+#### 【优化】`vk.setVuex` 和 `vk.setData` 的赋值逻辑
+```js
+如数据源$data
+{
+	a:1,
+	b:"1",
+};
+执行 vk.setVuex("$data.a.b.c",1); 
+结果：
+{
+	a:{
+		b:{
+			c:1
+		}
+	},
+	b:"1"
+}
+```
+## 1.8.9（2021-03-05）
+### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+###  更新内容
+#### 1、【新增】`vk.openapi.weixin.subscribeMessage.send` 微信小程序发送订阅消息 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3569379&doc_id=975983)
+#### 2、【优化】`vk.baseDao.add` 和 `vk.baseDao.adds` 新增参数 `cancelAddTime` 为`true`,则不会有`_add_time`和`_add_time_str`字段生成
+#### 3、【优化】`vk.baseDao.add` 和 `vk.baseDao.adds` 支持添加自定义 `_id`
+
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 1.8.8（2021-03-04）
 ### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
 ### 更新内容

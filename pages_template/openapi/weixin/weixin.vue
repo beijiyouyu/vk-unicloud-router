@@ -11,12 +11,13 @@
 		</view>
 		<button type="default" @tap="vk.navigateTo('msgSecCheck/msgSecCheck')">文本安全检测</button>
 		<button type="default" @tap="vk.navigateTo('imgSecCheck/imgSecCheck')">图片安全检测</button>
+		<button type="default" @tap="vk.navigateTo('sendMessage/sendMessage')">发送订阅消息</button>
 	</view>
 </template>
 
 <script>
-var that; // 当前页面对象
-var vk = getApp().globalData.vk; // vk依赖
+var that;		// 当前页面对象
+var vk;			// vk依赖
 export default {
 	data() {
 		return {

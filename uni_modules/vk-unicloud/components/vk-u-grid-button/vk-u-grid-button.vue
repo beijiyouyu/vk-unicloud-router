@@ -3,30 +3,33 @@
 		<view v-if="datas && datas.list && datas.list.length > 0">
 			<view class="grid-view">
 				<u-grid 
-					:col="customDatas['col'] || datas['col'] || 4" 
-					:border="customDatas['border'] || datas['border'] || false" 
+					:col="getValue('col', 4)" 
+					:border="getValue('border', false)" 
 					hover-class="vk-hover-class"
 					>
-					<u-grid-item v-for="(item,index) in datas.list" :key="index" @click="click(item)">
+					<u-grid-item v-for="(item,index) in datas.list" :key="index" @click="onClick(item)">
 						<u-badge v-if="item.badge" :count="item.badge" :offset="[20, 20]"></u-badge>
 						<u-image v-if="item['icon'] && item['icon'].indexOf('http') == 0"
 							mode="scaleToFill"
 							:src="item['icon']"
-							:height="customDatas['icon-size'] || datas['icon-size']  || 46"
-							:width="customDatas['icon-size'] || datas['icon-size']   || 46"
+							:height="getValue('icon-size', 46)"
+							:width="getValue('icon-size', 46)"
 							:lazy-load="false"
 							:fade="false"
 						></u-image>
 						<u-icon v-else 
 							:name="item['icon'] || 'photo'" 
-							:size="customDatas['icon-size'] || datas['icon-size']   || 46" 
-							:color="item['icon-color'] || customDatas['icon-color'] || datas['icon-color'] || 'inherit'" 
+							:size="getValue('icon-size', 46)" 
+							:color="item['icon-color'] || getValue('icon-color', 'inherit')" 
 							>
 						</u-icon>
+						
 						<view class="grid-text"
-						:style="'font-size: '+(customDatas['text-size'] || datas['text-size'] || 24)
-						+'rpx;color: '+(item['text-color'] || customDatas['text-color'] || datas['text-color'] || '#000000')+';'
-						+'margin-top:'+(customDatas['text-margin-top'] || datas['text-margin-top'] || 10)+'rpx;'"
+						:style="{
+							fontSize:getValue('text-size', 24) + 'rpx',
+							color:item['text-color'] || getValue('text-color', '#000000'),
+							marginTop:getValue('text-margin-top', 10) + 'rpx'
+						}"
 						>{{item.text}}</view>
 					</u-grid-item>
 				</u-grid>
@@ -64,32 +67,41 @@
 				
 			}
 		},
+		mounted() {
+			
+		},
 		methods: {
 			pageTo(url){
-				uni.navigateTo({
-					url:url,
-					fail:function(){
-						uni.switchTab({
-							url:url,
-							fail:function(){
-								uni.redirectTo({
-									url:url,
-									fail:function(){
-										vk.toast("跳转页面失败");
-									}
-								});
-							}
-						});
-					}
-				});
+				vk.navigateTo(url);
 			},
-			click(item){
+			onClick(item){
 				if(item.page){
 					this.pageTo(item.page);
 				}else{
 					this.$emit("click",item);
 				}
+			},
+			getValue(key, defaultValue){
+				let { customDatas, datas } = this;
+				if(!customDatas) customDatas = {};
+				if(!datas) datas = {};
+				let value = customDatas[key];
+				if(typeof value === "undefined"){
+					value = datas[key];
+					if(typeof value === "undefined"){
+						value = defaultValue;
+					}
+				}
+				return value;
 			}
+		},
+		// 过滤器
+		filters: {
+		
+		},
+		// 计算属性
+		computed: {
+			
 		}
 	}
 </script>
