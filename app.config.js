@@ -1,3 +1,5 @@
+// 引入自定义公共函数
+import myPubFunction from '@/common/function/myPubFunction.js'
 module.exports = {
 	// 开发模式启用调式模式(请求时会打印日志)
 	debug:process.env.NODE_ENV !== 'production',
@@ -49,9 +51,29 @@ module.exports = {
 		// Logo
 		logo: '/static/logo.png',
 	},
+	// 自定义公共函数，myPubFunction内的函数可通过vk.myfn.xxx() 调用
+	myfn: myPubFunction,
+	// 第三方服务配置
+	service:{
+		// 密钥和签名信息 (由于签名的获取比较麻烦,建议初学者使用上传到unicloud的方案,上传到阿里云OSS是给有特殊需求的用户使用)
+		aliyunOSS:{
+			// 密钥和签名信息
+			uploadData:{
+				OSSAccessKeyId: "",
+				policy:"",
+				signature:"",
+			},
+			// oss上传地址
+			action:"https://xxxxxxxx.oss-cn-hangzhou.aliyuncs.com",
+			// 根目录名称
+			dirname:"test",
+			// oss外网访问地址，也可以是阿里云cdn地址
+			host:"https://xxx.xxx.com"
+		}
+	},
 	// 自定义拦截器
 	interceptor:{
-
+	
 		// login:function(obj){
 		// 	let { vk, params, res } = obj;
 		// 	//console.log("params:",params);
@@ -62,7 +84,7 @@ module.exports = {
 		// 	console.log("跳自己的登录页面");
 		// 	// 上方代码可自己修改，写成你自己的逻辑处理。
 		// },
-
+	
 		// fail:function(obj){
 		// 	let { vk, params, res } = obj;
 		// 	//console.log("params:",params);

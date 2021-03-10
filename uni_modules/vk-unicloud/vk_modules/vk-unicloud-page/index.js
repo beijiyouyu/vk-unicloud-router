@@ -8,6 +8,8 @@ import pubfn 							from './libs/function/index'
 import modal 							from './libs/function/modal'
 import navigate 					from './libs/function/vk.navigate'
 import localStorage 			from './libs/function/vk.localStorage'
+import aliyunOSSUtil			from './libs/function/aliyunOSSUtil'
+
 
 import filters 						from './libs/function/vk.filters'
 import mixin 							from './libs/mixin/mixin.js'
@@ -48,6 +50,8 @@ var vk = {
 	localStorage			:		localStorage,
 	// 本地缓存
 	...localStorage,
+	// 阿里云oss
+	aliyunOSSUtil,
 };
 // vk实例初始化
 vk.init = function(obj={}){

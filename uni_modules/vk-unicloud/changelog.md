@@ -1,3 +1,11 @@
+## 1.8.11（2021-03-10）
+### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+###  更新内容
+#### 1、【新增】`vk.callFunctionUtil.uploadFile` 支持前端直传至`阿里云oss` [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3673784&doc_id=975983)
+#### 2、【新增】`app.config.js` 新增 `myfn` 参数，可用来拓展自定义公共函数 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3673929&doc_id=975983)
+
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
 ## 1.8.10（2021-03-06）
 ###  更新内容
 #### 【优化】`vk.setVuex` 和 `vk.setData` 的赋值逻辑

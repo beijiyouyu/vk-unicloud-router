@@ -42,6 +42,8 @@ class CallFunctionUtil {
 			uniIdUserInfoKeyName: "uni_id_user_info",
 			// 缓存键名 - 公共请求参数（请勿修改）
 			requestGlobalParamKeyName: "vk_request_global_param",
+			// 自定义组件配置
+			components:{}
 		}
 		// 保存新的token，并更新userInfo缓存
 		this.saveToken = (res = {}) => {
@@ -252,16 +254,23 @@ class CallFunctionUtil {
 					vk = customConfig[key];
 				}else if(key === "interceptor"){
 					this.interceptor = Object.assign(this.interceptor, customConfig[key]);
+				}else if(key === "myfn"){
+					vk.myfn = customConfig[key];
 				}else if(key === "loginPagePath"){
 					// 兼容老版本
 					this.config.login.url = customConfig[key];
 				}else if(typeof customConfig[key] === "object" && typeof this.config[key] === "object"){
 					this.config[key] = Object.assign(this.config[key], customConfig[key]);
-				}else if(typeof customConfig[key] !== "undefined" && typeof this.config[key] !== "undefined"){
+				}else if(typeof customConfig[key] !== "undefined"){
 					this.config[key] = customConfig[key];
 				}
 			}
 		}
+		// 获取全局默认配置
+		this.getConfig = () => {
+			return this.config;
+		}
+		
 		// 初始化
 		this.init = (obj = {}) => {
 			vk = obj.vk;
@@ -288,8 +297,12 @@ class CallFunctionUtil {
 				noAlert,
 				success,
 				fail,
-				complete
+				complete,
+				type = "unicloud"
 			} = obj;
+			if(type === "aliyun-oss"){
+				return vk.aliyunOSSUtil.uploadFile(obj);
+			}
 			if (title) vk.showLoading(title);
 			if (errorToast) noAlert = true;
 			// 生成文件名
@@ -337,6 +350,7 @@ class CallFunctionUtil {
 						console.log("%c--------【开始】【文件上传】--------",'color: '+colorStr+';font-size: 12px;font-weight: bold;');
 						console.log("【本地文件】: ", Logger.filePath);
 						console.log("【返回数据】: ", Logger.result);
+						console.log("【预览地址】: ", Logger.result.fileID);
 						console.log("【上传耗时】: ", Logger.runTime, "毫秒");
 						console.log("【上传时间】: ", vk.pubfn.timeFormat(Logger.startTime, "yyyy-MM-dd hh:mm:ss"));
 						if(Logger.error) console.error("【error】:", Logger.error);

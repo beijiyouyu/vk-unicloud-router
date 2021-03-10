@@ -1,11 +1,11 @@
 <template>
-	<view class="vk-u-grid-button">
+	<view class="vk-u-grid-button" v-if="getValue('show', true)">
 		<view v-if="datas && datas.list && datas.list.length > 0">
 			<view class="grid-view">
 				<u-grid 
 					:col="getValue('col', 4)" 
 					:border="getValue('border', false)" 
-					hover-class="vk-hover-class"
+					:hover-class="getValue('hover-class', 'vk-hover-class')"
 					>
 					<u-grid-item v-for="(item,index) in datas.list" :key="index" @click="onClick(item)">
 						<u-badge v-if="item.badge" :count="item.badge" :offset="[20, 20]"></u-badge>
@@ -31,6 +31,14 @@
 							marginTop:getValue('text-margin-top', 10) + 'rpx'
 						}"
 						>{{item.text}}</view>
+						
+						<button
+							v-if="item.openType"
+							:open-type="item.openType"
+							plain="true"
+							style="width: 100rpx;height: 140rpx;position: absolute;border: 0;"
+						></button>
+						
 					</u-grid-item>
 				</u-grid>
 			</view>
@@ -72,13 +80,16 @@
 		},
 		methods: {
 			pageTo(url){
-				vk.navigateTo(url);
+				this.vk.navigateTo(url);
 			},
 			onClick(item){
-				if(item.page){
-					this.pageTo(item.page);
+				let that = this;
+				if(item.miniProgram){
+					uni.navigateToMiniProgram(item.miniProgram);
+				}else if(item.page){
+					that.pageTo(item.page);
 				}else{
-					this.$emit("click",item);
+					that.$emit("click",item);
 				}
 			},
 			getValue(key, defaultValue){
