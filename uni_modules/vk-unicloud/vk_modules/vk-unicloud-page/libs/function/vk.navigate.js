@@ -4,7 +4,9 @@
 var config;
 try{
 	config = require('@/app.config.js');
-}catch(e){}
+}catch(e){
+	config = {};
+}
 
 var util = {};
 
@@ -15,7 +17,7 @@ var util = {};
  * vk.navigateTo(url);
  */
 util.navigateTo = function(obj) {
-	var vk = getApp().globalData.vk;
+	let vk = getApp().globalData.vk;
 	if(typeof obj == "string"){
 		let url = obj;
 		obj = {
@@ -34,6 +36,8 @@ util.navigateTo = function(obj) {
 			if(res.needLogin){
 				vk.navigate.originalPage = vk.pubfn.copyObject(obj);
 				obj.url = config.login.url;
+			}else{
+				vk.navigate.originalPage = null;
 			}
 			util._navigateTo(obj);
 		}
@@ -118,8 +122,8 @@ util.switchTab = function(obj) {
  * vk.navigateBack();
  */
 util.navigateBack = function(obj) {
-	var vk = getApp().globalData.vk;
-	if(typeof obj == "string"){
+	let vk = getApp().globalData.vk;
+	if(typeof obj == "number"){
 		let delta = obj;
 		obj = {
 			delta:delta
@@ -153,33 +157,38 @@ util.navigateBack = function(obj) {
  * vk.navigate.originalTo();
  */
 util.originalTo = function() {
-	var vk = getApp().globalData.vk;
+	let vk = getApp().globalData.vk;
 	let originalPage = vk.pubfn.copyObject(vk.navigate.originalPage);
 	vk.navigate.originalPage = null;
 	util.redirectTo(originalPage);
 };
 
-/**
- * 检测是否需要登录(内部方法)
- util.checkNeedLogin({
-	 url:url,
-	 success:function(res){
-		 if(res.needLogin){
 
+
+/**
+ * 检测是否满足条件(内部方法)
+ util.checkWildcardTest({
+	 url:url,
+	 pagesRule:config.checkTokenPages,
+	 success:function(res){
+		 if(res.success){
+				
 		 }
 	 }
  })
  */
-util.checkNeedLogin = function(obj) {
-	var vk = getApp().globalData.vk;
-	let { url, success } = obj;
+util.checkWildcardTest = function(obj) {
+	let vk = getApp().globalData.vk;
+	let { 
+		url, 
+		pagesRule
+	} = obj;
 	// ../ 转成绝对路径
 	url = vk.pubfn.getPageFullPath(url);
-	let needLogin = false;
-	if(config && config.checkTokenPages){
-		let { mode=0, list=[] } = config.checkTokenPages;
+	let key = false;
+	if(vk.pubfn.isNotNull(pagesRule)){
+		let { mode=0, list=[] } = pagesRule;
 		if(mode > 0){
-			let checkTokenKey = false;
 			let regExpKey = false;
 			let path = util.getPagePath(url);
 			for(let i=0; i<list.length; i++){
@@ -193,15 +202,44 @@ util.checkNeedLogin = function(obj) {
 				}
 			}
 			if(mode === 1 && regExpKey){
-				checkTokenKey = true;
+				key = true;
 			}else if(mode === 2 && !regExpKey){
-				checkTokenKey = true;
+				key = true;
 			}
-			if(checkTokenKey){
-				// 本地判断token有效期(联网会浪费性能)
-				if(!vk.callFunctionUtil.checkToken()){
-					needLogin = true;
-				}
+		}
+	}
+	return {
+		url,
+		key
+	};
+};
+
+
+/**
+ * 检测是否需要登录(内部方法)
+ util.checkNeedLogin({
+	 url:url,
+	 success:function(res){
+		 if(res.needLogin){
+
+		 }
+	 }
+ })
+ */
+util.checkNeedLogin = function(obj) {
+	let vk = getApp().globalData.vk;
+	let { url, success } = obj;
+	let needLogin = false;
+	let pagesRule = config.checkTokenPages;
+	if(pagesRule){
+		let res = util.checkWildcardTest({
+			 url,
+			 pagesRule
+		});
+		if(res.key){
+			// 本地判断token有效期(联网会浪费性能)
+			if(!vk.callFunctionUtil.checkToken()){
+				needLogin = true;
 			}
 		}
 	}
@@ -238,5 +276,68 @@ util.paramsInit = function(obj){
 	}
 	return obj;
 }
+
+
+
+/**
+ * 跳转到小程序
+	vk.navigateToMiniProgram({
+		appId: 'appId',
+		path: 'pages/index/index',
+		extraData:{
+			//发送数据携带的参数
+		},
+		success(res) {
+			// 打开成功
+			
+		}
+	})
+ */
+util.navigateToMiniProgram = function(obj) {
+	let vk = getApp().globalData.vk;
+	// #ifdef H5
+	vk.toast("不支持打开小程序","none");
+	// #endif
+	
+	// #ifndef H5
+	uni.navigateToMiniProgram(obj);
+	// #endif
+};
+
+
+/**
+ * 检测是否可以分享(内部方法)
+ util.checkAllowShare({
+	 url:url,
+ });
+ */
+util.checkAllowShare = function(obj) {
+	let vk = getApp().globalData.vk;
+	let { url, success } = obj;
+	let pagesRule = config.checkSharePages || {};
+	if(pagesRule && pagesRule.mode > 0){
+		let res = util.checkWildcardTest({
+			 url,
+			 pagesRule
+		});
+		// #ifdef MP
+		let menus = pagesRule.menus || ['shareAppMessage', 'shareTimeline'];
+		if(res.key){
+			//console.log("允许分享");
+			uni.showShareMenu({
+				withShareTicket: false,
+				menus
+			});
+		}else{
+			//console.log("禁止分享");
+			uni.hideShareMenu({
+				menus
+			})
+		}
+		// #endif
+	}
+};
+
+ 
 
 export default util;

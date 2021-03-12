@@ -16,7 +16,7 @@ import mixin 							from './libs/mixin/mixin.js'
 import initPermission			from './libs/function/permission'
 import storeMixin 				from './libs/store/mixin/mixin'
 import initGlobalError		from './libs/store/libs/error'
-
+import consoleLog					from './libs/install/console.log'
 
 var vk = {
 	userCenter,
@@ -46,6 +46,8 @@ var vk = {
 	switchTab					:		navigate.switchTab,
 	// 页面返回
 	navigateBack			:		navigate.navigateBack,
+	// 跳转到小程序
+	navigateToMiniProgram : navigate.navigateToMiniProgram,
 	// 本地缓存
 	localStorage			:		localStorage,
 	// 本地缓存
@@ -72,6 +74,8 @@ vk.init = function(obj={}){
 	}
 	// 自定义云函数路由配置
 	vk.callFunctionUtil.setConfig(config);
+	// 重写 console.log
+	Vue.use(consoleLog);
 };
 // 加载拓展功能
 vk.use = function(obj, util){
@@ -98,6 +102,8 @@ const install = Vue => {
 	// 将vk挂载到Vue实例
 	Vue.prototype.vk = vk;
 	initPermission(Vue);
+	// 将vk挂载到uni对象
+	uni.vk = Vue.prototype.vk;
 }
 
 export default {

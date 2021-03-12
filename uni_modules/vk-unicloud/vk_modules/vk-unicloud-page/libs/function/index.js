@@ -1338,6 +1338,15 @@ pubfn.getCurrentPage = function() {
 	return res;
 };
 /**
+ * 获取当前页面路由
+ * vk.pubfn.getCurrentPageRoute();
+ */
+pubfn.getCurrentPageRoute = function() {
+	let pages = getCurrentPages();
+	let page = pages[pages.length - 1];
+	return page.route;
+};
+/**
  * 文件转base64
 vk.pubfn.fileToBase64({
 	file:res.tempFiles[0],

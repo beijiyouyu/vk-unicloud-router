@@ -84,8 +84,9 @@
 			},
 			onClick(item){
 				let that = this;
+				let { vk } = that;
 				if(item.miniProgram){
-					uni.navigateToMiniProgram(item.miniProgram);
+					vk.navigateToMiniProgram(item.miniProgram);
 				}else if(item.page){
 					that.pageTo(item.page);
 				}else{

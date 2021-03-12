@@ -1,7 +1,7 @@
 ### uniCloud云函数路由框架研究Q群:22466457 如有问题或建议可以在群内讨论。
 ### 插件名称：`vk-unicloud-router`
 ### 作者：VK
-### 更新时间：2021-03-05
+### 更新时间：2021-03-12
 
 ## 序
 ##### 如果你热爱编程，想快速入门云开发，欢迎使用`vk-cloud-router`开发框架
@@ -9,6 +9,7 @@
 ##### 框架内置了众多API、工具包，为你的业务扫平障碍。使你的项目刚起步进度就是50%（微信登录、短信、验证码、缓存、生成小程序码等等）
 ##### 从此你又get一个新技能，只需用js，轻松搞定前后台整体业务。
 ##### 框架地址：`https://ext.dcloud.net.cn/plugin?id=2204` [点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+##### 框架文档：`https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912167&doc_id=975983` [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912167&doc_id=975983)
 ##### 框架学习Q群：22466457 欢迎萌新和大佬来使用和共同改进框架
 
 ## 主要功能 以及 对开发者的价值
@@ -44,31 +45,33 @@
  
 #### 8、封装`uni.callFunction` 和 `uni.request` 使之合二为一 通过this.vk.callFunction 调用
 
-#### 9、`vk.baseDao` 数据库API，使小白也能轻松上手对数据库的调用。`1.7.0`起支持`数据库事务`
+#### 9、`vk.baseDao` 数据库API，使小白也能轻松上手对数据库的调用。`1.7.0`起支持`数据库事务` [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3065608&doc_id=975983)
 
-#### 10、集成`uview-ui` UI框架（感谢`uview-ui`作者）。
+#### 10、`vk.baseDao.selects` 数据库万能连表查询API [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3028633&doc_id=975983)
 
-#### 11、前后端一体动态数据组件
+#### 11、集成`uview-ui` UI框架（感谢`uview-ui`作者）。
 
-#### 12、`商品SKU选择器组件`（打造uni插件市场功能最全的SKU选择器组件）
+#### 12、前后端一体动态数据组件
 
-#### 13、对 `Vuex` 进行了深度封装（支持持久化），现在可以很方便的使用Vuex进行读取和储存。
+#### 13、`商品SKU选择器组件`（打造uni插件市场功能最全的SKU选择器组件）
 
-#### 14、自定义过滤器（在业务云函数执行之前(或之后)，统一拦截，进行过滤后再放行，支持设置多个过滤器，并按指定顺序执行）
+#### 14、对 `Vuex` 进行了深度封装（支持持久化），现在可以很方便的使用Vuex进行读取和储存。[点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3654596&doc_id=975983)
 
-#### 15、【1.6.5 新增】`vk.localStorage` 封装本地缓存的curd，同时具有监听缓存被更新和被删除的功能。[点击查看用法](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3415898&doc_id=975983)
+#### 15、自定义过滤器（在业务云函数执行之前(或之后)，统一拦截，进行过滤后再放行，支持设置多个过滤器，并按指定顺序执行）
 
-#### 16、【1.6.5 新增】美化云函数请求过程中的日志排版，使请求日志一目了然。
+#### 16、【1.6.5 新增】`vk.localStorage` 封装本地缓存的curd，同时具有监听缓存被更新和被删除的功能。[点击查看用法](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3415898&doc_id=975983)
 
-#### 17、【1.7.0 新增】可以`强制关闭`云端服务（适用于需要临时关闭后端服务的情况，如腾讯云迁移数据到阿里云时需要先关闭服务，否则迁移过程中会有新数据产生）
+#### 17、【1.6.5 新增】美化云函数请求过程中的日志排版，使请求日志一目了然。
 
-#### 18、【1.7.0 新增】全局数据缓存API，现在可以很方便的在云函数中使用缓存。 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3442025&doc_id=975983)
+#### 18、【1.7.0 新增】可以`强制关闭`云端服务（适用于需要临时关闭后端服务的情况，如腾讯云迁移数据到阿里云时需要先关闭服务，否则迁移过程中会有新数据产生）
 
-#### 19、【1.8.0 新增】微信小程序服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3569379&doc_id=975983)
+#### 19、【1.7.0 新增】全局数据缓存API，现在可以很方便的在云函数中使用缓存。 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3442025&doc_id=975983)
 
-#### 20、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+#### 20、【1.8.0 新增】微信小程序服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3569379&doc_id=975983)
 
-#### 21、其他好处…
+#### 21、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+
+#### 22、其他好处…
 
 ##### 插件首页体验地址
 
@@ -272,7 +275,7 @@ this.vk.callFunction({
 [点击查看如何『切换正式环境和开发环境』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912182&doc_id=975983)
 
 ## 本插件更新步骤
-[点击查看本插件『更新步骤』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912183&doc_id=975983)
+[点击查看本插件『更新步骤』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3671081&doc_id=975983)
 
 ## uniCloud云函数路由框架研究Q群:`22466457` 如有问题或建议可以在群内讨论。
 ## 你也可以在评论区发布留言交流心得。

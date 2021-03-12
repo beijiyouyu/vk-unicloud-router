@@ -46,6 +46,23 @@ module.exports = {
 			"/pages/error/*"
 		]
 	},
+	// 需要检查是否可以分享的页面列表(仅小程序有效)
+	checkSharePages:{
+		/**
+		 * mode = 0 不做处理
+		 * mode = 1 代表list内的页面可以被分享
+		 * mode = 2 代表list内的页面不可以被分享
+		 * 注意: list内是通配符表达式,非正则表达式
+		 */
+		mode:0,
+		// ['shareAppMessage', 'shareTimeline'],
+		menus:['shareAppMessage'],
+		list:[
+			"/pages/index/*",
+			"/pages/goods/*",
+			"/pages_template/*",
+		]
+	},
 	// 静态文件的资源URL地址
 	staticUrl:{
 		// Logo
