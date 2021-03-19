@@ -23,13 +23,27 @@
 		onLoad(options) {
 			that = this;
 			vk = that.vk;
+			that.init(options);
 		},
 		methods: {
+			init(options){
+				// 预授权
+				uni.preLogin({
+					provider: 'univerify',
+					success(){
+
+					},
+					fail(res){
+						console.log(res);
+					}
+				})
+			},
 			loginByUniverify() {
 				vk.userCenter.loginByUniverify({
 					// 更多配置请查看 https://uniapp.dcloud.io/univerify
 					univerifyStyle: {
 						"fullScreen": true,									// 是否全屏显示(hbx3.1.5起支持全屏)，true表示全屏模式，false表示非全屏模式，默认值为false。
+						"backgroundColor": "#f5f5f5",				// 授权页面背景颜色，默认值：#ffffff
 						"authButton": {
 							"normalColor": "#19be6b",					// 授权按钮正常状态背景颜色 默认值：#3479f5
 							"highlightColor": "#18b566",			// 授权按钮按下状态背景颜色 默认值：#2861c5（仅ios支持）
@@ -38,11 +52,12 @@
 							"title": "本机号码一键登录"					// 授权按钮文案 默认值：“本机号码一键登录”
 						},
 						"privacyTerms":{
+							"suffix": "使用本机号码登录", 		// 条款后的文案 默认值：“并使用本机号码登录”
 							"termsColor":"#555555"
 						}
 					},
 					data:{
-						
+
 					},
 					success:function(data){
 						uni.closeAuthView();

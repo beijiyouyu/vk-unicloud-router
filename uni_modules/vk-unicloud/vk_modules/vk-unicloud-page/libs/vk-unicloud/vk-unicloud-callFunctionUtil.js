@@ -289,7 +289,7 @@ class CallFunctionUtil {
 		this.getConfig = () => {
 			return this.config;
 		}
-		
+
 		// 初始化
 		this.init = (obj = {}) => {
 			vk = obj.vk;
@@ -308,6 +308,7 @@ class CallFunctionUtil {
 			let that = this;
 			let config = that.config;
 			let {
+				file,
 				filePath,
 				cloudPath,
 				fileType = "image",
@@ -324,6 +325,7 @@ class CallFunctionUtil {
 			}
 			if (title) vk.showLoading(title);
 			if (errorToast) noAlert = true;
+			if(file && file.path) filePath = file.path;
 			// 生成文件名
 			if (!cloudPath) cloudPath = this.createFileName(obj);
 			let Logger = {};
@@ -658,34 +660,24 @@ class CallFunctionUtil {
 		}
 		if (typeof complete == "function") complete();
 	}
-
-	// 随机数
-	random_string(len = 32) {
-		let chars = 'abcdefhijkmnprstwxyz0123456789';
-		let maxPos = chars.length;
-		let pwd = "";
-		for (let i = 0; i < len; i++) {
-			pwd += chars.charAt(Math.floor(Math.random() * maxPos));
-		}
-		return pwd;
-	}
 	// 生成文件名
 	createFileName(obj = {}) {
-		let index = obj.index || 0;
+		let {
+			file,
+			index = 0
+		} = obj;
 		let oldName = index + ".png";
+		if(file && file.name) oldName = file.name;
 		let date = new Date();
-		let year = date.getFullYear();
-		let month = date.getMonth() + 1;
-		if (month < 10) month = "0" + month;
-		let day = date.getDate();
-		if (day < 10) day = "0" + day;
-		let dateYMD = year + "/" + month + "/" + day; // YYYY/MM/DD
-		let dateTime = date.getTime(); // 时间戳
-		let suijishu = this.random_string(32); // 32位随机数
+		let dateYYYYMMDD = vk.pubfn.timeFormat(date,"yyyy/MM/dd");
+		let dateTime = date.getTime().toString(); // 时间戳
+		// 时间戳后8位
+		let dateTimeEnd8 = dateTime.substring(dateTime.length - 8,dateTime.length);
+		let randomNumber = vk.pubfn.random(8);	 // 8位随机数
 		// 文件路径
-		let filePath = dateYMD + "/";
+		let filePath = dateYYYYMMDD + "/";
 		// 文件名  = 时间戳  - 随机数32位  + 后缀名
-		let fileNickName = dateTime + "-" + suijishu + "-" + oldName;
+		let fileNickName = dateTimeEnd8 + "-" + randomNumber + "-" + oldName;
 		// 文件名全称(包含文件路径) = 外网域名  + 文件路径  + 文件名
 		let fileFullName = filePath + fileNickName;
 		return fileFullName;

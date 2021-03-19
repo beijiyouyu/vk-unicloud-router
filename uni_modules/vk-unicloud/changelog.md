@@ -1,3 +1,10 @@
+## 1.8.15（2021-03-19）
+###  更新内容
+#### 1、【修复】微信小程序服务端API在保存`token`时，缓存时间错误的问题。
+#### 2、【修复】`vk.callFunctionUtil.uploadFile` 上传视频返回`.png`的问题 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3673784&doc_id=975983)
+
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
 ## 1.8.14（2021-03-19）
 ###  更新内容
 #### 【新增】APP本机号码一键登录API `vk.userCenter.loginByUniverify`

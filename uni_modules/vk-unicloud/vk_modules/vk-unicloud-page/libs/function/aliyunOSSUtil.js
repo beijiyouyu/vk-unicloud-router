@@ -3,7 +3,7 @@
  */
 var aliyunOSSUtil = {};
 var counterNum = 0;
-				
+
 /**
  * 上传至阿里云oss
 vk.callFunctionUtil.uploadFile({
@@ -16,22 +16,23 @@ vk.callFunctionUtil.uploadFile({
 		if (res.progress > 0) {
 			if(list[index]){
 				list[index].progress = res.progress;
-				
+
 			}
 		}
 	},
 	success:function(res){
 		// 上传成功
-		
+
 	},
 	fail:function(res){
 		// 上传失败
-	
+
 	}
 });
  */
 aliyunOSSUtil.uploadFile = function(obj) {
 	let {
+		file,
 		filePath,
 		name = "file",
 		header = {
@@ -39,6 +40,8 @@ aliyunOSSUtil.uploadFile = function(obj) {
 		},
 		index = 0,
 	} = obj;
+	if(file && file.path) filePath = file.path;
+
 	let vk = getApp().globalData.vk;
 	let fileNameObj = createFileName(index);
 	let aliyunOSS = getConfig();
@@ -134,13 +137,18 @@ function getConfig (){
 	return configData;
 }
 // 生成文件名
-function createFileName(index){
+function createFileName(obj = {}){
+	let {
+		file,
+		index = 0
+	} = obj;
 	let vk = getApp().globalData.vk;
 	let aliyunOSS = getConfig();
 	let dirname = aliyunOSS.dirname;
 	let host = aliyunOSS.host;
 	let fileObj = {};
 	let oldName = index+".png";
+	if(file && file.name) oldName = file.name;
 	let date = new Date();
 	let dateYYYYMMDD = vk.pubfn.timeFormat(date,"yyyy/MM/dd");
 	let dateTime = date.getTime().toString(); // 时间戳
