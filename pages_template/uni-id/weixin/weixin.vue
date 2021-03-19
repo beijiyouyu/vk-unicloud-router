@@ -6,7 +6,7 @@
 		<view class="tips">静默授权，无弹窗。</view>
 		<button type="default" @tap="code2SessionWeixin">获取微信openid</button>
 		<view class="tips">静默授权，无弹窗。</view>
-		<button type="default" @getuserinfo="setUserInfo" open-type="getUserInfo">获取并设置微信用户昵称头像</button>
+		<button type="default" @click="setUserInfo">获取并设置微信用户昵称头像</button>
 		<view class="tips">需要授权，有弹窗。</view>
 		<button type="default" @tap="bindWeixin">绑定微信</button>
 		<button type="default" @tap="unbindWeixin">解绑微信</button>
@@ -34,7 +34,7 @@
 	export default {
 		data() {
 			return {
-				hasWeixinAuth: false,
+				hasWeixinAuth: true,
 				sessionKey:"",
 				image:""
 			}
@@ -46,6 +46,7 @@
 		},
 		methods: {
 			init(){
+				// #ifdef MP-WEIXIN
 				vk.userCenter.code2SessionWeixin({
 					data:{
 						needCache:true
@@ -54,6 +55,7 @@
 						that.sessionKey = data.sessionKey;
 					},
 				});
+				// #endif
 			},
 			// 微信登陆
 			loginByWeixin(){
@@ -71,18 +73,27 @@
 				});
 			},
 			// 设置用户昵称头像
-			setUserInfo(res){
-				let rawData = JSON.parse(res.detail.rawData);
-				vk.userCenter.updateUser({
-					data:{
-						nickname : rawData.nickName,
-						avatar : rawData.avatarUrl,
-						gender : rawData.gender
-					},
-					success:function(data){
-						vk.alert("设置成功");
-					}
-				});
+			setUserInfo(){
+				try {
+					wx.getUserProfile({
+						desc:"用于快速设置昵称头像",
+						success:function(res){
+							let { userInfo } = res;
+							vk.userCenter.updateUser({
+								data:{
+									nickname : userInfo.nickName,
+									avatar : userInfo.avatarUrl,
+									gender : userInfo.gender
+								},
+								success:function(data){
+									vk.alert("设置成功");
+								}
+							});
+						}
+					});
+				}catch(err){
+					vk.alert("您的微信版本过低，请先更新微信!");
+				}
 			},
 			// 绑定微信
 			bindWeixin(){

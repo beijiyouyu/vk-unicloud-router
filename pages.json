@@ -21,12 +21,10 @@
 			"root": "pages_template",
 			"pages": [
 				{
-					"path": "db-test/db-test",
-					"style": {}
+					"path": "db-test/db-test"
 				},
 				{
-					"path": "db-test/list/list",
-					"style": {}
+					"path": "db-test/list/list"
 				},
 				{
 					"path": "uni-id/index/index",
@@ -35,28 +33,25 @@
 					}
 				},
 				{
-					"path": "uni-id/password/password",
-					"style": {}
+					"path": "uni-id/password/password"
 				},
 				{
-					"path": "uni-id/mobile/mobile",
-					"style": {}
+					"path": "uni-id/mobile/mobile"
 				},
 				{
-					"path": "uni-id/weixin/weixin",
-					"style": {}
+					"path": "uni-id/univerify/univerify"
 				},
 				{
-					"path": "uni-id/alipay/alipay",
-					"style": {}
+					"path": "uni-id/weixin/weixin"
 				},
 				{
-					"path": "uni-id/util/util",
-					"style": {}
+					"path": "uni-id/alipay/alipay"
 				},
 				{
-					"path": "uni-id/email/email",
-					"style": {}
+					"path": "uni-id/util/util"
+				},
+				{
+					"path": "uni-id/email/email"
 				},
 				{
 					"path": "uni-id/login/index/index",

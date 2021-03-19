@@ -97,8 +97,8 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var vk;												// 自定义函数集
+	var that; 										// 当前页面对象
+	var vk;												// vk依赖
 	export default {
 		name: 'vk-u-goods-sku-popup',
 		props: {

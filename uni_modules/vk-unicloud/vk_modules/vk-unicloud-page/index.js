@@ -17,6 +17,7 @@ import initPermission			from './libs/function/permission'
 import storeMixin 				from './libs/store/mixin/mixin'
 import initGlobalError		from './libs/store/libs/error'
 import consoleLog					from './libs/install/console.log'
+import updateManager 			from './libs/function/updateManager.js'
 
 var vk = {
 	userCenter,
@@ -54,6 +55,8 @@ var vk = {
 	...localStorage,
 	// 阿里云oss
 	aliyunOSSUtil,
+	// 更新管理器
+	updateManager
 };
 // vk实例初始化
 vk.init = function(obj={}){

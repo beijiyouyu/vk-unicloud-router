@@ -36,7 +36,13 @@ let tree = vk.pubfn.arrayToTree(arrayData,{
 
 util.arrayToTree = function(originalArrayData,treeProps) {
 	let arrayData = deepClone(originalArrayData);
-	let { id="_id", parent_id="parent_id", children = "children", deleteParentId = true, need_field } = treeProps;
+	let {
+		id="_id",
+		parent_id="parent_id",
+		children = "children",
+		deleteParentId = false,
+		need_field
+	} = treeProps;
 	let result = [];
 	let temp = {};
 	for (let i = 0; i < arrayData.length; i++) {

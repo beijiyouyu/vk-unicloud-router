@@ -21,12 +21,7 @@ export default {
 		if(!obj.loading && !obj.title) obj.title = "注册中...";
 		return callFunction({
 			...obj,
-			url: 'user/pub/register',
-			success(res){
-				// 前端已无需手动保存token，此处仅为兼容旧版本需要。
-				saveToken(res);
-				if(typeof obj.success == "function") obj.success(res);
-			}
+			url: 'user/pub/register'
 		});
 	},
 	/**
@@ -44,12 +39,7 @@ export default {
 		if(!obj.loading && !obj.title) obj.title = "登录中...";
 		return callFunction({
 			...obj,
-			url: 'user/pub/login',
-			success(res){
-				// 前端已无需手动保存token，此处仅为兼容旧版本需要。
-				saveToken(res);
-				if(typeof obj.success == "function") obj.success(res);
-			}
+			url: 'user/pub/login'
 		});
 	},
 	/**
@@ -190,12 +180,7 @@ export default {
 		if(!obj.loading && !obj.title) obj.title = "登录中...";
 		return callFunction({
 			...obj,
-			url: 'user/pub/loginBySms',
-			success(res){
-				// 前端已无需手动保存token，此处仅为兼容旧版本需要。
-				saveToken(res);
-				if(typeof obj.success == "function") obj.success(res);
-			}
+			url: 'user/pub/loginBySms'
 		});
 	},
 	/**
@@ -208,6 +193,33 @@ export default {
 			url: 'user/pub/sendSmsCode',
 		});
 	},
+	/**
+	 * APP端 手机一键登录
+	 */
+	loginByUniverify(obj = {}) {
+		//if(!obj.loading && !obj.title) obj.title = "登录中...";
+		if(typeof obj.noAlert === "undefined") obj.noAlert = false;
+		// #ifdef APP-PLUS
+		uni.login({
+			provider: 'univerify',
+			univerifyStyle: obj.univerifyStyle,
+			success(res){
+				let dataJson = Object.assign(obj.data, res.authResult);
+				callFunction({
+					...obj,
+					data:dataJson,
+					url: 'user/pub/loginByUniverify',
+				});
+			},
+			fail:obj.fail,
+			complete:obj.complete,
+		});
+		// #endif
+		// #ifndef APP-PLUS
+		uni.vk.toast("请在APP中使用本机号码一键登录","none");
+		// #endif
+	},
+	
 	/**
 	 * 绑定邮箱
 	 * data 请求参数 说明
@@ -249,12 +261,7 @@ export default {
 		if(!obj.loading && !obj.title) obj.title = "登录中...";
 		return callFunction({
 			...obj,
-			url: 'user/pub/loginByEmail',
-			success(res){
-				// 前端已无需手动保存token，此处仅为兼容旧版本需要。
-				saveToken(res);
-				if(typeof obj.success == "function") obj.success(res);
-			}
+			url: 'user/pub/loginByEmail'
 		});
 	},
 	/**
@@ -322,11 +329,6 @@ export default {
 				data:{
 					...data,
 					code:code
-				},
-				success(res){
-					// 前端已无需手动保存token，此处仅为兼容旧版本需要。
-					saveToken(res);
-					if(typeof obj.success == "function") obj.success(res);
 				}
 			});
 		});
@@ -394,12 +396,7 @@ export default {
 		if(!obj.loading && !obj.title) obj.title = "登录中...";
 		return callFunction({
 			...obj,
-			url: 'user/pub/loginByWeixinPhoneNumber',
-			success(res){
-				// 前端已无需手动保存token，此处仅为兼容旧版本需要。
-				saveToken(res);
-				if(typeof obj.success == "function") obj.success(res);
-			}
+			url: 'user/pub/loginByWeixinPhoneNumber'
 		});
 	},
 	/**
@@ -452,11 +449,6 @@ export default {
 				data:{
 					...data,
 					code:code
-				},
-				success(res){
-					// 前端已无需手动保存token，此处仅为兼容旧版本需要。
-					saveToken(res);
-					if(typeof obj.success == "function") obj.success(res);
 				}
 			});
 		});

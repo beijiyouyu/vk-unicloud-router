@@ -354,7 +354,8 @@ pubfn.isNullOne = function (...strS) {
 };
 /**
  * 检测整个对象是否没有一个属性是空值,如果有空值,则返回首个是空值的属性名
- * vk.pubfn.isNullOneByObject({ value1,value2,value3 });
+ let nullKey = vk.pubfn.isNullOneByObject({ value1,value2,value3 });
+ if(nullKey) return { code : -1, msg : `${nullKey}不能为空` };
  */
 pubfn.isNullOneByObject = function (obj) {
 	let key;
@@ -1400,6 +1401,19 @@ pubfn.fileToBase64 = function(obj={}) {
 		// resolve(base64);
 		// #endif
 	});
+};
+
+
+/**
+ * 小程序订阅消息 前端无需再写 #ifdef MP-WEIXIN
+ vk.pubfn.requestSubscribeMessage({
+	 tmplIds: ['NcspDBQpH6CGHos3mMADrrQpEv2gHmtfOPa5KTLs92E']
+ });
+ */
+pubfn.requestSubscribeMessage = function(obj) {
+	// #ifdef MP-WEIXIN
+	return uni.requestSubscribeMessage(obj);
+	// #endif
 };
 
 // 前端专属结束 -----------------------------------------------------------

@@ -41,8 +41,7 @@
 
 <script>
 	var that;											// 当前页面对象
-	var app = getApp();						// 可获取全局配置
-	var vk;												// 自定义函数集
+	var vk;												// vk依赖
 	var weixinAuthService;
 	export default {
 		data() {
@@ -68,7 +67,7 @@
 		methods: {
 			// 页面数据初始化函数
 			init(options){
-				that.getList();
+				that.getList(true);
 			},
 			pageTo(url){
 				vk.navigateTo(url);
@@ -146,10 +145,10 @@
 					}
 				});
 			},
-			getList(){
+			getList(loading){
 				vk.callFunction({
 					url: 'template/db_api/pub/select',
-					title:'请求中...',
+					title : loading ? "请求中..." : "",
 					data:{},
 					success(data) {
 						that.data = data;

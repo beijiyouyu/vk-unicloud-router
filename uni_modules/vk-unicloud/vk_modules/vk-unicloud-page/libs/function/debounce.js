@@ -1,10 +1,15 @@
 let timeoutArr = [];
 /**
+ * 防抖函数
  * 防抖原理：一定时间内，只有最后一次或第一次调用,回调函数才会执行
  * @param {Function}  fn 要执行的回调函数 
  * @param {Number}    time 延时的时间
  * @param {Boolean}   isImmediate 是否立即执行 默认true
+ * @param {String} timeoutName 定时器ID
  * @return null
+vk.pubfn.debounce(function() {
+	
+}, 1000);
  */
 function debounce(fn, time = 500, isImmediate = true, timeoutName = "default") {
 	// 清除定时器

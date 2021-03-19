@@ -22,11 +22,18 @@ module.exports = {
 		let { uid } = data;
 		let res = { code : 0, msg : '' };
 		// 业务逻辑开始----------------------------------------------------------- 
-		// 用户登录(账号+密码)
-		res = await uniID.code2SessionWeixin(data);
+		let { code, platform, appid } = data;
+		if(platform === "mp-weixin"){
+			res = await vk.openapi.weixin.auth.code2Session({
+				appid,
+				js_code : code
+			});
+		}else{
+			res = await uniID.code2SessionWeixin(data);
+		}
 		if(res.code === 0){
 			let { needCache } = data;
-			if(needCache){
+			if(needCache && platform === "mp-weixin"){
 				// 缓存5分钟，可以用于配合loginByWeixinPhoneNumber使用，达到效果为：绑定手机号+微信
 				await vk.globalDataCache.set(`sys-weixin-session2openid-${res.sessionKey}`, res, 60*5);
 			}

@@ -2,20 +2,7 @@
 	import config from '@/app.config.js'
 	export default {
 		methods: {
-			// 监听本地缓存
-			watchLocalStorage: function() {
-				let that = this;
-				let { vk } = that;
-				vk.localStorage.watch = function(obj){
-					let { type, key, data } = obj;
-					if(key === "uni_id_user_info"){
-						switch(type) {
-							case "set": vk.setVuex('$user.userInfo', data); break;
-							case "remove": vk.setVuex('$user.userInfo', {}); break;
-						} 
-					}
-				}
-			}
+
 		},
 		// 监听 - 页面404
 		onPageNotFound:function(e) {
@@ -26,7 +13,6 @@
 		onLaunch: function() {
 			if(config.debug) console.log('App Launch')
 			let that = this;
-			that.watchLocalStorage();
 		},
 		onShow: function() {
 			if(config.debug) console.log('App Show')

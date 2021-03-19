@@ -13,8 +13,7 @@
 
 <script>
 	var that;											// 当前页面对象
-	var app = getApp();						// 可获取全局配置
-	var vk;												// 自定义函数集
+	var vk;												// vk依赖
 	export default {
 		data() {
 			// 页面数据变量

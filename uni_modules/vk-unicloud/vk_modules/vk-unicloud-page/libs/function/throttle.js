@@ -1,11 +1,16 @@
 let timeoutArr = [];
 let flagArr = [];
 /**
+ * 节流函数
  * 节流原理：在一定时间内，只能触发一次
  * @param {Function} fn 要执行的回调函数 
  * @param {Number} time 延时的时间
  * @param {Boolean} isImmediate 是否立即执行
+ * @param {String} timeoutName 定时器ID
  * @return null
+vk.pubfn.throttle(function() {
+	
+}, 1000);
  */
 function throttle(fn, time = 500, isImmediate = true, timeoutName = "default") {
 	if(!timeoutArr[timeoutName]) timeoutArr[timeoutName] = null;

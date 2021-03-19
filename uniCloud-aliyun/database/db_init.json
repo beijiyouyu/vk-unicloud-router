@@ -199,6 +199,27 @@
 			}
 		]
 	},
+	"opendb-admin-menus":{
+		"data": [],
+		"index": [
+			{
+				"IndexName": "menu_id",
+				"MgoKeySchema": {"MgoIndexKeys": [{"Name": "menu_id","Direction": "1"}],"MgoIsUnique": true}
+			},
+			{
+				"IndexName": "parent_id",
+				"MgoKeySchema": {"MgoIndexKeys": [{"Name": "parent_id","Direction": "1"}],"MgoIsUnique": false}
+			},
+			{
+				"IndexName": "url",
+				"MgoKeySchema": {"MgoIndexKeys": [{"Name": "url","Direction": "1"}],"MgoIsUnique": false}
+			},
+			{
+				"IndexName": "sort",
+				"MgoKeySchema": {"MgoIndexKeys": [{"Name": "sort","Direction": "1"}],"MgoIsUnique": false}
+			}
+		]
+	},
 	"opendb-global-data":{
 		"data":[
 

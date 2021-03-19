@@ -10,10 +10,10 @@
 		<button type="default" @tap="pageTo('../password/password')">用户名和密码</button>
 		<button type="default" @tap="pageTo('../mobile/mobile')">手机号和验证码</button>
 		<button type="default" @tap="pageTo('../email/email')">邮箱与验证码</button>
-		<!-- #ifdef MP-WEIXIN -->
+		<!-- #ifdef MP-WEIXIN || APP-PLUS -->
 		<button type="default" @tap="pageTo('../weixin/weixin')">微信登录</button>
 		<!-- #endif -->
-		<!-- #ifdef MP-ALIPAY -->
+		<!-- #ifdef MP-ALIPAY || APP-PLUS -->
 		<button type="default" @tap="pageTo('../alipay/alipay')">支付宝登录</button>
 		<!-- #endif -->
 		<button type="default" @tap="vk.navigateTo('../../openapi/weixin/weixin')">微信小程序API</button>
@@ -21,6 +21,8 @@
 		<view style="margin-bottom: 20rpx;">插件版本1.2.2 新增 数据库API调用方法</view>
 		<button type="default" @tap="pageTo('../../db-test/db-test')">数据库API调用方法</button>
 		<button type="default" @tap="pageTo('../util/util')">通用方法</button>
+		<view style="margin-bottom: 20rpx;">插件版本1.8.7 新增 APP手机一键登录</view>
+		<button type="default" @tap="pageTo('../univerify/univerify')">手机一键登录</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.4.4 新增 Vuex状态管理</view>
 		<button type="default" @tap="pageTo('../../vuex/vuex')">Vuex状态管理演示示例</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.4.3 新增 云函数临时缓存</view>
@@ -38,8 +40,7 @@
 
 <script>
 	var that;											// 当前页面对象
-	var app = getApp();						// 可获取全局配置
-	var vk;												// 自定义函数集
+	var vk;												// vk依赖
 	export default {
 		data() {
 			return {
@@ -52,9 +53,7 @@
 		},
 		methods: {
 			pageTo(url){
-				uni.navigateTo({
-				   url: url
-				});
+				vk.navigateTo(url);
 			}
 		}
 	}

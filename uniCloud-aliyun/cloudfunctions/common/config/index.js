@@ -38,12 +38,19 @@ module.exports = {
 			}
 		},
 		"service": {
+			// unicloud短信
 			"sms": {
 				"name": "重要",										// 应用名称，对应短信模版的name
 				"codeExpiresIn": 180,							// 验证码过期时间，单位为秒，注意一定要是60的整数倍
 				"smsKey": "你的smsKey",						// 短信密钥key，开通短信服务处可以看到 https://dev.dcloud.net.cn/uniSms
 				"smsSecret": "你的smsSecret",			// 短信密钥secret，开通短信服务处可以看到 https://dev.dcloud.net.cn/uniSms
 				"templateId":"你的短信模板ID"				// 短信模板ID
+			},
+			// 一键登录
+			"univerify": {
+				"appid":"your appid",							// uniapp的appid
+				"apiKey": "your apiKey",					// 一键登录的apiKey
+				"apiSecret": "your apiSecret"			// 一键登录的apiSecret
 			}
 		}
 	},
@@ -95,6 +102,23 @@ module.exports = {
 			"unicloud":{
 				"maxLimit" : 500,	// 最大limit限制(目前腾讯云最大1000,阿里云最大500)
 				"cancelAddTime" : false,// 取消vk.baseDao.add 时自动生成_add_time和_add_time_str
+			}
+		},
+		// 其他小程序的密钥 当需要多个小程序绑定同一服务空间,并调用小程序服务端API时需要填写 暂只支持微信小程序
+		"oauth":{
+			// 微信小程序
+			"weixin":{
+				// 密钥列表
+				"list":[
+					{
+						"appid" : "",
+						"appsecret" : ""
+					},
+					{
+						"appid" : "",
+						"appsecret" : ""
+					}
+				]
 			}
 		}
 	}

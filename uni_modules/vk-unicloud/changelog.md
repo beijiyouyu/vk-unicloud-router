@@ -1,3 +1,14 @@
+## 1.8.14（2021-03-19）
+###  更新内容
+#### 【新增】APP本机号码一键登录API `vk.userCenter.loginByUniverify`
+## 1.8.13（2021-03-17）
+### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+###  更新内容
+#### 1、【优化】在安装了`vuex`后，移除了名为`uni_id_user_info`的本地缓存（重复了）（`userInfo`使用`vk.getVuex('$user.userInfo')`获取）
+#### 2、【修复】微信小程序服务端API在获取`token`时，没有正确使用缓存的问题。
+
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
 ## 1.8.12（2021-03-12）
 ### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
 ###  更新内容

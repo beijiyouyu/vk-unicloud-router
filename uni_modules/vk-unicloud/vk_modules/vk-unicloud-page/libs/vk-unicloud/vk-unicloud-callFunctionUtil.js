@@ -45,27 +45,46 @@ class CallFunctionUtil {
 			// 自定义组件配置
 			components:{}
 		}
-		// 保存新的token，并更新userInfo缓存
+		// 保存新的token
 		this.saveToken = (res = {}) => {
 			let config = this.config;
 			vk.setStorageSync(config.uniIdTokenKeyName, res.token);
 			vk.setStorageSync(config.uniIdTokenExpiredKeyName, res.tokenExpired);
-			vk.setStorageSync(config.uniIdUserInfoKeyName, res.userInfo);
-			if (this.config.debug) console.log("---------------token已更新---------------");
+			if (this.config.debug) console.log("--------【token已更新】--------");
 		}
 		// 删除token，并删除userInfo缓存
 		this.deleteToken = () => {
 			let config = this.config;
 			vk.removeStorageSync(config.uniIdTokenKeyName);
 			vk.removeStorageSync(config.uniIdTokenExpiredKeyName);
-			vk.removeStorageSync(config.uniIdUserInfoKeyName);
-			if (this.config.debug) console.log("---------------token已删除---------------");
+			this.deleteUserInfo();
+			if (this.config.debug) console.log("--------【token已删除】--------");
 		}
 		// 更新userInfo缓存
 		this.updateUserInfo = (res = {}) => {
 			let config = this.config;
-			vk.setStorageSync(config.uniIdUserInfoKeyName, res.userInfo);
-			if (this.config.debug) console.log("---------------用户信息已更新---------------");
+			let { userInfo={} } = res;
+			if(typeof vk.setVuex === "function"){
+				// 有安装vuex则使用vuex
+				vk.setVuex('$user.userInfo', userInfo);
+			} else{
+				// 否则使用本地缓存
+				vk.setStorageSync(config.uniIdUserInfoKeyName, userInfo);
+			}
+			if (this.config.debug) console.log("--------【用户信息已更新】--------");
+		}
+		// 删除userInfo缓存
+		this.deleteUserInfo = (res = {}) => {
+			let config = this.config;
+			if(typeof vk.setVuex === "function"){
+				// 有安装vuex则使用vuex
+				vk.setVuex('$user.userInfo', {});
+				vk.removeStorageSync(config.uniIdUserInfoKeyName);
+			} else{
+				// 否则使用本地缓存
+				vk.removeStorageSync(config.uniIdUserInfoKeyName);
+			}
+			if (this.config.debug) console.log("--------【用户信息已删除】--------");
 		}
 		// 检查token是否有效(本地版)
 		this.checkToken = (res = {}) => {
