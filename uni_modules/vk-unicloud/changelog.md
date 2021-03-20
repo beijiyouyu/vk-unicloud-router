@@ -1,3 +1,12 @@
+## 1.8.17（2021-03-20）
+###  更新内容
+#### 【优化】`vk.userCenter.code2SessionWeixin` 的内部逻辑。
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
+## 1.8.16（2021-03-20）
+###  更新内容
+#### 1、【优化】`vk.callFunctionUtil.uploadFile` 新增参数 `suffix`，可直接自定义文件后缀名 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3673784&doc_id=975983)
+
 ## 1.8.15（2021-03-19）
 ###  更新内容
 #### 1、【修复】微信小程序服务端API在保存`token`时，缓存时间错误的问题。

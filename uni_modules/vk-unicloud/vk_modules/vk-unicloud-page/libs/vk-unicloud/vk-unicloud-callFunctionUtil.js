@@ -308,7 +308,6 @@ class CallFunctionUtil {
 			let that = this;
 			let config = that.config;
 			let {
-				file,
 				filePath,
 				cloudPath,
 				fileType = "image",
@@ -325,7 +324,6 @@ class CallFunctionUtil {
 			}
 			if (title) vk.showLoading(title);
 			if (errorToast) noAlert = true;
-			if(file && file.path) filePath = file.path;
 			// 生成文件名
 			if (!cloudPath) cloudPath = this.createFileName(obj);
 			let Logger = {};
@@ -589,6 +587,10 @@ class CallFunctionUtil {
 			sysErr = true;
 			errMsg = JSON.stringify(res);
 		}
+		if(errMsg.indexOf("fail timeout") > -1){
+			sysErr = true;
+			errMsg = "请求超时，请重试！";
+		}
 		if(res.code >= 90001 && errMsg.indexOf("数据库") > -1){
 			sysErr = true;
 		}else if([404,500].indexOf(res.code) > -1 && errMsg.indexOf("云函数") > -1){
@@ -663,11 +665,17 @@ class CallFunctionUtil {
 	// 生成文件名
 	createFileName(obj = {}) {
 		let {
-			file,
-			index = 0
+			index = 0,
+			filePath,
+			suffix = "png"
 		} = obj;
-		let oldName = index + ".png";
-		if(file && file.name) oldName = file.name;
+		
+		if(filePath){
+			let suffixName = filePath.substring(filePath.lastIndexOf(".")+1);
+			if(suffixName && suffixName.length < 5) suffix = suffixName;
+		}
+		let oldName = index + "." + suffix;
+		
 		let date = new Date();
 		let dateYYYYMMDD = vk.pubfn.timeFormat(date,"yyyy/MM/dd");
 		let dateTime = date.getTime().toString(); // 时间戳
@@ -675,11 +683,11 @@ class CallFunctionUtil {
 		let dateTimeEnd8 = dateTime.substring(dateTime.length - 8,dateTime.length);
 		let randomNumber = vk.pubfn.random(8);	 // 8位随机数
 		// 文件路径
-		let filePath = dateYYYYMMDD + "/";
+		let newFilePath = dateYYYYMMDD + "/";
 		// 文件名  = 时间戳  - 随机数32位  + 后缀名
 		let fileNickName = dateTimeEnd8 + "-" + randomNumber + "-" + oldName;
 		// 文件名全称(包含文件路径) = 外网域名  + 文件路径  + 文件名
-		let fileFullName = filePath + fileNickName;
+		let fileFullName = newFilePath + fileNickName;
 		return fileFullName;
 	}
 }

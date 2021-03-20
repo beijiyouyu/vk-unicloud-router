@@ -32,7 +32,6 @@ vk.callFunctionUtil.uploadFile({
  */
 aliyunOSSUtil.uploadFile = function(obj) {
 	let {
-		file,
 		filePath,
 		name = "file",
 		header = {
@@ -40,10 +39,8 @@ aliyunOSSUtil.uploadFile = function(obj) {
 		},
 		index = 0,
 	} = obj;
-	if(file && file.path) filePath = file.path;
-
 	let vk = getApp().globalData.vk;
-	let fileNameObj = createFileName(index);
+	let fileNameObj = createFileName(obj);
 	let aliyunOSS = getConfig();
 	let fileName = fileNameObj.fileFullName;
 	let formData = vk.pubfn.copyObject(aliyunOSS.uploadData);
@@ -139,16 +136,22 @@ function getConfig (){
 // 生成文件名
 function createFileName(obj = {}){
 	let {
-		file,
-		index = 0
+		index = 0,
+		filePath,
+		suffix = "png"
 	} = obj;
 	let vk = getApp().globalData.vk;
 	let aliyunOSS = getConfig();
 	let dirname = aliyunOSS.dirname;
 	let host = aliyunOSS.host;
 	let fileObj = {};
-	let oldName = index+".png";
-	if(file && file.name) oldName = file.name;
+	
+	if(filePath){
+		let suffixName = filePath.substring(filePath.lastIndexOf(".")+1);
+		if(suffixName && suffixName.length < 5) suffix = suffixName;
+	}
+	let oldName = index + "." + suffix;
+	
 	let date = new Date();
 	let dateYYYYMMDD = vk.pubfn.timeFormat(date,"yyyy/MM/dd");
 	let dateTime = date.getTime().toString(); // 时间戳
@@ -157,11 +160,11 @@ function createFileName(obj = {}){
 	let randomNumber = vk.pubfn.random(8); // 8位随机数
 	// 文件路径 = 固定路径名 + 业务路径
 	let servicePath = "";
-	let filePath = dirname + "/" + servicePath + dateYYYYMMDD + "/";
+	let newFilePath = dirname + "/" + servicePath + dateYYYYMMDD + "/";
 	// 文件名 = 时间戳后8位 - 随机数8位 + 后缀名
 	let fileNickName = dateTimeEnd8 + randomNumber + "-" + oldName;
 	// 文件名全称(包含文件路径) = 外网域名 + 文件路径 + 文件名
-	let fileFullName = filePath + fileNickName;
+	let fileFullName = newFilePath + fileNickName;
 	// 外网地址 = 外网域名 + 文件路径 + 文件名
 	let url = host+"/"+fileFullName;
 	fileObj.url = url;

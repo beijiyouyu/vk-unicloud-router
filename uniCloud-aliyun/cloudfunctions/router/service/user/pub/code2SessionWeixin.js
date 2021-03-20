@@ -17,12 +17,13 @@ module.exports = {
 	 * @params {String} refreshToken 客户端为APP时返回，用于刷新accessToken
    */
 	main: async (event) => {
-		let { data = {}, userInfo, util } = event;
+		let { data = {}, userInfo, util, originalParam } = event;
 		let { uniID, vk } = util;
 		let { uid } = data;
 		let res = { code : 0, msg : '' };
 		// 业务逻辑开始----------------------------------------------------------- 
 		let { code, platform, appid } = data;
+		if(!platform) platform = originalParam.context.PLATFORM;
 		if(platform === "mp-weixin"){
 			res = await vk.openapi.weixin.auth.code2Session({
 				appid,
@@ -32,12 +33,14 @@ module.exports = {
 			res = await uniID.code2SessionWeixin(data);
 		}
 		if(res.code === 0){
+			if(!res.sessionKey) res.sessionKey = res.session_key;// 兼容uniID uniDI sessionKey是驼峰形式
 			let { needCache } = data;
 			if(needCache && platform === "mp-weixin"){
 				// 缓存5分钟，可以用于配合loginByWeixinPhoneNumber使用，达到效果为：绑定手机号+微信
 				await vk.globalDataCache.set(`sys-weixin-session2openid-${res.sessionKey}`, res, 60*5);
 			}
 		}
+		res.platform = platform;
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}
