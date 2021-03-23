@@ -47,7 +47,7 @@ const store = new Vuex.Store({
 	mutations: {
 		updateStore(state, payload) {
 			// 判断是否多层级调用，state中为对象存在的情况，诸如user.info.score = 1
-			if(!payload.value) payload.value = "";
+			if(typeof payload.value === "undefined") payload.value = "";
 			let nameArr = payload.name.split('.');
 			let saveKey = '';
 			let len = nameArr.length;

@@ -20,6 +20,12 @@
 			<button type="default" @tap="loginByWeixin">微信登录</button>
 			<button type="default" @tap="bindWeixin">绑定微信</button>
 			<button type="default" @tap="unbindWeixin">解绑微信</button>
+			<button type="default" @tap="setUserInfo">获取微信用户昵称头像</button>
+			<scroll-view  scroll-x="true">
+				<pre>
+					{{ JSON.stringify(data,null,2)}}
+				</pre>
+			</scroll-view>
 		</template>
 		<template v-else>
 			<view class="tips">未包含微信登录模块</view>
@@ -36,7 +42,8 @@
 			return {
 				hasWeixinAuth: true,
 				sessionKey:"",
-				image:""
+				image:"",
+				data:{}
 			}
 		},
 		onLoad(options) {
@@ -62,6 +69,7 @@
 				vk.userCenter.loginByWeixin({
 					success:function(data){
 						vk.alert(data.msg);
+						that.data = data;
 					}
 				});
 			},
@@ -71,9 +79,10 @@
 						vk.alert(JSON.stringify(data));
 					},
 				});
-			},
+			}, 
 			// 设置用户昵称头像
 			setUserInfo(){
+				// #ifdef MP-WEIXIN
 				try {
 					wx.getUserProfile({
 						desc:"用于快速设置昵称头像",
@@ -94,12 +103,40 @@
 				}catch(err){
 					vk.alert("您的微信版本过低，请先更新微信!");
 				}
+				// #endif
+				
+				// #ifndef MP-WEIXIN
+				uni.login({
+				  provider: 'weixin',
+				  success: function (loginRes) {
+				    // 获取用户信息
+				    uni.getUserInfo({
+				      provider: 'weixin',
+				      success: function (data) {
+								that.data = data;
+								let { userInfo } = data;
+								vk.userCenter.updateUser({
+									data:{
+										nickname : userInfo.nickName,
+										avatar : userInfo.avatarUrl,
+										gender : userInfo.gender
+									},
+									success:function(data){
+										vk.alert("设置成功");
+									}
+								});
+				      }
+				    });
+				  }
+				});
+				// #endif
 			},
 			// 绑定微信
 			bindWeixin(){
 				vk.userCenter.bindWeixin({
 					success:function(data){
 						vk.alert("绑定成功");
+						that.data = data;
 					}
 				});
 			},
@@ -108,6 +145,7 @@
 				vk.userCenter.unbindWeixin({
 					success:function(data){
 						vk.alert("解绑成功");
+						that.data = data;
 					}
 				});
 			},
