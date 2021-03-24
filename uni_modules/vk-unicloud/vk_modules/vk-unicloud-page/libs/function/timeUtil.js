@@ -246,4 +246,49 @@ util.getMonthStartAndEnd = function(obj, targetTimezone = 8) {
 }
 
 
+
+/**
+ * 判断是否是闰年
+ * @params {Number | Date} year 需要计算的年份或时间,默认使用当前时间的年份
+ * vk.pubfn.timeUtil.isLeapYear(year);
+ */
+util.isLeapYear = function(year) {
+	if(typeof year === "undefined"){
+		let { now } = util.getCommonTime();
+		year = now.year;
+	}else if(typeof year === "object"){
+		let { now } = util.getCommonTime(year);
+		year = now.year;
+	}
+	if (((year % 4)==0) && ((year % 100)!=0) || ((year % 400)==0)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * 判断是否是清明节
+ * @params {Date} date 日期对象 可以指定时间计算节点，默认使用当前时间进行计算
+vk.pubfn.timeUtil.isQingming(new Date());
+ */
+util.isQingming = function(data = new Date()) {
+	let { now } = util.getCommonTime(data);
+	let { year, month, day } = now;
+	let key = false;
+	// 清明节的日期是不固定的，规律是：闰年开始的前2年是4月4日，闰年开始的第3年和第4年是4月5日
+	if(util.isLeapYear(year) || util.isLeapYear(year - 1)){
+		if(month === 4 && day === 4){
+			key = true;
+		}
+	}else{
+		if(month === 4 && day === 5){
+			key = true;
+		}
+	}
+	return key;
+}
+
+
+
 module.exports = util;

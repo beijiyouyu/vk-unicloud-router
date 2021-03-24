@@ -1,6 +1,31 @@
 ### 前后端通用
 ```js
 
+/**
+ * 防抖函数
+ * 防抖原理：一定时间内，只有最后一次或第一次调用,回调函数才会执行
+ * @param {Function}  fn 要执行的回调函数 
+ * @param {Number}    time 延时的时间
+ * @param {Boolean}   isImmediate 是否立即执行 默认true
+ * @param {String} timeoutName 定时器ID
+ * @return null
+ */
+vk.pubfn.debounce(function() {
+	
+}, 1000);
+
+/**
+ * 节流函数
+ * 节流原理：在一定时间内，只能触发一次
+ * @param {Function} fn 要执行的回调函数 
+ * @param {Number} time 延时的时间
+ * @param {Boolean} isImmediate 是否立即执行
+ * @param {String} timeoutName 定时器ID
+ * @return null
+ */
+vk.pubfn.throttle(function() {
+	
+}, 1000);
 
 /**
  * 数组结构转树形结构
@@ -8,14 +33,22 @@
  * @params {Object} treeProps 树结构配置
  * { id:"_id", parent_id:"parent_id", children:"children",need_field:["_id","name"],deleteParentId:true }
  */
-vk.pubfn.arrayToTree(treeData, treeProps);
+vk.pubfn.arrayToTree(treeData,{
+  id:"_id", 
+  parent_id:"parent_id", 
+  children:"children"
+});
 /**
  * 树形结构转数组结构
  * @params {Array} treeData  数据源
  * @params {Object} treeProps 树结构配置 
  * { id:"_id", parent_id:"parent_id", children:"children", deleteChildren:true }
  */
-vk.pubfn.treeToArray(treeData, treeProps);
+vk.pubfn.treeToArray(treeData,{
+  id:"_id",
+  parent_id:"parent_id",
+  children:"children"
+});
 
 /**
  * 日期格式化
@@ -103,7 +136,7 @@ let newObj = vk.pubfn.copyObject(obj);
 /**
  * 两个(元素为对象)的数组合并,并去除重复的数据
  * @params	{Array} 	arr1 	第一个数组(arr1和aar2没有顺序要求)
- * @params	{Array} 	aar2 	第二个数组
+ * @params	{Array} 	arr2 	第二个数组
  * @params	{String} 	flag 	判断标识,默认用id来判断,若flag传-1,代表不去除重复数据
  */
 let arr = vk.pubfn.arr_concat(arr1, arr2, "_id");
@@ -115,6 +148,8 @@ let arr = vk.pubfn.arr_concat(arr1, arr2, "_id");
  * @params	{String} defaultValue undefined时的默认值
  */
 let data = vk.pubfn.getData(dataObj, name, defaultValue);
+
+// 若在vue模板中使用，可以使用简写法 {{ $getData(userInfo, "a.b.c.d[1].a", '默认值') }}
 
 /**
  * 自动根据字符串路径设置对象中的值 支持.和[]
@@ -225,6 +260,17 @@ vk.pubfn.getNewObject(obj, keys);
  */
 vk.pubfn.deleteObjectKeys(data, deleteKeys);
 
+/**
+ * 判断是否是闰年
+ * @params {Number | Date} year 需要计算的年份或时间,默认使用当前时间的年份
+ */
+vk.pubfn.timeUtil.isLeapYear(2021);
+
+/**
+ * 判断是否是清明节
+ * @params {Object} date 时间对象 
+ */
+vk.pubfn.timeUtil.isQingming(new Date());
 ```
 
 ### 前端专属

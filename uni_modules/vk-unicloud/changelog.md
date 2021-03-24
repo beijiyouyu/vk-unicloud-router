@@ -1,3 +1,24 @@
+## 1.8.18（2021-03-24）
+###  更新内容
+#### 1、【重要】`uni_modules`版本 [点击查看升级指南](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3541759&doc_id=975983)
+#### 2、【新增】`vk.pubfn.timeUtil.isLeapYear` 判断是否是闰年
+#### 3、【新增】`vk.pubfn.timeUtil.isQingming` 判断是否是清明节
+#### 4、【新增】清明节灰色页面实现方案 [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3782115&doc_id=975983)
+```js
+/**
+ * 判断是否是闰年
+ * @params {Number | Date} year 需要计算的年份或时间,默认使用当前时间的年份
+ */
+vk.pubfn.timeUtil.isLeapYear(2021);
+/**
+ * 判断是否是清明节
+ * @params {Object} date 时间对象 
+ */
+vk.pubfn.timeUtil.isQingming(new Date());
+```
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
+
 ## 1.8.17（2021-03-20）
 ###  更新内容
 #### 【优化】`vk.userCenter.code2SessionWeixin` 的内部逻辑。
