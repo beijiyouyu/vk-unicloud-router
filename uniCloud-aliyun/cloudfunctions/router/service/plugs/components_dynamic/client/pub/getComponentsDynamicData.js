@@ -1,7 +1,7 @@
 module.exports = {
 	/**
 	 * 此函数名称
-	 * @url plugs/client/components_dynamic/pub/getComponentsDynamicData 前端调用的url参数地址
+	 * @url plugs/components_dynamic/client/pub/getComponentsDynamicData 前端调用的url参数地址
 	 * data 请求参数 说明
 	 * @params {String} uid  当前登录用户id,若用户已登录且token有效,则data中会带uid参数
 	 * (此参数是后端过滤器通过token获取并添加到data中的,是可信任的)(只有kh函数才带此参数)

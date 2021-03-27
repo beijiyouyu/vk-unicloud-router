@@ -102,32 +102,25 @@
 					}
 				},
 				{
-					"path": "temporary-cache/temporary-cache",
-					"style": {
-						"navigationBarTitleText": "云函数缓存"
-					}
-				},
-				{
 					"path": "vuex/vuex",
 					"style": {
 						"navigationBarTitleText": "vuex演示示例"
 					}
 				},
 				{
-					"path": "openapi/weixin/weixin",
-					"style": {}
+					"path": "openapi/weixin/weixin"
 				},
 				{
-					"path": "openapi/weixin/msgSecCheck/msgSecCheck",
-					"style": {}
+					"path": "openapi/weixin/msgSecCheck/msgSecCheck"
 				},
 				{
-					"path": "openapi/weixin/imgSecCheck/imgSecCheck",
-					"style": {}
+					"path": "openapi/weixin/imgSecCheck/imgSecCheck"
 				},
 				{
-					"path": "openapi/weixin/sendMessage/sendMessage",
-					"style": {}
+					"path": "openapi/weixin/sendMessage/sendMessage"
+				},
+				{
+					"path": "openapi/baidu/baidu"
 				}
 			]
 		}

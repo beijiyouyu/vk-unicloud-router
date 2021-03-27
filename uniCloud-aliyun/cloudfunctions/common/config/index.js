@@ -96,6 +96,15 @@ module.exports = {
 						"verifyCode":""																// 验证码短信模板 - 配合uni-id需要
 					}
 				}
+			},
+			// 开放平台api
+			"openapi":{
+				// 百度开放平台 (主要用于身份证识别,营业执照识别等API)
+				// API Key申请地址：https://cloud.baidu.com/doc/OCR/s/rk3h7xzck 点击右上角注册
+				"baidu":{
+					"appid" : "",       // 对应的API Key
+					"appsecret" : ""    // 对应的Secret Key
+				}
 			}
 		},
 		"db":{

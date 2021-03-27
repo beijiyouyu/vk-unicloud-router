@@ -9,7 +9,8 @@ import modal 							from './libs/function/modal'
 import navigate 					from './libs/function/vk.navigate'
 import localStorage 			from './libs/function/vk.localStorage'
 import aliyunOSSUtil			from './libs/function/aliyunOSSUtil'
-
+import openapi						from './libs/openapi/index'
+import request						from './libs/function/vk.request'
 
 import filters 						from './libs/function/vk.filters'
 import mixin 							from './libs/mixin/mixin.js'
@@ -56,7 +57,11 @@ var vk = {
 	// 阿里云oss
 	aliyunOSSUtil,
 	// 更新管理器
-	updateManager
+	updateManager,
+	// 开放API
+	openapi,
+	// 请求库
+	request
 };
 // vk实例初始化
 vk.init = function(obj={}){
@@ -98,15 +103,16 @@ const install = Vue => {
 		Vue.filter(i, filters[i]);
 	}
 	let util = { vk };
-	// 加载插件
-	vk.use({
-		callFunctionUtil : vk.callFunctionUtil
-	}, util);
 	// 将vk挂载到Vue实例
 	Vue.prototype.vk = vk;
-	initPermission(Vue);
 	// 将vk挂载到uni对象
 	uni.vk = Vue.prototype.vk;
+	// 加载插件
+	vk.use({
+		callFunctionUtil : vk.callFunctionUtil,
+		openapi : vk.openapi
+	}, util);
+	initPermission(Vue);
 }
 
 export default {

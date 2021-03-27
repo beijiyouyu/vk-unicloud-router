@@ -17,6 +17,7 @@
 		<button type="default" @tap="pageTo('../alipay/alipay')">支付宝登录</button>
 		<!-- #endif -->
 		<button type="default" @tap="vk.navigateTo('../../openapi/weixin/weixin')">微信小程序API</button>
+		<button type="default" @tap="vk.navigateTo('../../openapi/baidu/baidu')">百度开放平台API</button>
 		<view style="margin-bottom: 20rpx;">uni-id 1.1.3 新增 分销裂变</view>
 		<view style="margin-bottom: 20rpx;">插件版本1.2.2 新增 数据库API调用方法</view>
 		<button type="default" @tap="pageTo('../../db-test/db-test')">数据库API调用方法</button>

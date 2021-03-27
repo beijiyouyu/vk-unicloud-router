@@ -1,4 +1,3 @@
-
 var vk = {};
 var counterNum = 0;
 
@@ -28,8 +27,8 @@ class CallFunctionUtil {
 				dataParam: {}
 			},
 			// 日志风格
-			logger:{
-				colorArr:[
+			logger: {
+				colorArr: [
 					"#0095ff",
 					"#67C23A"
 				]
@@ -43,7 +42,7 @@ class CallFunctionUtil {
 			// 缓存键名 - 公共请求参数（请勿修改）
 			requestGlobalParamKeyName: "vk_request_global_param",
 			// 自定义组件配置
-			components:{}
+			components: {}
 		}
 		// 保存新的token
 		this.saveToken = (res = {}) => {
@@ -63,11 +62,13 @@ class CallFunctionUtil {
 		// 更新userInfo缓存
 		this.updateUserInfo = (res = {}) => {
 			let config = this.config;
-			let { userInfo={} } = res;
-			if(typeof vk.setVuex === "function"){
+			let {
+				userInfo = {}
+			} = res;
+			if (typeof vk.setVuex === "function") {
 				// 有安装vuex则使用vuex
 				vk.setVuex('$user.userInfo', userInfo);
-			} else{
+			} else {
 				// 否则使用本地缓存
 				vk.setStorageSync(config.uniIdUserInfoKeyName, userInfo);
 			}
@@ -76,11 +77,11 @@ class CallFunctionUtil {
 		// 删除userInfo缓存
 		this.deleteUserInfo = (res = {}) => {
 			let config = this.config;
-			if(typeof vk.setVuex === "function"){
+			if (typeof vk.setVuex === "function") {
 				// 有安装vuex则使用vuex
 				vk.setVuex('$user.userInfo', {});
 				vk.removeStorageSync(config.uniIdUserInfoKeyName);
-			} else{
+			} else {
 				// 否则使用本地缓存
 				vk.removeStorageSync(config.uniIdUserInfoKeyName);
 			}
@@ -92,7 +93,7 @@ class CallFunctionUtil {
 			let token = uni.getStorageSync(config.uniIdTokenKeyName);
 			let tokenExpired = uni.getStorageSync(config.uniIdTokenExpiredKeyName);
 			let valid = false;
-			if(token && tokenExpired && tokenExpired > new Date().getTime()){
+			if (token && tokenExpired && tokenExpired > new Date().getTime()) {
 				valid = true;
 			}
 			return valid;
@@ -172,10 +173,10 @@ class CallFunctionUtil {
 				if (config.debug) console.log("跳登录页面");
 				setTimeout(() => {
 					if (config.login.url) {
-						let currentPage = getCurrentPages()[getCurrentPages().length-1];
-						if(currentPage && currentPage.route
-							&& "/"+currentPage.route === config.login.url
-						){
+						let currentPage = getCurrentPages()[getCurrentPages().length - 1];
+						if (currentPage && currentPage.route &&
+							"/" + currentPage.route === config.login.url
+						) {
 							return false;
 						}
 						uni.navigateTo({
@@ -205,7 +206,7 @@ class CallFunctionUtil {
 							}
 						});
 					} else {
-						if (!params.noAlert) {
+						if (params.needAlert) {
 							vk.alert(res.result.msg);
 						}
 					}
@@ -223,7 +224,7 @@ class CallFunctionUtil {
 		 * @params {Object} 	data  		请求参数
 		 * @params {String} 	title 		遮罩层提示语，为空或不传则代表不显示遮罩层。
 		 * @params {Boolean} 	isRequest 是否使用云函数url化地址访问云函数，默认false
-		 * @params {Boolean} 	noAlert   为true代表请求错误时，不会有弹窗提示。默认为false
+		 * @params {Boolean} 	needAlert 为true代表请求错误时，会有弹窗提示。默认为true
 		 * @params {Function} success  	请求成功时，执行的回调函数
 		 * @params {Function} fail  	 	请求失败时，执行的回调函数
 		 * @params {Function} complete 	无论请求成功与否，都会执行的回调函数
@@ -240,7 +241,7 @@ class CallFunctionUtil {
 			// 根据正则规格自动匹配全局请求参数
 			for (let i in globalParam) {
 				let customDate = globalParam[i];
-				if(customDate.regExp){
+				if (customDate.regExp) {
 					let regExp = new RegExp(customDate.regExp);
 					if (regExp.test(url)) {
 						obj.data = Object.assign(customDate.data, obj.data);
@@ -268,19 +269,19 @@ class CallFunctionUtil {
 		}
 		// 设置全局默认配置
 		this.setConfig = (customConfig = {}) => {
-			for(let key in customConfig){
-				if(key === "vk"){
+			for (let key in customConfig) {
+				if (key === "vk") {
 					vk = customConfig[key];
-				}else if(key === "interceptor"){
+				} else if (key === "interceptor") {
 					this.interceptor = Object.assign(this.interceptor, customConfig[key]);
-				}else if(key === "myfn"){
+				} else if (key === "myfn") {
 					vk.myfn = customConfig[key];
-				}else if(key === "loginPagePath"){
+				} else if (key === "loginPagePath") {
 					// 兼容老版本
 					this.config.login.url = customConfig[key];
-				}else if(typeof customConfig[key] === "object" && typeof this.config[key] === "object"){
+				} else if (typeof customConfig[key] === "object" && typeof this.config[key] === "object") {
 					this.config[key] = Object.assign(this.config[key], customConfig[key]);
-				}else if(typeof customConfig[key] !== "undefined"){
+				} else if (typeof customConfig[key] !== "undefined") {
 					this.config[key] = customConfig[key];
 				}
 			}
@@ -313,17 +314,17 @@ class CallFunctionUtil {
 				fileType = "image",
 				title,
 				errorToast,
-				noAlert,
+				needAlert,
 				success,
 				fail,
 				complete,
 				type = "unicloud"
 			} = obj;
-			if(type === "aliyun-oss"){
+			if (type === "aliyun-oss") {
 				return vk.aliyunOSSUtil.uploadFile(obj);
 			}
 			if (title) vk.showLoading(title);
-			if (errorToast) noAlert = true;
+			if (errorToast) needAlert = false;
 			// 生成文件名
 			if (!cloudPath) cloudPath = this.createFileName(obj);
 			let Logger = {};
@@ -346,7 +347,8 @@ class CallFunctionUtil {
 					}
 				},
 				success(res) {
-					if (config.debug) Logger.result = typeof res == "object" ? JSON.parse(JSON.stringify(res)) : res;
+					if (config.debug) Logger.result = typeof res == "object" ? JSON.parse(JSON
+						.stringify(res)) : res;
 					if (title) vk.hideLoading();
 					if (typeof success == "function") success(res);
 				},
@@ -354,26 +356,26 @@ class CallFunctionUtil {
 					if (title) vk.hideLoading();
 					if (config.debug) Logger.error = err;
 					if (errorToast) vk.toast(JSON.stringify(err), "none");
-					if (!noAlert){
+					if (needAlert) {
 						if (config.debug) vk.alert(JSON.stringify(err));
 					}
 					if (typeof fail == "function") fail(err);
 				},
 				complete() {
-					if (config.debug){
+					if (config.debug) {
 						Logger.endTime = new Date().getTime();
 						Logger.runTime = (Logger.endTime - Logger.startTime);
 						let colorArr = config.logger.colorArr;
 						let colorStr = colorArr[counterNum % colorArr.length];
 						counterNum++;
-						console.log("%c--------【开始】【文件上传】--------",'color: '+colorStr+';font-size: 12px;font-weight: bold;');
+						console.log("%c--------【开始】【文件上传】--------", 'color: ' + colorStr +';font-size: 12px;font-weight: bold;');
 						console.log("【本地文件】: ", Logger.filePath);
 						console.log("【返回数据】: ", Logger.result);
 						console.log("【预览地址】: ", Logger.result.fileID);
 						console.log("【上传耗时】: ", Logger.runTime, "毫秒");
-						console.log("【上传时间】: ", vk.pubfn.timeFormat(Logger.startTime, "yyyy-MM-dd hh:mm:ss"));
-						if(Logger.error) console.error("【error】:", Logger.error);
-						console.log("%c--------【结束】【文件上传】--------",'color: '+colorStr+';font-size: 12px;font-weight: bold;');
+						console.log("【上传时间】: ", vk.pubfn.timeFormat(Logger.startTime,"yyyy-MM-dd hh:mm:ss"));
+						if (Logger.error) console.error("【error】:", Logger.error);
+						console.log("%c--------【结束】【文件上传】--------", 'color: ' + colorStr +';font-size: 12px;font-weight: bold;');
 					}
 					if (typeof complete == "function") complete();
 				}
@@ -390,12 +392,9 @@ class CallFunctionUtil {
 			title,
 			loading,
 			isRequest,
-			noAlert,
 			name,
-			errorToast,
 			complete
 		} = obj;
-		if (errorToast) noAlert = true;
 		if (title) vk.showLoading(title);
 		if (loading) vk.setLoading(true);
 		if (!name) name = config.isTest ? config.testFunctionName : config.functionName;
@@ -414,21 +413,22 @@ class CallFunctionUtil {
 					that.callFunctionSuccess({
 						res: res.result,
 						params: obj,
+						Logger,
 						resolve,
-						reject,
-						Logger
+						reject
 					});
 				},
-				fail(err) {
+				fail(res) {
 					that.callFunctionFail({
+						res,
 						params: obj,
-						res: err,
-						reject,
-						Logger
+						Logger,
+						reject
 					});
 				},
-				complete() {
+				complete(res) {
 					that.callFunctionComplete({
+						res,
 						params: obj,
 						Logger
 					});
@@ -448,12 +448,10 @@ class CallFunctionUtil {
 			data,
 			title,
 			loading,
-			noAlert,
 			name,
-			errorToast,
 			complete
 		} = obj;
-		if (errorToast) noAlert = true;
+		if (typeof obj.needAlert === "undefined") obj.needAlert = true;
 		if (!name) name = config.isTest ? config.testFunctionName : config.functionName;
 		obj.name = name;
 		let requestUrl = config.functionNameToUrl[name];
@@ -477,21 +475,22 @@ class CallFunctionUtil {
 					that.callFunctionSuccess({
 						res: res.data,
 						params: obj,
+						Logger,
 						resolve,
-						reject,
-						Logger
+						reject
 					});
 				},
-				fail(err) {
+				fail(res) {
 					that.callFunctionFail({
+						res,
 						params: obj,
-						res: err,
-						reject,
-						Logger
+						Logger,
+						reject
 					});
 				},
-				complete() {
+				complete(res) {
 					that.callFunctionComplete({
+						res,
 						params: obj,
 						Logger
 					});
@@ -507,21 +506,16 @@ class CallFunctionUtil {
 		let that = this;
 		let config = that.config;
 		let {
-			res,
+			res = {},
 			params,
+			Logger,
 			resolve,
-			reject,
-			Logger
+			reject
 		} = obj;
 		let {
-			url,
-			name,
 			title,
 			loading,
-			errorToast,
-			noAlert,
-			success,
-			isRequest
+			success
 		} = params;
 
 		if (title) vk.hideLoading();
@@ -538,18 +532,18 @@ class CallFunctionUtil {
 			// 跳转到页面页面
 			if (typeof that.interceptor.login === "function") {
 				that.interceptor.login({
-					params,
 					res,
+					params,
 					vk
 				});
 			}
 			reject(res);
 		} else {
 			that.callFunctionFail({
-				params,
 				res,
-				reject,
-				Logger
+				params,
+				Logger,
+				reject
 			});
 		}
 	}
@@ -559,59 +553,64 @@ class CallFunctionUtil {
 		let that = this;
 		let config = that.config;
 		let {
-			res,
+			res = {},
 			params,
-			reject,
-			Logger
+			Logger,
+			reject
 		} = obj;
 		let {
 			title,
 			loading,
 			errorToast,
 			noAlert,
+			needAlert,
 			fail
 		} = params;
-		if (typeof fail == "function" && typeof noAlert == "undefined" ) noAlert = true;
-		if (errorToast) noAlert = true;
+		
+		if (typeof noAlert !== "undefined") needAlert = !noAlert;
+		if (typeof needAlert === "undefined"){
+			needAlert = (typeof fail === "function") ? false : true;
+		}
+		if (errorToast) needAlert = false;
 		if (title) vk.hideLoading();
 		if (loading) vk.setLoading(false);
 		let errMsg = "";
 		let sysErr = false;
-		if(typeof res.code !== "undefined"){
-			if(res.msg){
+		if (typeof res.code !== "undefined") {
+			if (res.msg) {
 				errMsg = res.msg;
-			}else if(res.message){
+			} else if (res.message) {
 				errMsg = res.message;
 			}
-		}else{
+		} else {
 			sysErr = true;
 			errMsg = JSON.stringify(res);
 		}
-		if(errMsg.indexOf("fail timeout") > -1){
+		if (errMsg.indexOf("fail timeout") > -1) {
 			sysErr = true;
 			errMsg = "请求超时，请重试！";
 		}
-		if(res.code >= 90001 && errMsg.indexOf("数据库") > -1){
+		if (res.code >= 90001 && errMsg.indexOf("数据库") > -1) {
 			sysErr = true;
-		}else if([404,500].indexOf(res.code) > -1 && errMsg.indexOf("云函数") > -1){
+		} else if ([404, 500].indexOf(res.code) > -1 && errMsg.indexOf("云函数") > -1) {
 			sysErr = true;
 		}
 		let runKey = true;
 		if (typeof that.interceptor.fail == "function") {
 			runKey = that.interceptor.fail({
-				params: params,
-				res: res
+				res: res,
+				params: params
 			});
 			if (runKey === undefined) runKey = true;
 		}
 		if (runKey) {
 			Logger.error = res;
 			if (errorToast) vk.toast(errMsg, "none");
-			if (!noAlert){
-				if(sysErr){
-					if(errMsg !="" && errMsg!="{}") vk.toast("网络开小差了！", "none");
-				}else{
-					if(errMsg !="" && errMsg!="{}") vk.alert(errMsg);
+			if (needAlert && vk.pubfn.isNotNull(errMsg)) {
+				if (sysErr) {
+					vk.toast("网络开小差了！", "none");
+				} else {
+					vk.alert(errMsg);
 				}
 			}
 			if (typeof fail == "function") fail(res);
@@ -624,7 +623,7 @@ class CallFunctionUtil {
 		let that = this;
 		let config = that.config;
 		let {
-			res,
+			res = {},
 			params,
 			Logger
 		} = obj;
@@ -635,53 +634,54 @@ class CallFunctionUtil {
 			complete
 		} = params;
 
-		if (config.debug){
+		if (config.debug) {
 			Logger.endTime = new Date().getTime();
-			if(isRequest){
+			if (isRequest) {
 				Logger.label = "【url化】";
-			}else{
+			} else {
 				Logger.label = "";
 			}
-
 			Logger.runTime = (Logger.endTime - Logger.startTime);
 			let colorArr = config.logger.colorArr;
 			let colorStr = colorArr[counterNum % colorArr.length];
 			counterNum++;
-			console.log("%c--------【开始】"+Logger.label+"【云函数请求】【" + name + "】【" + url + "】--------",'color: '+colorStr+';font-size: 12px;font-weight: bold;');
+			console.log("%c--------【开始】" + Logger.label + "【云函数请求】【" + name + "】【" + url + "】--------", 'color: ' +
+				colorStr + ';font-size: 12px;font-weight: bold;');
 			console.log("【请求参数】: ", Logger.params);
 			console.log("【返回数据】: ", Logger.result);
 			console.log("【总体耗时】: ", Logger.runTime, "毫秒【含页面渲染】");
 			console.log("【请求时间】: ", vk.pubfn.timeFormat(Logger.startTime, "yyyy-MM-dd hh:mm:ss"));
-			if(Logger.error){
+			if (Logger.error) {
 				console.error("【Error】: ", Logger.error);
-				if(Logger.error.err && Logger.error.err.stack){
+				if (Logger.error.err && Logger.error.err.stack) {
 					console.error("【Stack】: ", Logger.error.err.stack);
 				}
 			}
-			console.log("%c--------【结束】"+Logger.label+"【云函数请求】【" + name + "】【" + url + "】--------",'color: '+colorStr+';font-size: 12px;font-weight: bold;');
+			console.log("%c--------【结束】" + Logger.label + "【云函数请求】【" + name + "】【" + url + "】--------", 'color: ' +
+				colorStr + ';font-size: 12px;font-weight: bold;');
 		}
-		if (typeof complete == "function") complete();
+		if (typeof complete == "function") complete(res);
 	}
 	// 生成文件名
 	createFileName(obj = {}) {
 		let {
 			index = 0,
-			filePath,
-			suffix = "png"
+				filePath,
+				suffix = "png"
 		} = obj;
-		
-		if(filePath){
-			let suffixName = filePath.substring(filePath.lastIndexOf(".")+1);
-			if(suffixName && suffixName.length < 5) suffix = suffixName;
+
+		if (filePath) {
+			let suffixName = filePath.substring(filePath.lastIndexOf(".") + 1);
+			if (suffixName && suffixName.length < 5) suffix = suffixName;
 		}
 		let oldName = index + "." + suffix;
-		
+
 		let date = new Date();
-		let dateYYYYMMDD = vk.pubfn.timeFormat(date,"yyyy/MM/dd");
+		let dateYYYYMMDD = vk.pubfn.timeFormat(date, "yyyy/MM/dd");
 		let dateTime = date.getTime().toString(); // 时间戳
 		// 时间戳后8位
-		let dateTimeEnd8 = dateTime.substring(dateTime.length - 8,dateTime.length);
-		let randomNumber = vk.pubfn.random(8);	 // 8位随机数
+		let dateTimeEnd8 = dateTime.substring(dateTime.length - 8, dateTime.length);
+		let randomNumber = vk.pubfn.random(8); // 8位随机数
 		// 文件路径
 		let newFilePath = dateYYYYMMDD + "/";
 		// 文件名  = 时间戳  - 随机数32位  + 后缀名

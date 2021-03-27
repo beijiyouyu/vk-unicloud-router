@@ -34,15 +34,16 @@ module.exports = [
 					}else if(vk.pubfn.isNotNull(uniIdToken)){
 						let tokenRes = await uniID.checkToken(uniIdToken);
 						if(tokenRes.code === 0){
-							delete tokenRes.userInfo.token;
-							delete tokenRes.userInfo.password;
 							res.userInfo = tokenRes.userInfo;
 						}
 					}
 				}
 				if(vk.pubfn.isNotNull(res.userInfo)){
 					res.needUpdateUserInfo = true;
-				} 
+					//  此处可以继续去除你不想返回给前端的字段
+					let deleteKeys = ["token","password"];
+					res.userInfo = vk.pubfn.deleteObjectKeys(res.userInfo, deleteKeys);
+				}
 				if(vk.pubfn.isNotNullAll(res.token,res.tokenExpired)){
 					// 当返回vk_uni_token对象后，框架会让token自动被前端缓存，前端不需要手动再保存token至本地缓存了。
 					res.vk_uni_token = {
@@ -53,5 +54,5 @@ module.exports = [
 			}
 			return res;
 		}
-	} 
+	}
 ]

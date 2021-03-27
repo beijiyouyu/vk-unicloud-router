@@ -108,7 +108,7 @@
 				}
 				if(that.$refs.uCode.canGetCode) {
 					vk.userCenter.sendSmsCode({
-						noAlert:true,
+						needAlert:false,
 						data:{
 							mobile: mobile,
 							type: type,

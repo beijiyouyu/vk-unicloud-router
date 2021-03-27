@@ -198,7 +198,7 @@ export default {
 	 */
 	loginByUniverify(obj = {}) {
 		//if(!obj.loading && !obj.title) obj.title = "登录中...";
-		if(typeof obj.noAlert === "undefined") obj.noAlert = false;
+		if(typeof obj.needAlert === "undefined") obj.needAlert = true;
 		// #ifdef APP-PLUS
 		uni.login({
 			provider: 'univerify',

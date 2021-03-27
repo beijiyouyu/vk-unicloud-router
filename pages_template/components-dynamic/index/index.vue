@@ -24,6 +24,7 @@
 	</view>
 </template>
 
+
 <script>
 	var that;											// 当前页面对象
 	var vk;												// vk依赖
@@ -73,12 +74,12 @@
 			init(options = {}){
 				// 检查数据库,若没有测试数据,则自动添加测试数据
 				vk.callFunction({
-					url: 'plugs/client/components_dynamic/pub/init',
+					url: 'plugs/components_dynamic/client/pub/init',
 					title:'检查数据库...'
 				});
 			},
 			pageTo(url) {
-				uni.navigateTo({
+				vk.navigateTo({
 					url:url
 				})
 			}

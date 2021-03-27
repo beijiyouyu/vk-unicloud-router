@@ -1209,7 +1209,7 @@ pubfn.getComponentsDynamicData = function (obj = {}){
 		that,
 		keyName = "componentsDynamic",
 		title,
-		url = "plugs/client/components_dynamic/pub/getComponentsDynamicData",
+		url = "plugs/components_dynamic/client/pub/getComponentsDynamicData",
 		ids
 	} = obj;
 	var vk = that.vk;

@@ -4,9 +4,9 @@
 		<view class="tips">需要先配置uniCloud/cloudfunctions/common/config/index.js</view>
 		<view class="tips">中的 uni.service.univerify</view>
 		<view class="code" v-if="userInfo && userInfo._id">
-			<pre>
-				{{ JSON.stringify(userInfo,null,2) }}
-			</pre>
+			<scroll-view scroll-x="true">
+				<rich-text :nodes="`<pre>${JSON.stringify(userInfo, null, 2)}</pre>`"></rich-text>
+			</scroll-view>
 		</view>
 	</view>
 </template>
