@@ -18,8 +18,7 @@
 		<button @click="findByWhereJson()">findByWhereJson(根据条件获取一条记录)</button>
 		<view>
 			<button @click="getList1()">select(获取多条数据)</button>
-			<button @click="selects()">selects(连表查询)</button>
-			<button @click="selects2()">selects2.0(连表查询)</button>
+			<button @click="selects()">selects(万能连表查询)</button>
 		</view>
 		<button @click="sample()">随机获取1条记录（一般用于抽奖）</button>
 		<button @click="update()">update(修改记录)</button>
@@ -170,18 +169,6 @@
 			selects(){
 				vk.callFunction({
 					url: 'template/db_api/pub/selects',
-					title:'请求中...',
-					data:{},
-					success(data) {
-						that.data = data;
-						vk.alert(JSON.stringify(data));
-						that.item = data;
-					}
-				});
-			},
-			selects2(){
-				vk.callFunction({
-					url: 'template/db_api/pub/selects_mode_2',
 					title:'请求中...',
 					data:{},
 					success(data) {

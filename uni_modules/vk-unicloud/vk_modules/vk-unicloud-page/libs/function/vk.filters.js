@@ -31,8 +31,8 @@ util.timeStr = function(date) {
  * 支持:2020-08-24 12:12
  * 支持:2020-08-24 12:12:12
  */
-util.timeFilter = function(date) {
-	return pubfn.timeFormat(date);
+util.timeFilter = function(date,fmt) {
+	return pubfn.timeFormat(date,fmt);
 };
 // 金额过滤器
 util.priceFilter = function (n,nullValue=" - "){

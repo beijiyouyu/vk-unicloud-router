@@ -409,7 +409,7 @@ class CallFunctionUtil {
 					$url: url,
 					data: data
 				},
-				success(res) {
+				success(res={}) {
 					that.callFunctionSuccess({
 						res: res.result,
 						params: obj,
@@ -471,7 +471,7 @@ class CallFunctionUtil {
 					data: data,
 					uniIdToken: uniIdToken
 				},
-				success(res) {
+				success(res={}) {
 					that.callFunctionSuccess({
 						res: res.data,
 						params: obj,
@@ -528,7 +528,8 @@ class CallFunctionUtil {
 			if (typeof success == "function") success(res);
 			resolve(res);
 		} else if ([1301, 1302, 30201, 30202, 30203, 30204].indexOf(code) > -1 && res.msg.indexOf("token") > -1) {
-			that.deleteToken();
+			let { tokenExpiredAutoDelete=true } = config;
+			if(tokenExpiredAutoDelete) that.deleteToken();
 			// 跳转到页面页面
 			if (typeof that.interceptor.login === "function") {
 				that.interceptor.login({

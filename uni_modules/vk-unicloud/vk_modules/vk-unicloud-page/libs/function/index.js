@@ -433,7 +433,7 @@ pubfn.getListIndex = function (list,key,value) {
  * @params	{Array} list 数据源
  * @params	{String} key 键名
  * @params	{String} value 键值
- * vk.pubfn.getListIndex(list, key, value);
+ * vk.pubfn.getListItemIndex(list, key, value);
  */
 pubfn.getListItemIndex = function (list,key,value) {
 	let obj = {};
@@ -467,6 +467,17 @@ pubfn.arrayToJson = function (list, key) {
 	return json;
 };
 pubfn.listToJson = pubfn.arrayToJson;
+
+/**
+ * 从数组中提取指定字段形式新的数组
+ * 如[{"_id":"001","name":"name1","sex":1},{"_id":"002","name":"name2","sex":2}]
+ * 提取_id字段转成
+ * ["001","002"]
+ * let idArr = vk.pubfn.arrayObjectGetArray(list, "_id");
+ */
+pubfn.arrayObjectGetArray = function (list, key) {
+	return list.map(obj => {return obj[key]});
+};
 
 /**
  * 产生指定位数的随机数(支持任意字符,默认纯数字)
@@ -1403,6 +1414,85 @@ pubfn.fileToBase64 = function(obj={}) {
 	});
 };
 
+/**
+ * base64转文件
+vk.pubfn.base64ToFile({
+	base64:base64,
+	success:function(file){
+
+	}
+});
+ */
+pubfn.base64ToFile = function(obj={}) {
+	let { 
+		base64="",
+		filePath =  new Date().getTime() + '.png'
+	} = obj;
+	let index = base64.indexOf("base64,");
+	let base64Data = base64;
+	if(index>-1){
+		base64Data = base64.substring(base64.indexOf("base64,")+7);
+	}
+	let savePath;
+	return new Promise(function(resolve, reject) {
+		// #ifndef H5
+		savePath = wx.env.USER_DATA_PATH + '/' +  filePath;
+		let fs = uni.getFileSystemManager();
+		fs.writeFile({
+			filePath:savePath,
+			data: base64Data,
+			encoding:"base64",
+			success:function(res){
+				let file = {
+					path : savePath,
+					lastModifiedDate :  new Date(),
+					name : filePath
+				};
+				if(obj.success) obj.success(file);
+				resolve(file);
+			},
+			fail:function(res){
+				if(obj.fail) obj.fail(res);
+				reject(res);
+			},
+			complete:obj.complete
+		});
+		// #endif
+		// #ifdef H5
+		savePath = filePath;
+		let blob = pubfn.base64toBlob(base64);
+		let file = pubfn.blobToFile(blob, savePath);
+		if(obj.success) obj.success(file);
+		if(obj.complete) obj.complete(file);
+		resolve(file);
+		// #endif
+	});
+};
+/**
+ * 将base64转换为blob （H5独有）
+ vk.pubfn.base64toBlob(base64);
+ */
+pubfn.base64toBlob = function(base64) {
+	let arr = base64.split(',');
+	let	mime = arr[0].match(/:(.*?);/)[1];
+	let	bstr = atob(arr[1]);
+	let	n = bstr.length;
+	let	u8arr = new Uint8Array(n);
+	while (n--) {
+		u8arr[n] = bstr.charCodeAt(n);
+	}
+	return new Blob([u8arr], { type: mime });
+};
+/**
+ * //将blob转换为file
+ vk.pubfn.blobToFile(base64);
+ */
+pubfn.blobToFile = function(blob, fileName) {
+	blob.lastModifiedDate = new Date();
+	blob.name = fileName;
+	blob.path = URL.createObjectURL(blob);
+	return blob;
+};
 
 /**
  * 小程序订阅消息 前端无需再写 #ifdef MP-WEIXIN

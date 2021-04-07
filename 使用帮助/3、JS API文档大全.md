@@ -194,13 +194,38 @@ vk.pubfn.isNotNullAll(value1,value2,value3);
 vk.pubfn.getListItem(list, key, value);
 
 /**
+ * 获取对象数组中某个元素的index,根据指定的键名和键值
+ * @description 主要用于在一个对象数组中快速获取 _id = 1 的index
+ * @params	{Array} list 数据源
+ * @params	{String} key 键名
+ * @params	{String} value 键值
+ */
+vk.pubfn.getListIndex(list, key, value);
+
+/**
+ * 获取对象数组中某个元素的index,根据指定的键名和键值
+ * @description 主要用于在一个对象数组中快速获取 _id = 1 的index
+ * @params	{Array} list 数据源
+ * @params	{String} key 键名
+ * @params	{String} value 键值
+ */
+vk.pubfn.getListItemIndex(list, key, value);
+
+/**
  * 数组转对象 - 将对象数组转成json
  * 如[{"_id":"001","name":"name1","sex":1},{"_id":"002","name":"name2","sex":2}]
  * 转成
  * {"001",{"_id":"001","name":"name1","sex":1},"002":{"_id":"002","name":"name2","sex":2}}
  */
-vk.pubfn.listToJson(list, "_id");
+vk.pubfn.arrayToJson(list, "_id");
 
+/**
+ * 从数组中提取指定字段形式新的数组
+ * 如[{"_id":"001","name":"name1","sex":1},{"_id":"002","name":"name2","sex":2}]
+ * 提取_id字段转成
+ * ["001","002"]
+ */
+vk.pubfn.arrayObjectGetArray(list, "_id");
 /**
  * 产生指定位数的随机数(支持任意字符,默认纯数字)
  * @description 主要用于在一个对象数组中快速获取 _id = 1 的对象
@@ -375,6 +400,16 @@ vk.pubfn.getCurrentPage();
 vk.pubfn.fileToBase64({
   file:res.tempFiles[0],
   success:function(base64){
+
+  }
+});
+
+/**
+ * base64转文件
+ */
+vk.pubfn.base64ToFile({
+  base64:base64,
+  success:function(file){
 
   }
 });

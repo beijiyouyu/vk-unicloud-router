@@ -1,3 +1,28 @@
+## 1.8.21（2021-04-07）
+### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+###  更新内容
+###  1、【优化】如需要在云函数中主动抛出异常，且能让前端框架自动识别后进行alert弹窗提示，则可使用以下方式
+```js
+// 注意: 必须以msg:为前缀，否则框架无法识别（只支持字符串）
+throw new Error("msg:这里是错误的提示");
+```
+#### 2、【新增】`app.config.js` 新增 `tokenExpiredAutoDelete` 属性，默认`true` 若设为`false`，则`token`失效时，依然保留前端的`token缓存`。
+```
+官方原生语法中，连表查询和非连表查询在使用`_.geoNear`时用较大差别；
+而 vk.baseDao.selects（万能连表）写法跟 vk.baseDao.select（单表查询） 写法保持统一，使上手更简单。
+```
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
+## 1.8.20（2021-03-29）
+### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+###  更新内容
+####【优化】`vk.baseDao.selects` 支持`_.geoNear`API（将记录按照离给定点从近到远输出。）[点击查看万能连表场景4](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3028633&doc_id=975983)
+```
+官方原生语法中，连表查询和非连表查询在使用`_.geoNear`时用较大差别；
+而 vk.baseDao.selects（万能连表）写法跟 vk.baseDao.select（单表查询） 写法保持统一，使上手更简单。
+```
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
 ## 1.8.19（2021-03-27）
 ###  更新内容
 #### 1、【新增】`百度开放平台API接口` (营业执照识别、身份证识别等) [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3803034&doc_id=975983)
