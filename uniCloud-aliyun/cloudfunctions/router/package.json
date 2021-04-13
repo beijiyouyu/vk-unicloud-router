@@ -18,6 +18,7 @@
   },
   "private": true,
   "cloudfunction-config": {
+		"concurrency": 1,
     "memorySize": 256,
     "path": "",
     "timeout": 60,

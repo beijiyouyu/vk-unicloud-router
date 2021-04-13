@@ -47,13 +47,6 @@ var request = function(obj = {}) {
 		obj.header = obj.headers;
 	}
 	if (typeof obj.timeout === "undefined") obj.timeout = 30000; // 超时时间，单位 ms(默认30秒)
-	if (obj.data) {
-		if (!obj.header) {
-			obj.header = {
-				"content-type": "application/json",
-			};
-		}
-	}
 	let Logger = {};
 	if (config.debug) {
 		Logger.params = (typeof obj.data == "object") ? vk.pubfn.copyObject(obj.data) : obj.data;
