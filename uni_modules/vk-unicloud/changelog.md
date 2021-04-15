@@ -1,3 +1,10 @@
+## 1.9.0（2021-04-15）
+### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+###  更新内容
+#### 1、【重要】`vk.selects` 支持返回树状结构 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3906510&doc_id=975983)
+#### 2、【新增】`vk.pubfn.deepClone` 深度克隆（与`vk.pubfn.copyObject`的区别：可以克隆函数)
+#### 3、【优化】`vk.setData` 内部逻辑
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 1.8.24（2021-04-13）
 ###  更新内容
 #### 1、【调整】`vk.request`默认的`header`与官方对其（之前默认是`{"content-type": "application/json; charset=UTF-8"}`）

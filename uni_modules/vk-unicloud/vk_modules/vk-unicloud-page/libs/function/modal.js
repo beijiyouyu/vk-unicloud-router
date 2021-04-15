@@ -104,7 +104,7 @@ export default {
 	},
 	toast:function(a, b, c, d, e){
 		let title = a+"";
-		let icon = "success";
+		let icon = "none";
 		let image = "";
 		let mask = false;
 		let duration = 1500;

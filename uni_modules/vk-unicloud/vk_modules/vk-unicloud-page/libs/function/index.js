@@ -217,12 +217,33 @@ pubfn.objectAssign = function (obj1, obj2){
 };
 /**
  * 复制一份对象-没有映射关系
- * @description 主要用于解除映射关系
+ * @description 主要用于解除映射关系（不支持克隆函数）
  * @params {Object} 	obj
  * let newObj = vk.pubfn.copyObject(obj);
  */
 pubfn.copyObject = function (obj){
 	return JSON.parse(JSON.stringify(obj));
+};
+/**
+ * 深度克隆一个对象-没有映射关系
+ * @description 主要用于解除映射关系（支持克隆函数）
+ * @params {Object} 	obj
+ * let newObj = vk.pubfn.deepClone(obj);
+ */
+pubfn.deepClone = function (obj){
+	// 对常见的“非”值，直接返回原来值
+	if([null, undefined, NaN, false].includes(obj)) return obj;
+	if(typeof obj !== "object" && typeof obj !== 'function') {
+		//原始类型直接返回
+		return obj;
+	}
+	let o = Object.prototype.toString.call(obj) === '[object Array]' ? [] : {};
+	for(let i in obj) {
+		if(obj.hasOwnProperty(i)){
+			o[i] = typeof obj[i] === "object" ? pubfn.deepClone(obj[i]) : obj[i];
+		}
+	}
+	return o;
 };
 /**
  * 表单自动填充数据
@@ -299,6 +320,12 @@ pubfn.getData = function (dataObj, name, defaultValue) {
  */
 pubfn.setData = function (dataObj, name, value) {
 	// 通过正则表达式  查找路径数据
+	let dataValue;
+	if(typeof value === "object"){
+		dataValue = pubfn.copyObject(value);
+	}else{
+		dataValue = value;
+	}
 	let regExp = new RegExp("([\\w$]+)|\\[(:\\d)\\]","g");
 	const patten = name.match(regExp);
 	// 遍历路径  逐级查找  最后一级用于直接赋值
@@ -308,7 +335,7 @@ pubfn.setData = function (dataObj, name, value) {
 		dataObj = dataObj[keyName];
 	}
 	// 最后一级
-	dataObj[patten[patten.length - 1]] = value;
+	dataObj[patten[patten.length - 1]] = dataValue;
 };
 
 /**
@@ -469,7 +496,7 @@ pubfn.arrayToJson = function (list, key) {
 pubfn.listToJson = pubfn.arrayToJson;
 
 /**
- * 从数组中提取指定字段形式新的数组
+ * 从数组中提取指定字段形式成为新的数组
  * 如[{"_id":"001","name":"name1","sex":1},{"_id":"002","name":"name2","sex":2}]
  * 提取_id字段转成
  * ["001","002"]
@@ -992,7 +1019,8 @@ pubfn.toTimeLong = function (dateString){
  * 手机端长列表分页加载数据 2.0版本
  * @params {Vue页面对象} 	that						页面数据对象this
  * @params {String} 			url							请求地址(云函数路径)
- * @params {String} 			listName				后端返回的list数组的字段名称,默认rows
+ * @params {String} 			listName				后端返回的list数组的字段名称,默认rows(二选一即可)
+ * @params {String} 			listKey					后端返回的list数组的字段名称,默认rows(二选一即可)
  * @params {Object} 			data						额外数据
  * @params {function} 		dataPreprocess	数据预处理函数
  *
@@ -1011,11 +1039,13 @@ pubfn.toTimeLong = function (dateString){
 pubfn.getListData2 = function (obj = {}){
 	let { 
 		that, 
-		listName = "rows", 
+		listName, 
+		listKey = "rows",
 		url, 
 		dataPreprocess, 
 		idKeyName = "_id"
 	} = obj;
+	if(listName) listKey = listName;
 	let { vk, queryForm1 } = that;
 	// 标记为请求中
 	that.loading = true;
@@ -1027,7 +1057,7 @@ pubfn.getListData2 = function (obj = {}){
 		url: url,
 		data: queryForm1,
 		success: function(data) {
-			let list = data[listName] || [];
+			let list = data[listKey] || [];
 			// 数据预处理
 			if (typeof dataPreprocess == "function") {
 				list = dataPreprocess(list);
@@ -1096,6 +1126,7 @@ pubfn.getListData2 = function (obj = {}){
  * @params {Vue页面对象} 	that						页面数据对象this
  * @params {String} 			url							请求地址(云函数路径)
  * @params {String} 			listName				后端返回的list数组的字段名称,默认rows
+ * @params {String} 			listKey					后端返回的list数组的字段名称,默认rows
  * @params {Object} 			data						额外数据
  * @params {function} 		dataPreprocess	数据预处理函数
  *
@@ -1103,7 +1134,7 @@ pubfn.getListData2 = function (obj = {}){
 	vk.pubfn.getListData({
 		that : this,
 		url : "template/db_api/pub/select",
-		listName : "rows",
+		listKey : "rows",
 		data : {
 			a : 1
 		},
@@ -1113,7 +1144,15 @@ pubfn.getListData2 = function (obj = {}){
 	});
  */
 pubfn.getListData = function (obj = {}){
-	var { that, listName = "rows", url, dataPreprocess, loading } = obj;
+	var { 
+		that, 
+		listName, 
+		listKey = "rows", 
+		url, 
+		dataPreprocess, 
+		loading 
+	} = obj;
+	if(listName) listKey = listName;
 	var { form1 = {}, data = {} } = that;
 	var { pageKey = true } = data;
 	var vk = that.vk;
@@ -1142,7 +1181,7 @@ pubfn.getListData = function (obj = {}){
 		title: title,
 		loading:loading,
 		success : function(data){
-			var list = data[listName] || [];
+			var list = data[listKey] || [];
 			// 数据预处理
 			if(typeof dataPreprocess == "function"){
 				list = dataPreprocess(list);

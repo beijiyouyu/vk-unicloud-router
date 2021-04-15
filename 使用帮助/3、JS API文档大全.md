@@ -128,11 +128,17 @@ vk.pubfn.objectAssign(obj1, obj2);
 
 /**
  * 复制一份对象-没有映射关系
- * @description 主要用于解除映射关系
+ * @description 主要用于解除映射关系（不支持克隆函数）
  * @params {Object} 	obj
  */
 let newObj = vk.pubfn.copyObject(obj);
 
+/**
+ * 深度克隆一个对象-没有映射关系
+ * @description 主要用于解除映射关系（支持克隆函数）
+ * @params {Object} 	obj
+ */
+let newObj = vk.pubfn.deepClone(obj);
 /**
  * 两个(元素为对象)的数组合并,并去除重复的数据
  * @params	{Array} 	arr1 	第一个数组(arr1和aar2没有顺序要求)

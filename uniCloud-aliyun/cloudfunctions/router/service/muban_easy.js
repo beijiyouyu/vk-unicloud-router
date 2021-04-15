@@ -10,7 +10,7 @@ module.exports = {
 		let { data = {}, userInfo, util, originalParam } = event;
 		let { customUtil, config, pubFun, vk, db, _ } = util;
 		let { uid } = data;
-		let res = { code : 0, msg : '' };
+		let res = { code: 0, msg: "" };
 		// 业务逻辑开始-----------------------------------------------------------
 		// 可写与数据库的交互逻辑等等
 

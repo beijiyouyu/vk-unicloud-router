@@ -193,7 +193,23 @@
 			"vk.pubfn.copyObject($0);"
 		],
 		"triggerAssist": false,
-		"description": "复制一份对象-解除对象映射关系"
+		"description": "复制一份对象-解除对象映射关系（不支持克隆函数）"
+	},
+	"vk.pubfn.deepClone": {
+	 "prefix": "vk.pubfn.deepClone",
+	 "body": [
+			"vk.pubfn.deepClone($0);"
+		],
+		"triggerAssist": false,
+		"description": "复制一份对象-解除对象映射关系（支持克隆函数）"
+	},
+	"vk.pubfn.arrayObjectGetArray": {
+	 "prefix": "vk.pubfn.arrayObjectGetArray",
+	 "body": [
+			"vk.pubfn.arrayObjectGetArray($0);"
+		],
+		"triggerAssist": false,
+		"description": "从数组中提取指定字段形式成为新的数组"
 	},
 	"vk.pubfn.getCommonTime": {
 	 "prefix": "vk.pubfn.getCommonTime",
@@ -417,10 +433,4 @@
 		"triggerAssist": false,
 		"description": "try-catch"
 	}
-	
-	
-		
-	
-		
-	
 }
