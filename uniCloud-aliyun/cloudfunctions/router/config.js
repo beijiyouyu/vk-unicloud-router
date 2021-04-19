@@ -1,9 +1,10 @@
-const config = require('config');             // 全局配置信息
-const uniID = require('uni-id');              // uni-id 公共模块
-uniID.init(config["uni"]);                    // 初始化uni-id
-const uniPay = require('uni-pay');            // uni-pay 公共模块
-const db = uniCloud.database();               // 获取数据库实例
-const pubFun = require('./util/pubFunction'); // 自定义公共函数
+const config = require('config');                // 全局配置信息
+const uniID = require('uni-id');                 // uni-id 公共模块
+uniID.init(config["uni"]);                       // 初始化uni-id
+const uniPay = require('uni-pay');               // uni-pay 公共模块
+const db = uniCloud.database();                  // 获取数据库实例
+const pubFun = require('./util/pubFunction');    // 自定义公共函数
+const urlrewrite = require('./util/urlrewrite'); // url重写（内部转发）
 // 自定义过滤器(中间件)
 const middlewareService = require('./middleware/index');
 // 数据库操作中心
@@ -21,6 +22,7 @@ const initConfig = {
 	uniPay,
 	db,
 	pubFun,
+	urlrewrite,
 	middlewareService,
 	daoCenter,
 	crypto

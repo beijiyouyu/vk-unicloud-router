@@ -1,7 +1,7 @@
 ### uniCloud云函数路由框架研究Q群:22466457 如有问题或建议可以在群内讨论。
 ### 插件名称：`vk-unicloud-router`
 ### 作者：VK
-### 更新时间：2021-04-15
+### 更新时间：2021-04-19
 
 ## 序
 ##### 如果你热爱编程，想快速入门云开发，欢迎使用`vk-cloud-router`开发框架
@@ -69,9 +69,13 @@
 
 #### 20、【1.8.0 新增】微信小程序服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3569379&doc_id=975983)
 
-#### 21、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+#### 21、【1.8.12 新增】百度开放平台服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3803034&doc_id=975983)
 
-#### 22、其他好处…
+#### 22、【1.9.1 新增】【全网首家】云函数URL化之URL重写 [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3916806&doc_id=975983)
+
+#### 23、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+
+#### 24、其他好处…
 
 ##### 插件首页体验地址
 
