@@ -73,6 +73,7 @@ module.exports = {
 	// 第三方服务配置
 	service:{
 		// 密钥和签名信息 (由于签名的获取比较麻烦,建议初学者使用上传到unicloud的方案,上传到阿里云OSS是给有特殊需求的用户使用)
+		// 相关文档 : https://help.aliyun.com/document_detail/31925.html?spm=a2c4g.11186623.6.1757.b7987d9czoFCVu
 		aliyunOSS:{
 			// 密钥和签名信息
 			uploadData:{
@@ -81,11 +82,15 @@ module.exports = {
 				signature:"",
 			},
 			// oss上传地址
-			action:"https://xxxxxxxx.oss-cn-hangzhou.aliyuncs.com",
+			action:"https://xxx.oss-cn-hangzhou.aliyuncs.com",
 			// 根目录名称
 			dirname:"test",
 			// oss外网访问地址，也可以是阿里云cdn地址
-			host:"https://xxx.xxx.com"
+			host:"https://xxx.xxx.com",
+			// 上传时,是否按用户id进行分组储存
+			groupUserId:true,
+			// 是否默认上传到阿里云OSS
+			isDefault:false
 		}
 	},
 	// 自定义拦截器

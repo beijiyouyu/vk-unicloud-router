@@ -82,7 +82,7 @@
 			setUserInfo(){
 				// #ifdef MP-WEIXIN
 				try {
-					wx.getUserProfile({
+					uni.getUserProfile({
 						desc:"用于快速设置昵称头像",
 						success:function(res){
 							let { userInfo } = res;

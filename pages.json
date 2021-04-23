@@ -2,8 +2,7 @@
 	"easycom": {
 		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
 	},
-	"pages": [
-		{
+	"pages": [{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id"
@@ -16,115 +15,112 @@
 			}
 		}
 	],
-	"subPackages": [
-		{
-			"root": "pages_template",
-			"pages": [
-				{
-					"path": "db-test/db-test"
-				},
-				{
-					"path": "db-test/list/list"
-				},
-				{
-					"path": "uni-id/index/index",
-					"style": {
-						"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id"
-					}
-				},
-				{
-					"path": "uni-id/password/password"
-				},
-				{
-					"path": "uni-id/mobile/mobile"
-				},
-				{
-					"path": "uni-id/univerify/univerify"
-				},
-				{
-					"path": "uni-id/weixin/weixin"
-				},
-				{
-					"path": "uni-id/alipay/alipay"
-				},
-				{
-					"path": "uni-id/util/util"
-				},
-				{
-					"path": "uni-id/email/email"
-				},
-				{
-					"path": "uni-id/login/index/index",
-					"style": {
-						"navigationBarTitleText": "登录"
-					}
-				},
-				{
-					"path": "uni-id/login/register/register",
-					"style": {
-						"navigationBarTitleText": "注册"
-					}
-				},
-				{
-					"path": "uni-id/login/forget/forget",
-					"style": {
-						"navigationBarTitleText": "找回密码"
-					}
-				},
-				{
-					"path": "components-dynamic/index/index",
-					"style": {
-						"navigationBarTitleText": "动态数据组件"
-					}
-				},
-				{
-					"path": "components-dynamic/vk-u-notice-bar/vk-u-notice-bar",
-					"style": {
-						"navigationBarTitleText": "动态数据组件 - 公告"
-					}
-				},
-				{
-					"path": "components-dynamic/vk-u-swiper/vk-u-swiper",
-					"style": {
-						"navigationBarTitleText": "动态数据组件 - 图片轮播"
-					}
-				},
-				{
-					"path": "components-dynamic/vk-u-grid-button/vk-u-grid-button",
-					"style": {
-						"navigationBarTitleText": "动态数据组件 - 图文导航"
-					}
-				},
-				{
-					"path": "components-dynamic/vk-u-goods-sku-popup/vk-u-goods-sku-popup",
-					"style": {
-						"navigationBarTitleText": "商品SKU选择器组件"
-					}
-				},
-				{
-					"path": "vuex/vuex",
-					"style": {
-						"navigationBarTitleText": "vuex演示示例"
-					}
-				},
-				{
-					"path": "openapi/weixin/weixin"
-				},
-				{
-					"path": "openapi/weixin/msgSecCheck/msgSecCheck"
-				},
-				{
-					"path": "openapi/weixin/imgSecCheck/imgSecCheck"
-				},
-				{
-					"path": "openapi/weixin/sendMessage/sendMessage"
-				},
-				{
-					"path": "openapi/baidu/baidu"
+	"subPackages": [{
+		"root": "pages_template",
+		"pages": [{
+				"path": "db-test/db-test"
+			},
+			{
+				"path": "db-test/list/list"
+			},
+			{
+				"path": "uni-id/index/index",
+				"style": {
+					"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id"
 				}
-			]
-		}
-	],
+			},
+			{
+				"path": "uni-id/password/password"
+			},
+			{
+				"path": "uni-id/mobile/mobile"
+			},
+			{
+				"path": "uni-id/univerify/univerify"
+			},
+			{
+				"path": "uni-id/weixin/weixin"
+			},
+			{
+				"path": "uni-id/alipay/alipay"
+			},
+			{
+				"path": "uni-id/util/util"
+			},
+			{
+				"path": "uni-id/email/email"
+			},
+			{
+				"path": "uni-id/login/index/index",
+				"style": {
+					"navigationBarTitleText": "登录"
+				}
+			},
+			{
+				"path": "uni-id/login/register/register",
+				"style": {
+					"navigationBarTitleText": "注册"
+				}
+			},
+			{
+				"path": "uni-id/login/forget/forget",
+				"style": {
+					"navigationBarTitleText": "找回密码"
+				}
+			},
+			{
+				"path": "components-dynamic/index/index",
+				"style": {
+					"navigationBarTitleText": "动态数据组件"
+				}
+			},
+			{
+				"path": "components-dynamic/vk-u-notice-bar/vk-u-notice-bar",
+				"style": {
+					"navigationBarTitleText": "动态数据组件 - 公告"
+				}
+			},
+			{
+				"path": "components-dynamic/vk-u-swiper/vk-u-swiper",
+				"style": {
+					"navigationBarTitleText": "动态数据组件 - 图片轮播"
+				}
+			},
+			{
+				"path": "components-dynamic/vk-u-grid-button/vk-u-grid-button",
+				"style": {
+					"navigationBarTitleText": "动态数据组件 - 图文导航"
+				}
+			},
+			{
+				"path": "components-dynamic/vk-u-goods-sku-popup/vk-u-goods-sku-popup",
+				"style": {
+					"navigationBarTitleText": "商品SKU选择器组件"
+				}
+			},
+			{
+				"path": "vuex/vuex",
+				"style": {
+					"navigationBarTitleText": "vuex演示示例"
+				}
+			},
+			{
+				"path": "openapi/weixin/weixin"
+			},
+			{
+				"path": "openapi/weixin/msgSecCheck/msgSecCheck"
+			},
+			{
+				"path": "openapi/weixin/imgSecCheck/imgSecCheck"
+			},
+			{
+				"path": "openapi/weixin/sendMessage/sendMessage"
+			},
+			{
+				"path": "openapi/baidu/baidu"
+			}
+		]
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id",

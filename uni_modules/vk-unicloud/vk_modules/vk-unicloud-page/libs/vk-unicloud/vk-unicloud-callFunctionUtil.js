@@ -304,6 +304,7 @@ class CallFunctionUtil {
 		 * @params {Function} success  					请求成功时，执行的回调函数
 		 * @params {Function} fail  	 					请求失败时，执行的回调函数
 		 * @params {Function} complete 					无论请求成功与否，都会执行的回调函数
+		 * vk.callFunctionUtil.uploadFile
 		 */
 		this.uploadFile = (obj = {}) => {
 			let that = this;
@@ -318,9 +319,19 @@ class CallFunctionUtil {
 				success,
 				fail,
 				complete,
-				type = "unicloud"
+				type,
+				provider
 			} = obj;
-			if (type === "aliyun-oss") {
+			if(type && !provider) provider = type;
+			if(!provider){
+				let	aliyunOSS = vk.pubfn.getData(config, "service.aliyunOSS");
+				if(aliyunOSS && aliyunOSS.isDefault){
+					provider = "aliyun";
+				}else{
+					provider = "unicloud";
+				}
+			}
+			if (provider === "aliyun") {
 				return vk.aliyunOSSUtil.uploadFile(obj);
 			}
 			if (title) vk.showLoading(title);
@@ -567,7 +578,7 @@ class CallFunctionUtil {
 			needAlert,
 			fail
 		} = params;
-		
+
 		if (typeof noAlert !== "undefined") needAlert = !noAlert;
 		if (typeof needAlert === "undefined"){
 			needAlert = (typeof fail === "function") ? false : true;

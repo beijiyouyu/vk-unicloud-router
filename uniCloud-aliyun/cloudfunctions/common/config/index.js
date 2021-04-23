@@ -86,14 +86,12 @@ module.exports = {
 			"sms": {
 				// 阿里云短信服务
 				"aliyun": {
-					"enable":false,																	// 是否使用阿里云短信代替unicloud短信发送短信验证码
-					"accessKeyId": "",															// 短信密钥key
-					"accessKeySecret": "",													// 短信密钥secret
-					"endpoint":"https://dysmsapi.aliyuncs.com",			// api请求地址
-					"apiVersion":"2017-05-25",
-					"SignName":"", 																	// 默认签名
-					"TemplateCode":{
-						"verifyCode":""																// 验证码短信模板 - 配合uni-id需要
+					"enable": false,					// 是否使用阿里云短信代替unicloud短信发送短信验证码
+					"accessKeyId": "",				// 短信密钥key
+					"accessKeySecret": "",		// 短信密钥secret
+					"signName": "", 					// 默认签名
+					"templateCode": {
+						"verifyCode": ""				// 验证码短信模板 - 配合uni-id需要
 					}
 				}
 			},

@@ -9,7 +9,7 @@ var counterNum = 0;
 vk.callFunctionUtil.uploadFile({
 	filePath:tempFilePath,
 	fileType:"image",
-	type:"aliyun-oss",
+	provider:"aliyun",
 	index,
 	onUploadProgress:function(res){
 		// 上传过程中
@@ -118,6 +118,14 @@ function getConfig (){
 	let	aliyunOSS = vk.pubfn.getData(config, "service.aliyunOSS");
 	let configData = {};
 	if(aliyunOSS && aliyunOSS.uploadData && aliyunOSS.uploadData.OSSAccessKeyId){
+		try {
+			if(aliyunOSS.groupUserId && typeof vk.getVuex === "function"){
+				let userInfo = vk.getVuex("$user.userInfo");
+				if(vk.pubfn.isNotNull(userInfo) && userInfo._id){
+					aliyunOSS.dirname +=`/${userInfo._id}`;
+				}
+			}
+		}catch(err){}
 		configData = {
 			uploadData:{
 				OSSAccessKeyId: aliyunOSS.uploadData.OSSAccessKeyId,
@@ -145,13 +153,13 @@ function createFileName(obj = {}){
 	let dirname = aliyunOSS.dirname;
 	let host = aliyunOSS.host;
 	let fileObj = {};
-	
+
 	if(filePath){
 		let suffixName = filePath.substring(filePath.lastIndexOf(".")+1);
 		if(suffixName && suffixName.length < 5) suffix = suffixName;
 	}
 	let oldName = index + "." + suffix;
-	
+
 	let date = new Date();
 	let dateYYYYMMDD = vk.pubfn.timeFormat(date,"yyyy/MM/dd");
 	let dateTime = date.getTime().toString(); // 时间戳
