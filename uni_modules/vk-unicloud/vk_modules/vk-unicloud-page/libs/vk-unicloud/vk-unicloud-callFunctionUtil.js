@@ -80,6 +80,7 @@ class CallFunctionUtil {
 			if (typeof vk.setVuex === "function") {
 				// 有安装vuex则使用vuex
 				vk.setVuex('$user.userInfo', {});
+				vk.setVuex('$user.permission', []);
 				vk.removeStorageSync(config.uniIdUserInfoKeyName);
 			} else {
 				// 否则使用本地缓存

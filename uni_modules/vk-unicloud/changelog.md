@@ -1,3 +1,20 @@
+## 2.0.1（2021-05-15）
+###  更新内容
+#### 【优化】用户角色权限，支持admin使用 [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=4003879&doc_id=975983)
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
+## 2.0.0（2021-05-15）
+###  更新内容
+#### 【优化】用户角色权限，支持admin使用 [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=4003879&doc_id=975983)
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
+## 1.9.4（2021-05-10）
+###  uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
+###  更新内容
+#### 1、【优化】`vk.baseDao.selects` 支持分组查询，对应 `groupJson` 参数 [点击查看万能连表场景6](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3028633&doc_id=975983)
+#### 2、【优化】`vk.globalDataCache.get` 支持如果缓存有值，则读取缓存，如果缓存无值，则执行函数，并将函数return的结果保存到缓存 [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3442025&doc_id=975983)
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
 ## 1.9.3（2021-04-23）
 ###  更新内容
 ###  uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。

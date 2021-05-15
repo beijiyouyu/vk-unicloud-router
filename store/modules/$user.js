@@ -20,7 +20,8 @@ export default {
 		 * js更新示例
 		 * vk.setVuex('$user.userInfo.avatar', avatar);
 		 */
-		userInfo: lifeData.$user.userInfo || {}
+		userInfo: lifeData.$user.userInfo || {},
+		permission:lifeData.$user.permission || [],
 	},
 	/**
 	 * 从基本数据(state)派生的数据，相当于state的计算属性

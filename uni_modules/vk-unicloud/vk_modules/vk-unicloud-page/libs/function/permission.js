@@ -1,6 +1,6 @@
 export default function(Vue){
 	Vue.prototype.$hasPermission = function hasPermission(name) {
-		const permission = this.$store.state.$user.userInfo.permission || []
+		const permission = this.$store.state.$user.permission || []
 		return permission.indexOf(name) > -1
 	}
 	Vue.prototype.$hasRole = function hasRole(name) {

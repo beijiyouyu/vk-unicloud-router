@@ -831,8 +831,8 @@ pubfn.regExpTest = function(text, expText){
 pubfn.createOrderNo = function(prefix=""){
 	// 获取当前时间字符串格式如20200803093000123
 	let fullTime = pubfn.getFullTime(new Date(), 1);
-	// 生成订单号
-	return prefix + fullTime + pubfn.random(16);
+	fullTime = fullTime.substring(2);
+	return prefix + fullTime + pubfn.random(10);
 };
 
 // 前端专属开始 -----------------------------------------------------------

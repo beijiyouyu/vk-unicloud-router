@@ -1,16 +1,17 @@
 ### uniCloud云函数路由框架研究Q群:22466457 如有问题或建议可以在群内讨论。
 ### 插件名称：`vk-unicloud-router`
 ### 作者：VK
-### 更新时间：2021-04-23
 
 ## 序
-##### 如果你热爱编程，想快速入门云开发，欢迎使用`vk-cloud-router`开发框架
+##### 如果你热爱编程，想快速入门云开发，欢迎使用`vk-unicloud`系列开发框架
 ##### 无需转变开发习惯，0成本上手云开发。
 ##### 框架内置了众多API、工具包，为你的业务扫平障碍。使你的项目刚起步进度就是50%（微信登录、短信、验证码、缓存、生成小程序码等等）
 ##### 从此你又get一个新技能，只需用js，轻松搞定前后台整体业务。
-##### 框架地址：`https://ext.dcloud.net.cn/plugin?id=2204` [点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
-##### 框架文档：`https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912167&doc_id=975983` [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912167&doc_id=975983)
-##### 框架学习Q群：22466457 欢迎萌新和大佬来使用和共同改进框架
+##### `client端`框架地址：`https://ext.dcloud.net.cn/plugin?id=2204` [点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+##### `admin端`框架地址：`https://ext.dcloud.net.cn/plugin?name=vk-unicloud-admin` [点击查看](https://ext.dcloud.net.cn/plugin?name=vk-unicloud-admin)
+##### `client端`框架文档：`https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912167&doc_id=975983` [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=2912167&doc_id=975983)
+##### `admin端`框架文档：`https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=4003875&doc_id=975983` [点击查看](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=4003875&doc_id=975983)
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
 
 ## 主要功能 以及 对开发者的价值
 
@@ -282,4 +283,5 @@ this.vk.callFunction({
 [点击查看本插件『更新步骤』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3671081&doc_id=975983)
 
 ## uniCloud云函数路由框架研究Q群:`22466457` 如有问题或建议可以在群内讨论。
-## 你也可以在评论区发布留言交流心得。
+
+### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
