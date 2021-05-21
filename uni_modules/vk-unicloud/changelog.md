@@ -1,3 +1,10 @@
+## 2.0.5（2021-05-21）
+###  更新内容
+#### 【优化】`vk.baseDao.getTableData` 和 `vk.baseDao.selects` 连表查询逻辑。
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+
+## 2.0.4（2021-05-21）
+【调整】`vk.baseDao.getTableData` 默认排序规则调整为`_id`降序，之前是`_add_time`降序（因不是每个表都有`_add_time`字段）
 ## 2.0.3（2021-05-21）
 ### uniCloud 云函数路由研究群:22466457 如有问题或建议可以在群内讨论。
 ###  更新内容
