@@ -29,11 +29,11 @@ vk.pubfn.throttle(function() {
 
 /**
  * 数组结构转树形结构
- * @params {Array} treeData  数据源
+ * @params {Array} arrayData  数据源
  * @params {Object} treeProps 树结构配置
  * { id:"_id", parent_id:"parent_id", children:"children",need_field:["_id","name"],deleteParentId:true }
  */
-vk.pubfn.arrayToTree(treeData,{
+vk.pubfn.arrayToTree(arrayData,{
   id:"_id", 
   parent_id:"parent_id", 
   children:"children"

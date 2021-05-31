@@ -4,7 +4,7 @@
 			当前集成的
 			<text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>
 			版本：
-			<text style="font-weight: bold;">3.0.12</text> 
+			<text style="font-weight: bold;">3.1.0</text> 
 		</view>
 		
 		<button type="default" @tap="pageTo('../password/password')">用户名和密码</button>
@@ -26,8 +26,8 @@
 		<button type="default" @tap="pageTo('../univerify/univerify')">手机一键登录</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.4.4 新增 Vuex状态管理</view>
 		<button type="default" @tap="pageTo('../../vuex/vuex')">Vuex状态管理演示示例</button>
-		<view style="margin-bottom: 20rpx;">插件版本1.4.3 新增 云函数临时缓存</view>
-		<button type="default" @tap="pageTo('../../temporary-cache/temporary-cache')">云函数临时缓存</button>
+		<!-- <view style="margin-bottom: 20rpx;">插件版本1.4.3 新增 云函数临时缓存</view>
+		<button type="default" @tap="pageTo('../../temporary-cache/temporary-cache')">云函数临时缓存</button> -->
 		<view style="margin-bottom: 20rpx;">插件版本1.3.8 新增 商品SKU选择器组件</view>
 		<button type="default" @tap="pageTo('../../components-dynamic/vk-u-goods-sku-popup/vk-u-goods-sku-popup')">商品SKU选择器组件</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.3.3 新增 登录/注册/找回密码/页面模板</view>

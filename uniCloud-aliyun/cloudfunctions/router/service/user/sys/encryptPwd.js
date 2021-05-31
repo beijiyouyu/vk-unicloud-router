@@ -1,7 +1,7 @@
 module.exports = {
   /**
    * 密码加密测试
-   * @url user/pub/encryptPwd 前端调用的url参数地址
+   * @url user/sys/encryptPwd 前端调用的url参数地址
    * @description 密码加密测试
    * @params {Object} data 请求参数
    * @params {String} uniIdToken 用户token
@@ -12,7 +12,8 @@ module.exports = {
 	 * @params {String} password 加密后的字符串
    */
 	main: async (event) => {
-		let {uniID} = event.util;
+		let { util } = event;
+		let { uniID } = util;
 		let res = {};
 		// 业务逻辑开始----------------------------------------------------------- 
 		const password = await uniID.encryptPwd('123456');

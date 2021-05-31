@@ -4,10 +4,6 @@
 		<input type="text" placeholder="验证码" v-model="form1.code" />
 		<view class="tips" style="color: red;">上次发送的验证码：{{form1.code}}</view>
 		<view class="title">手机号注册&登录相关</view>
-		<view class="tips" style="text-align: left;">如需要使用此功能，先确保已安装npm包
-			<view>"@alicloud/pop-core": "^1.7.9",</view>
-			<view>"form-data": "^3.0.0"</view>
-		</view>
 		<view style="display: flex;">
 			<button type="default" @tap="sendSmsCode('login')">真实-发送验证码</button>
 			<button type="default" @tap="setVerifyCode('login')">模拟-发送验证码</button>
