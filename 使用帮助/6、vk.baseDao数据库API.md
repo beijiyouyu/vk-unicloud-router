@@ -179,7 +179,10 @@ let list = await vk.baseDao.sample({
 });
 ```
 
-### 万能连表查询（支持多张表，支持副表与副表的副表连接）
-[点击查看万能连表查询](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3028633&doc_id=975983)
+### vk.baseDao.selects 『万能连表查询』（支持多张表，支持副表与副表的副表连接）
+[点击查看『万能连表查询』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3028633&doc_id=975983)
+
+### vk.baseDao.getTableData 『万能表格查询』（支持连表）
+[点击查看『万能表格查询』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=4078442&doc_id=975983)
 
 #### ...更多其他可以下载插件体验
