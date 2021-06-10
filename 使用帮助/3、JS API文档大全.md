@@ -302,6 +302,14 @@ vk.pubfn.timeUtil.isLeapYear(2021);
  * @params {Object} date 时间对象 
  */
 vk.pubfn.timeUtil.isQingming(new Date());
+/**
+ * 单位进制换算
+ * length	换算前大小
+ * arr		进制的数组,如["B","KB","MB","GB"]
+ * ary		进制,如KB-MB-GB,进制1024
+ * precision	数值精度
+ */
+vk.pubfn.calcSize(length,["B","KB","MB","GB"],1024,3);
 ```
 
 ### 前端专属

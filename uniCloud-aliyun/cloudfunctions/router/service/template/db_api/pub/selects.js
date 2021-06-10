@@ -34,13 +34,7 @@ module.exports = {
 					localKey:"_id",
 					foreignKey:"user_id",
 					as:"testList",
-					limit:1,
-					// 副表where条件
-					whereJson:{ },
-					// 副表字段显示规则
-					fieldJson:{ },
-					// 副表排序规则
-					sortArr:[{ "name":"money", "type":"desc" }],
+					limit:1
 				},
 				{
 					dbName:"gy-shop",

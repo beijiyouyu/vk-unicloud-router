@@ -185,7 +185,7 @@
 					title:'请求中...',
 					data:{},
 					success(data) {
-						if(data.list[0]){
+						if(data.list && data.list[0]){
 							vk.alert(JSON.stringify(data.list[0]));
 						}
 					}
