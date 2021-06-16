@@ -7,7 +7,7 @@
 | data          | 请求参数 | Object  | - | -  |
 | title         | 遮罩层提示语，为空或不传则代表不显示遮罩层。 | String  | - | -  |
 | isRequest     | 是否使用云函数url化地址访问云函数 | Boolean  | false | true |
-| needAlert     | 是否使用云函数url化地址访问云函数，默认false | Boolean  | true | false |
+| needAlert     | 为true代表请求错误时，会有alert弹窗提示 | Boolean  | true | false |
 | success       | 请求成功时，执行的回调函数 | Function  | - | - |
 | fail          | 请求失败时，执行的回调函数 | Function  | - | - |
 | complete      | 无论请求成功与否，都会执行的回调函数 | Function  | - | - |

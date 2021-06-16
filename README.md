@@ -222,7 +222,7 @@ return {
  * @params {Object}   data      请求参数
  * @params {String}   title     遮罩层提示语，为空或不传则代表不显示遮罩层。
  * @params {Boolean}  isRequest 是否使用云函数url化地址访问云函数，默认false
- * @params {Boolean}  noAlert   为true代表请求错误时，不会有弹窗提示。默认为false
+ * @params {Boolean}  needAlert 为true代表请求错误时，会有alert弹窗提示。默认为true
  * @params {Function} success   请求成功时，执行的回调函数
  * @params {Function} fail      请求失败时，执行的回调函数
  * @params {Function} complete  无论请求成功与否，都会执行的回调函数

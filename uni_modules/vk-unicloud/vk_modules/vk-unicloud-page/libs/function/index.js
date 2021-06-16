@@ -228,7 +228,11 @@ pubfn.objectAssign = function (obj1, obj2){
  * let newObj = vk.pubfn.copyObject(obj);
  */
 pubfn.copyObject = function (obj){
-	return JSON.parse(JSON.stringify(obj));
+	if(typeof obj !== "undefined"){
+		return JSON.parse(JSON.stringify(obj));
+	}else{
+		return obj;
+	}
 };
 /**
  * 深度克隆一个对象-没有映射关系
@@ -694,7 +698,7 @@ pubfn.calcFreights = function (freightsItem, weight) {
 };
 
 /**
- * 从一个对象中取多个属性,并生成一个全新的对象
+ * 从一个对象中取多个属性,并生成一个全新的对象,会过滤空字符串,空数组,空对象
  * @params {Object} obj 对象
  * @params {Array<String>} keys 键名数组
  * vk.pubfn.getNewObject(obj, keys);
