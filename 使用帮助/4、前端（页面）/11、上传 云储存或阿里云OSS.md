@@ -84,7 +84,6 @@ uni.chooseImage({
       filePath: res.tempFilePaths[0],
       file: res.tempFiles[0],
       needSave:true,
-      fileType:"image",
       success(res) {
        // 上传成功
 

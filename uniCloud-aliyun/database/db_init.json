@@ -236,7 +236,7 @@
 			},
 			{
 				"IndexName": "expired_at",
-				"MgoKeySchema": {"MgoIndexKeys": [{"Name": "expired_at","Direction": "1"}],"MgoIsUnique": true}
+				"MgoKeySchema": {"MgoIndexKeys": [{"Name": "expired_at","Direction": "1"}],"MgoIsUnique": false}
 			}
 		]
 	},
