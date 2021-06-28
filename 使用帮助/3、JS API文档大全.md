@@ -94,7 +94,7 @@ vk.pubfn.getCommonTime(new Date(),targetTimezone);
 /**
  * 检测文本是否满足指定格式
  * @params {String} str 需要检测的文本
- * @params {Number} type 检测类型
+ * @params {String} type 检测类型
  * 包含 
  * mobile 手机号码
  * tel 座机
@@ -234,12 +234,13 @@ vk.pubfn.arrayToJson(list, "_id");
 vk.pubfn.arrayObjectGetArray(list, "_id");
 /**
  * 产生指定位数的随机数(支持任意字符,默认纯数字)
- * @description 主要用于在一个对象数组中快速获取 _id = 1 的对象
  * @params	{Number} length 数据源
  * @params	{String} str 指定的字符串中随机范围
+ * @params	{Array} arr 产生的随机数不会和此数组的任意一项重复
  */
 vk.pubfn.random(6);
 vk.pubfn.random(6, "abcdefghijklmnopqrstuvwxyz0123456789");
+vk.pubfn.random(1,"123456789",["1","2","3"]);
 
 /**
  * 将手机号,账号等隐藏中间字段
@@ -381,10 +382,14 @@ vk.pubfn.getListData({
  // 代码示例
  // 如:放置一个动态数据的 公告组件 和 一个轮播图组件
  // view  核心:自定义组件接收一个 Object 类型的属性 datas
+```
+```html
   <vk-u-notice-bar :datas='componentsDynamic["notice-bar-01"]'></vk-u-notice-bar>
   <vk-u-swiper :datas='componentsDynamic["index-swiper-01"]' :custom-datas='{
     "height":600,
   }'></vk-u-swiper>
+```
+```js
 // 在页面数据变量中新增 componentsDynamic
   data() {
     return {

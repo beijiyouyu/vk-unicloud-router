@@ -53,7 +53,7 @@ module.exports = {
 						await vk.globalDataCache.del(cacheKey);
 					}
 					let mobileStr = mobile.substring(7);
-					await vk.baseDao.updateById({
+					res.userInfo = await vk.baseDao.updateById({
 						dbName:"uni-id-users",
 						id:res.uid,
 						dataJson:{
@@ -62,7 +62,8 @@ module.exports = {
 							gender,
 							wx_openid,
 							wx_unionid
-						}
+						},
+						getUpdateData:true
 					});
 				}
 				// 日志服务

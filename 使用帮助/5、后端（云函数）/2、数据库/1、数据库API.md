@@ -185,4 +185,7 @@ let list = await vk.baseDao.sample({
 ### vk.baseDao.getTableData 『万能表格查询』（支持连表）
 [点击查看『万能表格查询』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=4078442&doc_id=975983)
 
+### 数据库操作常见问题(如排序、显示部分字段、and、or、模糊查询、字段别名等等)
+[点击查看『数据库操作常见问题』](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3686279&doc_id=975983)
+
 #### ...更多其他可以下载插件体验

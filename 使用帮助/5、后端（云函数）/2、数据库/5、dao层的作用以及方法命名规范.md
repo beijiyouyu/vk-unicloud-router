@@ -18,7 +18,7 @@
 #### `删除` : 删除数据的方法用 `delete` 或 `remove` 作为前缀
 #### `修改` : 修改的方法用 `update` 作为前缀
 
-## 前缀 + 表名 + 条件类型
+## 前缀 + 表名 + 条件类型（适用于1个dao可能操作多张表的情况）
 #### 如：
 #### 根据`用户ID`获取用户信息 `findUserById`
 #### 根据`用户手机号`获取用户信息 `findUserByMobile`
@@ -32,5 +32,20 @@
 #### 修改用户，根据用户ID `updateUserById`
 #### 批量修改用户，根据自定义条件`updateUserByWhereJson`
 #### 批量删除用户，根据自定义条件`deleteUserByWhereJson`
+
+## 前缀 + 条件类型（适用于1个dao只操作1张表的情况）
+#### 如：
+#### 根据`ID`获取一条信息 `findById`
+#### 根据`手机号`获取一条信息 `findByMobile`
+#### 根据`不定性条件`获取一条信息 `findByWhereJson`
+
+#### 根据`用户状态`获取多条信息 `listByStatus`
+#### 根据`不定性条件`获取多条信息 `listByWhereJson`
+
+#### 添加 `add`
+#### 删除，根据ID `deleteById`
+#### 修改，根据ID `updateById`
+#### 批量修改，根据自定义条件`updateByWhereJson`
+#### 批量删除，根据自定义条件`deleteByWhereJson`
 
 #### PS：后面会出一个根据表名和表别名自动生成dao层基础代码的功能。

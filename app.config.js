@@ -32,10 +32,10 @@ module.exports = {
 	// 需要检查是否登录的页面列表
 	checkTokenPages:{
 		/**
-		 * mode = 0 代表自动检测
-		 * mode = 1 代表list内的页面需要登录
-		 * mode = 2 代表list内的页面不需要登录
-		 * 注意1: list内是通配符表达式,非正则表达式
+		 * 如果 mode = 0 则代表自动检测
+		 * 如果 mode = 1 则代表list内的页面需要登录，不在list内的页面不需要登录
+		 * 如果 mode = 2 则代表list内的页面不需要登录，不在list内的页面需要登录
+		 * 注意1: list内是通配符表达式，非正则表达式
 		 * 注意2: 需要使用 vk.navigateTo 代替 uni.navigateTo 进行页面跳转才会生效
 		 */
 		mode:2,
@@ -49,11 +49,11 @@ module.exports = {
 	// 需要检查是否可以分享的页面列表(仅小程序有效)
 	checkSharePages:{
 		/**
-		 * mode = 0 不做处理
-		 * mode = 1 代表list内的页面可以被分享
-		 * mode = 2 代表list内的页面不可以被分享
-		 * 注意: list内是通配符表达式,非正则表达式
-		 */
+     * 如果 mode = 0 则不做处理
+     * 如果 mode = 1 则代表list内的页面可以被分享，不在list内的页面不可以被分享
+     * 如果 mode = 2 则代表list内的页面不可以被分享，不在list内的页面可以被分享
+     * 注意: list内是通配符表达式，非正则表达式
+     */
 		mode:0,
 		// ['shareAppMessage', 'shareTimeline'],
 		menus:['shareAppMessage'],
