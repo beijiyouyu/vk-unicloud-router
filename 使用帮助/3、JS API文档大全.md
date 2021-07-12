@@ -55,7 +55,7 @@ vk.pubfn.treeToArray(treeData,{
  * @params {Date || Number} date 需要格式化的时间
  * @params {Number} targetTimezone 时区 默认东8区 正数代表东 负数代表西
  */
-vk.pubfn.timeFormat(new Date(),"yyyy:MM:dd hh:mm:ss",targetTimezone);
+vk.pubfn.timeFormat(new Date(),"yyyy-MM-dd hh:mm:ss",targetTimezone);
 
 /**
  * 日期对象转换(云函数端会自动转成东八区时间)
