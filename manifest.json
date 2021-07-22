@@ -59,12 +59,12 @@
     "mp-weixin" : {
         "appid" : "",
         "setting" : {
-						"urlCheck" : false,
-						"es6" : true,
-						"postcss" : true,
-						"minified" : true,
-						"checkSiteMap" : false
-				},
+            "urlCheck" : false,
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true,
+            "checkSiteMap" : false
+        },
         "usingComponents" : true
     },
     "mp-alipay" : {
@@ -81,7 +81,9 @@
     },
     "h5" : {
         "title" : "（开箱即用）uniCloud-云函数路由模式 - 带过滤器 - 支持权限拦截 - 已集成uni-id",
-        "domain" : "vkunicloud.fsq.pub",
-        "template" : "template.h5.html"
+        "template" : "template.h5.html",
+        "devServer" : {
+          "disableHostCheck" : true
+        }
     }
 }

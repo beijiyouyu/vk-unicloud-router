@@ -60,23 +60,27 @@
 
 #### 15、自定义过滤器（在业务云函数执行之前(或之后)，统一拦截，进行过滤后再放行，支持设置多个过滤器，并按指定顺序执行）
 
-#### 16、【1.6.5 新增】`vk.localStorage` 封装本地缓存的curd，同时具有监听缓存被更新和被删除的功能。[点击查看用法](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3415898&doc_id=975983)
+#### 16、支持设置需要登录的页面列表或不需要登录的页面列表（通过本地token检测，无网络请求，支持通配符写法）
 
-#### 17、【1.6.5 新增】美化云函数请求过程中的日志排版，使请求日志一目了然。
+#### 17、支持设置可以被分享的页面列表或禁止分享的页面列表（支持通配符写法）
 
-#### 18、【1.7.0 新增】可以`强制关闭`云端服务（适用于需要临时关闭后端服务的情况，如腾讯云迁移数据到阿里云时需要先关闭服务，否则迁移过程中会有新数据产生）
+#### 18、`vk.localStorage` 封装本地缓存的curd，同时具有监听缓存被更新和被删除的功能。[点击查看用法](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3415898&doc_id=975983)
 
-#### 19、【1.7.0 新增】全局数据缓存API，现在可以很方便的在云函数中使用缓存。 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3442025&doc_id=975983)
+#### 19、美化云函数请求过程中的日志排版，使请求日志一目了然。
 
-#### 20、【1.8.0 新增】微信小程序服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3569379&doc_id=975983)
+#### 20、可以`强制关闭`云端服务（适用于需要临时关闭后端服务的情况，如腾讯云迁移数据到阿里云时需要先关闭服务，否则迁移过程中会有新数据产生）
 
-#### 21、【1.8.12 新增】百度开放平台服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3803034&doc_id=975983)
+#### 21、全局数据缓存API，现在可以很方便的在云函数中使用缓存。 [点击查看详情](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3442025&doc_id=975983)
 
-#### 22、【1.9.1 新增】【全网首家】云函数URL化之URL重写 [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3916806&doc_id=975983)
+#### 22、【1.8.0 新增】微信小程序服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3569379&doc_id=975983)
 
-#### 23、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+#### 23、【1.8.12 新增】百度开放平台服务端API [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3803034&doc_id=975983)
 
-#### 24、其他好处…
+#### 24、【1.9.1 新增】【全网首家】云函数URL化之URL重写 [点击查看文档](https://gitee.com/vk-uni/vk-uni-cloud-router/wikis/pages?sort_id=3916806&doc_id=975983)
+
+#### 25、作者亲自在群内解答框架使用问题，让你轻松上手`uniCloud云开发`。
+
+#### 26、其他好处…
 
 ##### 插件首页体验地址
 
