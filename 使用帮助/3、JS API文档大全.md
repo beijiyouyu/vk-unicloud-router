@@ -191,6 +191,12 @@ vk.pubfn.isNullAll(value1,value2,value3);
 vk.pubfn.isNotNullAll(value1,value2,value3);
 
 /**
+ * 检测整个对象是否没有一个属性是空值,如果有空值,则返回首个是空值的属性名
+ */
+let nullKey = vk.pubfn.isNullOneByObject({ title, content, avatar });
+if (nullKey) return { code: -1, msg: `${nullKey}不能为空` };
+
+/**
  * 获取对象数组中的某一个item,根据指定的键名和键值
  * @description 主要用于在一个对象数组中快速获取 _id = 1 的对象
  * @params	{Array} list 数据源
