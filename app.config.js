@@ -9,6 +9,10 @@ module.exports = {
 	login: {
 		url: '/pages_template/uni-id/login/index/index'
 	},
+  // 首页页面路径
+  index: {
+    url: '/pages/index/index'
+  },
 	// 404 Not Found 错误页面路径
 	error: {
 		url: '/pages/error/404/404'

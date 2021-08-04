@@ -373,6 +373,14 @@
 		"triggerAssist": false,
 		"description": "获取当前页面实例"
 	},
+	"vk.pubfn.openForm": {
+	 "prefix": "vk.pubfn.openForm",
+	 "body": [
+			"vk.pubfn.openForm('弹窗名',{ item })"
+		],
+		"triggerAssist": false,
+		"description": "打开弹窗"
+	},
 	"userDao.findById": {
 	 "prefix": "dao.",
 	 "body": [
