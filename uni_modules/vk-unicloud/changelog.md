@@ -1,3 +1,9 @@
+## 2.2.10（2021-08-06）
+#### 【优化】一些细节
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+## 2.2.9（2021-08-06）
+#### 【优化】一些细节
+#### 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.2.8（2021-08-05）
 ###  更新内容
 #### 1、【修复】因`uni-id`配置隔离导致的微信`vk.openapi.weixin` API 兼容性问题。

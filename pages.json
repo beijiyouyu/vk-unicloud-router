@@ -44,6 +44,9 @@
 			{
 				"path": "uni-id/alipay/alipay"
 			},
+      {
+        "path": "uni-id/qq/qq"
+      },
 			{
 				"path": "uni-id/util/util"
 			},
@@ -124,7 +127,9 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		// #ifndef MP-ALIPAY
+    "navigationBarBackgroundColor": "#F8F8F8",
+    // #endif
 		"backgroundColor": "#F8F8F8"
 	}
 }

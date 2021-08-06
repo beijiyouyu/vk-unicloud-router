@@ -664,19 +664,20 @@ pubfn.checkDataExpText = function (data={},expText) {
 };
 
 /**
- * 判断是否是数组
+ * 判断变量是否是数组
  * vk.pubfn.isArray(value);
  */
 pubfn.isArray = function (value) {
 	return Object.prototype.toString.call(value) === "[object Array]" ? true : false;
 };
 /**
- * 判断是否是对象
+ * 判断变量是否是对象
  * vk.pubfn.isObject(value);
  */
 pubfn.isObject = function (value) {
 	return Object.prototype.toString.call(value) === "[object Object]" ? true : false;
 };
+
 
 
 /**
