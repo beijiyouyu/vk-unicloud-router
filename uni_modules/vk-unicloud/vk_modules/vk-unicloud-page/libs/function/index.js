@@ -922,6 +922,7 @@ pubfn.dateDiff = function(startTime) {
 	if (!startTime){
 		return "";
 	}
+  if(typeof startTime === "string" && !isNaN(startTime)) startTime = Number(startTime);
 	if(typeof startTime == "number"){
 		if (startTime.toString().length == 10) startTime *= 1000;
 		startTime = new Date(startTime);
@@ -963,6 +964,7 @@ pubfn.dateDiff2 = function(startTime) {
 	if (!startTime){
 		return "";
 	}
+  if(typeof startTime === "string" && !isNaN(startTime)) startTime = Number(startTime);
 	if(typeof startTime == "number"){
 		if (startTime.toString().length == 10) startTime *= 1000;
 		startTime = new Date(startTime);

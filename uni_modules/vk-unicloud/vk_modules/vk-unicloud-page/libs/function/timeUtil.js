@@ -13,6 +13,7 @@ util.timeFormat = function(time, fmt = 'yyyy-MM-dd hh:mm:ss', targetTimezone = 8
 		if (!time) {
 			return "";
 		}
+    if(typeof time === "string" && !isNaN(time)) time = Number(time);
 		// 其他更多是格式化有如下:
 		// yyyy-MM-dd hh:mm:ss|yyyy年MM月dd日 hh时MM分等,可自定义组合
 		let date;
@@ -65,6 +66,7 @@ util.getFullTime = function(date, type = 0, targetTimezone = 8) {
 	if (!date) {
 		return "";
 	}
+  if(typeof date === "string" && !isNaN(date)) date = Number(date);
 	if (typeof date == "number") {
 		if (date.toString().length == 10) date *= 1000;
 		date = new Date(date);
@@ -267,6 +269,7 @@ util.getMonthStartAndEnd = function(obj, targetTimezone = 8) {
  */
 util.getDayOffsetStartAndEnd = function(count = 0, time, targetTimezone = 8) {
 	let res = {};
+  if(typeof time === "string" && !isNaN(time)) time = Number(time);
 	let date;
 	if (time) {
 		if (typeof time === "number") {
@@ -299,6 +302,7 @@ util.getDayOffsetStartAndEnd = function(count = 0, time, targetTimezone = 8) {
  */
 util.getMonthOffsetStartAndEnd = function(count = 0, time, targetTimezone = 8) {
 	let res = {};
+  if(typeof time === "string" && !isNaN(time)) time = Number(time);
 	let date;
 	if (time) {
 		if (typeof time === "number") {
@@ -338,6 +342,7 @@ util.getMonthOffsetStartAndEnd = function(count = 0, time, targetTimezone = 8) {
  */
 util.getYearOffsetStartAndEnd = function(count = 0, time, targetTimezone = 8) {
 	let res = {};
+  if(typeof time === "string" && !isNaN(time)) time = Number(time);
 	let date;
 	if (time) {
 		if (typeof time === "number") {
