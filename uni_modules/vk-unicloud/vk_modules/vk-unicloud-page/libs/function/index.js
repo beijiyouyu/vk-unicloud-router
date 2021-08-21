@@ -45,6 +45,13 @@ pubfn.queryParams = queryParams;
 pubfn.setClipboardData = setClipboardData;
 
 /**
+ * 休眠，等待（单位毫秒）
+ * @params {Number} ms 毫秒
+ * await vk.pubfn.sleep(1000);
+ */
+pubfn.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+/**
  * 日期格式化
  * @params {Date || Number} date 需要格式化的时间
  * vk.pubfn.timeFormat(new Date(),"yyyy-MM-dd hh:mm:ss");
