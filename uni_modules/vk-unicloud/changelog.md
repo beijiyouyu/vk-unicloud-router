@@ -1,3 +1,6 @@
+## 2.3.14（2021-08-23）
+* 【修复】腾讯云的图片上传无法回显图片的问题。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.3.13（2021-08-23）
 * 【优化】一些细节
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
