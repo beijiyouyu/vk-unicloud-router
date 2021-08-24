@@ -275,6 +275,7 @@ class CallFunctionUtil {
 					vk = customConfig[key];
 				} else if (key === "interceptor") {
 					this.interceptor = Object.assign(this.interceptor, customConfig[key]);
+          this.config.interceptor = customConfig[key];
 				} else if (key === "myfn") {
 					vk.myfn = customConfig[key];
 				} else if (key === "loginPagePath") {

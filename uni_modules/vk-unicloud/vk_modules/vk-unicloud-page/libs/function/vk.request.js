@@ -1,6 +1,5 @@
 var requestUtil = {};
 
-import appConfig from '@/app.config.js'
 
 requestUtil.config = {
 	// 请求配置
@@ -9,7 +8,7 @@ requestUtil.config = {
 		dataParam: {}
 	},
 	requestGlobalParamKeyName: "vk_url_request_global_param",
-	debug: appConfig.debug,
+	debug: process.env.NODE_ENV !== "production",
 	// 日志风格
 	logger: {
 		colorArr: [
@@ -221,7 +220,7 @@ function requestFail(obj = {}) {
 	if (loading) vk.setLoading(false, loading);
 	let runKey = true;
 	// 自定义拦截器开始-----------------------------------------------------------
-	let { interceptor={} } = appConfig;
+	let { interceptor={} } = vk.callFunctionUtil.getConfig();
 	if (interceptor.request && typeof interceptor.request.fail == "function") {
 		runKey = interceptor.request.fail({
 			res: res,
