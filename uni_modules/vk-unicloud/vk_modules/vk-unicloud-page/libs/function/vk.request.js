@@ -160,7 +160,9 @@ function requestSuccess(obj = {}) {
 	}
 	if (vk.pubfn.isNotNullAll(errorMsgName, data[errorMsgName])) {
 		data.msg = data[errorMsgName];
-		delete data[errorMsgName];
+		if(typeof data[errorMsgName] === "string"){
+			delete data[errorMsgName];
+		}
 	}
 	if (res.statusCode >= 400 || data.code) {
 		requestFail({
