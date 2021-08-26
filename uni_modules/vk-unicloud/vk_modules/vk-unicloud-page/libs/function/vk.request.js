@@ -223,6 +223,7 @@ function requestFail(obj = {}) {
 	let { interceptor={} } = vk.callFunctionUtil.getConfig();
 	if (interceptor.request && typeof interceptor.request.fail == "function") {
 		runKey = interceptor.request.fail({
+			vk,
 			res: res,
 			params: params
 		});

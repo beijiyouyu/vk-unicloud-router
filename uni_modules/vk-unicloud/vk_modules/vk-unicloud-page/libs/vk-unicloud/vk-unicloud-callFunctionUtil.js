@@ -653,6 +653,7 @@ class CallFunctionUtil {
 		let runKey = true;
 		if (typeof that.interceptor.fail == "function") {
 			runKey = that.interceptor.fail({
+				vk,
 				res: res,
 				params: params
 			});
