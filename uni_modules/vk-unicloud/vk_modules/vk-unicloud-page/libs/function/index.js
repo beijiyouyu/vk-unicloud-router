@@ -1180,6 +1180,11 @@ pubfn.getListData2 = function (obj = {}){
 		idKeyName = "_id"
 	} = obj;
 	if(listName) listKey = listName;
+	/**
+	 * 2.0与1.0的区别
+	 * 2.0使用的queryForm1作为查询,而1.0是form1
+	 * 2.0云函数端是getTableData,而1.0是selects
+	 */
 	let { vk, queryForm1 } = that;
 	// 标记为请求中
 	that.loading = true;
@@ -1256,7 +1261,7 @@ pubfn.getListData2 = function (obj = {}){
 };
 
 /**
- * 手机端长列表分页加载数据
+ * 手机端长列表分页加载数据(1.0版本)
  * @params {Vue页面对象} 	that						页面数据对象this
  * @params {String} 			url							请求地址(云函数路径)
  * @params {String} 			listName				后端返回的list数组的字段名称,默认rows
@@ -1689,7 +1694,7 @@ pubfn.checkLogin = function(obj = {}) {
 	try {
 		let url;
 		try {
-			url = vk.pubfn.getCurrentPageRoute();
+			url = obj.url || vk.pubfn.getCurrentPageRoute();
 		}catch(err){
 			url = vk.getVuex("$app.config.index.url") || "/pages/index/index";
 		}
