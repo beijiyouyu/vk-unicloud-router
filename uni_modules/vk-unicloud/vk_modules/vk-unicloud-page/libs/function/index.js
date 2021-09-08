@@ -1243,12 +1243,15 @@ pubfn.getListData2 = function (obj = {}){
 			if (typeof obj.success == "function") obj.success(data);
 		},
 		fail: function(err) {
-			console.error(err);
 			that.state.loadmore = "loadmore";
 			if (queryForm1.pagination.pageIndex > 1) {
 				queryForm1.pagination.pageIndex--;
 			}
-			if (typeof obj.fail == "function") obj.fail(data);
+			if (typeof obj.fail == "function"){
+				obj.fail(data);
+			} else if(err && err.msg){
+				vk.toast(err.msg, "none");
+			}
 		},
 		complete: function(res) {
 			that.loading = false;
@@ -1357,9 +1360,12 @@ pubfn.getListData = function (obj = {}){
 			if(typeof obj.success == "function") obj.success(data);
 		},
 		fail : function(err){
-			console.error(err);
 			if(form1.pageIndex > 1){form1.pageIndex--;}
-			if(typeof obj.fail == "function") obj.fail(data);
+			if(typeof obj.fail == "function"){
+				obj.fail(data);
+			} else if(err && err.msg){
+				vk.toast(err.msg, "none");
+			}
 		},
 		complete : function(res){
 			if(typeof obj.complete == "function") obj.complete(res);
@@ -1702,6 +1708,7 @@ pubfn.checkLogin = function(obj = {}) {
 			url: url,
 			success: function(res) {
 				if (res.needLogin) {
+					// 这里应该记录下之前的页面? 不然登录成功后，只会进入首页。（后面优化）
 					vk.reLaunch(loginUrl);
 					// #ifdef MP-WEIXIN
 					uni.hideHomeButton();
