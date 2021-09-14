@@ -1,3 +1,6 @@
+## 2.3.26（2021-09-14）
+* 【优化】一些细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.3.25（2021-09-13）
 * 1、【优化】文件上传逻辑
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
