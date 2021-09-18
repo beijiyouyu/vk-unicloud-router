@@ -19,7 +19,9 @@
 		<!-- #endif -->
 		<!-- #ifdef APP-PLUS -->
 		<template v-if="hasWeixinAuth">
-			<button type="default" @click="loginByWeixin">微信登录</button>
+			<button type="default" @click="loginByWeixin('register')">微信注册</button>
+			<button type="default" @click="loginByWeixin('login')">微信登录</button>
+			<button type="default" @click="loginByWeixin()">微信登录(不存在自动注册)</button>
 			<button type="default" @click="bindWeixin">绑定微信</button>
 			<button type="default" @click="unbindWeixin">解绑微信</button>
 			<button type="default" @click="setUserInfo">获取微信用户昵称头像</button>
