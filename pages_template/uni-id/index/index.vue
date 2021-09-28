@@ -4,31 +4,32 @@
 			当前集成的
 			<text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>
 			版本：
-			<text style="font-weight: bold;">3.3.6</text> 
+			<text style="font-weight: bold;">3.3.6</text>
 		</view>
-		
+
 		<button type="default" @click="pageTo('../password/password')">用户名和密码</button>
 		<button type="default" @click="pageTo('../mobile/mobile')">手机号和验证码</button>
 		<button type="default" @click="pageTo('../email/email')">邮箱与验证码</button>
 		<!-- #ifdef MP-WEIXIN || APP-PLUS -->
 		<button type="default" @click="pageTo('../weixin/weixin')">微信登录</button>
 		<!-- #endif -->
+		<button type="default" @click="vk.navigateTo('../../openapi/weixin/weixin')">微信小程序API</button>
+		<!-- #ifdef H5 -->
+		<button type="default" @click="pageTo('../../openapi/h5-weixin/h5-weixin')">微信公众号API</button>
+		<!-- #endif -->
+		<button type="default" @click="vk.navigateTo('../../openapi/baidu/baidu')">百度开放平台API</button>
 		<!-- #ifdef MP-ALIPAY || APP-PLUS -->
 		<button type="default" @click="pageTo('../alipay/alipay')">支付宝登录</button>
 		<!-- #endif -->
 		<!-- #ifdef MP-QQ || APP-PLUS -->
 		<button type="default" @click="pageTo('../qq/qq')">QQ登录</button>
 		<!-- #endif -->
-		<button type="default" @click="vk.navigateTo('../../openapi/weixin/weixin')">微信小程序API</button>
-		<button type="default" @click="vk.navigateTo('../../openapi/baidu/baidu')">百度开放平台API</button>
-		<view style="margin-bottom: 20rpx;">uni-id 1.1.3 新增 分销裂变</view>
-		<view style="margin-bottom: 20rpx;">插件版本1.2.2 新增 数据库API调用方法</view>
-		<button type="default" @click="pageTo('../../db-test/db-test')">数据库API调用方法</button>
+		<button type="default" @click="pageTo('../../db-test/db-test')">数据库API</button>
 		<button type="default" @click="pageTo('../util/util')">通用方法</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.8.7 新增 APP手机一键登录</view>
 		<button type="default" @click="pageTo('../univerify/univerify')">手机一键登录</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.4.4 新增 Vuex状态管理</view>
-		<button type="default" @click="pageTo('../../vk-vuex/vk-vuex')">Vuex状态管理演示示例</button>
+		<button type="default" @click="pageTo('../../vuex/vuex')">Vuex状态管理演示示例</button>
 		<!-- <view style="margin-bottom: 20rpx;">插件版本1.4.3 新增 云函数临时缓存</view>
 		<button type="default" @click="pageTo('../../temporary-cache/temporary-cache')">云函数临时缓存</button> -->
 		<view style="margin-bottom: 20rpx;">插件版本1.3.8 新增 商品SKU选择器组件</view>
@@ -37,8 +38,8 @@
 		<button type="default" @click="pageTo('../login/index/index')">登录注册找回密码页面模板</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.2.9 新增 动态数据组件</view>
 		<button type="default" @click="pageTo('../../components-dynamic/index/index')">动态数据组件</button>
-		
-		
+
+
 	</view>
 </template>
 

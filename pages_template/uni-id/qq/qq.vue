@@ -23,7 +23,7 @@
 		},
 		methods: {
 			// QQ登陆
-			loginByQQ(){
+			loginByQQ(type){
 				vk.userCenter.loginByQQ({
 					data:{
 						type

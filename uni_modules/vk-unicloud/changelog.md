@@ -1,3 +1,23 @@
+## 2.4.0（2021-09-28）
+* 1、【重要】支持微信公众号登录（有头像和昵称）详情见示例项目：`pages_template/openapi/h5-weixin/h5-weixin`
+* 2、【优化】APP使用微信登录时，有头像和昵称 详情见示例项目：`pages_template/uni-id/weixin/weixin`
+
+公众号配置文件在 `uniCloud/cloudfunctions/common/uni-config-center/uni-id/config.json`
+
+```js
+"h5-weixin": {
+  "oauth": {
+    "weixin": {
+      "appid": "微信公众号appid",
+      "appsecret": "微信公众号appsecret"
+    }
+  }
+},
+```
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
+
 ## 2.3.29（2021-09-27）
 * 1、【新增】`vk.pubfn.snake2camelJson` 对象内的属性名 - 蛇形转驼峰 [点击查看](https://vkdoc.fsq.pub/client/jsapi.html#vk-pubfn-snake2cameljson-%E5%AF%B9%E8%B1%A1%E5%86%85%E7%9A%84%E5%B1%9E%E6%80%A7%E5%90%8D-%E8%9B%87%E5%BD%A2%E8%BD%AC%E9%A9%BC%E5%B3%B0)
 * 2、【新增】`vk.pubfn.camel2snakeJson` 对象内的属性名 - 驼峰转蛇形 [点击查看](https://vkdoc.fsq.pub/client/jsapi.html#vk-pubfn-camel2snakejson-%E5%AF%B9%E8%B1%A1%E5%86%85%E7%9A%84%E5%B1%9E%E6%80%A7%E5%90%8D-%E9%A9%BC%E5%B3%B0%E8%BD%AC%E8%9B%87%E5%BD%A2)

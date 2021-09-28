@@ -89,6 +89,7 @@ class CallFunctionUtil {
 			if (this.config.debug) console.log("--------【用户信息已删除】--------");
 		}
 		// 检查token是否有效(本地版)
+		// let valid = vk.callFunctionUtil.checkToken();
 		this.checkToken = (res = {}) => {
 			let config = this.config;
 			let token = uni.getStorageSync(config.uniIdTokenKeyName);
