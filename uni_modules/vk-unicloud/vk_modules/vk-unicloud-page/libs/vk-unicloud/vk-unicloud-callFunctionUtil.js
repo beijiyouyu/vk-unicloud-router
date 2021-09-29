@@ -238,15 +238,31 @@ class CallFunctionUtil {
 				data = {},
 				globalParamName
 			} = obj;
+			// 去除值为 undefined 的参数
+			if(typeof data === "object"){
+				obj.data = vk.pubfn.copyObject(data);
+			}
 			// 注入自定义全局参数开始-----------------------------------------------------------
 			let globalParam = uni.getStorageSync(config.requestGlobalParamKeyName) || {};
 			// 根据正则规格自动匹配全局请求参数
 			for (let i in globalParam) {
 				let customDate = globalParam[i];
 				if (customDate.regExp) {
-					let regExp = new RegExp(customDate.regExp);
-					if (regExp.test(url)) {
-						obj.data = Object.assign(customDate.data, obj.data);
+					if (typeof customDate.regExp === "object") {
+						// 数组形式
+						for (let i = 0; i < customDate.regExp.length; i++) {
+							let regExp = new RegExp(customDate.regExp[i]);
+							if (regExp.test(url)) {
+								obj.data = Object.assign(customDate.data, obj.data);
+								break;
+							}
+						}
+					} else {
+						// 字符串形式
+						let regExp = new RegExp(customDate.regExp);
+						if (regExp.test(url)) {
+							obj.data = Object.assign(customDate.data, obj.data);
+						}
 					}
 				}
 			}
