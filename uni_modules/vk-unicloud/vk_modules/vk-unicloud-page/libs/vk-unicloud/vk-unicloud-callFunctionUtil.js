@@ -650,11 +650,13 @@ class CallFunctionUtil {
 			fail,
 		} = params;
 		// 只有是系统异常时才进行重试
-		if (params.needRetry && sysFail) {
-			if (!obj.hookResult || (typeof obj.hookResult === "function" && !obj.hookResult(err))) {
-				Logger.sysFail = true;
-				if (typeof params.retry == "function") params.retry(res, params);
-				return false;
+		if(params.needRetry){
+			if (sysFail || (res.code && [90001].indexOf(res.code) > -1)) {
+				if (!obj.hookResult || (typeof obj.hookResult === "function" && !obj.hookResult(err))) {
+					Logger.sysFail = true;
+					if (typeof params.retry == "function") params.retry(res, params);
+					return false;
+				}
 			}
 		}
 
