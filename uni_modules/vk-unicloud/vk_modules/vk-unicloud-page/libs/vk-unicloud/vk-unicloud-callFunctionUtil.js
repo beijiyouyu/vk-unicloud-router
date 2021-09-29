@@ -238,8 +238,13 @@ class CallFunctionUtil {
 				data = {},
 				globalParamName
 			} = obj;
+
+			if (obj.retryCount) {
+				// 系统异常重试机制（表单提交时慎用，建议只用在查询请求中，即无任何数据库修改的请求中）
+				return this.callFunctionRetry(obj);
+			}
 			// 去除值为 undefined 的参数
-			if(typeof data === "object"){
+			if (typeof data === "object") {
 				obj.data = vk.pubfn.copyObject(data);
 			}
 			// 注入自定义全局参数开始-----------------------------------------------------------
@@ -285,6 +290,7 @@ class CallFunctionUtil {
 				return this.runCallFunction(obj);
 			}
 		}
+
 		// 设置全局默认配置
 		this.setConfig = (customConfig = {}) => {
 			for (let key in customConfig) {
@@ -292,7 +298,7 @@ class CallFunctionUtil {
 					vk = customConfig[key];
 				} else if (key === "interceptor") {
 					this.interceptor = Object.assign(this.interceptor, customConfig[key]);
-          this.config.interceptor = customConfig[key];
+					this.config.interceptor = customConfig[key];
 				} else if (key === "myfn") {
 					vk.myfn = customConfig[key];
 				} else if (key === "loginPagePath") {
@@ -438,17 +444,14 @@ class CallFunctionUtil {
 							let colorArr = config.logger.colorArr;
 							let colorStr = colorArr[counterNum % colorArr.length];
 							counterNum++;
-							console.log("%c--------【开始】【文件上传】--------", 'color: ' + colorStr +
-								';font-size: 12px;font-weight: bold;');
+							console.log("%c--------【开始】【文件上传】--------", 'color: ' + colorStr + ';font-size: 12px;font-weight: bold;');
 							console.log("【本地文件】: ", Logger.filePath);
 							console.log("【返回数据】: ", Logger.result);
 							console.log("【预览地址】: ", Logger.result.fileID);
 							console.log("【上传耗时】: ", Logger.runTime, "毫秒");
-							console.log("【上传时间】: ", vk.pubfn.timeFormat(Logger.startTime,
-								"yyyy-MM-dd hh:mm:ss"));
+							console.log("【上传时间】: ", vk.pubfn.timeFormat(Logger.startTime, "yyyy-MM-dd hh:mm:ss"));
 							if (Logger.error) console.error("【error】:", Logger.error);
-							console.log("%c--------【结束】【文件上传】--------", 'color: ' + colorStr +
-								';font-size: 12px;font-weight: bold;');
+							console.log("%c--------【结束】【文件上传】--------", 'color: ' + colorStr + ';font-size: 12px;font-weight: bold;');
 						}
 						if (typeof complete == "function") complete();
 					}
@@ -499,7 +502,8 @@ class CallFunctionUtil {
 						res,
 						params: obj,
 						Logger,
-						reject
+						reject,
+						sysFail: true
 					});
 				},
 				complete(res) {
@@ -561,7 +565,8 @@ class CallFunctionUtil {
 						res,
 						params: obj,
 						Logger,
-						reject
+						reject,
+						sysFail: true
 					});
 				},
 				complete(res) {
@@ -593,7 +598,6 @@ class CallFunctionUtil {
 			loading,
 			success
 		} = params;
-
 		if (title) vk.hideLoading();
 		if (loading) vk.setLoading(false, loading);
 		let code = res.code;
@@ -629,12 +633,13 @@ class CallFunctionUtil {
 	callFunctionFail(obj) {
 		let that = this;
 		let config = that.config;
-		let { globalErrorCode={} } = config;
+		let { globalErrorCode = {} } = config;
 		let {
 			res = {},
 				params,
 				Logger,
-				reject
+				reject,
+				sysFail
 		} = obj;
 		let {
 			title,
@@ -642,8 +647,16 @@ class CallFunctionUtil {
 			errorToast,
 			noAlert,
 			needAlert,
-			fail
+			fail,
 		} = params;
+		// 只有是系统异常时才进行重试
+		if (params.needRetry && sysFail) {
+			if (!obj.hookResult || (typeof obj.hookResult === "function" && !obj.hookResult(err))) {
+				Logger.sysFail = true;
+				if (typeof params.retry == "function") params.retry(res, params);
+				return false;
+			}
+		}
 
 		if (typeof noAlert !== "undefined") needAlert = !noAlert;
 		if (typeof needAlert === "undefined") {
@@ -717,7 +730,9 @@ class CallFunctionUtil {
 			isRequest,
 			complete
 		} = params;
-
+		if (params.needRetry && Logger.sysFail) {
+			return false;
+		}
 		if (config.debug) {
 			Logger.endTime = new Date().getTime();
 			if (isRequest) {
@@ -729,8 +744,7 @@ class CallFunctionUtil {
 			let colorArr = config.logger.colorArr;
 			let colorStr = colorArr[counterNum % colorArr.length];
 			counterNum++;
-			console.log("%c--------【开始】" + Logger.label + "【云函数请求】【" + name + "】【" + url + "】--------", 'color: ' +
-				colorStr + ';font-size: 12px;font-weight: bold;');
+			console.log("%c--------【开始】" + Logger.label + "【云函数请求】【" + name + "】【" + url + "】--------", 'color: ' + colorStr + ';font-size: 12px;font-weight: bold;');
 			console.log("【请求参数】: ", Logger.params);
 			console.log("【返回数据】: ", Logger.result);
 			console.log("【总体耗时】: ", Logger.runTime, "毫秒【含页面渲染】");
@@ -741,8 +755,7 @@ class CallFunctionUtil {
 					console.error("【Stack】: ", Logger.error.err.stack);
 				}
 			}
-			console.log("%c--------【结束】" + Logger.label + "【云函数请求】【" + name + "】【" + url + "】--------", 'color: ' +
-				colorStr + ';font-size: 12px;font-weight: bold;');
+			console.log("%c--------【结束】" + Logger.label + "【云函数请求】【" + name + "】【" + url + "】--------", 'color: ' + colorStr + ';font-size: 12px;font-weight: bold;');
 		}
 		if (typeof complete == "function") complete(res);
 	}
@@ -810,5 +823,50 @@ class CallFunctionUtil {
 		}
 		return fileType;
 	}
+
+	// 系统异常重试机制（表单提交时慎用，建议只用在查询请求中，即无任何数据库修改的请求中）
+	callFunctionRetry(obj = {}) {
+		let { retryCount } = obj;
+		delete obj.retryCount;
+		return new Promise((resolve, reject) => {
+			this.callRetryFn(obj, resolve, reject, retryCount);
+		});
+	}
+	// 重试实现
+	callRetryFn(obj, resolve, reject, retryCount) {
+		let that = this;
+		let debug = that.config.debug;
+		that.callFunction({
+			...obj,
+			needRetry: retryCount ? true : false, // 判断是否需要重试
+			retry: function(err) {
+				obj.runCount = obj.runCount ? obj.runCount + 1 : 1;
+				obj.needRetry = retryCount > obj.runCount ? true : false; // 判断是否需要重试
+				let errorMsg = err.message ? `异常信息：${err.message}` : "";
+				if (debug) console.log(`【请求失败】正在第【${obj.runCount}】次重试：${obj.url}`);
+				if (obj.retryInterval) {
+					setTimeout(function() {
+						that._callRetryFn(obj, resolve, reject, retryCount);
+					}, obj.retryInterval);
+				} else {
+					// 如果无延迟，则不写setTimeout，因为setTimeout 即使time为0，也有一定延迟。
+					that._callRetryFn(obj, resolve, reject, retryCount);
+				}
+			}
+		});
+	}
+
+	_callRetryFn(obj, resolve, reject, retryCount) {
+		if (obj.runCount < retryCount) {
+			this.callRetryFn(obj, resolve, reject, retryCount);
+		} else {
+			this.callFunction(obj).catch((err) => {
+				reject();
+			});
+		}
+	}
+
+
 }
+
 export default new CallFunctionUtil
