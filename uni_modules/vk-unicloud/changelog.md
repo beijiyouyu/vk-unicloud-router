@@ -1,3 +1,10 @@
+## 2.4.3（2021-09-30）
+* 1、【优化】`vk.pubfn.string2Number` 新增第二位参数option，默认排除手机号、身份证、第一位是0，且长度大于1的字符串（可自由设置）
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
+
 ## 2.4.2（2021-09-30）
 * 1、【新增】`vk.pubfn.string2Number` 将能转成数字的字符串值转Number类型（支持字符串、对象、数组）（深度遍历）
 * 2、【优化】`vk.callFunctionUtil.updateRequestGlobalParam` 设置全局请求参数 `regExp` 参数支持数组（满足数组内任意正则即算匹配） [点击查看](https://vkdoc.fsq.pub/client/pages/updateRequestGlobalParam.html)
