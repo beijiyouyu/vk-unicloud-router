@@ -176,9 +176,7 @@ class CallFunctionUtil {
 				setTimeout(() => {
 					if (config.login.url) {
 						let currentPage = getCurrentPages()[getCurrentPages().length - 1];
-						if (currentPage && currentPage.route &&
-							"/" + currentPage.route === config.login.url
-						) {
+						if (currentPage && currentPage.route && "/" + currentPage.route === config.login.url) {
 							return false;
 						}
 						uni.navigateTo({
@@ -650,7 +648,7 @@ class CallFunctionUtil {
 			fail,
 		} = params;
 		// 只有是系统异常时才进行重试
-		if(params.needRetry){
+		if (params.needRetry) {
 			if (sysFail || (res.code && [90001].indexOf(res.code) > -1)) {
 				if (!obj.hookResult || (typeof obj.hookResult === "function" && !obj.hookResult(err))) {
 					Logger.sysFail = true;

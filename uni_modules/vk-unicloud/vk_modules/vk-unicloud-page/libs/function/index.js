@@ -987,6 +987,36 @@ pubfn.snake2camelJson = function(obj) {
 pubfn.camel2snakeJson = function(obj) {
 	return parseObjectKeys(obj, 'camel2snake');
 };
+/**
+ * 将能转成数字的字符串转数字（支持字符串、对象、数组）
+ * @param {Any} obj
+ * vk.pubfn.string2Number(obj);
+ */
+pubfn.string2Number = function(obj) {
+	const type = Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+	switch (type) {
+		case 'string':
+			if (!isNaN(obj)) {
+				return Number(obj);
+			} else {
+				return obj;
+			}
+		case 'object':
+			const keys = Object.keys(obj);
+			for (let i = 0; i < keys.length; i++) {
+				const key = keys[i];
+				obj[key] = pubfn.string2Number(obj[key]);
+			}
+			return obj;
+		case 'array':
+			for (let i = 0; i < obj.length; i++) {
+				obj[i] = pubfn.string2Number(obj[i]);
+			}
+			return obj;
+		default:
+			return obj;
+	}
+};
 
 // 前端专属开始 -----------------------------------------------------------
 /**
