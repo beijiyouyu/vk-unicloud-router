@@ -994,7 +994,7 @@ pubfn.camel2snakeJson = function(obj) {
  * 默认排除
  * mobile:true 手机号，如 15200000001
  * idCard:true 身份证，如 330154202109301214
- * startFrom0:true 第一位是0，且长度大于1的字符串，如 01，057189101254
+ * startFrom0:true 第一位是0，且长度大于1的，同时第二位不是.的字符串  如 01，057189101254
  * vk.pubfn.string2Number(obj, option);
  */
 pubfn.string2Number = function(obj, option = {}) {
@@ -1011,7 +1011,7 @@ pubfn.string2Number = function(obj, option = {}) {
 					return obj;
 				} else if (idCard && pubfn.test(obj, "card")) {
 					return obj;
-				} else if (startFrom0 && obj.length > 1 && obj.indexOf("0") === 0) {
+				} else if (startFrom0 && obj.length > 1 && obj.indexOf("0") === 0 && obj.indexOf(".") !== 1) {
 					return obj;
 				}
 				return Number(obj);
