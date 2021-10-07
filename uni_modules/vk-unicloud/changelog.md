@@ -1,3 +1,6 @@
+## 2.4.6（2021-10-07）
+* 【优化】一些细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.4.5（2021-09-30）
 * 1、【优化】`vk.pubfn.string2Number` 新增第二位参数option
 ```js
