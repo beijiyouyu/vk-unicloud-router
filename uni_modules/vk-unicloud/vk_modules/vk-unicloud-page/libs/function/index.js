@@ -1085,7 +1085,7 @@ pubfn.dateDiff = function(startTime, suffix = "前") {
  * @param {String || Number} endTime	需要计算的时间 如到期时间
  * vk.pubfn.dateDiff2(endTime);
  */
-pubfn.dateDiff2 = function(startTime) {
+pubfn.dateDiff2 = function(startTime, str="1秒") {
 	if (!startTime){
 		return "";
 	}
@@ -1109,7 +1109,7 @@ pubfn.dateDiff2 = function(startTime) {
 	var hour = Math.floor(diff % nd / nh);
 	var min = Math.floor(diff % nd % nh / nm);
 	var sec = Math.round(diff % nd % nh % nm / ns);
-	var showStr = "1秒";
+	var showStr = str;
 	if (day > 0) {
 		showStr = day + "天";
 	} else if (hour > 0) {
