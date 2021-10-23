@@ -154,6 +154,7 @@
 				var form1 = that.form1;
 				vk.userCenter.login({
 					data:form1,
+					//loading:false,
 					success:function(data){
 						console.log("data",data);
 						vk.toast("登陆成功!");
