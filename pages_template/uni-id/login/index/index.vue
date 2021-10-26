@@ -13,7 +13,7 @@
 						class="main-input"
 						v-model="form1.username"
 						type="text"
-						:maxlength="11"
+						:maxlength="50"
 						placeholder="用户名/手机号"
 						placeholder-style="'color':'#8e8e8e'"
 					/>
