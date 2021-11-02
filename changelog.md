@@ -1,3 +1,27 @@
+## 2.5.1（2021-11-02）
+* 1、【新增】`vk.h5` 前端API接口（H5专用的一些接口，只有H5环境时，才有该对象，不会增大小程序的包体积）
+* 2、【新增】`vk.h5.wx`（wx为公众号js_sdk接口) [微信小程序环境内js_sdk文档](https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html) [微信公众号环境内js_sdk文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html)
+* 3、【新增】`vk.navigate.navigateToHome` 跳转到首页 
+* 4、【新增】`vk.navigate.navigateToLogin` 跳转到登录页
+* 5、【修复】`vk.callFunctionUtil.updateRequestGlobalParam` 全局公共请求参数的一处逻辑问题。
+* 6、【优化】登录注册模板细节
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
+
+## 2.5.0（2021-11-02）
+* 1、【新增】`vk.h5` 前端API接口（H5专用的一些接口，只有H5环境时，才有该对象，不会增大小程序的包体积）
+* 2、【新增】`vk.h5.wx`（wx为公众号js_sdk接口) [微信小程序环境内js_sdk文档](https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html) [微信公众号环境内js_sdk文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html)
+* 3、【新增】`vk.navigate.navigateToHome` 跳转到首页 
+* 4、【新增】`vk.navigate.navigateToLogin` 跳转到登录页
+* 5、【修复】`vk.callFunctionUtil.updateRequestGlobalParam` 全局公共请求参数的一处逻辑问题。
+* 6、【优化】登录注册模板细节
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
+
 ## 2.4.8（2021-10-30）
 * 1、【优化】`vk.pubfn.hidden(str, first, last);` 的 `first` 和 `last` 默认为0 [点击查看](https://vkdoc.fsq.pub/client/jsapi.html#vk-pubfn-hidden-%E5%B0%86%E6%89%8B%E6%9C%BA%E5%8F%B7%E3%80%81%E8%B4%A6%E5%8F%B7%E7%AD%89%E9%9A%90%E8%97%8F%E4%B8%AD%E9%97%B4%E5%AD%97%E6%AE%B5)
 * 2、【优化】其他一些细节

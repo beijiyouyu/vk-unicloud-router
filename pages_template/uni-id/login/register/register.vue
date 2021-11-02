@@ -9,7 +9,7 @@
 				<view class="form-item form-border">
 					<!-- 文本框 -->
 					<u-input
-						class="main-input"
+						class="form-input"
 						v-model="form1.mobile"
 						type="text"
 						:maxlength="11"
@@ -21,7 +21,7 @@
 				<view class="form-item form-border">
 					<!-- 文本框 -->
 					<u-input
-						class="main-input"
+						class="form-input"
 						v-model="form1.password"
 						type="password"
 						placeholder="请输入新密码"
@@ -31,7 +31,7 @@
 				<view class="form-item form-border">
 					<!-- 文本框 -->
 					<u-input
-						class="main-input"
+						class="form-input"
 						v-model="form1.password2"
 						type="password"
 						placeholder="请再次输入新密码"
@@ -42,7 +42,7 @@
 				<view class="form-item form-border">
 					<!-- 文本框 -->
 					<u-input
-						class="main-input"
+						class="form-input"
 						v-model="form1.code"
 						type="number"
 						:maxlength="6"
@@ -197,7 +197,7 @@
 								vk.navigateBack();
 							}else{
 								// 进入首页
-								vk.switchTab("../../index/index");
+								vk.navigateToHome();
 							}
 						},1000);
 					},
