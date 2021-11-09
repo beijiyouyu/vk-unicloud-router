@@ -1,3 +1,13 @@
+## 2.5.3（2021-11-09）
+* 1、【优化】`vk.pubfn.base64ToFile` 支持 APP 环境执行
+* 2、【优化】`vk.pubfn.fileToBase64` 支持 APP 环境执行
+* 3、【修复】`vk.baseDao.adds` 无返回值的问题。
+* 4、【修复】`vk.baseDao.selects` 当 `localKey` 为 `a.b.c` 这样的形式时会报错的问题。
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
+
 ## 2.5.2（2021-11-02）
 * 1、【新增】`vk.h5` 前端API接口（H5专用的一些接口，只有H5环境时，才有该对象，不会增大小程序的包体积）
 * 2、【新增】`vk.h5.wx`（wx为公众号js_sdk接口) [微信小程序环境内js_sdk文档](https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html) [微信公众号环境内js_sdk文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html)
