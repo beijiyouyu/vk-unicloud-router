@@ -1,3 +1,6 @@
+## 2.5.4（2021-11-10）
+* 1、【优化】前端请求云函数的一处细节。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.5.3（2021-11-09）
 * 1、【优化】`vk.pubfn.base64ToFile` 支持 APP 环境执行
 * 2、【优化】`vk.pubfn.fileToBase64` 支持 APP 环境执行
