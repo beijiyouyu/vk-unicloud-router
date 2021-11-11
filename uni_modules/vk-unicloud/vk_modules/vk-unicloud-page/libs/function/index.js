@@ -69,6 +69,43 @@ pubfn.timeFormat = pubfn.timeUtil.timeFormat;
 pubfn.getFullTime = pubfn.timeUtil.getFullTime;
 
 /**
+ * 获取时间范围
+ * @param {Date} date 日期对象 可以指定时间计算节点，默认使用当前时间进行计算
+ * 返回的是时间戳(防止时区问题)
+ * 返回数据如下：
+ {
+   todayStart 今日开始时间
+   todayEnd   今日结束时间
+   today12End 今日上午结束时间
+   monthStart 本月开始时间
+   monthEnd   本月结束时间
+   yearStart  本年开始时间
+   yearEnd    本年结束时间
+   weekStart  本周开始时间
+   weekEnd    本周结束时间
+   now        现在的时间点(含月年日时分秒)
+   months     本年度每月的开始和结束时间 months[1] 代表1月
+ }
+ * vk.pubfn.getCommonTime();
+ */
+pubfn.getCommonTime = pubfn.timeUtil.getCommonTime;
+
+/**
+ * 获得指定时间偏移 year年 month月 day天 hours时 minutes分 seconds秒前或后的时间戳
+ * 返回时间戳形式
+vk.pubfn.getOffsetTime(new Date(), {
+	year:0,
+	month:0,
+	day:0,
+	hours:0,
+	minutes:0,
+	seconds:0,
+	mode:"after", // after 之后 before 之前
+});
+ */
+pubfn.getOffsetTime = pubfn.timeUtil.getOffsetTime;
+
+/**
  * 获得相对当前周addWeekCount个周的起止日期
  * @param {Number} addWeekCount  默认0 (0代表本周 为-1代表上周 为1代表下周以此类推 为2代表下下周)
  * vk.pubfn.getWeekStartAndEnd(0);
@@ -100,28 +137,6 @@ pubfn.getMonthOffsetStartAndEnd = pubfn.timeUtil.getMonthOffsetStartAndEnd;
  * vk.pubfn.getYearOffsetStartAndEnd(0);
  */
 pubfn.getYearOffsetStartAndEnd = pubfn.timeUtil.getYearOffsetStartAndEnd;
-
-/**
- * 获取时间范围
- * @param {Date} date 日期对象 可以指定时间计算节点，默认使用当前时间进行计算
- * 返回的是时间戳(防止时区问题)
- * 返回数据如下：
- {
-   todayStart 今日开始时间
-   todayEnd   今日结束时间
-   today12End 今日上午结束时间
-   monthStart 本月开始时间
-   monthEnd   本月结束时间
-   yearStart  本年开始时间
-   yearEnd    本年结束时间
-   weekStart  本周开始时间
-   weekEnd    本周结束时间
-   now        现在的时间点(含月年日时分秒)
-   months     本年度每月的开始和结束时间 months[1] 代表1月
- }
- * vk.pubfn.getCommonTime();
- */
-pubfn.getCommonTime = pubfn.timeUtil.getCommonTime;
 
 /**
  * 获得指定年份和月份后的该月的开始时间和结束时间
