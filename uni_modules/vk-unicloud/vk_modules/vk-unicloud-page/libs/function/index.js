@@ -1047,6 +1047,7 @@ pubfn.snake2camelJson = function(obj) {
 pubfn.camel2snakeJson = function(obj) {
 	return parseObjectKeys(obj, 'camel2snake');
 };
+
 /**
  * 将能转成数字的字符串转数字（支持字符串、对象、数组）
  * @param {Any} obj
@@ -1055,6 +1056,7 @@ pubfn.camel2snakeJson = function(obj) {
  * mobile:true 手机号，如 15200000001
  * idCard:true 身份证，如 330154202109301214
  * startFrom0:true 第一位是0，且长度大于1的，同时第二位不是.的字符串  如 01，057189101254
+ * maxLength:14 超过此长度的字符串排除
  * vk.pubfn.string2Number(obj, option);
  */
 pubfn.string2Number = function(obj, option = {}) {
@@ -1065,9 +1067,12 @@ pubfn.string2Number = function(obj, option = {}) {
 				let {
 					mobile = true,
 						idCard = true,
-						startFrom0 = true
+						startFrom0 = true,
+						maxLength = 14,
 				} = option;
-				if (mobile && pubfn.test(obj, "mobile")) {
+				if (obj.length > maxLength) {
+					return obj;
+				} else if (mobile && pubfn.test(obj, "mobile")) {
 					return obj;
 				} else if (idCard && pubfn.test(obj, "card")) {
 					return obj;
@@ -1094,6 +1099,7 @@ pubfn.string2Number = function(obj, option = {}) {
 				return obj;
 	}
 };
+
 /**
  * 保留小数
  * @param {Number} val 原值
@@ -1234,6 +1240,9 @@ pubfn.numStr = function(n) {
  * vk.pubfn.priceFilter(money);
  */
 pubfn.priceFilter = function(money, nullValue = "") {
+	if (isNaN(money)){
+		return money;
+	}
 	if (pubfn.isNull(money)) {
 		return nullValue;
 	}
@@ -1264,6 +1273,9 @@ pubfn.priceRightFilter = function(n) {
  * vk.pubfn.priceFilter(money);
  */
 pubfn.percentageFilter = function(value, needShowSymbol = true, nullValue = "") {
+	if (isNaN(value)){
+		return value;
+	}
 	if (pubfn.isNull(value)) {
 		return nullValue;
 	}

@@ -46,10 +46,9 @@
 		methods: {
 			// 页面数据初始化函数
 			init(options){
+				if (!options) options = that.options;
 				console.log("init: ",options);
-			},
-			pageTo(path){
-				vk.navigateTo(path);
+				
 			}
 		},
 		// 监听器
