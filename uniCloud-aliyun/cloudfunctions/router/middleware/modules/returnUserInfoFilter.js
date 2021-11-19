@@ -1,6 +1,6 @@
 /**
  * 返回用户信息
- * 由于通常前端需要对用户信息进行缓存
+ * 由于通常前端需要对用户信息、登录token进行缓存
  * 故云函数对用户进行修改后，需要返回给前端最新的用户信息，以便前端始终能够缓存最新用户信息
  */
 
@@ -18,7 +18,7 @@ module.exports = [
 			"^client/user/pub/register(.*)",
 			"^client/user/pub/login(.*)"
 		],
-		description: "可用于指定哪些云函数需要返回给前端userInfo",
+		description: "用于指定哪些云函数请求后需要通知前端更新userInfo、token、tokenExpired",
 		index: 210,
 		mode:"onActionExecuted",// 可选 onActionExecuting onActionExecuted
 		enable:true, // 通过设置enable=false可以关闭该中间件
