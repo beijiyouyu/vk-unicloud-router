@@ -24,21 +24,14 @@
 		<!-- #ifdef MP-QQ || APP-PLUS -->
 		<button type="default" @click="pageTo('../qq/qq')">QQ登录</button>
 		<!-- #endif -->
+		<view style="margin-bottom: 20rpx;">小白也能轻松上手的数据库API</view>
 		<button type="default" @click="pageTo('../../db-test/db-test')">数据库API</button>
 		<button type="default" @click="pageTo('../util/util')">通用方法</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.8.7 新增 APP手机一键登录</view>
 		<button type="default" @click="pageTo('../univerify/univerify')">手机一键登录</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.4.4 新增 Vuex状态管理</view>
 		<button type="default" @click="pageTo('../../vk-vuex/vk-vuex')">Vuex状态管理演示示例</button>
-		<!-- <view style="margin-bottom: 20rpx;">插件版本1.4.3 新增 云函数临时缓存</view>
-		<button type="default" @click="pageTo('../../temporary-cache/temporary-cache')">云函数临时缓存</button> -->
-		<view style="margin-bottom: 20rpx;">插件版本1.3.8 新增 商品SKU选择器组件</view>
-		<button type="default" @click="pageTo('../../components-dynamic/vk-u-goods-sku-popup/vk-u-goods-sku-popup')">商品SKU选择器组件</button>
-		<view style="margin-bottom: 20rpx;">插件版本1.3.3 新增 登录/注册/找回密码/页面模板</view>
 		<button type="default" @click="pageTo('../login/index/index')">登录注册找回密码页面模板</button>
-		<view style="margin-bottom: 20rpx;">插件版本1.2.9 新增 动态数据组件</view>
-		<button type="default" @click="pageTo('../../components-dynamic/index/index')">动态数据组件</button>
-
 
 	</view>
 </template>
@@ -92,5 +85,10 @@
 		font-size: 14px;
 		color: #999999;
 		margin-bottom: 20px;
+	}
+	.red-tips{
+		margin-bottom: 20rpx;
+		color: red;
+		font-size: 26rpx;
 	}
 </style>

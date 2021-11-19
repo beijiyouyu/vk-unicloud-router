@@ -1,3 +1,17 @@
+## 2.6.0（2021-11-19）
+* 1、【重要】移除了内置的 `npm` 方式安装的 `uView` 组件库，开发者可以选择自己喜欢的组件库进行开发。[点击查看](https://vkdoc.fsq.pub/client/quickstart.html#%E8%87%AA-client%E7%AB%AF%E6%A1%86%E6%9E%B6-2-6-0-%E8%B5%B7-%E4%B8%8D%E5%86%8D%E5%86%85%E7%BD%AE%E4%BB%BB%E4%BD%95-ui-%E6%A1%86%E6%9E%B6-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E8%87%AA%E5%B7%B1%E5%96%9C%E6%AC%A2%E7%9A%84-ui-%E7%BB%84%E4%BB%B6%E5%BA%93%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E3%80%82)
+* 2、【重要】移除内置组件 `vk-u-goods-sku-popup`（推荐 `vk-data-goods-sku-popup` 代替）[点击查看](https://ext.dcloud.net.cn/plugin?id=2848)
+* 3、【重要】移除内置组件 `vk-u-number-box`（推荐 `u-number-box` 代替）
+* 4、【重要】移除内置组件 `vk-u-grid-button`
+* 5、【重要】移除内置组件 `vk-u-swiper`
+* 6、【重要】重构内置组件 `vk-u-verification-code` 并改名为 `vk-data-verification-code`
+
+如想要继续使用这些组件，可以把这些组件复制到项目根目录的 `components` 目录（没有则新建）（目录名和组件名需一致，如 `vk-u-grid-button/vk-u-grid-button`）
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
+
 ## 2.5.6（2021-11-13）
 * 1、【新增】`vk.pubfn.getOffsetTime` 获得指定时间偏移 year年 month月 day天 hours时 minutes分 seconds秒前或后的时间戳 [点击查看](https://vkdoc.fsq.pub/client/jsapi.html#vk-pubfn-getoffsettime-%E8%8E%B7%E5%BE%97%E6%8C%87%E5%AE%9A%E6%97%B6%E9%97%B4%E5%81%8F%E7%A7%BB-year%E5%B9%B4-month%E6%9C%88-day%E5%A4%A9-hours%E6%97%B6-minutes%E5%88%86-seconds%E7%A7%92%E5%89%8D%E6%88%96%E5%90%8E%E7%9A%84%E6%97%B6%E9%97%B4%E6%88%B3)
 * 2、【优化】一些细节

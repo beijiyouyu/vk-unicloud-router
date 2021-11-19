@@ -8,59 +8,38 @@
 			<view class="form-view">
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input
-						class="form-input"
-						v-model="form1.mobile"
-						type="text"
-						:maxlength="11"
-						placeholder="手机号"
-						placeholder-style="'color':'#8e8e8e'"
-					/>
+					<input class="form-input" v-model="form1.mobile" type="text" :maxlength="11" placeholder="手机号" placeholder-style="'color':'#8e8e8e'" />
 				</view>
 
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input
-						class="form-input"
-						v-model="form1.password"
-						type="password"
-						placeholder="请输入新密码"
-						placeholder-style="'color':'#8e8e8e'"
-					/>
+					<input class="form-input" v-model="form1.password" type="password" placeholder="请输入新密码" placeholder-style="'color':'#8e8e8e'" />
 				</view>
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input
-						class="form-input"
-						v-model="form1.password2"
-						type="password"
-						placeholder="请再次输入新密码"
-						placeholder-style="'color':'#8e8e8e'"
-					/>
+					<input class="form-input" v-model="form1.password2" type="password" placeholder="请再次输入新密码" placeholder-style="'color':'#8e8e8e'" />
 				</view>
 
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input
-						class="form-input"
-						v-model="form1.code"
-						type="number"
-						:maxlength="6"
-						placeholder="请输入验证码"
-						placeholder-style="'color':'#8e8e8e'"
-					/>
+					<input class="form-input" v-model="form1.code" type="number" :maxlength="6" placeholder="请输入验证码" placeholder-style="'color':'#8e8e8e'" />
 					<!-- 验证码倒计时开始 -->
-					<vk-u-verification-code  seconds="60" :mobile="form1.mobile" type="register"></vk-u-verification-code>
+					<vk-data-verification-code  seconds="60" :mobile="form1.mobile" type="register" custom-style="font-size: 28rpx;"></vk-data-verification-code>
 					<!-- 验证码倒计时结束 -->
 				</view>
 
 			</view>
 			<view class="login-btn">
-				<u-button shape="circle" @click="loginBySms" :plain="false" :hair-line="false" type="success">注 册</u-button>
+				<button class="btn success circle" hover-class="hover" shape="circle" @click="loginBySms" :plain="false" :hair-line="false" type="success">注 册</button>
 			</view>
 			<!-- 底部信息 -->
 			<view class="footer">
-				<u-checkbox v-model="form1.agreement" active-color="#737373" shape="circle">同意</u-checkbox>
+				<label>
+					<checkbox-group @change="checkboxChange">
+						<checkbox class="footer-checkbox" value="true" :checked="form1.agreement" active-color="#737373" shape="circle"></checkbox><text>同意</text>
+					</checkbox-group>
+				</label>
+				
 				<!-- 协议地址 -->
 				<navigator url="" open-type="navigate" style="color: #007AFF;">《用户协议》</navigator>
 			</view>
@@ -148,6 +127,14 @@
 			},
 			pageTo(path){
 				vk.navigateTo(path);
+			},
+			checkboxChange(e){
+				let value = e.detail.value || [];
+				if (value.length > 0 && value[0]){
+					that.form1.agreement = true;
+				} else {
+					that.form1.agreement = false;
+				}
 			},
 			// 登录(手机号+验证码) 不存在会自动注册
 			loginBySms() {

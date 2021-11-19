@@ -1,6 +1,6 @@
 {
   "easycom": {
-    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+   
   },
 	"pages": [{
 			"path": "pages/index/index",
@@ -83,36 +83,6 @@
 				"path": "uni-id/login/forget/forget",
 				"style": {
 					"navigationBarTitleText": "找回密码"
-				}
-			},
-			{
-				"path": "components-dynamic/index/index",
-				"style": {
-					"navigationBarTitleText": "动态数据组件"
-				}
-			},
-			{
-				"path": "components-dynamic/vk-u-notice-bar/vk-u-notice-bar",
-				"style": {
-					"navigationBarTitleText": "动态数据组件 - 公告"
-				}
-			},
-			{
-				"path": "components-dynamic/vk-u-swiper/vk-u-swiper",
-				"style": {
-					"navigationBarTitleText": "动态数据组件 - 图片轮播"
-				}
-			},
-			{
-				"path": "components-dynamic/vk-u-grid-button/vk-u-grid-button",
-				"style": {
-					"navigationBarTitleText": "动态数据组件 - 图文导航"
-				}
-			},
-			{
-				"path": "components-dynamic/vk-u-goods-sku-popup/vk-u-goods-sku-popup",
-				"style": {
-					"navigationBarTitleText": "商品SKU选择器组件"
 				}
 			},
 			{

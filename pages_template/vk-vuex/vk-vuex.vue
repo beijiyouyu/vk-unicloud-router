@@ -128,6 +128,8 @@
 <style lang="scss" scoped>
 	.content {
 		padding: 15px;
+		font-size: 28rpx;
+		color: #303133;
 	}
 	.content input {
 		height: 46px;

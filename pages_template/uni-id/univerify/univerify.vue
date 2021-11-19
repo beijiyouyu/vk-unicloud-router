@@ -28,15 +28,17 @@
 		methods: {
 			init(options){
 				// 预授权
+				// #ifdef APP-PLUS
 				uni.preLogin({
 					provider: 'univerify',
 					success(){
-
+				
 					},
 					fail(res){
 						console.log(res);
 					}
-				})
+				});
+				// #endif
 			},
 			loginByUniverify() {
 				vk.userCenter.loginByUniverify({

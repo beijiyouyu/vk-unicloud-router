@@ -45,7 +45,7 @@ export default {
 	data() {
 		// 页面数据变量
 		return {
-			url: "template/db_api/pub/getList", // 获取list数据的云函数请求路径
+			action: "template/db_api/pub/getList", // 获取list数据的云函数请求路径
 			// init请求返回的数据
 			data: {
 				list: [], // 列表数据
@@ -109,7 +109,7 @@ export default {
 		getList(obj = {}) {
 			vk.pubfn.getListData({
 				that: that,
-				url: that.url,
+				url: that.action,
 				success: obj.success
 			});
 		},

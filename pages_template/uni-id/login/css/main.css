@@ -63,6 +63,7 @@
 	padding-right: 10rpx;
 	margin-left: 20rpx;
 	width: 100%;
+	min-height: 70rpx;
 }
 
 /* 表单主体 结束 */
@@ -74,6 +75,26 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.login-btn .btn{
+	height: 76rpx;
+	line-height: 76rpx;
+	font-size: 30rpx;
+}
+
+.login-btn .btn.success{
+	background-color: #19be6b;
+	color: #ffffff;
+}
+
+.login-btn .btn.circle{
+	border-radius: 100rpx
+}
+
+.login-btn .btn.hover{
+	opacity: 0.7;
+}
+
 
 /* 底部 */
 .footer {
@@ -95,6 +116,10 @@
 	margin-right: 15rpx;
 }
 
+.footer .footer-checkbox{
+	transform:scale(0.7);
+}
+
 .login-icon-view{
 	width: 100%;
 	text-align: center;
@@ -107,4 +132,5 @@
 }
 .tips{
 	margin-top: 20rpx;
+	font-size: 28rpx;
 }

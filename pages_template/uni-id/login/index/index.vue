@@ -9,15 +9,15 @@
 
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input class="form-input" v-model="form1.username" type="text" :maxlength="50" placeholder="用户名/手机号" placeholder-style="'color':'#8e8e8e'" />
+					<input class="form-input" v-model="form1.username" type="text" :maxlength="50" placeholder="用户名/手机号" placeholder-style="'color':'#8e8e8e'" />
 				</view>
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input class="form-input" v-model="form1.password" type="password" placeholder="密码" placeholder-style="'color':'#8e8e8e'" />
+					<input class="form-input" v-model="form1.password" type="password" placeholder="密码" placeholder-style="'color':'#8e8e8e'" />
 				</view>
 			</view>
 			<view class="login-btn">
-				<u-button shape="circle" @click="login" :plain="false" :hair-line="false" type="success">登 录</u-button>
+				<button class="btn success circle" hover-class="hover" @click="login" :plain="false" type="success" shape="circle" :hair-line="false">登 录</button>
 			</view>
 			<!-- 其他登录 -->
 			<view class="login-icon-view">

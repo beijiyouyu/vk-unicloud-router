@@ -9,57 +9,31 @@
 
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input
-						class="form-input"
-						v-model="form1.mobile"
-						type="text"
-						:maxlength="11"
-						placeholder="请输入手机号码"
-						placeholder-style="'color':'#8e8e8e'"
-					/>
+					<input class="form-input" v-model="form1.mobile" type="text" :maxlength="11" placeholder="请输入手机号码" placeholder-style="'color':'#8e8e8e'" />
 				</view>
 
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input
-						class="form-input"
-						v-model="form1.password"
-						type="password"
-						placeholder="请输入新密码"
-						placeholder-style="'color':'#8e8e8e'"
-					/>
+					<input class="form-input" v-model="form1.password" type="password" placeholder="请输入新密码" placeholder-style="'color':'#8e8e8e'" />
 				</view>
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input
-						class="form-input"
-						v-model="form1.password2"
-						type="password"
-						placeholder="请再次输入新密码"
-						placeholder-style="'color':'#8e8e8e'"
-					/>
+					<input class="form-input" v-model="form1.password2" type="password" placeholder="请再次输入新密码" placeholder-style="'color':'#8e8e8e'" />
 				</view>
 
 
 				<view class="form-item form-border">
 					<!-- 文本框 -->
-					<u-input
-						class="form-input"
-						v-model="form1.code"
-						type="number"
-						:maxlength="6"
-						placeholder="请输入验证码"
-						placeholder-style="'color':'#8e8e8e'"
-					/>
+					<input class="form-input" v-model="form1.code" type="number" :maxlength="6" placeholder="请输入验证码" placeholder-style="'color':'#8e8e8e'" />
 					<!-- 验证码倒计时开始 -->
-					<vk-u-verification-code  seconds="60" :mobile="form1.mobile" type="reset"></vk-u-verification-code>
+					<vk-data-verification-code  seconds="60" :mobile="form1.mobile" type="reset" custom-style="font-size: 28rpx;"></vk-data-verification-code>
 					<!-- 验证码倒计时结束 -->
 
 				</view>
 
 			</view>
 			<view class="login-btn">
-				<u-button shape="circle" @click="resetPassword" :plain="false" :hair-line="false" type="success">重置密码</u-button>
+				<button class="btn success circle" hover-class="hover" shape="circle" @click="resetPassword" :plain="false" :hair-line="false" type="success">重置密码</button>
 			</view>
 		</view>
 		<!-- 页面内容结束 -->
