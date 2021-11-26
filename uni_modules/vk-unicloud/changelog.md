@@ -1,3 +1,6 @@
+## 2.6.2（2021-11-26）
+* 1、【新增】`await vk.pubfn.batchRun` 批量循环并发执行异步函数（云函数内专用, 使用场景: 批量发送短信、邮件、消息通知等。）[点击查看](https://vkdoc.fsq.pub/client/jsapi.html#vk-pubfn-batchrun)
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.6.1（2021-11-26）
 * 1、【优化】一些细节
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
