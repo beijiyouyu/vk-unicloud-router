@@ -80,7 +80,7 @@
         "enable" : false
     },
     "h5" : {
-        "title" : "（开箱即用）uniCloud-云函数路由模式 - 带过滤器 - 支持权限拦截 - 已集成uni-id",
+        "title" : "",
         "template" : "template.h5.html",
         "devServer" : {
             "disableHostCheck" : true

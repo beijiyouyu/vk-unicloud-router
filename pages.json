@@ -5,7 +5,7 @@
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id"
+				"navigationBarTitleText": "首页"
 			}
 		},
 		{
@@ -126,7 +126,7 @@
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "【开箱即用】vk-uniCloud-router - 云函数路由模式 - uniCloud开发框架 - 已集成uni-id",
+		"navigationBarTitleText": "",
 		// #ifndef MP-ALIPAY
     "navigationBarBackgroundColor": "#F8F8F8",
     // #endif
