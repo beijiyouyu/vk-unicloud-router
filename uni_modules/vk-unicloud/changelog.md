@@ -1,3 +1,6 @@
+## 2.6.5（2021-12-07）
+* 1、【修复】公众号登录可能会获取不到昵称和头像的问题。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.6.4（2021-12-07）
 * 1、【优化】上传api的url自动去除原文件名的中文部分。
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
