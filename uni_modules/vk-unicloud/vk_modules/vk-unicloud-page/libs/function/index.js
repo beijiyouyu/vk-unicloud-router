@@ -1240,11 +1240,11 @@ pubfn.numStr = function(n) {
  * vk.pubfn.priceFilter(money);
  */
 pubfn.priceFilter = function(money, defaultValue = "") {
-	if (isNaN(money)){
-		return money;
-	}
 	if (pubfn.isNull(money)) {
 		return defaultValue;
+	}
+	if (isNaN(money)){
+		return money;
 	}
 	if (typeof money == "string") {
 		money = parseFloat(money);
@@ -1275,11 +1275,11 @@ pubfn.priceRightFilter = function(n) {
  * vk.pubfn.percentageFilter(money);
  */
 pubfn.percentageFilter = function(value, needShowSymbol = true, defaultValue = "") {
-	if (isNaN(value)){
-		return value;
-	}
 	if (pubfn.isNull(value)) {
 		return defaultValue;
+	}
+	if (isNaN(value)){
+		return value;
 	}
 	if (typeof value == "string") {
 		value = parseFloat(value);
@@ -1298,11 +1298,11 @@ pubfn.percentageFilter = function(value, needShowSymbol = true, defaultValue = "
  * vk.pubfn.discountFilter(value);
  */
 pubfn.discountFilter = function(value, needShowSymbol = true, defaultValue = "") {
-	if (isNaN(value)){
-		return value;
-	}
 	if (pubfn.isNull(value)) {
 		return defaultValue;
+	}
+	if (isNaN(value)){
+		return value;
 	}
 	if (typeof value == "string") {
 		value = parseFloat(value);
