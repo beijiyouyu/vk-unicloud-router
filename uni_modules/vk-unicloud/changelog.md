@@ -1,3 +1,6 @@
+## 2.6.10（2021-12-17）
+* 1、【优化】一些细节。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.6.9（2021-12-16）
 * 1、【修复】`vk.pubfn.priceFilter` 、`vk.pubfn.percentageFilter` 、`vk.pubfn.discountFilter` 部分情况下，默认值不生效的问题。
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)

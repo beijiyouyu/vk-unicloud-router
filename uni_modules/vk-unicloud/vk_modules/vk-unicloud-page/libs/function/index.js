@@ -369,7 +369,7 @@ pubfn.getData = function(dataObj, name, defaultValue) {
 			}
 		}
 	}
-	if (typeof newDataObj === "undefined" && pubfn.isNotNull(defaultValue)) newDataObj = defaultValue;
+	if (typeof newDataObj === "undefined" && typeof defaultValue !== "undefined") newDataObj = defaultValue;
 	return newDataObj;
 };
 /**

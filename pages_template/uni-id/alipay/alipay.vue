@@ -24,7 +24,7 @@
 		},
 		methods: {
 			// 支付宝登陆
-			loginByAlipay(){
+			loginByAlipay(type){
 				vk.userCenter.loginByAlipay({
 					data:{
 						type
