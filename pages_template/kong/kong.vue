@@ -42,6 +42,19 @@
 		onShow() {},
 		// 监听 - 页面每次【隐藏时】执行(如：返回)
 		onHide() {},
+		// 监听 - 页面下拉刷新
+		onPullDownRefresh() {
+			setTimeout(function () {
+				uni.stopPullDownRefresh();
+			}, 1000);
+		},
+		/**
+		 * 监听 - 点击右上角转发时 文档 https://uniapp.dcloud.io/api/plugins/share?id=onshareappmessage
+		 * 如果删除onShareAppMessage函数，则微信小程序右上角转发按钮会自动变灰
+		 */
+		onShareAppMessage(options) {
+			
+		},
 		// 函数
 		methods: {
 			// 页面数据初始化函数
