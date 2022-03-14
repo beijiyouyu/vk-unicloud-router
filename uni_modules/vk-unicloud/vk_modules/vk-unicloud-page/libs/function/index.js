@@ -1697,7 +1697,8 @@ pubfn.getPageFullPath = function(url) {
 	let fullPath = url;
 	if (fullPath.indexOf("/") !== 0) {
 		if (fullPath.indexOf("./") === 0) {
-			fullPath = "." + fullPath;
+			//fullPath = "." + fullPath;
+			fullPath = fullPath.substring(2);
 		}
 		let urlSplit = fullPath.split("../");
 		// 向上目录级数,0:根目录 1:向上1级
