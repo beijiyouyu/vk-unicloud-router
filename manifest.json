@@ -65,7 +65,13 @@
             "minified" : true,
             "checkSiteMap" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "lazyCodeLoading" : "requiredComponents",
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "方便自动填写地址"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true

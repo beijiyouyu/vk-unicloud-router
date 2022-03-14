@@ -241,6 +241,8 @@ pubfn.test = function(str, type) {
 			return new RegExp(/^[a-zA-Z0-9]*$/).test(str);
 		case 'english+number+_': //英文+数字+_
 			return new RegExp(/^[a-zA-Z0-9_]*$/).test(str);
+		case 'english+number+_-': //英文+数字+_-
+			return new RegExp(/^[a-zA-Z0-9_-]*$/).test(str);
 		case 'number': //数字
 			return new RegExp(/^[0-9]*$/).test(str);
 		case 'english': //英文
@@ -2032,6 +2034,7 @@ pubfn.checkLogin = function(obj = {}) {
 					// 记录下原本要跳转的页面
 					url = vk.pubfn.getPageFullPath(url);
 					vk.navigate.originalPage = { url };
+					if(obj.isOnLaunch) vk.navigate.isOnLaunchToLogin = true; // 标记为首次启动的页面需要登录
 					uni.reLaunch({
 						url: loginUrl,
 						success: () => {
