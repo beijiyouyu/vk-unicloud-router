@@ -492,7 +492,7 @@ pubfn.isNotNullAll = function(...strS) {
 pubfn.getListItem = function(list, key, value) {
 	let item;
 	for (let i = 0; i < list.length; i++) {
-		if (pubfn.isNotNull(value) && list[i][key] === value) {
+		if (list[i][key] === value) {
 			item = list[i];
 			break;
 		}
@@ -510,7 +510,7 @@ pubfn.getListItem = function(list, key, value) {
 pubfn.getListIndex = function(list, key, value) {
 	let index = -1;
 	for (let i = 0; i < list.length; i++) {
-		if (pubfn.isNotNull(value) && list[i][key] === value) {
+		if (list[i][key] === value) {
 			index = i;
 			break;
 		}
@@ -530,7 +530,7 @@ pubfn.getListItemIndex = function(list, key, value) {
 	let item;
 	let index = -1;
 	for (let i = 0; i < list.length; i++) {
-		if (pubfn.isNotNull(value) && list[i][key] === value) {
+		if (list[i][key] === value) {
 			index = i;
 			item = list[i];
 			break;

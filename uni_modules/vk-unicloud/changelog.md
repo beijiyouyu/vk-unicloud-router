@@ -1,3 +1,6 @@
+## 2.7.3（2022-03-18）
+* 1、【优化】一些细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.7.2（2022-03-14）
 * 1、【修复】`vk.navigateTo` 以 ./ 开头时 如：vk.navigateTo("./order-list") 判断是否需要登录不准确的问题。
 ## 2.7.1（2022-03-14）
