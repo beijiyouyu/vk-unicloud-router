@@ -1754,6 +1754,9 @@ pubfn.getPlatform = function() {
 	// #ifdef MP-360
 	platform = "mp-360";
 	// #endif
+	// #ifdef MP-KUAISHOU
+	platform = "mp-toutiao";
+	// #endif
 	return platform;
 };
 /**

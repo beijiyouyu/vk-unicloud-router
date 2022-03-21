@@ -1,7 +1,7 @@
 {
-  "easycom": {
-   
-  },
+	"easycom": {
+
+	},
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
@@ -19,15 +19,15 @@
 		"root": "pages_template",
 		"pages": [{
 				"path": "db-test/db-test",
-        "style": {
-          "navigationBarTitleText": "数据库API演示"
-        }
+				"style": {
+					"navigationBarTitleText": "数据库API演示"
+				}
 			},
 			{
 				"path": "db-test/list/list",
-        "style": {
-          "navigationBarTitleText": "列表加载演示"
-        }
+				"style": {
+					"navigationBarTitleText": "列表加载演示"
+				}
 			},
 			{
 				"path": "uni-id/index/index",
@@ -37,35 +37,57 @@
 			},
 			{
 				"path": "uni-id/password/password",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "密码"
+				}
 			},
 			{
 				"path": "uni-id/mobile/mobile",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "手机号"
+				}
 			},
 			{
 				"path": "uni-id/univerify/univerify",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "APP一键登录"
+				}
 			},
 			{
 				"path": "uni-id/weixin/weixin",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "微信"
+				}
+			},
+			{
+				"path": "uni-id/weixin/h5-weixin",
+				"style": {
+					"navigationBarTitleText": "微信公众号"
+				}
 			},
 			{
 				"path": "uni-id/alipay/alipay",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "支付宝"
+				}
 			},
-      {
-        "path": "uni-id/qq/qq",
-        "style": {}
-      },
+			{
+				"path": "uni-id/qq/qq",
+				"style": {
+					"navigationBarTitleText": "QQ"
+				}
+			},
 			{
 				"path": "uni-id/util/util",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "其他"
+				}
 			},
 			{
 				"path": "uni-id/email/email",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "邮箱"
+				}
 			},
 			{
 				"path": "uni-id/login/index/index",
@@ -93,43 +115,49 @@
 			},
 			{
 				"path": "openapi/weixin/weixin",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "微信开放平台API"
+				}
 			},
 			{
 				"path": "openapi/weixin/msgSecCheck/msgSecCheck",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "文本安全检测"
+				}
 			},
 			{
 				"path": "openapi/weixin/imgSecCheck/imgSecCheck",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "图片安全检测"
+				}
 			},
 			{
 				"path": "openapi/weixin/sendMessage/sendMessage",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "发送订阅消息"
+				}
 			},
 			{
 				"path": "openapi/baidu/baidu",
-        "style": {}
+				"style": {
+					"navigationBarTitleText": "百度开放平台API"
+				}
 			},
-      {
-        "path": "openapi/h5-weixin/h5-weixin",
-        "style": {}
-      },
-      {
-        "path": "uni-id/test/test",
-        "style": {
-          "navigationStyle": "custom" ,// 隐藏系统导航栏
-          "navigationBarTextStyle": "white" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
-        }
-      }
+			{
+				"path": "uni-id/test/test",
+				"style": {
+					"navigationStyle": "custom", // 隐藏系统导航栏
+					"navigationBarTextStyle": "white" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
+				}
+			}
 		]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",
 		// #ifndef MP-ALIPAY
-    "navigationBarBackgroundColor": "#F8F8F8",
-    // #endif
+		"navigationBarBackgroundColor": "#F8F8F8",
+		// #endif
 		"backgroundColor": "#F8F8F8"
 	}
 }

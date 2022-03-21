@@ -15,7 +15,7 @@
 		<!-- #endif -->
 		<button type="default" @click="vk.navigateTo('../../openapi/weixin/weixin')">微信小程序API</button>
 		<!-- #ifdef H5 -->
-		<button type="default" @click="pageTo('../../openapi/h5-weixin/h5-weixin')">微信公众号API</button>
+		<button type="default" @click="pageTo('../weixin/h5-weixin')">微信公众号API</button>
 		<!-- #endif -->
 		<button type="default" @click="vk.navigateTo('../../openapi/baidu/baidu')">百度开放平台API</button>
 		<!-- #ifdef MP-ALIPAY || APP-PLUS -->

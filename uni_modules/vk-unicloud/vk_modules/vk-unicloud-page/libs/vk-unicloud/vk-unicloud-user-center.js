@@ -419,6 +419,10 @@ export default {
 			addLoading(obj, "登录中...");
 			let { data = {} } = obj;
 			that.getWeixinCode().then((code) => {
+				// #ifdef H5
+				// H5平台需要区分环境（如微信公众号？网页H5?）
+				data.vk_platform = uni.vk.h5.getEnv();
+				// #endif
 				callFunction({
 					url: 'user/pub/loginByWeixin',
 					...obj,
@@ -469,12 +473,16 @@ export default {
 		addLoading(obj, "请求中...");
 		let { data = {} } = obj;
 		that.getWeixinCode().then((code) => {
+			// #ifdef H5
+			// H5平台需要区分环境（如微信公众号？网页H5?）
+			data.vk_platform = uni.vk.h5.getEnv();
+			// #endif
 			callFunction({
 				...obj,
 				url: 'user/kh/bindWeixin',
 				data: {
-					...data,
-					code: code
+					code,
+					...data
 				}
 			});
 		});
@@ -487,6 +495,12 @@ export default {
 	 */
 	unbindWeixin(obj = {}) {
 		addLoading(obj, "请求中...");
+		let { data = {} } = obj;
+		// #ifdef H5
+		// H5平台需要区分环境（如微信公众号？网页H5?）
+		data.vk_platform = uni.vk.h5.getEnv();
+		obj.data = data;
+		// #endif
 		return callFunction({
 			...obj,
 			url: 'user/kh/unbindWeixin',

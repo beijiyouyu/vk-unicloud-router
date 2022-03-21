@@ -1,3 +1,7 @@
+## 2.7.4（2022-03-21）
+* 1、【优化】H5环境下，微信登录、微信绑定、微信解绑API，使之自动识别微信公众号环境（h5-weixin）的配置。
+注意：微信公众号的 `uni-id` 配置属性是 `h5-weixin`，非 `h5`。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.7.3（2022-03-18）
 * 1、【优化】一些细节
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
