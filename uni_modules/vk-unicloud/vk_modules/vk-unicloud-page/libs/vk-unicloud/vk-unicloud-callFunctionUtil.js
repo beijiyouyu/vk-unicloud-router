@@ -294,7 +294,7 @@ class CallFunctionUtil {
 			// 若执行的函数不是pub类型函数，则先本地判断下token，可以提高效率。
 			// if (url.indexOf("/pub/") == -1 && url.indexOf("/pub_") == -1) {
 			// 若执行的函数是kh或sys类型函数，先本地判断下token，可以提高效率。
-			if (url.indexOf("/kh/") > -1 || url.indexOf("/sys/") > -1 || (url.indexOf(".") > -1 && url.indexOf("pub_") == -1 && url.indexOf("/pub/") == -1)) {
+			if (url.indexOf("/kh/") > -1 || url.indexOf("/sys/") > -1 || (url.indexOf(".") > -1 && url.indexOf("pub_") == -1 && url.indexOf("/pub/") == -1 && url.indexOf("/pub.") == -1)) {
 				if (!vk.checkToken()) {
 					// 若本地token校验未通过，则直接执行 interceptor.login 拦截器函数
 					return new Promise((resolve, reject) => {
