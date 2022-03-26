@@ -32,14 +32,14 @@ module.exports = {
 			pageIndex:1,
 			pageSize:100,
 			whereJson:whereJson
-		}, event.util);
+		});
 		if(res.rows.length == data_ids.length){
 			return res;
 		}
 		await vk.baseDao.del({
 			dbName:dbName,
 			whereJson:whereJson
-		},event.util);
+		});
 		let dataArr = [
 			{
 			  "data_id": "vk-test-notice-bar-01",
@@ -130,7 +130,7 @@ module.exports = {
 		await vk.baseDao.adds({
 			dbName:dbName,
 			dataJson:dataArr
-		},event.util);
+		});
 
     // 业务逻辑结束-----------------------------------------------------------
     return res;

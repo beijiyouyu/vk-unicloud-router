@@ -1,3 +1,6 @@
+## 2.7.6（2022-03-26）
+* 1、【优化】一些细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.7.5（2022-03-22）
 * 1、【新增】`vk.userCenter.bindNewMobile` 换绑新的手机号接口 [查看详情](https://vkdoc.fsq.pub/client/vk.userCenter.html#vk-usercenter-bindnewmobile-%E6%8D%A2%E7%BB%91%E6%89%8B%E6%9C%BA%E5%8F%B7)
 * 2、【新增】`vk.userCenter.bindNewEmail` 换绑新的邮箱接口 [查看详情](https://vkdoc.fsq.pub/client/vk.userCenter.html#vk-usercenter-bindnewemail-%E6%8D%A2%E7%BB%91%E9%82%AE%E7%AE%B1)

@@ -20,11 +20,11 @@ module.exports = {
 		let res_select = await vk.baseDao.select({
 			dbName:"vk-components-dynamic",
 			getCount:false,
-			pageSize:100,
+			pageSize:500,
 			whereJson:{
 				data_id : _.in(ids)
 			},
-		}, event.util);
+		});
 		// 将数组形式 转换成 组件需要的格式
 		res.componentsDynamic = {};
 		for(let i in res_select.rows){
