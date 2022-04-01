@@ -1,3 +1,8 @@
+## 2.8.0（2022-04-01）
+* 1、【重要】新增 `云对象` 路由模式 [什么是云对象？](https://vkdoc.fsq.pub/client/uniCloud/cloudfunctions/cloudObject.html)
+* 2、【重要】自此，在VK框架中，可以做到云对象和云函数同时存在。即在VK框架中，同时支持 `云对象路由模式` 和 `云函数路由模式`。
+* 3、【新增】本地运行支持云对象 [点击查看](https://vkdoc.fsq.pub/client/uniCloud/cloudfunctions/cloudObject.html#%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8C)
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.7.6（2022-03-26）
 * 1、【优化】一些细节
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
@@ -621,12 +626,12 @@ throw new Error("msg:这里是错误的提示");
 ```js
 /**
  * 判断是否是闰年
- * @params {Number | Date} year 需要计算的年份或时间,默认使用当前时间的年份
+ * @param {Number | Date} year 需要计算的年份或时间,默认使用当前时间的年份
  */
 vk.pubfn.timeUtil.isLeapYear(2021);
 /**
  * 判断是否是清明节
- * @params {Object} date 时间对象 
+ * @param {Object} date 时间对象 
  */
 vk.pubfn.timeUtil.isQingming(new Date());
 ```

@@ -231,14 +231,14 @@ class CallFunctionUtil {
 		/**
 		 * 云函数请求封装 - 统一入口
 		 * @description 通过云函数路由，1个云函数实现多个云函数的效果。
-		 * @params {String} 	url   		请求路径
-		 * @params {Object} 	data  		请求参数
-		 * @params {String} 	title 		遮罩层提示语，为空或不传则代表不显示遮罩层。
-		 * @params {Boolean} 	isRequest 是否使用云函数url化地址访问云函数，默认false
-		 * @params {Boolean} 	needAlert 为true代表请求错误时，会有弹窗提示。默认为true
-		 * @params {Function} success  	请求成功时，执行的回调函数
-		 * @params {Function} fail  	 	请求失败时，执行的回调函数
-		 * @params {Function} complete 	无论请求成功与否，都会执行的回调函数
+		 * @param {String}   url       请求路径
+		 * @param {Object}   data      请求参数，如 { a:1, b:"2" } 云函数内可通过 let { a, b } = data; 获取参数
+		 * @param {String} 	 title     遮罩层提示语，为空或不传则代表不显示遮罩层。
+		 * @param {Boolean}  isRequest 是否使用云函数url化地址访问云函数，默认false
+		 * @param {Boolean}  needAlert 为true代表请求错误时，会有弹窗提示，默认为true
+		 * @param {Function} success   请求成功时，执行的回调函数
+		 * @param {Function} fail  	 	 请求失败时，执行的回调函数
+		 * @param {Function} complete  无论请求成功与否，都会执行的回调函数
 		 */
 		this.callFunction = (obj = {}) => {
 			let that = this;
@@ -352,13 +352,13 @@ class CallFunctionUtil {
 		}
 		/**
 		 * 云函数上传图片
-		 * @params {String} 	filePath   	要上传的文件对象
-		 * @params {String} 	cloudPath  	文件的绝对路径，包含文件名(若不传，会自动生成文件名)
-		 * @params {String} 	fileType 		文件类型，可选image、video、audio 默认image
-		 * @params {Function} onUploadProgress 	上传进度回调
-		 * @params {Function} success  					请求成功时，执行的回调函数
-		 * @params {Function} fail  	 					请求失败时，执行的回调函数
-		 * @params {Function} complete 					无论请求成功与否，都会执行的回调函数
+		 * @param {String} 	filePath   	要上传的文件对象
+		 * @param {String} 	cloudPath  	文件的绝对路径，包含文件名(若不传，会自动生成文件名)
+		 * @param {String} 	fileType 		文件类型，可选image、video、audio 默认image
+		 * @param {Function} onUploadProgress 	上传进度回调
+		 * @param {Function} success  					请求成功时，执行的回调函数
+		 * @param {Function} fail  	 					请求失败时，执行的回调函数
+		 * @param {Function} complete 					无论请求成功与否，都会执行的回调函数
 		 * vk.callFunctionUtil.uploadFile
 		 */
 		this.uploadFile = (obj = {}) => {
