@@ -1,3 +1,7 @@
+## 2.8.1（2022-04-14）
+* 1、【新增】前端请求多服务空间的极简方式（通过配置直接指定调用环境）[点击查看](http://localhost:8081/client/question/q9.html#%E6%96%B9%E5%BC%8F%E4%BA%8C)
+* 2、【新增】`vk.userCenter.resetPasswordByEmail`（根据邮箱证码重置账号密码） [点击查看](https://vkdoc.fsq.pub/client/vk.userCenter.html#vk-usercenter-resetpasswordbyemail-%E6%A0%B9%E6%8D%AE%E9%82%AE%E7%AE%B1%E8%AF%81%E7%A0%81%E9%87%8D%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81)
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.8.0（2022-04-01）
 * 1、【重要】新增 `云对象` 路由模式 [什么是云对象？](https://vkdoc.fsq.pub/client/uniCloud/cloudfunctions/cloudObject.html)
 * 2、【重要】自此，在VK框架中，可以做到云对象和云函数同时存在。即在VK框架中，同时支持 `云对象路由模式` 和 `云函数路由模式`。

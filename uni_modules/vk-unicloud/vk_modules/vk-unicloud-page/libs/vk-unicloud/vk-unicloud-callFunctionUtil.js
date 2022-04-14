@@ -1,6 +1,6 @@
 var vk = {};
 var counterNum = 0;
-
+var uniCloudEnvs = {};
 class CallFunctionUtil {
 	constructor() {
 		this.config = {
@@ -334,6 +334,22 @@ class CallFunctionUtil {
 				} else if (key === "loginPagePath") {
 					// 兼容老版本
 					this.config.login.url = customConfig[key];
+				} else if (key === "uniCloud") {
+					let uniCloudConfig = customConfig[key];
+					if (uniCloudConfig && uniCloudConfig.envs) {
+						for (let envKey in uniCloudConfig.envs) {
+							let envItem = uniCloudConfig.envs[envKey];
+							if (envItem && envItem.provider && envItem.spaceId) {
+								let initConifg = {
+									provider: envItem.provider,
+									spaceId: envItem.spaceId
+								};
+								if (envItem.clientSecret) initConifg.clientSecret = envItem.clientSecret;
+								if (envItem.endpoint) initConifg.endpoint = envItem.endpoint;
+								uniCloudEnvs[envKey] = uniCloud.init(initConifg);
+							}
+						}
+					}
 				} else if (typeof customConfig[key] === "object" && typeof this.config[key] === "object") {
 					this.config[key] = Object.assign(this.config[key], customConfig[key]);
 				} else if (typeof customConfig[key] !== "undefined") {
@@ -378,7 +394,8 @@ class CallFunctionUtil {
 				file = {},
 				needSave = false,
 				category_id,
-				uniCloud: myCloud
+				uniCloud: myCloud,
+				env = "default"
 			} = obj;
 			// 获取文件类型(image:图片 video:视频 other:其他)
 			let fileType = this.getFileType(obj);
@@ -402,7 +419,7 @@ class CallFunctionUtil {
 			let Logger = {};
 			if (config.debug) Logger.filePath = filePath;
 			if (config.debug) Logger.startTime = new Date().getTime();
-			let runCloud = myCloud ? myCloud : uniCloud;
+			let runCloud = myCloud || uniCloudEnvs[env] || uniCloud;
 			return new Promise((resolve, reject) => {
 				runCloud.uploadFile({
 					filePath: filePath,
@@ -501,7 +518,8 @@ class CallFunctionUtil {
 			isRequest,
 			name,
 			complete,
-			uniCloud: myCloud
+			uniCloud: myCloud,
+			env = "default"
 		} = obj;
 		if (title) vk.showLoading(title);
 		if (loading) vk.setLoading(true, loading);
@@ -511,7 +529,7 @@ class CallFunctionUtil {
 		if (config.debug) Logger.params = typeof data == "object" ? JSON.parse(JSON.stringify(data)) : data;
 		let promiseAction = new Promise(function(resolve, reject) {
 			if (config.debug) Logger.startTime = new Date().getTime();
-			let runCloud = myCloud ? myCloud : uniCloud;
+			let runCloud = myCloud || uniCloudEnvs[env] || uniCloud;
 			runCloud.callFunction({
 				name: name,
 				data: {
