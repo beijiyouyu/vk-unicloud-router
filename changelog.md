@@ -1,3 +1,12 @@
+## 2.8.6（2022-05-14）
+* 1、【升级】`uni-id` 3.3.18
+* 2、【新增】`vk.pubfn.getFileType(url)` 根据文件url获取文件类型
+* 3、【新增】`vk.pubfn.getFileSuffix(url)` 根据文件url获取文件后缀名
+* 4、【新增】`vk.pubfn.checkFileSuffix(url,["png", "jpg", "jpeg", "gif", "bmp", "svg"])` 根据文件url判断是否满足指定后缀名中的任意1个
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
 ## 2.8.5（2022-05-05）
 * 1、【重要】vk实例对象已调整为页面内置对象，vk实例对象内的api在任意地方都可以直接通过vk.xxx()使用，不再需要 this.vk.xxx() 或 uni.vk.xxx() 的方式来调用。
 * 2、【重要】vk实例对象已调整为云函数内置对象，vk实例对象内的api在任意地方都可以直接通过vk.xxx()使用，不再需要 this.vk.xxx() 或 uniCloud.vk.xxx() 的方式来调用。
