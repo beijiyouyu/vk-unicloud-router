@@ -99,7 +99,7 @@
 		},
 		// 监听 - 页面下拉刷新
 		onPullDownRefresh() {
-			setTimeout(function () {
+			setTimeout(() => {
 				uni.stopPullDownRefresh();
 			}, 1000);
 		},
@@ -170,14 +170,14 @@
 				that.isRotate = true;
 				vk.userCenter.loginBySms({
 					data:that.form1,
-					success:function(data){
+					success: (data) => {
 						that.isRotate = false;
 						if(data.type == "login"){
 							vk.toast("登录成功!");
 						}else{
 							vk.toast("注册成功!");
 						}
-						setTimeout(function(){
+						setTimeout(() => {
 							// 跳转到首页,或页面返回
 							var pages = getCurrentPages();
 							if(pages.length > 1){
@@ -188,7 +188,7 @@
 							}
 						},1000);
 					},
-					complete:function(){
+					complete:() =>{
 						that.isRotate = false;
 					}
 				});

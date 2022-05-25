@@ -87,7 +87,7 @@
 		},
 		// 监听 - 页面下拉刷新
 		onPullDownRefresh() {
-			setTimeout(function () {
+			setTimeout(() => {
 				uni.stopPullDownRefresh();
 			}, 1000);
 		},
@@ -146,14 +146,14 @@
 				that.isRotate = true;
 				vk.userCenter.resetPasswordByMobile({
 					data:that.form1,
-					success:function(data){
+					success: (data) => {
 						that.isRotate = false;
-						vk.alert("密码重置成功,新密码为:"+password,function(){
+						vk.alert("密码重置成功,新密码为:"+password,()=>{
 							// 进入登录页
 							vk.redirectTo("../index/index");
 						});
 					},
-					complete:function(){
+					complete:() => {
 						that.isRotate = false;
 					}
 				});

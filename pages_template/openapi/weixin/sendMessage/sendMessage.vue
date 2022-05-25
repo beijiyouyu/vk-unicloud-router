@@ -55,7 +55,7 @@ export default {
 			new Promise((resolve, reject) => {
 				// #ifdef MP-WEIXIN
 				vk.userCenter.code2SessionWeixin({
-					success:function(data){
+					success: (data) => {
 						resolve(data.openid);
 					}
 				});
@@ -70,7 +70,7 @@ export default {
 					data: {
 						openid
 					},
-					success: function(data) {
+					success: (data) => {
 						that.data = data;
 					}
 				});

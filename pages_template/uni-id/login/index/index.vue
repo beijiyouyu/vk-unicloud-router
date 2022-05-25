@@ -94,7 +94,7 @@
 		},
 		// 监听 - 页面下拉刷新
 		onPullDownRefresh() {
-			setTimeout(function () {
+			setTimeout(() => {
 				uni.stopPullDownRefresh();
 			}, 1000);
 		},
@@ -143,10 +143,10 @@
 				vk.userCenter.login({
 					data:form1,
 					//loading:false,
-					success:function(data){
+					success: (data) => {
 						console.log("data",data);
 						vk.toast("登陆成功!");
-						setTimeout(function(){
+						setTimeout(() => {
 							// 跳转到首页,或页面返回
 							that.login_success(data);
 						},1000);
@@ -178,9 +178,9 @@
 			// 第三方登录 - 微信
 			login_weixin(){
 				vk.userCenter.loginByWeixin({
-					success:function(data){
+					success: (data) => {
 						vk.toast("登陆成功!");
-						setTimeout(function(){
+						setTimeout(() => {
 							// 跳转到首页,或页面返回
 							that.login_success(data);
 						},1000);

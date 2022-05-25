@@ -54,7 +54,7 @@ export default {
 					code: that.options.code,
 					state: that.options.state,
 				},
-				success:function(data){
+				success: (data) => {
 					vk.alert(JSON.stringify(data));
 				},
 			});
@@ -71,7 +71,7 @@ export default {
 					state: that.options.state,
 					type
 				},
-				success:function(data){
+				success: (data) => {
 					vk.alert(data.msg);
 					that.data = data;
 				}
@@ -87,7 +87,7 @@ export default {
 				data:{
 					code: that.options.code
 				},
-				success:function(data){
+				success: (data) => {
 					vk.alert("绑定成功");
 					that.data = data;
 				}
@@ -96,7 +96,7 @@ export default {
 		// 解绑微信
 		unbindWeixin(){
 			vk.userCenter.unbindWeixin({
-				success:function(data){
+				success: (data) => {
 					vk.alert("解绑成功");
 					that.data = data;
 				}

@@ -35,7 +35,7 @@ export default {
 			uni.chooseImage({
 				count: 1,
 				sizeType: ['compressed'],
-				success: function (res) {
+				success: (res) => {
 					let file = res.tempFiles[0];
 					vk.openapi.baidu.open.ocr.business_license({
 						title:"识别中...",
@@ -57,7 +57,7 @@ export default {
 			uni.chooseImage({
 				count: 1,
 				sizeType: ['compressed'],
-				success: function (res) {
+				success: (res) => {
 					let file = res.tempFiles[0];
 					vk.openapi.baidu.open.ocr.idcard({
 						title:"识别中...",

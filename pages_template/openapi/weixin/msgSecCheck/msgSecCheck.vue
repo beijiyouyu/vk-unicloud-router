@@ -41,10 +41,10 @@ export default {
 				data: {
 					content: that.form1.text
 				},
-				success: function(data) {
+				success: (data) => {
 					that.data = data;
 				},
-				fail: function(data) {
+				fail: (data) => {
 					vk.toast(data.msg, "none");
 				}
 			});

@@ -66,7 +66,7 @@
 						email: form1.email,
 						type: type,
 					},
-					success:function(data){
+					success: (data) => {
 						vk.alert("邮件发送成功");
 					}
 				});
@@ -87,7 +87,7 @@
 						code: form1.code,
 						type: type,
 					},
-					success:function(data){
+					success: (data) => {
 						vk.toast("发送成功");
 					}
 				});
@@ -97,7 +97,7 @@
 				var form1 = that.form1;
 				vk.userCenter.loginByEmail({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("登录成功");
 					}
 				});
@@ -107,7 +107,7 @@
 				var form1 = that.form1;
 				vk.userCenter.bindEmail({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("绑定成功");
 					}
 				});
@@ -117,7 +117,7 @@
 				var form1 = that.form1;
 				vk.userCenter.unbindEmail({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("解绑成功");
 					}
 				});

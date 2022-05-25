@@ -28,7 +28,7 @@
 					data:{
 						type
 					},
-					success:function(data){
+					success: (data) => {
 						vk.alert("登录成功");
 					}
 				});
@@ -36,7 +36,7 @@
 			// 绑定QQ
 			bindQQ(){
 				vk.userCenter.bindQQ({
-					success:function(data){
+					success: (data) => {
 						vk.alert("绑定成功");
 					}
 				});
@@ -44,7 +44,7 @@
 			// 解绑QQ
 			unbindQQ(){
 				vk.userCenter.unbindQQ({
-					success:function(data){
+					success: (data) => {
 						vk.alert("解绑成功");
 					}
 				});

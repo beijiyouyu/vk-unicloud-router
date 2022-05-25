@@ -84,7 +84,7 @@
 					url: 'template/test/pub/temporaryCache',
 					title:'',
 					data:form1,
-					success:function(data) {
+					success: (data) => {
 						that.data.rows = data.value;
 					}
 				});
@@ -108,7 +108,7 @@
 					url: 'template/test/pub/temporaryCache',
 					title:'请求中...',
 					data:form1,
-					success:function(data) {
+					success: (data) => {
 						if("get" === mode){
 							vk.alert(JSON.stringify(data.value));
 						}else{

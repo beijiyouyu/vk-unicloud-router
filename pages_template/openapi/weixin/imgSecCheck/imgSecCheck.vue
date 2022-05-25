@@ -36,7 +36,7 @@ export default {
 			uni.chooseImage({
 				count: 1,
 				sizeType: ["compressed"], //可以指定是原图还是压缩图，默认二者都有
-				success: function(res) {
+				success: (res) => {
 					let file = res.tempFiles[0];
 					// 图片转base64
 					vk.pubfn.fileToBase64({ file }).then(base64 => {
@@ -50,10 +50,10 @@ export default {
 							data: {
 								base64
 							},
-							success: function(data) {
+							success: (data) => {
 								that.data = data;
 							},
-							fail: function(data) {
+							fail: (data) => {
 								vk.toast(data.msg, "none");
 							}
 						});

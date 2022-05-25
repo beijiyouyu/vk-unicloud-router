@@ -39,7 +39,7 @@
 </template>
 
 <script>
-var that;		// 当前页面对象
+var that;		// 当前页面对象（注意，若该页面会发生从本页面跳本页面时，此that不可以用，只能用this）
 var vk;			// vk依赖
 export default {
 	data() {
@@ -64,14 +64,14 @@ export default {
 		};
 	},
 	onPageScroll(e) {
-		that.scrollTop = e.scrollTop;
+		this.scrollTop = e.scrollTop;
 	},
 	// 监听 - 页面每次【加载时】执行(如：前进)
 	onLoad(options = {}) {
 		that = this;
-		vk = that.vk;
-		that.options = options;
-		that.init(options);
+		vk = this.vk;
+		this.options = options;
+		this.init(options);
 	},
 	// 监听 - 页面【首次渲染完成时】执行。注意如果渲染速度快，会在页面进入动画完成前触发
 	onReady() {},
@@ -81,13 +81,13 @@ export default {
 	onHide() {},
 	// 监听 - 页面下拉刷新
 	onPullDownRefresh() {
-		setTimeout(function() {
+		setTimeout(() => {
 			uni.stopPullDownRefresh();
 		}, 1000);
 	},
 	// 监听 - 页面触底部
 	onReachBottom(options) {
-		that.nextPage();
+		this.nextPage();
 	},
 	// 监听 - 窗口尺寸变化(仅限:App、微信小程序)
 	onResize() {},
@@ -98,8 +98,8 @@ export default {
 		// 页面数据初始化函数
 		init(options) {
 			console.log("init: ", options);
-			that.getList({
-				success: function() {}
+			this.getList({
+				success: () => {}
 			});
 		},
 		pageTo(path) {
@@ -107,6 +107,7 @@ export default {
 		},
 		// 查询list数据
 		getList(obj = {}) {
+			let that = this;
 			vk.pubfn.getListData({
 				that: that,
 				url: that.action,
@@ -115,18 +116,18 @@ export default {
 		},
 		// 加载下一页数据
 		nextPage() {
-			if (that.data.loadmore == "loadmore") {
-				that.data.loadmore = "loading";
-				that.form1.pageIndex++;
-				that.getList();
+			if (this.data.loadmore == "loadmore") {
+				this.data.loadmore = "loading";
+				this.form1.pageIndex++;
+				this.getList();
 			}
 		},
 		// 搜索
 		onSearch(e) {
-			console.log("搜索", that.form1.searchvalue);
-			that.form1.pageIndex = 1;
-			that.data.pageKey = true;
-			that.getList();
+			console.log("搜索", this.form1.searchvalue);
+			this.form1.pageIndex = 1;
+			this.data.pageKey = true;
+			this.getList();
 		},
 		// 列的点击事件
 		itemBtn(item) {

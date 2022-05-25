@@ -60,7 +60,7 @@
 					data:{
 						needCache:true
 					},
-					success:function(data){
+					success: (data) => {
 						that.sessionKey = data.sessionKey;
 					},
 				});
@@ -72,7 +72,7 @@
 					data:{
 						type
 					},
-					success:function(data){
+					success: (data) => {
 						vk.alert(data.msg);
 						that.data = data;
 					}
@@ -80,7 +80,7 @@
 			},
 			code2SessionWeixin() {
 				vk.userCenter.code2SessionWeixin({
-					success:function(data){
+					success: (data) => {
 						vk.alert(JSON.stringify(data));
 					},
 				});
@@ -91,7 +91,7 @@
 				try {
 					uni.getUserProfile({
 						desc:"用于快速设置昵称头像",
-						success:function(res){
+						success:(res) => {
 							let { userInfo } = res;
 							vk.userCenter.updateUser({
 								data:{
@@ -99,7 +99,7 @@
 									avatar : userInfo.avatarUrl,
 									gender : userInfo.gender
 								},
-								success:function(data){
+								success: (data) => {
 									vk.alert("设置成功");
 								}
 							});
@@ -113,11 +113,11 @@
 				// #ifndef MP-WEIXIN
 				uni.login({
 				  provider: 'weixin',
-				  success: function (loginRes) {
+				  success: (loginRes) => {
 				    // 获取用户信息
 				    uni.getUserInfo({
 				      provider: 'weixin',
-				      success: function (data) {
+				      success: (data) => {
 								that.data = data;
 								let { userInfo } = data;
 								vk.userCenter.updateUser({
@@ -126,7 +126,7 @@
 										avatar : userInfo.avatarUrl,
 										gender : userInfo.gender
 									},
-									success:function(data){
+									success: (data) => {
 										vk.alert("设置成功");
 									}
 								});
@@ -139,7 +139,7 @@
 			// 绑定微信
 			bindWeixin(){
 				vk.userCenter.bindWeixin({
-					success:function(data){
+					success: (data) => {
 						vk.alert("绑定成功");
 						that.data = data;
 					}
@@ -148,7 +148,7 @@
 			// 解绑微信
 			unbindWeixin(){
 				vk.userCenter.unbindWeixin({
-					success:function(data){
+					success: (data) => {
 						vk.alert("解绑成功");
 						that.data = data;
 					}
@@ -166,7 +166,7 @@
 						iv,
 						sessionKey:that.sessionKey
 					},
-					success:function(data){
+					success: (data) => {
 						vk.alert("手机号:" + data.phone);
 					}
 				});

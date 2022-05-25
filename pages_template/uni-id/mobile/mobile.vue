@@ -71,7 +71,7 @@
 						mobile: form1.mobile,
 						type: type,
 					},
-					success:function(data){
+					success: (data) => {
 						vk.alert("短信发送成功");
 					}
 				});
@@ -92,9 +92,8 @@
 						code: form1.code,
 						type: type,
 					},
-					success:function(data){
+					success: (data) => {
 						vk.toast("发送成功");
-
 					}
 				});
 			},
@@ -103,7 +102,7 @@
 				var form1 = that.form1;
 				vk.userCenter.loginBySms({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("登录成功");
 					}
 				});
@@ -113,7 +112,7 @@
 				var form1 = that.form1;
 				vk.userCenter.bindMobile({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("绑定成功");
 					}
 				});
@@ -123,7 +122,7 @@
 				var form1 = that.form1;
 				vk.userCenter.unbindMobile({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("解绑成功");
 					}
 				});
@@ -133,7 +132,7 @@
 				var form1 = that.form1;
 				vk.userCenter.resetPasswordByMobile({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("密码重置成功,新密码为:"+form1.password);
 					}
 				});

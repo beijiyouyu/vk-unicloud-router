@@ -32,7 +32,7 @@
 				var form1 = that.form1;
 				vk.userCenter.register({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("注册成功!");
 					}
 				});
@@ -42,7 +42,7 @@
 				var form1 = that.form1;
 				vk.userCenter.login({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("登陆成功!");
 					}
 				});
@@ -56,7 +56,7 @@
 						newPassword: "123456",
 						password_confirmation: "123456"
 					},
-					success:function(data){
+					success: (data) => {
 						vk.alert("修改成功");
 					}
 				});
@@ -65,7 +65,7 @@
 			resetPwd(){
 				var form1 = that.form1;
 				vk.userCenter.resetPwd({
-					success:function(data){
+					success: (data) => {
 						vk.alert("密码已重置为123456");
 					}
 				});

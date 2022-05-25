@@ -43,7 +43,7 @@
 					data:{
 						avatar:avatar
 					},
-					success:function(data){
+					success: (data) => {
 						that.avatar = avatar;
 						vk.alert("设置成功");
 					}
@@ -55,7 +55,7 @@
 					data:{
 						nickname:"剑圣李白",
 					},
-					success:function(data){
+					success: (data) => {
 						vk.alert("更新成功");
 					}
 				});
@@ -63,7 +63,7 @@
 			getMyUserInfo() {
 				var form1 = that.form1;
 				vk.userCenter.getCurrentUserInfo({
-					success:function(data){
+					success: (data) => {
 						vk.alert(JSON.stringify(data.userInfo));
 					}
 				});
@@ -71,7 +71,7 @@
 			// token校验
 			checkToken(){
 				vk.userCenter.checkToken({
-					success:function(data){
+					success: (data) => {
 						vk.alert("token有效");
 					}
 				});
@@ -79,14 +79,14 @@
 			// 退出
 			logout(){
 				vk.userCenter.logout({
-					success:function(data){
+					success: (data) => {
 						vk.alert("退出成功");
 					}
 				});
 			},
 			setUserInviteCode() {
 				vk.userCenter.setUserInviteCode({
-					success:function(data){
+					success: (data) => {
 						vk.alert(data.msg);
 					}
 				});
@@ -99,7 +99,7 @@
 				}
 				vk.userCenter.acceptInvite({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("接受邀请成功");
 					}
 				});
@@ -110,7 +110,7 @@
 				uni.chooseImage({
 					count: 1,
 					sizeType: ['compressed'],
-					success: function (res) {
+					success: (res) => {
 						// 上传图片到云储存
 						vk.callFunctionUtil.uploadFile({
 							title:"上传中...",

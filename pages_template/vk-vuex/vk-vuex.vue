@@ -27,7 +27,7 @@
 		</view>
 		<view v-if="vk.getVuex('$user.userInfo')" style="color: red;margin-top: 10rpx;font-size: 36rpx;">
 			当前登录用户：{{ vk.getVuex('$user.userInfo.nickname') || vk.getVuex('$user.userInfo.username') }}
-			<u-avatar :src="vk.getVuex('$user.userInfo.avatar')" size="70"></u-avatar>
+			<image :src="vk.getVuex('$user.userInfo.avatar')" style="width: 70rpx;height: 70rpx;border-radius: 50%;" mode="aspectFill"></image>
 		</view>
 		<view style="margin-top: 20rpx;">
 			<input type="text" v-model="form1.username" placeholder="用户名/邮箱/手机号" />
@@ -62,7 +62,7 @@
 				var form1 = that.form1;
 				vk.userCenter.register({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						vk.alert("注册成功!");
 					}
 				});
@@ -72,7 +72,7 @@
 				var form1 = that.form1;
 				vk.userCenter.login({
 					data:form1,
-					success:function(data){
+					success: (data) => {
 						// 登录成功后将用户信息写入$store
 						vk.setVuex('$user.userInfo', data.userInfo);
 						vk.alert("登陆成功!");
@@ -82,7 +82,7 @@
 			// 退出
 			logout(){
 				vk.userCenter.logout({
-					success:function(data){
+					success: (data) => {
 						// 退出成功后清楚$store的用户信息
 						vk.setVuex('$user.userInfo', {});
 						vk.alert("退出成功");
@@ -95,7 +95,7 @@
 				uni.chooseImage({
 					count: 1,
 					sizeType: ['compressed'],
-					success: function (res) {
+					success: (res) => {
 						// 上传图片到云储存
 						vk.callFunctionUtil.uploadFile({
 							title:"上传中...",

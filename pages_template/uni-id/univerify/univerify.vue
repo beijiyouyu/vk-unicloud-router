@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<button type="default" @click="loginByUniverify">本机号码一键登录</button>
-		<view class="tips">需要先配置uniCloud/cloudfunctions/common/config/index.js</view>
+		<view class="tips">需要先配置uniCloud/cloudfunctions/common/uni-config-center/uni-id/config.json</view>
 		<view class="tips">中的 uni.service.univerify</view>
 		<view class="code" v-if="userInfo && userInfo._id">
 			<scroll-view scroll-x="true">
@@ -61,14 +61,14 @@
 					data:{
 
 					},
-					success:function(data){
+					success: (data) => {
 						uni.closeAuthView();
 						that.userInfo = data.userInfo;
-						setTimeout(function(){
+						setTimeout(() => {
 							vk.alert(data.msg);
 						},300);
 					},
-					fail:function(res){
+					fail:(res) => {
 						uni.closeAuthView();
 					}
 				});

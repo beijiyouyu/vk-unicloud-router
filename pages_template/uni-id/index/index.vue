@@ -1,10 +1,20 @@
 <template>
 	<view class="content">
 		<view style="margin-bottom: 20rpx;font-size: 32rpx;">
-			当前集成的
-			<text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>
-			版本：
-			<text style="font-weight: bold;">3.3.18</text>
+			<view>
+				<text>当前集成的</text><text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>版本：<text style="font-weight: bold;">3.3.18</text>
+			</view>
+			<view>
+				<text>当前运行的</text><text style="font-weight: bold;margin: 0 10rpx;">vue</text>版本：
+				<text style="font-weight: bold;">
+					<!-- #ifdef VUE2 -->
+					Vue2
+					<!-- #endif -->
+					<!-- #ifdef VUE3 -->
+					Vue3
+					<!-- #endif -->
+				</text>
+			</view>
 		</view>
 
 		<button type="default" @click="pageTo('../password/password')">用户名和密码</button>
