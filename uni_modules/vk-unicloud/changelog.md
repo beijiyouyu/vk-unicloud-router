@@ -1,3 +1,7 @@
+## 2.8.10（2022-05-27）
+* 1、【修复】当 `云对象` 在 `service` 层根目录时，`pub.对象名.js` pub权限失效的问题。
+* 2、【优化】其他一些细节。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.8.9（2022-05-26）
 * 1、【新增】`vk.baseDao.selects` 和 `vk.baseDao.getTableData` 新增 `lastSortArr` 参数，用于聚合后再排序。
 * 注意：`lastWhereJson` 和 `lastSortArr` 在数据量大的情况下是有性能问题的，（建议主表的where条件中先进行筛选，如只查本季度数据，只要主表过滤完后数据量不大，则没有性能问题。）
