@@ -10,8 +10,6 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var vk;												// vk依赖
 export default {
 	data() {
 		// 页面数据变量
@@ -21,10 +19,8 @@ export default {
 	},
 	// 监听 - 页面每次【加载时】执行(如：前进)
 	onLoad(options = {}) {
-		that = this;
-		vk = that.vk;
-		that.options = options;
-		that.init(options);
+		this.options = options;
+		this.init(options);
 	},
 	// 函数
 	methods: {
@@ -51,6 +47,7 @@ export default {
 			});
 		},
 		sendMessage(obj) {
+			let that = this;
 			// 需要先绑定微信
 			new Promise((resolve, reject) => {
 				// #ifdef MP-WEIXIN
@@ -77,8 +74,6 @@ export default {
 			});	
 		}
 	},
-	// 过滤器
-	filters: {},
 	// 计算属性
 	computed: {}
 };

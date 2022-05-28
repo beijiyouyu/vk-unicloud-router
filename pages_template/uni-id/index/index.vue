@@ -47,8 +47,6 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var vk;												// vk依赖
 	export default {
 		data() {
 			return {
@@ -56,8 +54,6 @@
 			}
 		},
 		onLoad(options) {
-			that = this;
-			vk = that.vk;
 		},
 		methods: {
 			pageTo(url){

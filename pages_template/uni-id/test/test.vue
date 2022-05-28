@@ -11,8 +11,6 @@
 </template>
 
 <script>
-var that; // 当前页面对象
-var vk; // vk依赖
 export default {
   data() {
     return {
@@ -50,8 +48,6 @@ export default {
     this.scrollTop = e.scrollTop;
   },
   onLoad(options) {
-    that = this;
-    vk = that.vk;
   },
   onReady() {
     this.$refs.uForm.setRules(this.rules);

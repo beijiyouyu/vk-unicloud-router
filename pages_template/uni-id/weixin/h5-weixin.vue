@@ -16,8 +16,6 @@
 </template>
 
 <script>
-var that;		// 当前页面对象
-var vk;			// vk依赖
 export default {
 	data() {
 		return {
@@ -25,15 +23,13 @@ export default {
 		};
 	},
 	onLoad(options) {
-		that = this;
-		vk = that.vk;
-		that.options = options || {};
-		that.init(options);
+		this.options = options || {};
+		this.init(options);
 	},
 	methods: {
 		// 初始化
 		init(options) {
-			if(that.options.code){
+			if(this.options.code){
 				vk.toast("已获取到code，请点击相应操作。");
 				return false;
 			}
@@ -45,6 +41,7 @@ export default {
 			window.location.href = url;
 		},
 		code2SessionWeixin() {
+			let that = this;
 			if(!that.options.code){
 				vk.toast("请先获取code");
 				return false;
@@ -61,6 +58,7 @@ export default {
 		},
 		// 微信登陆
 		loginByWeixin(type){
+			let that = this;
 			if(!that.options.code){
 				vk.toast("请先获取code");
 				return false;
@@ -79,6 +77,7 @@ export default {
 		},
 		// 绑定微信
 		bindWeixin(){
+			let that = this;
 			if(!that.options.code){
 				vk.toast("请先获取code");
 				return false;
@@ -95,6 +94,7 @@ export default {
 		},
 		// 解绑微信
 		unbindWeixin(){
+			let that = this;
 			vk.userCenter.unbindWeixin({
 				success: (data) => {
 					vk.alert("解绑成功");

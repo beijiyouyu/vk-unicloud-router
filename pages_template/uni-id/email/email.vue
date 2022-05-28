@@ -30,8 +30,6 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var vk;												// vk依赖
 	export default {
 		data() {
 			return {
@@ -42,16 +40,15 @@
 			}
 		},
 		onLoad(options) {
-			that = this;
-			vk = that.vk;
 		},
 		methods: {
 			// 为了演示把这个逻辑放在客户端
 			getCode() {
 				const randomStr = '00000' + Math.floor(Math.random() * 1000000)
-				that.form1.code = randomStr.substring(randomStr.length - 6)
+				this.form1.code = randomStr.substring(randomStr.length - 6)
 			},
 			sendEmailCode(type) {
+				let that = this;
 				if (!/.+@.+/.test(that.form1.email)) {
 					uni.showModal({
 						content: '请输入正确的邮箱',
@@ -72,6 +69,7 @@
 				});
 			},
 			setVerifyCode(type) {
+				let that = this;
 				if (!/.+@.+/.test(that.form1.email)) {
 					uni.showModal({
 						content: '请输入正确的邮箱',
@@ -94,6 +92,7 @@
 			},
 			// 邮箱登录
 			loginByEmail() {
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.loginByEmail({
 					data:form1,
@@ -104,6 +103,7 @@
 			},
 			// 绑定邮箱
 			bindEmail(){
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.bindEmail({
 					data:form1,
@@ -114,6 +114,7 @@
 			},
 			// 解绑邮箱
 			unbindEmail(){
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.unbindEmail({
 					data:form1,

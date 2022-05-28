@@ -27,8 +27,6 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var vk;												// vk依赖
 	export default {
 		data() {
 			// 页面数据变量
@@ -47,10 +45,8 @@
 		},
 		// 监听 - 页面每次【加载时】执行(如：前进)
 		onLoad(options = {}) {
-			that = this;
-			vk = that.vk;
-			that.options = options;
-			that.init(options);
+			this.options = options;
+			this.init(options);
 		},
 		// 监听 - 页面【首次渲染完成时】执行。注意如果渲染速度快，会在页面进入动画完成前触发
 		onReady(){
@@ -66,18 +62,14 @@
 			
 			
 		},
-		// 监听 - 页面创建时
-		created(){
-			that = this;
-			vk = that.vk;
-		},
 		// 函数
 		methods: {
 			// 页面数据初始化函数
 			init(options){
-				that.getAll();
+				this.getAll();
 			},
 			getAll(){
+				let that = this;
 				let form1 = that.form1;
 				form1.mode = "getAll";
 				vk.callFunction({
@@ -90,6 +82,7 @@
 				});
 			},
 			temporaryCache(mode){
+				let that = this;
 				let form1 = that.form1;
 				form1.mode = mode;
 				if(["get","set","del","isExpired"].indexOf(mode) > -1){
@@ -117,10 +110,6 @@
 					}
 				});
 			}
-		},
-		// 过滤器
-		filters:{
-			
 		},
 		// 计算属性
 		computed:{

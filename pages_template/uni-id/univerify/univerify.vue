@@ -12,8 +12,6 @@
 </template>
 
 <script>
-	var that; 										// 当前页面对象
-	var vk;												// vk依赖
 	export default {
 		data() {
 			return {
@@ -21,9 +19,7 @@
 			}
 		},
 		onLoad(options) {
-			that = this;
-			vk = that.vk;
-			that.init(options);
+			this.init(options);
 		},
 		methods: {
 			init(options){
@@ -41,6 +37,7 @@
 				// #endif
 			},
 			loginByUniverify() {
+				let that = this;
 				vk.userCenter.loginByUniverify({
 					// 更多配置请查看 https://uniapp.dcloud.io/univerify
 					univerifyStyle: {

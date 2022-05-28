@@ -35,8 +35,6 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var vk;												// vk依赖
 	export default {
 		data() {
 			return {
@@ -48,16 +46,15 @@
 			}
 		},
 		onLoad(options) {
-			that = this;
-			vk = that.vk;
 		},
 		methods: {
 			// 为了演示把这个逻辑放在客户端
 			getCode() {
 				const randomStr = '00000' + Math.floor(Math.random() * 1000000)
-				that.form1.code = randomStr.substring(randomStr.length - 6)
+				this.form1.code = randomStr.substring(randomStr.length - 6)
 			},
 			sendSmsCode(type) {
+				let that = this;
 				if (!/^1\d{10}$/.test(that.form1.mobile)) {
 					uni.showModal({
 						content: '请输入正确的手机号',
@@ -77,7 +74,8 @@
 				});
 			},
 			setVerifyCode(type) {
-				if (!/^1\d{10}$/.test(this.form1.mobile)) {
+				let that = this;
+				if (!/^1\d{10}$/.test(that.form1.mobile)) {
 					uni.showModal({
 						content: '请输入正确的手机号',
 						showCancel: false
@@ -99,6 +97,7 @@
 			},
 			// 登录(手机号+验证码)
 			loginBySms() {
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.loginBySms({
 					data:form1,
@@ -109,6 +108,7 @@
 			},
 			// 绑定手机号
 			bindMobile(){
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.bindMobile({
 					data:form1,
@@ -119,6 +119,7 @@
 			},
 			// 解绑手机
 			unbindMobile(){
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.unbindMobile({
 					data:form1,
@@ -129,6 +130,7 @@
 			},
 			// 手机验证码充值账号密码
 			resetPasswordByMobile(){
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.resetPasswordByMobile({
 					data:form1,

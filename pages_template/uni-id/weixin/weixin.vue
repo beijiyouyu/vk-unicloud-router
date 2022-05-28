@@ -37,8 +37,6 @@
 </template>
 
 <script>
-	var that;		// 当前页面对象
-	var vk;			// vk依赖
 	export default {
 		data() {
 			return {
@@ -49,12 +47,11 @@
 			}
 		},
 		onLoad(options) {
-			that = this;
-			vk = that.vk;
-			that.init();
+			this.init();
 		},
 		methods: {
 			init(){
+				let that = this;
 				// #ifdef MP-WEIXIN
 				vk.userCenter.code2SessionWeixin({
 					data:{
@@ -68,6 +65,7 @@
 			},
 			// 微信登陆
 			loginByWeixin(type){
+				let that = this;
 				vk.userCenter.loginByWeixin({
 					data:{
 						type
@@ -87,6 +85,7 @@
 			},
 			// 设置用户昵称头像
 			setUserInfo(){
+				let that = this;
 				// #ifdef MP-WEIXIN
 				try {
 					uni.getUserProfile({
@@ -138,6 +137,7 @@
 			},
 			// 绑定微信
 			bindWeixin(){
+				let that = this;
 				vk.userCenter.bindWeixin({
 					success: (data) => {
 						vk.alert("绑定成功");
@@ -147,6 +147,7 @@
 			},
 			// 解绑微信
 			unbindWeixin(){
+				let that = this;
 				vk.userCenter.unbindWeixin({
 					success: (data) => {
 						vk.alert("解绑成功");
@@ -156,6 +157,7 @@
 			},
 			// 获取微信绑定的手机号码
 			getPhoneNumber(e){
+				let that = this;
 				let { encryptedData, iv } = e.detail;
 				if (!encryptedData || !iv) {
 					return false;
@@ -173,6 +175,7 @@
 			},
 			// 使用微信绑定的手机号登录/注册
 			loginByWeixinPhoneNumber(e){
+				let that = this;
 				let { encryptedData, iv } = e.detail;
 				if (!encryptedData || !iv) {
 					return false;

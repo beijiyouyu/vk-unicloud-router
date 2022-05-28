@@ -16,8 +16,6 @@
 </template>
 
 <script>
-var that;		// 当前页面对象
-var vk;			// vk依赖
 export default {
 	data() {
 		return {
@@ -26,33 +24,33 @@ export default {
 		};
 	},
 	onLoad(options) {
-		that = this;
-		vk = that.vk;
-		that.options = options;
-		that.init(options);
+		this.options = options;
+		this.init(options);
 	},
 	methods: {
 		// 初始化
 		init(options) {},
 		// 生成带参数的小程序码
 		getWeixinMPqrcode() {
+			let that = this;
 			vk.userCenter.getWeixinMPqrcode({
 				data: {
 					scene: "a=1"
 				},
-				success(data) {
+				success:(data) =>{
 					that.imageUrl = data.base64;
 				}
 			});
 		},
 		// 生成带参数的小程序scheme码
 		getWeixinMPscheme() {
+			let that = this;
 			vk.userCenter.getWeixinMPscheme({
 				data: {
 					query: "a=1&b=2",
 					path: "pages/index/index"
 				},
-				success(data) {
+				success:(data) =>{
 					that.openlink = data.openlink;
 				}
 			});

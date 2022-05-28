@@ -9,7 +9,6 @@
 </template>
 
 <script>
-	var that;		// 当前页面对象（注意，若该页面会发生从本页面跳本页面时，此that不可以用，只能用this）
 	export default {
 		data() {
 			// 页面数据变量
@@ -30,7 +29,6 @@
 		},
 		// 监听 - 页面每次【加载时】执行(如：前进)
 		onLoad(options = {}) {
-			that = this;
 			this.options = options;
 			this.init(options);
 		},

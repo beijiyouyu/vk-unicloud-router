@@ -50,8 +50,6 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var vk;												// vk依赖
 	export default {
 		data() {
 			// 页面数据变量
@@ -75,14 +73,12 @@
 			}
 		},
 		onPageScroll(e) {
-			that.scrollTop = e.scrollTop;
+			this.scrollTop = e.scrollTop;
 		},
 		// 监听 - 页面每次【加载时】执行(如：前进)
 		onLoad(options) {
-			that = this;
-			vk = that.vk;
 			//console.log("onLoad",options);
-			that.init(options);
+			this.init(options);
 		},
 		// 监听 - 页面【首次渲染完成时】执行。注意如果渲染速度快，会在页面进入动画完成前触发
 		onReady(){
@@ -129,6 +125,7 @@
 				vk.navigateTo(path);
 			},
 			checkboxChange(e){
+				let that = this;
 				let value = e.detail.value || [];
 				if (value.length > 0 && value[0]){
 					that.form1.agreement = true;
@@ -138,6 +135,7 @@
 			},
 			// 登录(手机号+验证码) 不存在会自动注册
 			loginBySms() {
+				let that = this;
 				if(that.isRotate){
 					//判断是否加载中，避免重复点击请求
 					return false;
@@ -193,10 +191,6 @@
 					}
 				});
 			}
-		},
-		// 过滤器
-		filters:{
-
 		},
 		// 计算属性
 		computed:{

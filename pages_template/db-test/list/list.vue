@@ -39,8 +39,6 @@
 </template>
 
 <script>
-var that;		// 当前页面对象（注意，若该页面会发生从本页面跳本页面时，此that不可以用，只能用this）
-var vk;			// vk依赖
 export default {
 	data() {
 		// 页面数据变量
@@ -68,8 +66,6 @@ export default {
 	},
 	// 监听 - 页面每次【加载时】执行(如：前进)
 	onLoad(options = {}) {
-		that = this;
-		vk = this.vk;
 		this.options = options;
 		this.init(options);
 	},
@@ -116,18 +112,20 @@ export default {
 		},
 		// 加载下一页数据
 		nextPage() {
-			if (this.data.loadmore == "loadmore") {
-				this.data.loadmore = "loading";
-				this.form1.pageIndex++;
-				this.getList();
+			let that = this;
+			if (that.data.loadmore == "loadmore") {
+				that.data.loadmore = "loading";
+				that.form1.pageIndex++;
+				that.getList();
 			}
 		},
 		// 搜索
 		onSearch(e) {
-			console.log("搜索", this.form1.searchvalue);
-			this.form1.pageIndex = 1;
-			this.data.pageKey = true;
-			this.getList();
+			let that = this;
+			console.log("搜索", that.form1.searchvalue);
+			that.form1.pageIndex = 1;
+			that.data.pageKey = true;
+			that.getList();
 		},
 		// 列的点击事件
 		itemBtn(item) {

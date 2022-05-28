@@ -19,8 +19,6 @@
 </template>
 
 <script>
-	var that; 										// 当前页面对象
-	var vk;												// vk依赖
 	export default {
 		data() {
 			return {
@@ -31,12 +29,11 @@
 			}
 		},
 		onLoad(options) {
-			that = this;
-			vk = that.vk;
 		},
 		methods: {
 			// 设置头像
 			setAvatar(){
+				let that = this;
 				let avatar = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594798658581&di=bcd5486940ad88cf88a904f411c53e94&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn15%2F600%2Fw1920h1080%2F20180505%2Fad66-hacuuvt5802647.jpg";
 				var form1 = that.form1;
 				vk.userCenter.setAvatar({
@@ -50,6 +47,7 @@
 				});
 			},
 			updateUser() {
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.updateUser({
 					data:{
@@ -61,6 +59,7 @@
 				});
 			},
 			getMyUserInfo() {
+				let that = this;
 				var form1 = that.form1;
 				vk.userCenter.getCurrentUserInfo({
 					success: (data) => {
@@ -92,6 +91,7 @@
 				});
 			},
 			acceptInvite() {
+				let that = this;
 				var form1 = that.form1;
 				if (!form1.inviteCode) {
 					vk.alert("请填写邀请码");
@@ -106,6 +106,7 @@
 			},
 			// 上传头像到云储存,并设置为头像
 			uploadAvatar(){
+				let that = this;
 				// 选择图片
 				uni.chooseImage({
 					count: 1,
@@ -116,14 +117,14 @@
 							title:"上传中...",
 							filePath: res.tempFilePaths[0],
 							fileType: "image",
-							success(res) {
+							success:(res) => {
 								// 执行绑定头像
 								vk.userCenter.setAvatar({
 									data: {
 										avatar: res.fileID,
 										deleteOldFile:true
 									},
-									success() {
+									success:() => {
 										that.avatar = res.fileID;
 									}
 								});

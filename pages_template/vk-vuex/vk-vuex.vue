@@ -41,8 +41,6 @@
 </template>
 
 <script>
-	var that; 										// 当前页面对象
-	var vk;												// vk依赖
 	export default {
 		data() {
 			return {
@@ -53,13 +51,11 @@
 			}
 		},
 		onLoad(options) {
-			that = this;
-			vk = that.vk;
 		},
 		methods: {
 			// 用户注册
 			register(){
-				var form1 = that.form1;
+				var form1 = this.form1;
 				vk.userCenter.register({
 					data:form1,
 					success: (data) => {
@@ -69,7 +65,7 @@
 			},
 			// 用户登陆
 			login(){
-				var form1 = that.form1;
+				var form1 = this.form1;
 				vk.userCenter.login({
 					data:form1,
 					success: (data) => {

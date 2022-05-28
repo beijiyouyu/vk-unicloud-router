@@ -11,8 +11,6 @@
 </template>
 
 <script>
-var that;		// 当前页面对象
-var vk;			// vk依赖
 export default {
 	data() {
 		return {
@@ -20,10 +18,8 @@ export default {
 		};
 	},
 	onLoad(options) {
-		that = this;
-		vk = that.vk;
-		that.options = options;
-		that.init(options);
+		this.options = options;
+		this.init(options);
 	},
 	methods: {
 		// 初始化
@@ -32,6 +28,7 @@ export default {
 		},
 		// 营业执照识别
 		business_license() {
+			let that = this;
 			uni.chooseImage({
 				count: 1,
 				sizeType: ['compressed'],
@@ -54,6 +51,7 @@ export default {
 		},
 		// 身份证识别
 		idcard() {
+			let that = this;
 			uni.chooseImage({
 				count: 1,
 				sizeType: ['compressed'],

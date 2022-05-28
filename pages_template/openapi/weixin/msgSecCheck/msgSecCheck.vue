@@ -9,8 +9,6 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
-	var vk;												// vk依赖
 export default {
 	data() {
 		// 页面数据变量
@@ -25,16 +23,15 @@ export default {
 	},
 	// 监听 - 页面每次【加载时】执行(如：前进)
 	onLoad(options = {}) {
-		that = this;
-		vk = that.vk;
-		that.options = options;
-		that.init(options);
+		this.options = options;
+		this.init(options);
 	},
 	// 函数
 	methods: {
 		// 页面数据初始化函数
 		init(options) {},
 		msgSecCheck(obj) {
+			let that = this;
 			vk.callFunction({
 				url: "template/openapi/weixin/pub/msgSecCheck",
 				title: "检测中...",
@@ -50,8 +47,6 @@ export default {
 			});
 		}
 	},
-	// 过滤器
-	filters: {},
 	// 计算属性
 	computed: {}
 };

@@ -38,8 +38,6 @@
 </template>
 
 <script>
-var that; // 当前页面对象
-var vk; // vk依赖
 var weixinAuthService;
 export default {
   data() {
@@ -54,19 +52,18 @@ export default {
     };
   },
   onLoad(options) {
-    that = this;
-    vk = that.vk;
-    that.init(options);
+    this.init(options);
   },
   methods: {
     // 页面数据初始化函数
     init(options) {
-      that.getList(true);
+      this.getList(true);
     },
     pageTo(url) {
       vk.navigateTo(url);
     },
     add() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/add',
         title: '请求中...',
@@ -78,6 +75,7 @@ export default {
       });
     },
     adds() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/adds',
         title: '请求中...',
@@ -89,6 +87,7 @@ export default {
       });
     },
     count() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/count',
         title: '请求中...',
@@ -99,6 +98,7 @@ export default {
       });
     },
     del() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/del',
         title: '请求中...',
@@ -110,6 +110,7 @@ export default {
       });
     },
     getFirstId() {
+			let that = this;
       let id;
       if (that.data && that.data.rows[0] && that.data.rows[0]._id) {
         id = that.data.rows[0]._id;
@@ -117,6 +118,7 @@ export default {
       return id;
     },
     findById() {
+			let that = this;
       let data = {
         _id: that.getFirstId()
       };
@@ -131,6 +133,7 @@ export default {
       });
     },
     findByWhereJson() {
+			let that = this;
       let data = {
         _id: that.getFirstId()
       };
@@ -145,6 +148,7 @@ export default {
       });
     },
     getList(loading) {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/select',
         title: loading ? '请求中...' : '',
@@ -155,6 +159,7 @@ export default {
       });
     },
     getList1() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/select',
         title: '请求中...',
@@ -167,6 +172,7 @@ export default {
       });
     },
     selects() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/selects',
         title: '请求中...',
@@ -180,6 +186,7 @@ export default {
     },
     // 随机取1条记录
     sample() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/sample',
         title: '请求中...',
@@ -192,6 +199,7 @@ export default {
       });
     },
     update() {
+			let that = this;
       let data = {
         _id: that.getFirstId()
       };
@@ -207,6 +215,7 @@ export default {
       });
     },
     updateById() {
+			let that = this;
       let data = {
         _id: that.getFirstId()
       };
@@ -222,6 +231,7 @@ export default {
       });
     },
     updateAndReturn() {
+			let that = this;
       let data = {
         _id: that.getFirstId()
       };
@@ -237,6 +247,7 @@ export default {
       });
     },
     groupCount() {
+			let that = this;
       let data = {
         _id: that.getFirstId()
       };
@@ -252,6 +263,7 @@ export default {
       });
     },
     sum() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/sum',
         title: '请求中...',
@@ -262,6 +274,7 @@ export default {
       });
     },
     avg() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/avg',
         title: '请求中...',
@@ -272,6 +285,7 @@ export default {
       });
     },
     max() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/max',
         title: '请求中...',
@@ -282,6 +296,7 @@ export default {
       });
     },
     min() {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/min',
         title: '请求中...',
@@ -292,6 +307,7 @@ export default {
       });
     },
     getGeoList(name) {
+			let that = this;
       vk.callFunction({
         url: 'template/db_api/pub/geo',
         title: '请求中...',
@@ -302,6 +318,7 @@ export default {
       });
     },
     calcLocation(mbPosition = {}, myPosition = {}) {
+			let that = this;
       if (myPosition.longitude == undefined || myPosition.latitude == undefined) {
         return '';
       }
@@ -328,7 +345,7 @@ export default {
       return res;
     },
     calcLocationFn(mbPosition = {}, myPosition = {}) {
-      return that.calcLocation(mbPosition, myPosition).km;
+      return this.calcLocation(mbPosition, myPosition).km;
     }
   }
 };

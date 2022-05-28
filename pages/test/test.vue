@@ -12,7 +12,6 @@
 </template>
 
 <script>
-	var that;											// 当前页面对象
 	export default {
 		data() {
 			// 页面数据变量
@@ -26,9 +25,8 @@
 		},
 		// 监听 - 页面每次【加载时】执行(如：前进)
 		onLoad(options = {}) {
-			that = this;
-			that.options = options;
-			that.init(options);
+			this.options = options;
+			this.init(options);
 		},
 		// 监听 - 页面【首次渲染完成时】执行。注意如果渲染速度快，会在页面进入动画完成前触发
 		onReady(){
@@ -49,6 +47,7 @@
 				
 			},
 			calc(){
+				let that = this;
 				let form1 = that.form1;
 				// 开始调用云函数
 				vk.callFunction({
@@ -59,7 +58,7 @@
 						num1 : form1.num1,
 						num2 : form1.num2,
 					},
-					success(data) {
+					success:(data) => {
 						that.value = data.value;
 					}
 				});
