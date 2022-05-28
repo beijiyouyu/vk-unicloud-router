@@ -1,3 +1,6 @@
+## 2.8.11（2022-05-28）
+* 1、【修复】`interceptor.login` 前端自定义login拦截器，在某些情况下无法正常拦截的问题。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.8.10（2022-05-27）
 * 1、【修复】当 `云对象` 在 `service` 层根目录时，`pub.对象名.js` pub权限失效的问题。
 * 2、【优化】其他一些细节。
