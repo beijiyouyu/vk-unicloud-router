@@ -1,3 +1,6 @@
+## 2.8.15（2022-06-02）
+* 1、【优化】为了兼容DCloud推出的uniCloud响应体规范，请求后的返回值会自动加上errCode和errMsg，其中errCode=code，errMsg=msg
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.8.14（2022-06-02）
 * 1、【优化】为了兼容DCloud推出的uniCloud响应体规范，请求后的返回值会自动加上errCode和errMsg，其中errCode=code，errMsg=msg
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
