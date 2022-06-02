@@ -654,6 +654,7 @@ class CallFunctionUtil {
 		} = params;
 		if (title) vk.hideLoading();
 		if (loading) vk.setLoading(false, loading);
+		if (typeof res.code === "undefined" && typeof res.errCode !== "undefined") res.code = res.errCode;
 		let code = res.code;
 		if (config.debug) Logger.result = typeof res == "object" ? JSON.parse(JSON.stringify(res)) : res;
 		if (code == 0 || res.key == 1 || (code == undefined && res.uid)) {

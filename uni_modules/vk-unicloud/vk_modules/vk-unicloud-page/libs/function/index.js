@@ -2148,6 +2148,7 @@ pubfn.getLocalFilePath = function(path) {
 
 /**
  * 获取当前支持的应用语言
+ * let localeList = vk.pubfn.getLocaleList();
  */
 pubfn.getLocaleList = function() {
 	let localeList = [
@@ -2159,6 +2160,7 @@ pubfn.getLocaleList = function() {
 };
 /**
  * 获取当前应用语言
+ * let locale = vk.pubfn.getLocale();
  */
 pubfn.getLocale = function() {
 	let localeValue;
@@ -2179,6 +2181,7 @@ pubfn.getLocale = function() {
 };
 /**
  * 获取当前应用语言
+ * let localeObj = vk.pubfn.getLocaleObject();
  */
 pubfn.getLocaleObject = function() {
 	let value = pubfn.getLocale();
