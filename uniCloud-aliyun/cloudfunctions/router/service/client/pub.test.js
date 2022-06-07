@@ -46,7 +46,7 @@ var cloudObject = {
 		let userInfo = await this.getUserInfo(); // 获取当前登录的用户信息
 		let res = { code: 0, msg: '' };
 		// 业务逻辑开始-----------------------------------------------------------
-		console.log("请求参数", data);
+		console.log("getInfo请求参数", data);
 		res.userInfo = userInfo; // 返回前端当前登录的用户信息
 		
 		// 业务逻辑结束-----------------------------------------------------------
@@ -60,9 +60,43 @@ var cloudObject = {
 		let { uid, filterResponse, originalParam } = this.getClientInfo(); // 获取客户端信息
 		let res = { code: 0, msg: '' };
 		// 业务逻辑开始-----------------------------------------------------------
-		console.log("请求参数", data);
+		console.log("getList请求参数", data);
 
 
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	},
+	/**
+	 * 云对象调用自身函数
+	 * @url client/pub.test.test1 前端调用的url参数地址
+	 */
+	test1: async function(data) {
+		let { uid, filterResponse, originalParam } = this.getClientInfo(); // 获取客户端信息
+		let res = { code: 0, msg: '' };
+		// 业务逻辑开始-----------------------------------------------------------
+		console.log("test1请求参数", data);
+		let res1 = await this.getInfo(data);
+		console.log("res1", res1);
+		// 业务逻辑结束-----------------------------------------------------------
+		return res;
+	},
+	/**
+	 * 云对象调用任意云对象或云函数
+	 * @url client/pub.test.test2 前端调用的url参数地址
+	 */
+	test2: async function(data) {
+		let { uid, filterResponse, originalParam } = this.getClientInfo(); // 获取客户端信息
+		let res = { code: 0, msg: '' };
+		// 业务逻辑开始-----------------------------------------------------------
+		console.log("test2请求参数", data);
+		let callRes = await vk.callFunction({
+			url: 'client/pub.test.getInfo',
+			clientInfo: this.getClientInfo(),
+			data: {
+				a:1
+			},
+		});
+		console.log("callRes", callRes);
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;
 	}
