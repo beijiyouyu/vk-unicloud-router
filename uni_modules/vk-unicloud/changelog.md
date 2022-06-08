@@ -1,3 +1,7 @@
+## 2.9.1（2022-06-08）
+* 1、【优化】`云对象` 的内置api `this.getClientInfo` 可以获取到更多信息（uni.getSystemInfo返回的客户端信息）
+* 2、【优化】`云函数` 的 `originalParam.context` 可以获取到更多信息（uni.getSystemInfo返回的客户端信息）
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.9.0（2022-06-07）
 * 1、【新增】`vk.callFunction` api [点击查看详情](https://vkdoc.fsq.pub/client/question/question.html#%E4%BA%91%E5%87%BD%E6%95%B0-%E4%BA%91%E5%AF%B9%E8%B1%A1-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%BA%91%E5%87%BD%E6%95%B0-%E4%BA%91%E5%AF%B9%E8%B1%A1)
 > * 1.1、支持在云对象中请求其他云对象内的函数。
