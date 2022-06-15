@@ -25,9 +25,8 @@
 			<button type="default" @click="bindWeixin">绑定微信</button>
 			<button type="default" @click="unbindWeixin">解绑微信</button>
 			<button type="default" @click="setUserInfo">获取微信用户昵称头像</button>
-			<scroll-view scroll-x="true">
-				<rich-text :nodes="`<pre>${JSON.stringify(data, null, 2)}</pre>`"></rich-text>
-			</scroll-view>
+			
+			<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
 		</template>
 		<template v-else>
 			<view class="tips">未包含微信登录模块</view>

@@ -25,7 +25,7 @@
 
 			</view>
 		</view>
-		<view v-if="vk.getVuex('$user.userInfo')" style="color: red;margin-top: 10rpx;font-size: 36rpx;">
+		<view v-if="vk.getVuex('$user.userInfo._id')" style="color: red;margin-top: 10rpx;font-size: 36rpx;">
 			当前登录用户：{{ vk.getVuex('$user.userInfo.nickname') || vk.getVuex('$user.userInfo.username') }}
 			<image :src="vk.getVuex('$user.userInfo.avatar')" style="width: 70rpx;height: 70rpx;border-radius: 50%;" mode="aspectFill"></image>
 		</view>

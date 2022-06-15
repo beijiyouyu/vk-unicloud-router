@@ -3,10 +3,7 @@
 		<button type="default" @tap="business_license">营业执照识别</button>
 		<button type="default" @tap="idcard">身份证识别</button>
 
-		<scroll-view scroll-x="true">
-			<rich-text :nodes="`<pre>${JSON.stringify(data, null, 2)}</pre>`"></rich-text>
-		</scroll-view>
-
+		<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
 	</view>
 </template>
 
