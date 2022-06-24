@@ -8,6 +8,7 @@
 </template>
 
 <script>
+var vk = uni.vk;
 export default {
 	data() {
 		// 页面数据变量
@@ -20,6 +21,7 @@ export default {
 	},
 	// 监听 - 页面每次【加载时】执行(如：前进)
 	onLoad(options = {}) {
+		vk = uni.vk;
 		this.options = options;
 		this.init(options);
 	},

@@ -8,6 +8,7 @@
 
 
 <script>
+	var vk = uni.vk;
 	export default {
 		data() {
 			// 页面数据变量
@@ -28,6 +29,7 @@
 		},
 		// 监听 - 页面每次【加载时】执行(如：前进)
 		onLoad(options = {}) {
+			vk = uni.vk;
 			this.options = options;
 			this.init(options);
 		},
@@ -43,20 +45,8 @@
 		onHide() {
 			
 		},
-		// 监听 - 页面触底部
-		onReachBottom(){
-			
-		},
-		// 监听 - 窗口尺寸变化(仅限:App、微信小程序)
-		onResize(){
-			
-		},
 		// 监听 - 点击右上角转发时
 		onShareAppMessage(options) {
-			
-		},
-		// 监听 - 页面创建时
-		created() {
 			
 		},
 		// 函数

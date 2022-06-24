@@ -8,6 +8,7 @@
 </template>
 
 <script>
+var vk = uni.vk;
 export default {
 	data() {
 		return {
@@ -15,6 +16,7 @@ export default {
 		};
 	},
 	onLoad(options) {
+		vk = uni.vk;
 		this.options = options;
 		this.init(options);
 	},

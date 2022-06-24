@@ -41,6 +41,7 @@
 </template>
 
 <script>
+	var vk = uni.vk;
 	export default {
 		data() {
 			// 页面数据变量
@@ -66,6 +67,7 @@
 		// 监听 - 页面每次【加载时】执行(如：前进)
 		onLoad(options) {
 			//console.log("onLoad",options);
+			vk = uni.vk;
 			this.init(options);
 		},
 		// 监听 - 页面【首次渲染完成时】执行。注意如果渲染速度快，会在页面进入动画完成前触发
@@ -87,20 +89,8 @@
 				uni.stopPullDownRefresh();
 			}, 1000);
 		},
-		// 监听 - 页面触底部
-		onReachBottom(){
-
-		},
-		// 监听 - 窗口尺寸变化(仅限:App、微信小程序)
-		onResize(){
-
-		},
 		// 监听 - 点击右上角转发时
 		onShareAppMessage(options) {
-
-		},
-		// 监听 - 页面创建时
-		created() {
 
 		},
 		// 函数

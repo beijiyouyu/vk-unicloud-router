@@ -11,6 +11,7 @@
 </template>
 
 <script>
+var vk = uni.vk;
 export default {
   data() {
     return {
@@ -48,6 +49,7 @@ export default {
     this.scrollTop = e.scrollTop;
   },
   onLoad(options) {
+		vk = uni.vk;
   },
   onReady() {
     this.$refs.uForm.setRules(this.rules);

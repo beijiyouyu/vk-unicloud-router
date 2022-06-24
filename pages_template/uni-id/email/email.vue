@@ -30,6 +30,7 @@
 </template>
 
 <script>
+	var vk = uni.vk;
 	export default {
 		data() {
 			return {
@@ -40,6 +41,7 @@
 			}
 		},
 		onLoad(options) {
+			vk = uni.vk;
 		},
 		methods: {
 			// 为了演示把这个逻辑放在客户端

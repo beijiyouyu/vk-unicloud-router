@@ -41,6 +41,7 @@
 </template>
 
 <script>
+	var vk = uni.vk;
 	export default {
 		data() {
 			return {
@@ -51,6 +52,7 @@
 			}
 		},
 		onLoad(options) {
+			vk = uni.vk;
 		},
 		methods: {
 			// 用户注册

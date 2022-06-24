@@ -38,6 +38,7 @@
 </template>
 
 <script>
+var vk = uni.vk;
 var weixinAuthService;
 export default {
   data() {
@@ -52,6 +53,7 @@ export default {
     };
   },
   onLoad(options) {
+		vk = uni.vk;
     this.init(options);
   },
   methods: {
