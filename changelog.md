@@ -1,3 +1,11 @@
+## 2.9.8（2022-06-28）
+* 1、【重要】新增安全规则：未标记 `isCloudObject:true` 的对象定义为私有对象（如 `service/user/util/login_log.js`），前端禁止访问（只能被云函数/云对象 `require` 方式调用）。
+* 2、【重要】`client端` 默认自带 `admin端` 需要的函数和菜单权限表数据，方便 `admin` 一键绑定 `client` 项目（不再需要复制admin项目内的文件了）。
+* 3、【优化】`万能连表` 支持使用数组下标对应的值进行连表，如用户表根据inviter_uid的第一个值进行连表达到只查出第一个上级用户信息的效果 [点击查看](https://vkdoc.fsq.pub/client/uniCloud/db/selects.html#%E5%9C%BA%E6%99%AF11)
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
 ## 2.9.7（2022-06-22）
 * 1、【新增】云函数专用api `vk.pubfn.randomAsync`（异步）产生指定位数的不重复随机数（支持任意字符，s默认纯数字）[点击查看](https://vkdoc.fsq.pub/client/jsapi.html#vk-pubfn-randomasync)
 * 2、【新增】数据库表内的字段重命名api [点击查看](https://vkdoc.fsq.pub/client/uniCloud/db/question.html#%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9%E5%AD%97%E6%AE%B5%E5%90%8D)
