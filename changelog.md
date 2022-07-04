@@ -1,3 +1,10 @@
+## 2.9.9（2022-07-04）
+* 1、【新增】微信小程序服务端万能API [传送门](https://vkdoc.fsq.pub/client/uniCloud/plus/weixin.html#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%87%E8%83%BDapi%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3)
+* 2、【新增】微信公众号服务端万能API [传送门](https://vkdoc.fsq.pub/client/uniCloud/plus/weixin-h5.html)
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
 ## 2.9.8（2022-06-28）
 * 1、【重要】新增安全规则：未标记 `isCloudObject:true` 的对象定义为私有对象（如 `service/user/util/login_log.js`），前端禁止访问（只能被云函数/云对象 `require` 方式调用）。
 * 2、【重要】`client端` 默认自带 `admin端` 需要的函数和菜单权限表数据，方便 `admin` 一键绑定 `client` 项目（不再需要复制admin项目内的文件了）。
