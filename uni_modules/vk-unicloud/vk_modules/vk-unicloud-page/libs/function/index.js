@@ -2080,13 +2080,13 @@ pubfn.requestSubscribeMessage = function(obj) {
  */
 pubfn.checkLogin = function(obj = {}) {
 	let vk = uni.vk;
-	let loginUrl = vk.getVuex("$app.config.login.url");
+	let loginUrl = vk.getConfig("login.url");
 	try {
 		let url;
 		try {
 			url = obj.url || vk.pubfn.getCurrentPageRoute();
 		} catch (err) {
-			url = vk.getVuex("$app.config.index.url") || "/pages/index/index";
+			url = vk.getConfig("index.url") || "/pages/index/index";
 		}
 		vk.navigate.checkNeedLogin({
 			url: url,

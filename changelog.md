@@ -1,3 +1,11 @@
+## 2.10.1（2022-07-18）
+* 1、`vk.pubfn.batchRun` 新增另外一种调用方式。[传送门](https://vkdoc.fsq.pub/client/jsapi.html#vk-pubfn-batchrun)
+* 2、新增 `vk.uploadFile` 代替 `vk.callFunctionUtil.uploadFile`（保留旧写法） [传送门](https://vkdoc.fsq.pub/client/pages/uploadFile.html)
+
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
 ## 2.10.0（2022-07-09）
 * 1、【优化】`vk.baseDao.update` `vk.baseDao.updateById` `vk.baseDao.updateAndReturn` API的 `dataJson` 参数若有 `_id`，则自动忽略 `_id`（因_id不可修改，原先是直接报错）
 * 2、【优化】其他细节
