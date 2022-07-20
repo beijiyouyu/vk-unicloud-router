@@ -1,3 +1,10 @@
+## 2.10.2（2022-07-20）
+* 1、【修复】`_.geoNear` 和 `lastWhereJson` 同时使用时报错的bug
+* 2、【优化】一些细节
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
 ## 2.10.1（2022-07-18）
 * 1、`vk.pubfn.batchRun` 新增另外一种调用方式。[传送门](https://vkdoc.fsq.pub/client/jsapi.html#vk-pubfn-batchrun)
 * 2、新增 `vk.uploadFile` 代替 `vk.callFunctionUtil.uploadFile`（保留旧写法） [传送门](https://vkdoc.fsq.pub/client/pages/uploadFile.html)
