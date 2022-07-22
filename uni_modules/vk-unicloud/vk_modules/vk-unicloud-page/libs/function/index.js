@@ -1871,9 +1871,16 @@ pubfn.getCurrentPage = function() {
 	let res = {};
 	let pages = getCurrentPages();
 	let page = pages[pages.length - 1];
-	res.fullPath = page.$page.fullPath;
-	res.options = page.options;
+	let pagePath = `/${page.route}`;
+	let fullPath = `/${page.route}`;
+	if (page.$page && typeof page.$page.options === "object") {
+		let optionsStr = pubfn.queryParams(page.$page.options);
+		fullPath = pagePath + optionsStr;
+	}
+	res.fullPath = fullPath;
+	res.options = page.$page.options;
 	res.route = page.route;
+	res.pagePath = pagePath;
 	res.$vm = page.$vm;
 	return res;
 };
