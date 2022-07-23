@@ -391,7 +391,7 @@ pubfn.setData = function(dataObj, name, value) {
 	} else {
 		dataValue = value;
 	}
-	let regExp = new RegExp("([\\w$]+)|\\[(:\\d)\\]", "g");
+	let regExp = new RegExp("([\\w$-]+)|\\[(:\\d)\\]", "g");
 	const patten = name.match(regExp);
 	// 遍历路径  逐级查找  最后一级用于直接赋值
 	for (let i = 0; i < patten.length - 1; i++) {
