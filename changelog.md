@@ -1,3 +1,13 @@
+## 2.10.6（2022-07-28）
+* 1、【新增】`uni-id` 配置 `removeDcloudAppid` 默认false，若设置true，则注册成功后，会自动删除 `dcloud_appid` 字段，以达到禁用隔离不同端用户的功能。（需配合中间件registerInitFilter）
+* 2、【新增】`vk.openapi.weixin.urllink.generate` 云函数生成小程序url链接API [传送门](https://vkdoc.fsq.pub/client/uniCloud/plus/weixin.html#%E8%8E%B7%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8Furl%E9%93%BE%E6%8E%A5)
+* 3、【新增】`vk.userCenter.getWeixinMPurl` 前端直接生成小程序url链接API [传送门](https://vkdoc.fsq.pub/client/vk.userCenter.html#vk-usercenter-getweixinmpurl-%E7%94%9F%E6%88%90%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Furl%E9%93%BE%E6%8E%A5)
+* 4、【优化】`vk.openapi.weixin.wxacode.getUnlimited` 和 `vk.openapi.weixin.urlscheme.generate` 支持参数 `env_version` [传送门](https://vkdoc.fsq.pub/client/uniCloud/plus/weixin.html#%E8%8E%B7%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%A0%81)
+
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
 ## 2.10.5（2022-07-23）
 * 1、【优化】一些细节。
 

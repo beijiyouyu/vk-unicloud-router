@@ -2,7 +2,7 @@
 	<view class="content">
 		<view style="margin-bottom: 20rpx;font-size: 32rpx;">
 			<view>
-				<text>当前集成的</text><text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>版本：<text style="font-weight: bold;">3.3.23</text>
+				<text>当前集成的</text><text style="font-weight: bold;margin: 0 10rpx;">uni-id</text>版本：<text style="font-weight: bold;">3.3.28</text>
 			</view>
 			<view>
 				<text>当前运行的</text><text style="font-weight: bold;margin: 0 10rpx;">vue</text>版本：

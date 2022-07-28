@@ -5,6 +5,7 @@
 			<image :src="imageUrl" style="width: 400rpx;height: 400rpx;"></image>
 		</view>
 		<button type="default" @tap="getWeixinMPscheme">生成带参数的scheme码</button>
+		<button type="default" @tap="getWeixinMPurl">生成带参数的URL链接</button>
 		<view class="tips" v-if="openlink">
 			<view>将下方链接复制后从手机浏览器打开即可打开小程序</view>
 			<view>{{ openlink }}</view>
@@ -37,7 +38,10 @@ export default {
 			let that = this;
 			vk.userCenter.getWeixinMPqrcode({
 				data: {
-					scene: "a=1"
+					//page: "pages/index/mys",
+					scene: "a=1&b=2",
+					check_path: false,
+					env_version: "develop", // 默认值"release"。要打开的小程序版本。正式版为 "release"，体验版为"trial"，开发版为"develop"，仅在微信外打开时生效。
 				},
 				success:(data) =>{
 					that.imageUrl = data.base64;
@@ -49,11 +53,26 @@ export default {
 			let that = this;
 			vk.userCenter.getWeixinMPscheme({
 				data: {
+					//path: "pages/index/index",
 					query: "a=1&b=2",
-					path: "pages/index/index"
+					env_version: "develop", // 默认值"release"。要打开的小程序版本。正式版为 "release"，体验版为"trial"，开发版为"develop"，仅在微信外打开时生效。
 				},
 				success:(data) =>{
 					that.openlink = data.openlink;
+				}
+			});
+		},
+		// 生成带参数的小程序url
+		getWeixinMPurl() {
+			let that = this;
+			vk.userCenter.getWeixinMPurl({
+				data: {
+					//path: "pages/index/index",
+					query: "a=1&b=2",
+					env_version: "develop", // 默认值"release"。要打开的小程序版本。正式版为 "release"，体验版为"trial"，开发版为"develop"，仅在微信外打开时生效。
+				},
+				success:(data) =>{
+					that.openlink = data.url_link;
 				}
 			});
 		}

@@ -6,6 +6,7 @@
 
 module.exports = [{
 	id: "returnUserInfo",
+	// 符合下方正则条件的云函数才会进入该中间件
 	regExp: [
 		"^user/pub/login(.*)",
 		"^user/pub/register(.*)",
