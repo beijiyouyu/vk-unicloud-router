@@ -43,6 +43,7 @@ export default {
      * 如果 mode = 2 则代表list内的页面不需要登录，不在list内的页面需要登录
      * 注意1: list内是通配符表达式，非正则表达式
      * 注意2: 需要使用 vk.navigateTo 代替 uni.navigateTo 进行页面跳转才会生效
+		 * 注意3: 想要让 tabbar 页面必须登录才能访问，则需要手动在页面的onLoad里加 vk.pubfn.checkLogin();
 		 * 在无需登录的页面上执行kh或sys函数，也会自动判断是否登录，未登录会自动跳登录页面，登录成功后会自动返回本来要跳转的页面。
      */
     mode: 2,
