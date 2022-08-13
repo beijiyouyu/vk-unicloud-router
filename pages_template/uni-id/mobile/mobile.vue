@@ -26,11 +26,10 @@
 		<view class="tips">解绑手机时如果不传验证码或者传空则直接解除绑定绑定，不会去校验验证码</view>
 		<view class="title">手机号验证码重置密码</view>
 			<view style="display: flex;">
-				<button type="default" @click="sendSmsCode('reset')">真实-发送验证码</button>
-				<button type="default" @click="setVerifyCode('reset')">模拟-发送验证码</button>
+				<button type="default" @click="sendSmsCode('reset-pwd')">真实-发送验证码</button>
+				<button type="default" @click="setVerifyCode('reset-pwd')">模拟-发送验证码</button>
 			</view>
 			<button type="default" @click="resetPasswordByMobile">重置密码（需先登录）</button>
-			<view class="tips">重置密码时如果不传验证码或者传空则直接解除绑定绑定，不会去校验验证码</view>
 	</view>
 </template>
 
