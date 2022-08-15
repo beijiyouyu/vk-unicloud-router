@@ -1,3 +1,6 @@
+## 2.10.11（2022-08-15）
+* 1、【优化】一些细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.10.10（2022-08-13）
 * 1、【调整】根据手机验证码重置账号密码的短信验证 `type` 从 `reset` 改为 `reset-pwd`（与unicloud官方对齐）
 * 2、【调整】根据邮箱验证码重置账号密码的邮件验证 `type` 从 `reset` 改为 `reset-pwd`（与unicloud官方对齐）
