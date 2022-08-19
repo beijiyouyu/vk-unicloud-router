@@ -21,7 +21,9 @@ module.exports = {
 				location: _.geoNear({
 				  geometry: new db.Geo.Point(120.12792, 30.228932),	// 点的地理位置,为了方便测试,这里固定在杭州市西湖区
 				  maxDistance: 4000,	// 选填，最大距离，米为单位
-				  minDistance: 0			// 选填，最小距离，米为单位
+				  minDistance: 0			,// 选填，最小距离，米为单位
+					distanceMultiplier:1,     // 返回时在距离上乘以该数字 1代表米 100 代表厘米 0.001 代表千米
+					distanceField:"distance", // 输出的每个记录中 distance 即是与给定点的距离
 				})
 			},
 		});
