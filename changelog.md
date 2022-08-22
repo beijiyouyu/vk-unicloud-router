@@ -1,3 +1,39 @@
+## 2.11.2（2022-08-22）
+* 1、【重要】前端 `微信登录` 、 `微信获取openid` 等接口不再返回 `sessionKey` 取而代之的是返回 `encryptedKey`（加密后的数据，云函数解密后可获得 `sessionKey`）
+* 2、【重要】新增配置 `vk.crypto.aes` 用于返回给前端加密数据时的加密密钥
+
+![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-cf0c5e69-620c-4f3c-84ab-f4619262939f/a4ca3d72-358e-4437-8766-d0b14e269697.png)
+
+* 3、【新增】`vk.crypto.aes.encrypt` 用于加密数据
+* 4、【新增】`vk.crypto.aes.decrypt` 用于解密数据
+
+```js
+// 加密数据
+let encryptedKey = vk.crypto.aes.encrypt({
+	data: {
+		sessionKey: "XXXXX"
+	}
+});
+console.log('encryptedKey: ', encryptedKey)
+
+// 解密 sessionKey 示例
+let decryptedRes = vk.crypto.aes.decrypt({
+	data: encryptedKey, // 待解密的原文
+});
+console.log('decryptedRes: ', decryptedRes)
+let sessionKey = decryptedRes.sessionKey;
+console.log('sessionKey: ', sessionKey)
+```
+
+**特别注意**
+
+* 1、本次更新需要替换 `router/service/user/pub/` 目录
+
+* 2、如果你使用了 `使用微信小程序绑定的手机号一键登录` 的API，则请看此处调整代码 [传送门](https://vkdoc.fsq.pub/client/vk.userCenter.html?t=20220822#vk-usercenter-loginbyweixinphonenumber-%E9%80%9A%E8%BF%87%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%91%E5%AE%9A%E7%9A%84%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%99%BB%E5%BD%95)
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
 ## 2.11.1（2022-08-22）
 * 1、【重要】前端 `微信登录` 、 `微信获取openid` 等接口不再返回 `sessionKey` 取而代之的是返回 `encryptedKey`（加密后的数据，云函数解密后可获得 `sessionKey`）
 * 2、【重要】新增配置 `vk.crypto.aes` 用于返回给前端加密数据时的加密密钥
