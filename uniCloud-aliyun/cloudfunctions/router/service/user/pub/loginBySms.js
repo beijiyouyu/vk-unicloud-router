@@ -18,7 +18,7 @@ module.exports = {
 		let { uid } = data;
 		let res = {};
 		// 业务逻辑开始-----------------------------------------------------------
-		let { mobile, code, password, inviteCode, needPermission, type } = data;
+		let { mobile, code, password, inviteCode, needPermission, type, nickname } = data;
 		res = await uniID.loginBySms({
 			type,
 			mobile,
@@ -40,7 +40,7 @@ module.exports = {
 					nickname: null
 				},
 				dataJson: {
-					nickname: `手机尾号${mobileStr}用户`
+					nickname: nickname || `手机尾号${mobileStr}用户`,
 				}
 			});
 			// 日志服务

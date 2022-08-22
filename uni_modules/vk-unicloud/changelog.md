@@ -1,3 +1,30 @@
+## 2.11.0（2022-08-22）
+* 1、【重要】前端 `微信登录` 、 `微信获取openid` 等接口不再返回 `sessionKey` 取而代之的是返回 `encryptedKey`（加密后的数据，云函数解密后可获得 `sessionKey`）
+* 2、【重要】新增配置 `vk.crypto.aes` 用于返回给前端加密数据时的加密密钥
+* 3、【新增】`vk.crypto.aes.encrypt` 用于加密数据
+* 4、【新增】`vk.crypto.aes.decrypt` 用于解密数据
+```js
+// 加密数据
+let encryptedKey = vk.crypto.aes.encrypt({
+	data: {
+		sessionKey: "XXXXX"
+	}
+});
+console.log('encryptedKey: ', encryptedKey)
+
+// 解密 sessionKey 示例
+let decryptedRes = vk.crypto.aes.decrypt({
+	data: encryptedKey, // 待解密的原文
+});
+console.log('decryptedRes: ', decryptedRes)
+let sessionKey = decryptedRes.sessionKey;
+console.log('sessionKey: ', sessionKey)
+```
+**特别注意**
+
+本次更新需要替换 `router/service/user/pub/` 目录
+
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.10.15（2022-08-20）
 * 1、【优化】一些细节
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)

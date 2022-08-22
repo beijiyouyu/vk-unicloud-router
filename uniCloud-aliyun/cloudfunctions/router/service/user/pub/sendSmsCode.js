@@ -35,7 +35,7 @@ module.exports = {
 				dcloud_appid: _.or(_.eq(dcloud_appid), _.exists(false))
 			});
 			if (num === 0) {
-				return { code: -1, msg: `手机号：${mobile} 未注册` };
+				return { code: -1, msg: `手机号：${mobile} 未注册`, notExists:true };
 			}
 		}
 		let code = vk.pubfn.random(6, "0123456789");

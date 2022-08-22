@@ -41,7 +41,7 @@
 		data() {
 			return {
 				hasWeixinAuth: true,
-				sessionKey:"",
+				encryptedKey:"",
 				image:"",
 				data:{}
 			}
@@ -59,7 +59,7 @@
 						needCache:true
 					},
 					success: (data) => {
-						that.sessionKey = data.sessionKey;
+						that.encryptedKey = data.encryptedKey;
 					},
 				});
 				// #endif
@@ -167,7 +167,7 @@
 					data:{
 						encryptedData,
 						iv,
-						sessionKey:that.sessionKey
+						encryptedKey:that.encryptedKey
 					},
 					success: (data) => {
 						vk.alert("手机号:" + data.phone);
@@ -185,7 +185,7 @@
 					data: {
 						encryptedData,
 						iv,
-						sessionKey : that.sessionKey
+						encryptedKey : that.encryptedKey
 					},
 					success(data) {
 						vk.alert(data.msg);
