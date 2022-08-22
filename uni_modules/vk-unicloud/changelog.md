@@ -1,3 +1,6 @@
+## 2.11.3（2022-08-22）
+* 1、【优化】一些细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.11.2（2022-08-22）
 * 1、【重要】前端 `微信登录` 、 `微信获取openid` 等接口不再返回 `sessionKey` 取而代之的是返回 `encryptedKey`（加密后的数据，云函数解密后可获得 `sessionKey`）
 * 2、【重要】新增配置 `vk.crypto.aes` 用于返回给前端加密数据时的加密密钥

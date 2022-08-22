@@ -29,7 +29,7 @@ module.exports = {
 			delete res.sessionKey; // 删除明文sessionKey
 			delete res.accessToken; // 删除明文accessToken
 			delete res.refreshToken; // 删除明文refreshToken
-			res.encryptedSession = encrypted; // 返回前端加密内容
+			res.encryptedKey = encrypted; // 返回前端加密内容
 			// 日志服务
 			const loginLogService = vk.require("service/user/util/login_log");
 			await loginLogService.add({

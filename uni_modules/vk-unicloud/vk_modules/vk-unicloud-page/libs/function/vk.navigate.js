@@ -19,7 +19,10 @@ import config from '@/app.config.js'
 
 
 var util = {};
-
+var lastNavigate = {
+	url:"",
+	time:0
+};
 /**
  * 保留当前页面，跳转到应用内的某个页面，使用vk.navigateBack可以返回到原页面。
  * vk.navigateTo(url);
@@ -38,6 +41,11 @@ util.navigateTo = function(obj) {
 		vk.toast("url不能为空!");
 		return false;
 	}
+	let time = Date.now();
+	if (lastNavigate.url === obj.url && (time - lastNavigate.time) < 200) {
+		return false;
+	}
+	lastNavigate = { url: obj.url, time };
 	util.checkNeedLogin({
 		url: obj.url,
 		success: function(res) {
