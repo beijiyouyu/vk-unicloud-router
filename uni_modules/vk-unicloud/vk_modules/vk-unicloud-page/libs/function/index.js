@@ -1888,8 +1888,9 @@ pubfn.getPlatform = function() {
  * 获取当前页面实例
  * 返回数据
  * fullPath 当前打开页面的完整路径(带页面参数)
+ * pagePath 当前打开页面的路径(不含参数)
  * options  当前打开页面的参数
- * route    当前打开页面的路径(不含参数)
+ * route    当前打开页面路由地址
  * $vm      当前打开页面的vue实例
  * vk.pubfn.getCurrentPage();
  */
@@ -1897,6 +1898,7 @@ pubfn.getCurrentPage = function() {
 	let res = {};
 	let pages = getCurrentPages();
 	let page = pages[pages.length - 1];
+	if (page.route.indexOf("/") == 0) page.route = page.route.substring(1);
 	let pagePath = `/${page.route}`;
 	let fullPath = `/${page.route}`;
 	if (page.$page && typeof page.$page.options === "object") {
@@ -1904,9 +1906,9 @@ pubfn.getCurrentPage = function() {
 		fullPath = pagePath + optionsStr;
 	}
 	res.fullPath = fullPath;
+	res.pagePath = pagePath;
 	res.options = page.$page.options;
 	res.route = page.route;
-	res.pagePath = pagePath;
 	res.$vm = page.$vm;
 	return res;
 };
