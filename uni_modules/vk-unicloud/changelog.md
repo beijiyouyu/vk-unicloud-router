@@ -1,3 +1,10 @@
+## 2.11.6（2022-08-26）
+* 1、【优化】一些细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
+## 2.11.5（2022-08-25）
+* 1、【优化】`vk.pubfn.getCommonTime` 更新文档 [传送门](https://vkdoc.fsq.pub/client/jsapi.html?t=20220825#vk-pubfn-getcommontime-%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4)
+* 2、【优化】其他细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.11.4（2022-08-23）
 * 1、【修复】快手小程序自动跳登录页面的问题。
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
