@@ -22,7 +22,6 @@
 				// #endif
 				console.log('App Launch');
 			}
-			let that = this;
 		},
 		onShow: function() {
 			if(config.debug) console.log('App Show')
