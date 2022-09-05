@@ -1,3 +1,10 @@
+## 2.11.6（2022-09-05）
+* 1、【优化】一些细节
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
+
 ## 2.11.5（2022-08-29）
 * 1、【重要】新增 `监听token更新` API [传送门](https://vkdoc.fsq.pub/client/vk.userCenter.html?t=20220829#vk-onrefreshtoken-%E7%9B%91%E5%90%ACtoken%E6%9B%B4%E6%96%B0%E4%BA%8B%E4%BB%B6)
 * 2、【优化】`云对象` 新增 `this.getUniCloudRequestId`（获取当前请求id）[传送门](https://vkdoc.fsq.pub/client/uniCloud/cloudfunctions/cloudObject.html#this-getunicloudrequestid-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E8%AF%B7%E6%B1%82id)
