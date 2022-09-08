@@ -1,3 +1,6 @@
+## 2.11.9（2022-09-08）
+* 1、【修复】`vk.baseDao.getTableData` 内使用 `_.geoNear` 无效的问题。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.11.8（2022-09-05）
 * 1、【优化】一些细节
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
