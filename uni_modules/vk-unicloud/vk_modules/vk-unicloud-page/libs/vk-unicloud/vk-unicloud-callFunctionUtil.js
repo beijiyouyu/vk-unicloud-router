@@ -439,6 +439,7 @@ class CallFunctionUtil {
 		this.uploadFile = (obj = {}) => {
 			let that = this;
 			let config = that.config;
+			if (!obj.filePath && obj.file && obj.file.path) obj.filePath = obj.file.path;
 			let {
 				filePath,
 				cloudPath,

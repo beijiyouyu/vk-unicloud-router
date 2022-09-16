@@ -1,3 +1,6 @@
+## 2.11.14（2022-09-16）
+* 1、【修复】`vk.baseDao.getTableData` 的查询条件某个字段的值指定为null时，可能会报错的问题。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.11.13（2022-09-12）
 * 1、【修复】`vk.baseDao.getTableData` 内使用 `_.geoNear` 无效的问题。
 * 2、【优化】前端使用 `vk.request` 请求时，若本地缓存中有 `uni_id_token`，则请求头会带上 `uni_id_token` 的值
