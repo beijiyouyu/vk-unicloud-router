@@ -22,6 +22,9 @@
 				// #endif
 				console.log('App Launch');
 			}
+			// #ifdef MP
+			vk.updateManager.updateReady(); // 此代码可以让小程序自动检测最新版本
+			// #endifss
 		},
 		onShow: function() {
 			if(config.debug) console.log('App Show')
