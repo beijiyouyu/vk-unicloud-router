@@ -1,3 +1,6 @@
+## 2.11.17（2022-09-22）
+* 1、【重要】微信公众号万能API调用接口支持在阿里云空间执行（自动使用阿里云代理模式）[传送门 - 阿里云固定IP设置](https://uniapp.dcloud.net.cn/uniCloud/cf-functions.html#aliyun-eip)
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.11.16（2022-09-18）
 * 1、【修复】`vk.crypto.aes.encrypt`、`vk.crypto.aes.decrypt` 在非 `router` 目录结构的云函数中运行可能会报错的问题。
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
