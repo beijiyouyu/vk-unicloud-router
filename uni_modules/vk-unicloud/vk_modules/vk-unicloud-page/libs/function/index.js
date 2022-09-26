@@ -754,26 +754,26 @@ pubfn.checkDataExpText = function(data = {}, expText) {
 					if (typeof data[key] === "undefined") itemKey = false;
 					if (typeof data[key] !== "undefined") itemKey = data[key] < Number(value) ? true : false;
 				}
-			}  else if(andItem.indexOf("{in}") > -1) {
+			} else if (andItem.indexOf("{in}") > -1) {
 				let andItemArr = andItem.split("{in}");
 				let key = andItemArr[0];
 				let value = andItemArr[1];
 				if (Array.isArray(data[key])) {
-					let index = data[key].findIndex(item =>{
-					  return item.toString() === value.toString();
+					let index = data[key].findIndex(item => {
+						return item.toString() === value.toString();
 					});
 					itemKey = index > -1 ? true : false;
 				} else {
 					itemKey = false;
 				}
 				//itemKey = (Array.isArray(data[key]) && data[key].indexOf(value) > -1 ) ? true : false;
-			} else if(andItem.indexOf("{nin}") > -1) {
+			} else if (andItem.indexOf("{nin}") > -1) {
 				let andItemArr = andItem.split("{nin}");
 				let key = andItemArr[0];
 				let value = andItemArr[1];
 				if (Array.isArray(data[key])) {
-					let index = data[key].findIndex(item =>{
-					  return item.toString() === value.toString();
+					let index = data[key].findIndex(item => {
+						return item.toString() === value.toString();
 					});
 					itemKey = index < 0 ? true : false;
 				} else {
@@ -833,7 +833,7 @@ pubfn.isObject = function(value) {
  * vk.pubfn.calcFreights(freightItem, weight);
  */
 pubfn.calcFreights = function(freightItem, weight) {
-	let freightRes  = vk.pubfn.calcFreightDetail(freightItem, weight);
+	let freightRes = vk.pubfn.calcFreightDetail(freightItem, weight);
 	return freightRes.total_amount;
 };
 
@@ -1907,8 +1907,8 @@ pubfn.getPlatform = function() {
 /**
  * 获取当前页面实例
  * 返回数据
- * fullPath 当前打开页面的完整路径(带页面参数)
- * pagePath 当前打开页面的路径(不含参数)
+ * fullPath 当前打开页面的完整路径（带页面参数）
+ * pagePath 当前打开页面的路径（不含参数）
  * options  当前打开页面的参数
  * route    当前打开页面路由地址
  * $vm      当前打开页面的vue实例
@@ -1921,13 +1921,18 @@ pubfn.getCurrentPage = function() {
 	if (page.route.indexOf("/") == 0) page.route = page.route.substring(1);
 	let pagePath = `/${page.route}`;
 	let fullPath = `/${page.route}`;
-	if (page.$page && typeof page.$page.options === "object") {
-		let optionsStr = pubfn.queryParams(page.$page.options);
-		fullPath = pagePath + optionsStr;
+	let options = page.options;
+	if (page.$page) {
+		if (typeof page.$page.fullPath !== "undefined") {
+			fullPath = page.$page.fullPath;
+		} else if (typeof options === "object") {
+			let optionsStr = pubfn.queryParams(options);
+			fullPath = pagePath + optionsStr;
+		}
 	}
 	res.fullPath = fullPath;
 	res.pagePath = pagePath;
-	res.options = page.$page.options;
+	res.options = options;
 	res.route = page.route;
 	res.$vm = page.$vm;
 	return res;
