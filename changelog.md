@@ -1,3 +1,12 @@
+## 2.11.12（2022-09-26）
+* 1、【重要】微信公众号万能API调用接口支持在阿里云空间执行（自动使用阿里云代理模式）[传送门 - 阿里云固定IP设置](https://uniapp.dcloud.net.cn/uniCloud/cf-functions.html#aliyun-eip)
+* 2、【修复】`vk.crypto.aes.encrypt`、`vk.crypto.aes.decrypt` 在非 `router` 目录结构的云函数中运行可能会报错的问题。
+* 3、【优化】`vk.pubfn.getCurrentPage()` API 在最新版HBX上的兼容性。
+
+##### 框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
+
+##### 如果你觉得框架对你有用，可以在下方进行评论，也可以进行赞赏。
+
 ## 2.11.11（2022-09-20）
 * 1、【修复】`vk.baseDao.getTableData` 的查询条件某个字段的值指定为null时，可能会报错的问题。
 * 2、【优化】小程序在首次启动时，自动检测当前是否有最新版本，如有，则一键更新到最新版本。
