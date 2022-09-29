@@ -1,3 +1,6 @@
+## 2.11.19（2022-09-29）
+* 1、【修复】升级HBX后带来的部分兼容性问题。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.11.18（2022-09-26）
 * 1、【优化】`vk.pubfn.getCurrentPage()` API 在最新版HBX上的兼容性。
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
