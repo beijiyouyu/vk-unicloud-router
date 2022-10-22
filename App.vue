@@ -12,6 +12,7 @@
 			})
 		},
 		onLaunch: function() {
+			// 注意：config.debug 在正式环境时，值为false，故此{}内的代码只有开发环境才会执行
 			if (config.debug) {
 				// #ifndef APP-PLUS
 				console.log(
@@ -22,6 +23,7 @@
 				// #endif
 				console.log('App Launch');
 			}
+			// 注意：以下代码正式和开发环境都会执行
 			// #ifdef MP
 			vk.updateManager.updateReady(); // 此代码可以让小程序自动检测最新版本
 			// #endif
