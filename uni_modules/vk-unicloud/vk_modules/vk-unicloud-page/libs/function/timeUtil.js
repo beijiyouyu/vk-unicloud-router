@@ -62,6 +62,7 @@ util.timeFormat = function(date, fmt = 'yyyy-MM-dd hh:mm:ss', targetTimezone) {
 			"h+": nowDate.getHours(), //小时
 			"m+": nowDate.getMinutes(), //分
 			"s+": nowDate.getSeconds(), //秒
+			//"w+": nowDate.getDay(), //周
 			"q+": Math.floor((nowDate.getMonth() + 3) / 3), //季度
 			"S": nowDate.getMilliseconds() //毫秒
 		};
@@ -94,7 +95,9 @@ util.getDateInfo = function(date = new Date(), targetTimezone) {
 	let hour = (nowDate.getHours() < 10 ? '0' + (nowDate.getHours()) : nowDate.getHours());
 	let minute = (nowDate.getMinutes() < 10 ? '0' + (nowDate.getMinutes()) : nowDate.getMinutes());
 	let second = (nowDate.getSeconds() < 10 ? '0' + (nowDate.getSeconds()) : nowDate.getSeconds());
-	let week = nowDate.getDay();
+	let millisecond = nowDate.getMilliseconds(); //毫秒
+	let week = nowDate.getDay(); // 周
+	let quarter = Math.floor((nowDate.getMonth() + 3) / 3); //季度
 	return {
 		year: Number(year),
 		month: Number(month),
@@ -102,7 +105,9 @@ util.getDateInfo = function(date = new Date(), targetTimezone) {
 		hour: Number(hour),
 		minute: Number(minute),
 		second: Number(second),
+		millisecond: Number(millisecond),
 		week: Number(week),
+		quarter: Number(quarter),
 	};
 };
 
@@ -140,7 +145,7 @@ util.getCommonTime = function(date = new Date(), targetTimezone) {
 	targetTimezone = util.getTargetTimezone(targetTimezone);
 	const dif = nowDate.getTimezoneOffset();
 	const timeDif = dif * 60 * 1000 + (targetTimezone * 60 * 60 * 1000);
-	const { year, month, day, hour, minute, second } = util.getDateInfo(nowDate);
+	const { year, month, day, hour, minute, second, millisecond, week, quarter } = util.getDateInfo(nowDate);
 	// 现在的时间
 	res.now = {
 		year,
@@ -149,6 +154,9 @@ util.getCommonTime = function(date = new Date(), targetTimezone) {
 		hour,
 		minute,
 		second,
+		millisecond,
+		week,
+		quarter,
 		date_day_str: util.timeFormat(nowDate, "yyyy-MM-dd", targetTimezone),
 		date_month_str: util.timeFormat(nowDate, "yyyy-MM", targetTimezone)
 	};
