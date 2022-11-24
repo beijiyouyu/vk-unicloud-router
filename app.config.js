@@ -28,8 +28,8 @@ export default {
   },
   /**
    * app主题颜色
-   * vk.getVuex('$app.config.color.main')
-   * vk.getVuex('$app.config.color.secondary')
+   * vk.getVuex('$app.color.main')
+   * vk.getVuex('$app.color.secondary')
    */
   color: {
     main: "#ff4444",

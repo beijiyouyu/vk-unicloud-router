@@ -26,7 +26,9 @@ export default {
 		inited: $app.inited || false,
 		config:{
 			...config
-		}
+		},
+		// 动态主题色 vk.getVuex('$app.color.main') vk.setVuex('$app.color.main','#ff4444')
+		color: $app.color || config.color,
 	},
 	/**
 	 * 从基本数据(state)派生的数据，相当于state的计算属性
