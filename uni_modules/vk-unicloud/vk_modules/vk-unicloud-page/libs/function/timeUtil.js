@@ -321,7 +321,8 @@ util.getWeekOffsetStartAndEnd = function(count = 0, date = new Date(), targetTim
 	targetTimezone = util.getTargetTimezone(targetTimezone);
 	const dif = nowDate.getTimezoneOffset();
 	const timeDif = dif * 60 * 1000 + (targetTimezone * 60 * 60 * 1000);
-	nowDate.setDate(nowDate.getDate() - nowDate.getDay() + 1 + count * 7);
+	let nowDay = nowDate.getDay() === 0 ? 7 : nowDate.getDay();
+	nowDate.setDate(nowDate.getDate() - nowDay + 1 + count * 7);
 	let dateInfo1 = util.getDateInfo(nowDate);
 	nowDate.setDate(nowDate.getDate() + 7);
 	let dateInfo2 = util.getDateInfo(nowDate);

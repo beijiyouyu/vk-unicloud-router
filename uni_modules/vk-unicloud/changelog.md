@@ -1,3 +1,6 @@
+## 2.12.9（2022-12-12）
+* 1、【修复】let { weekStart } = vk.pubfn.getCommonTime(new Date()); weekStart部分情况下获取错误的问题。
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.12.8（2022-12-05）
 * 1、【修复】let { weekStart } = vk.pubfn.getCommonTime(new Date()); weekStart一直是undefined的问题
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
