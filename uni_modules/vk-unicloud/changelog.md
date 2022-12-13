@@ -1,4 +1,4 @@
-## 2.12.9（2022-12-12）
+## 2.12.9（2022-12-13）
 * 1、【优化】`vk.pubfn.getCommonTime()` API内部细节
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.12.8（2022-12-05）
