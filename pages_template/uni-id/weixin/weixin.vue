@@ -12,9 +12,11 @@
 		<view class="tips">需要授权，有弹窗。</view>
 		<button type="default" @click="bindWeixin">绑定微信</button>
 		<button type="default" @click="unbindWeixin">解绑微信</button>
-		<button type="default" open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber">获取微信绑定的手机号</button>
+		<button type="default" open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber1">获取微信绑定的手机号（新方式）</button>
+		<button type="default" open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber2">获取微信绑定的手机号（旧方式）</button>
 		<view class="tips">仅获取手机号</view>
-		<button type="default" open-type="getPhoneNumber"  @getphonenumber="loginByWeixinPhoneNumber">使用微信绑定的手机号登录/注册</button>
+		<button type="default" open-type="getPhoneNumber"  @getphonenumber="loginByWeixinPhoneNumber1">用微信绑定手机号登录/注册（新方式）</button>
+		<button type="default" open-type="getPhoneNumber"  @getphonenumber="loginByWeixinPhoneNumber2">用微信绑定手机号登录/注册（旧方式）</button>
 		<view class="tips">此操作能同时绑定微信和手机号</view>
 		<!-- #endif -->
 		<!-- #ifdef APP-PLUS -->
@@ -89,22 +91,23 @@
 				let that = this;
 				// #ifdef MP-WEIXIN
 				try {
-					uni.getUserProfile({
-						desc:"用于快速设置昵称头像",
-						success:(res) => {
-							let { userInfo } = res;
-							vk.userCenter.updateUser({
-								data:{
-									nickname : userInfo.nickName,
-									avatar : userInfo.avatarUrl,
-									gender : userInfo.gender
-								},
-								success: (data) => {
-									vk.alert("设置成功");
-								}
-							});
-						}
-					});
+					vk.navigateTo('./set-user-info');
+					// uni.getUserProfile({
+					// 	desc:"用于快速设置昵称头像",
+					// 	success:(res) => {
+					// 		let { userInfo } = res;
+					// 		vk.userCenter.updateUser({
+					// 			data:{
+					// 				nickname : userInfo.nickName,
+					// 				avatar : userInfo.avatarUrl,
+					// 				gender : userInfo.gender
+					// 			},
+					// 			success: (data) => {
+					// 				vk.alert("设置成功");
+					// 			}
+					// 		});
+					// 	}
+					// });
 				}catch(err){
 					vk.alert("您的微信版本过低，请先更新微信!");
 				}
@@ -156,8 +159,26 @@
 					}
 				});
 			},
-			// 获取微信绑定的手机号码
-			getPhoneNumber(e){
+			// 获取微信绑定的手机号码（新方式）
+			getPhoneNumber1(e){
+				let that = this;
+				// 微信新增了code参数，可以直接传code，不再需要传 encryptedData 和 iv
+				let { code } = e.detail;
+				if (!code) {
+					return false;
+				}
+				vk.userCenter.getPhoneNumber({
+					data:{
+						code,
+						encryptedKey: that.encryptedKey
+					},
+					success: (data) => {
+						vk.alert("手机号:" + data.phone);
+					}
+				});
+			},
+			// 获取微信绑定的手机号码（旧方式）
+			getPhoneNumber2(e){
 				let that = this;
 				let { encryptedData, iv } = e.detail;
 				if (!encryptedData || !iv) {
@@ -167,15 +188,32 @@
 					data:{
 						encryptedData,
 						iv,
-						encryptedKey:that.encryptedKey
+						encryptedKey: that.encryptedKey
 					},
 					success: (data) => {
 						vk.alert("手机号:" + data.phone);
 					}
 				});
 			},
-			// 使用微信绑定的手机号登录/注册
-			loginByWeixinPhoneNumber(e){
+			// 使用微信绑定的手机号登录/注册（新方式）
+			loginByWeixinPhoneNumber1(e){
+				let that = this;
+				let { code } = e.detail;
+				if (!code) {
+					return false;
+				}
+				vk.userCenter.loginByWeixinPhoneNumber({
+					data: {
+						code,
+						encryptedKey : that.encryptedKey
+					},
+					success(data) {
+						vk.alert(data.msg);
+					}
+				});
+			},
+			// 使用微信绑定的手机号登录/注册（旧方式）
+			loginByWeixinPhoneNumber2(e){
 				let that = this;
 				let { encryptedData, iv } = e.detail;
 				if (!encryptedData || !iv) {
@@ -191,7 +229,7 @@
 						vk.alert(data.msg);
 					}
 				});
-			}
+			},
 		}
 	}
 </script>

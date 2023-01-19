@@ -63,6 +63,12 @@
 				}
 			},
 			{
+				"path": "uni-id/weixin/set-user-info",
+				"style": {
+					"navigationBarTitleText": "设置基础信息"
+				}
+			},
+			{
 				"path": "uni-id/alipay/alipay",
 				"style": {
 					"navigationBarTitleText": "支付宝"

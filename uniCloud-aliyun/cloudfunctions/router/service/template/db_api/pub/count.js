@@ -13,12 +13,17 @@ module.exports = {
 		let { uid } = data;
 		let res = { code : 0, msg : 'ok' };
     // 业务逻辑开始-----------------------------------------------------------
+		let startTime = Date.now();
+		
 		res.num = await vk.baseDao.count({
 			dbName:"vk-test",
 			whereJson:{
 
 			}
 		});
+		
+		let endTime = Date.now();
+		res.runTime = (endTime - startTime);
 		// 对应的sql:
 		// count * from vk-test
     // 业务逻辑结束-----------------------------------------------------------

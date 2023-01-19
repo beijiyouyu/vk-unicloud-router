@@ -13,7 +13,7 @@ module.exports = {
 		let { uid } = data;
 		let res = { code : 0, msg : 'ok' };
     // 业务逻辑开始-----------------------------------------------------------
-		let startTime = new Date().getTime();
+		let startTime = Date.now();
 		res.item = await vk.baseDao.findById({
 			dbName:"vk-test",
 			id:data._id,
@@ -21,7 +21,7 @@ module.exports = {
 
 			}
 		});
-		let endTime = new Date().getTime();
+		let endTime = Date.now();
 		res.runTime = (endTime - startTime);
 		// 上面的 fieldJson 可以设置 显示什么字段或设置不显示什么字段 如 money:false 代表不显示money字段
 		// 对应的sql:

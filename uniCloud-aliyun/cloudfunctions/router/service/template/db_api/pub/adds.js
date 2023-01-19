@@ -14,9 +14,9 @@ module.exports = {
 		let res = { code : 0, msg : 'ok' };	
     // 业务逻辑开始----------------------------------------------------------- 
 		let dbName = "vk-test";
-		let runTime1 = new Date().getTime();
+		let startTime = Date.now();
 		let addNum = 10;
-		console.log(new Date(runTime1),"开始运行,添加"+addNum+"条数据");
+		console.log("开始运行，添加"+addNum+"条数据");
 		// 承载所有读操作的 promise 的数组
 		let dataArr = [];
 		
@@ -41,10 +41,9 @@ module.exports = {
 			dataJson:dataArr
 		});
 		
-		let runTime2 = new Date().getTime();
-		let runTime = ((runTime2 - runTime1) / 1000 + "秒");
-		console.log(new Date(runTime2),"运行结束,耗时:"+runTime);
-		res.runTime = runTime;
+		let endTime = Date.now();
+		res.runTime = endTime - startTime;
+		console.log("运行结束，耗时:"+res.runTime/1000 + "秒");
     // 业务逻辑结束-----------------------------------------------------------
     return res;
   }
