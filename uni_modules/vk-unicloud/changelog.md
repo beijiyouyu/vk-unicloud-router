@@ -1,3 +1,6 @@
+## 2.13.3（2023-02-05）
+* 1、【优化】一些细节
+* 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.13.2（2023-01-19）
 * 1、【调整】router云函数运行内存调整为512M（实测512M即可达到最优性能）
 * 2、【新增】微信最新版头像和昵称获取示例，详见：/pages_template/uni-id/weixin/set-user-info.vue
