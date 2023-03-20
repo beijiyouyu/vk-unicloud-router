@@ -14,6 +14,7 @@
 		<button type="default" @click="unbindWeixin">解绑微信</button>
 		<button type="default" open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber1">获取微信绑定的手机号（新方式）</button>
 		<button type="default" open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber2">获取微信绑定的手机号（旧方式）</button>
+		<view class="tips">注意：新旧方式个人小程序均不支持，需要企业认证的小程序</view>
 		<view class="tips">仅获取手机号</view>
 		<button type="default" open-type="getPhoneNumber"  @getphonenumber="loginByWeixinPhoneNumber1">用微信绑定手机号登录/注册（新方式）</button>
 		<button type="default" open-type="getPhoneNumber"  @getphonenumber="loginByWeixinPhoneNumber2">用微信绑定手机号登录/注册（旧方式）</button>

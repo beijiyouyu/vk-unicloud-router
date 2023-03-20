@@ -26,7 +26,7 @@
 					<!-- 文本框 -->
 					<input class="form-input" v-model="form1.code" type="number" :maxlength="6" placeholder="请输入验证码" placeholder-style="'color':'#8e8e8e'" />
 					<!-- 验证码倒计时开始 -->
-					<vk-data-verification-code  seconds="60" :mobile="form1.mobile" type="reset" custom-style="font-size: 28rpx;"></vk-data-verification-code>
+					<vk-data-verification-code  seconds="60" :mobile="form1.mobile" type="reset-pwd" custom-style="font-size: 28rpx;"></vk-data-verification-code>
 					<!-- 验证码倒计时结束 -->
 
 				</view>
