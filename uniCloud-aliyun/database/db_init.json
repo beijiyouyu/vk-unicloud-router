@@ -588,6 +588,17 @@
 				"parent_id": "system-uni"
 			},
 			{
+				"_id": "system-uni-vk-pay-orders",
+				"sort": 4,
+				"url": "/pages_plugs/system_uni/vk-pay-orders",
+				"_add_time": 1596416400000,
+				"enable": true,
+				"icon": "",
+				"menu_id": "system-uni-vk-pay-orders",
+				"name": "支付订单明细",
+				"parent_id": "system-uni"
+			},
+			{
 				"_id": "system-uni-uni-id-log",
 				"sort": 8,
 				"url": "/pages_plugs/system_uni/uni-id-log",
