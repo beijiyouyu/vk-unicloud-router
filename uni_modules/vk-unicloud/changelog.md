@@ -1,4 +1,4 @@
-## 2.13.6（2023-04-22）
+## 2.13.6（2023-04-23）
 * 1、【优化】`vk.baseDao.selects` 当getCount为false时，hasMore永远是false的bug
 * 完整框架项目地址：`https://ext.dcloud.net.cn/plugin?id=2204`[点击查看](https://ext.dcloud.net.cn/plugin?id=2204)
 ## 2.13.5（2023-03-20）
