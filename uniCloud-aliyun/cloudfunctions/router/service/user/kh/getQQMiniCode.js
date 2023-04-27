@@ -4,7 +4,7 @@ module.exports = {
 	 * 获取qq小程序码
 	 * @url user/kh/getQQMiniCode 前端调用的url参数地址
 	 * data 请求参数
-	 * @param {String} params1  参数1
+	 * @param {String} path  小程序页面路径
 	 */
 	main: async (event) => {
 		let { data = {}, userInfo, util, filterResponse, originalParam } = event;
