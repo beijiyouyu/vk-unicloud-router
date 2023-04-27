@@ -28,6 +28,7 @@
 		<button type="default" @click="pageTo('../weixin/h5-weixin')">微信公众号API</button>
 		<!-- #endif -->
 		<button type="default" @click="vk.navigateTo('../../openapi/baidu/baidu')">百度开放平台API</button>
+		<button type="default" @click="vk.navigateTo('../../openapi/qq/qq')">QQ小程序API</button>
 		<!-- #ifdef MP-ALIPAY || APP-PLUS -->
 		<button type="default" @click="pageTo('../alipay/alipay')">支付宝登录</button>
 		<!-- #endif -->

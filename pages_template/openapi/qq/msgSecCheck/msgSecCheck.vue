@@ -3,7 +3,7 @@
 		<!-- 页面内容开始 -->
 		<textarea v-model="form1.content" style="width: 100%;"></textarea>
 		<button @click="msgSecCheck">检测文字是否违规</button>
-		
+
 		<view>
 			<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
 		</view>
@@ -21,13 +21,7 @@ export default {
 			data: {},
 			// 表单请求数据
 			form1: {
-				content: "淫", // 需检测的文本内容，文本字数的上限为2500字
-				version: 2, // 接口版本
-				scene: 3, // 场景枚举值（1 资料；2 评论；3 论坛；4 社交日志）
-				openid: "", // 用户的openid（用户需在近两小时访问过小程序）
-				title: "", // 文本标题
-				nickname: "", // 用户昵称
-				signature: "", // 个性签名，该参数仅在资料类场景有效(scene=1)，
+				content: "草泥马" // 需检测的文本内容，文本字数的上限为2500字
 			}
 		};
 	},
@@ -36,19 +30,6 @@ export default {
 		vk = uni.vk;
 		this.options = options;
 		this.init(options);
-		let openid = vk.getStorageSync("my-mp-weixin-openid");
-		if (openid) {
-			this.form1.openid = openid;
-		} else {
-			vk.userCenter.code2SessionWeixin({
-				loading: false,
-				success: (data) => {
-					let { openid } = data;
-					this.form1.openid = openid;
-					vk.setStorageSync("my-mp-weixin-openid", openid);
-				},
-			});
-		}
 	},
 	// 函数
 	methods: {
@@ -57,13 +38,14 @@ export default {
 		msgSecCheck(obj) {
 			let that = this;
 			vk.callFunction({
-				url: "template/openapi/weixin/pub/msgSecCheck",
+				url: "template/openapi/qq/pub/msgSecCheck",
 				title: "检测中...",
 				data: that.form1,
-				success: (data) => {
+				success: data => {
 					that.data = data;
 				},
-				fail: (data) => {
+				fail: data => {
+					that.data = data;
 					vk.toast(data.msg, "none");
 				}
 			});
@@ -73,4 +55,11 @@ export default {
 	computed: {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app {
+	padding: 30rpx;
+}
+.app button {
+	margin-bottom: 30rpx;
+}
+</style>

@@ -3,7 +3,9 @@
 		<button type="default" @tap="business_license">营业执照识别</button>
 		<button type="default" @tap="idcard">身份证识别</button>
 
-		<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
+		<view>
+			<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
+		</view>
 	</view>
 </template>
 

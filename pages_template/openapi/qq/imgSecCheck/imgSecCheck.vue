@@ -2,10 +2,7 @@
 	<view class="app">
 		<!-- 页面内容开始 -->
 		<button @click="chooseImage">上传图片,并检测图片是否违规</button>
-		
-		<view>
-			<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
-		</view>
+		<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
 		<!-- 页面内容结束 -->
 	</view>
 </template>
@@ -38,7 +35,7 @@ export default {
 			uni.chooseImage({
 				count: 1,
 				sizeType: ["compressed"], //可以指定是原图还是压缩图，默认二者都有
-				success: (res) => {
+				success: res => {
 					let file = res.tempFiles[0];
 					// 图片转base64
 					vk.pubfn.fileToBase64({ file }).then(base64 => {
@@ -47,15 +44,16 @@ export default {
 							return false;
 						}
 						vk.callFunction({
-							url: "template/openapi/weixin/pub/imgSecCheck",
+							url: "template/openapi/qq/pub/imgSecCheck",
 							title: "检测中...",
 							data: {
 								base64
 							},
-							success: (data) => {
+							success: data => {
 								that.data = data;
 							},
-							fail: (data) => {
+							fail: data => {
+								that.data = data;
 								vk.toast(data.msg, "none");
 							}
 						});
@@ -68,4 +66,11 @@ export default {
 	computed: {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app {
+	padding: 30rpx;
+}
+.app button {
+	margin-bottom: 30rpx;
+}
+</style>

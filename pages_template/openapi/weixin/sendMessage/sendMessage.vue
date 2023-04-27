@@ -4,7 +4,10 @@
 		<button @click="subscribeMessage1">订阅一次消息1</button>
 		<button @click="subscribeMessage2">订阅一次消息2</button>
 		<button @click="sendMessage">发送订阅消息</button>
-		{{ JSON.stringify(data) }}
+		
+		<view>
+			<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
+		</view>
 		<!-- 页面内容结束 -->
 	</view>
 </template>

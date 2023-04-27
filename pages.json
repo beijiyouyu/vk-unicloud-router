@@ -147,6 +147,20 @@
 				}
 			},
 			{
+				"path": "openapi/qq/qq",
+				"style": {
+					"navigationBarTitleText": "qq开放接口"
+				}
+			},
+			{
+				"path": "openapi/qq/msgSecCheck/msgSecCheck",
+				"style": {}
+			},
+			{
+				"path": "openapi/qq/imgSecCheck/imgSecCheck",
+				"style": {}
+			},
+			{
 				"path": "uni-id/test/test",
 				"style": {
 					"navigationStyle": "custom", // 隐藏系统导航栏

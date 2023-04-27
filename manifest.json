@@ -77,10 +77,19 @@
         "usingComponents" : true
     },
     "mp-baidu" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "setting" : {
+            "urlCheck" : false
+        }
     },
     "mp-toutiao" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "setting" : {
+            "urlCheck" : false,
+            "minified" : true,
+            "postcss" : true,
+            "es6" : true
+        }
     },
     "uniStatistics" : {
         "enable" : false
@@ -92,5 +101,13 @@
             "disableHostCheck" : true
         }
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "mp-qq" : {
+        "setting" : {
+            "urlCheck" : false,
+            "minified" : true,
+            "postcss" : true,
+            "es6" : true
+        }
+    }
 }
