@@ -83,7 +83,7 @@ module.exports = {
 		},
 		"db": {
 			"unicloud": {
-				"maxLimit": 500, // 最大limit限制(目前腾讯云最大1000,阿里云最大500)
+				"maxLimit": 1000, // 最大limit限制(目前腾讯云最大1000,阿里云最大1000)
 				"cancelAddTime": false, // 取消 vk.baseDao.add 时自动生成 _add_time 和 _add_time_str
 				"cancelAddTimeStr": false, // 仅取消 vk.baseDao.add 时自动生成的 _add_time_str，若已设置 cancelAddTime 为true，则 cancelAddTimeStr 也会强制为true
 				"getTableData": {
