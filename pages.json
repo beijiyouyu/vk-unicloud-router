@@ -161,6 +161,20 @@
 				"style": {}
 			},
 			{
+				"path": "openapi/douyin/douyin",
+				"style": {
+					"navigationBarTitleText": "抖音开放接口"
+				}
+			},
+			{
+				"path": "openapi/douyin/msgSecCheck/msgSecCheck",
+				"style": {}
+			},
+			{
+				"path": "openapi/douyin/imgSecCheck/imgSecCheck",
+				"style": {}
+			},
+			{
 				"path": "uni-id/test/test",
 				"style": {
 					"navigationStyle": "custom", // 隐藏系统导航栏

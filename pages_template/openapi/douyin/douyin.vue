@@ -2,9 +2,7 @@
 	<view class="app">
 		<button type="default" @tap="code2Session">code2Session</button>
 		<button type="default" @tap="getMiniCode">生成带参数的小程序码</button>
-		<view style="text-align: center;" v-if="imageUrl">
-			<image :src="imageUrl" style="width: 400rpx;height: 400rpx;"></image>
-		</view>
+		<view style="text-align: center;" v-if="imageUrl"><image :src="imageUrl" style="width: 400rpx;height: 400rpx;"></image></view>
 		<button type="default" @tap="vk.navigateTo('msgSecCheck/msgSecCheck')">文本安全检测</button>
 		<button type="default" @tap="vk.navigateTo('imgSecCheck/imgSecCheck')">图片安全检测</button>
 	</view>
@@ -16,6 +14,7 @@ export default {
 	data() {
 		return {
 			imageUrl: "",
+			openlink: ""
 		};
 	},
 	onLoad(options) {
@@ -26,34 +25,35 @@ export default {
 	methods: {
 		// 初始化
 		init(options) {},
-		code2Session(){
+		code2Session() {
 			uni.login({
-				success: (res) => {
+				success: res => {
 					vk.callFunction({
-						url: 'template/openapi/qq/pub/code2Session',
-						title: '请求中...',
+						url: "template/openapi/douyin/pub/code2Session",
+						title: "请求中...",
 						data: {
 							code: res.code,
+							anonymousCode: res.anonymousCode
 						},
-						success: (data) => {
+						success: data => {
 							vk.alert(JSON.stringify(data));
 						}
 					});
 				}
-			})
+			});
 		},
 		// 生成带参数的小程序码
 		getMiniCode() {
 			let that = this;
-			vk.userCenter.getQQMiniCode({
-				data: {
-					//path: "pages/index/mys"
-				},
-				success:(data) =>{
+			vk.callFunction({
+				url: "template/openapi/douyin/pub/getMiniCode",
+				title: "请求中...",
+				data: {},
+				success: data => {
 					that.imageUrl = data.base64;
 				}
 			});
-		},
+		}
 	}
 };
 </script>
