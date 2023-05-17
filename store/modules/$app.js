@@ -29,6 +29,11 @@ export default {
 		},
 		// 动态主题色 vk.getVuex('$app.color.main') vk.setVuex('$app.color.main','#ff4444')
 		color: $app.color || config.color,
+		/**
+		 * vk.getVuex('$app.originalPage');
+		 * vk.setVuex('$app.originalPage', originalPage);
+		 */
+		originalPage: $app.originalPage || null, // 跳登录前的页面
 	},
 	/**
 	 * 从基本数据(state)派生的数据，相当于state的计算属性

@@ -142,7 +142,7 @@
 			login_success(data){
 				let that = this;
 				// 检查是否有指定跳转的页面
-				if(vk.navigate.originalPage){
+				if(vk.navigate.getOriginalPage()){
 					vk.navigate.originalTo();
 					return false;
 				}

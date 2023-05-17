@@ -2265,7 +2265,7 @@ pubfn.checkLogin = function(obj = {}) {
 				if (res.needLogin) {
 					// 记录下原本要跳转的页面
 					url = vk.pubfn.getPageFullPath(url);
-					vk.navigate.originalPage = { url };
+					vk.navigate.setOriginalPage({ url });
 					if (obj.isOnLaunch) vk.navigate.isOnLaunchToLogin = true; // 标记为首次启动的页面需要登录
 					uni.reLaunch({
 						url: loginUrl,
@@ -2278,7 +2278,7 @@ pubfn.checkLogin = function(obj = {}) {
 						}
 					});
 				} else {
-					vk.navigate.originalPage = null;
+					vk.navigate.setOriginalPage(null);
 				}
 			}
 		});
