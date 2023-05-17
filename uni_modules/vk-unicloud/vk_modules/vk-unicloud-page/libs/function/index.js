@@ -2264,7 +2264,7 @@ pubfn.checkLogin = function(obj = {}) {
 			success: function(res) {
 				if (res.needLogin) {
 					// 记录下原本要跳转的页面
-					url = vk.pubfn.getPageFullPath(url);
+					url = vk.pubfn.getPageFullPath(obj.fullPath || url);
 					vk.navigate.setOriginalPage({ url });
 					if (obj.isOnLaunch) vk.navigate.isOnLaunchToLogin = true; // 标记为首次启动的页面需要登录
 					uni.reLaunch({
@@ -2278,7 +2278,15 @@ pubfn.checkLogin = function(obj = {}) {
 						}
 					});
 				} else {
+					// #ifdef H5
+					// 解决微信公众号登录无法跳回原页面的问题
+					if (!obj.options || !obj.options.code || !obj.options.state) {
+						vk.navigate.setOriginalPage(null);
+					}
+					// #endif
+					// #ifndef H5
 					vk.navigate.setOriginalPage(null);
+					// #endif
 				}
 			}
 		});
