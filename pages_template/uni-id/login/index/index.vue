@@ -120,7 +120,7 @@
 					vk.toast('账号至少4位数',"none");
 					return;
 				}
-				if(!vk.pubfn.checkStr(password, 'pwd')){
+				if(!vk.pubfn.test(password, 'pwd')){
 					vk.toast('密码以字母开头，长度在6~18之间，只能包含字母、数字和下划线',"none");
 					return;
 				}

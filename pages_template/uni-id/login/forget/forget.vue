@@ -110,15 +110,15 @@
 					//判断是否加载中，避免重复点击请求
 					return false;
 				}
-				if(!vk.pubfn.checkStr(mobile, 'mobile')){
+				if(!vk.pubfn.test(mobile, 'mobile')){
 					vk.toast('请输入正确的手机号码',"none");
 					return;
 				}
-				if(!vk.pubfn.checkStr(password, 'pwd')){
+				if(!vk.pubfn.test(password, 'pwd')){
 					vk.toast('密码以字母开头，长度在6~18之间，只能包含字母、数字和下划线',"none");
 					return;
 				}
-				if(!vk.pubfn.checkStr(password2, 'pwd')){
+				if(!vk.pubfn.test(password2, 'pwd')){
 					vk.toast('密码以字母开头，长度在6~18之间，只能包含字母、数字和下划线',"none");
 					return;
 				}
@@ -126,7 +126,7 @@
 					vk.toast('两次密码必须相同!',"none");
 					return;
 				}
-				if(!vk.pubfn.checkStr(code, 'mobileCode')){
+				if(!vk.pubfn.test(code, 'mobileCode')){
 					vk.toast('验证码格式为6位数字',"none");
 					return;
 				}
