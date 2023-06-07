@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<button type="default" @tap="code2Session">code2Session</button>
 		<button type="default" @tap="getWeixinMPqrcode">生成带参数的小程序码</button>
 		<view style="text-align: center;" v-if="imageUrl">
 			<image :src="imageUrl" style="width: 400rpx;height: 400rpx;"></image>
@@ -33,6 +34,17 @@ export default {
 	methods: {
 		// 初始化
 		init(options) {},
+		code2Session(){
+			// #ifndef MP-WEIXIN
+			vk.toast("请在微信小程序中打开");
+			return;
+			// #endif
+			vk.userCenter.code2SessionWeixin({
+				success: (data) => {
+					this.data = data;
+				},
+			});
+		},
 		// 生成带参数的小程序码
 		getWeixinMPqrcode() {
 			let that = this;

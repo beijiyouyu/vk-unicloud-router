@@ -3,8 +3,6 @@
 		<button type="default" @tap="code2Session">code2Session</button>
 		<button type="default" @tap="getMiniCode">生成带参数的小程序码</button>
 		<view style="text-align: center;" v-if="imageUrl"><image :src="imageUrl" style="width: 400rpx;height: 400rpx;"></image></view>
-		<button type="default" @tap="vk.navigateTo('msgSecCheck/msgSecCheck')">文本安全检测</button>
-		<button type="default" @tap="vk.navigateTo('imgSecCheck/imgSecCheck')">图片安全检测</button>
 		<view>
 			<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
 		</view>
@@ -29,18 +27,17 @@ export default {
 		// 初始化
 		init(options) {},
 		code2Session() {
-			// #ifndef MP-TOUTIAO
-			vk.toast("请在抖音小程序中打开");
+			// #ifndef MP-ALIPAY
+			vk.toast("请在支付宝小程序中打开");
 			return;
 			// #endif
 			uni.login({
 				success: res => {
 					vk.callFunction({
-						url: "template/openapi/douyin/pub/code2Session",
+						url: "template/openapi/alipay/pub/code2Session",
 						title: "请求中...",
 						data: {
-							code: res.code,
-							anonymousCode: res.anonymousCode
+							code: res.code
 						},
 						success: data => {
 							this.data = data;
@@ -52,9 +49,12 @@ export default {
 		// 生成带参数的小程序码
 		getMiniCode() {
 			vk.callFunction({
-				url: "template/openapi/douyin/pub/getMiniCode",
+				url: "template/openapi/alipay/pub/getMiniCode",
 				title: "请求中...",
-				data: {},
+				data: {
+					page: "pages/index/index",
+					scene: "a=1&b=2"
+				},
 				success: data => {
 					this.data = data;
 					this.imageUrl = data.base64;

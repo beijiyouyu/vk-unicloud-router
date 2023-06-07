@@ -5,8 +5,11 @@
 		<view style="text-align: center;" v-if="imageUrl">
 			<image :src="imageUrl" style="width: 400rpx;height: 400rpx;"></image>
 		</view>
-		<button type="default" @tap="vk.navigateTo('msgSecCheck/msgSecCheck')">文本安全检测</button>
-		<button type="default" @tap="vk.navigateTo('imgSecCheck/imgSecCheck')">图片安全检测</button>
+		<button type="default" @tap="vk.navigateTo('/pages_template/openapi/qq/msgSecCheck/msgSecCheck')">文本安全检测</button>
+		<button type="default" @tap="vk.navigateTo('/pages_template/openapi/qq/imgSecCheck/imgSecCheck')">图片安全检测</button>
+		<view>
+			<text space="ensp">{{ JSON.stringify(data, null, 2) }}</text>
+		</view>
 	</view>
 </template>
 
@@ -16,6 +19,7 @@ export default {
 	data() {
 		return {
 			imageUrl: "",
+			data: {}
 		};
 	},
 	onLoad(options) {
@@ -27,6 +31,10 @@ export default {
 		// 初始化
 		init(options) {},
 		code2Session(){
+			// #ifndef MP-QQ
+			vk.toast("请在QQ小程序中打开");
+			return;
+			// #endif
 			uni.login({
 				success: (res) => {
 					vk.callFunction({
@@ -36,7 +44,7 @@ export default {
 							code: res.code,
 						},
 						success: (data) => {
-							vk.alert(JSON.stringify(data));
+							this.data = data;
 						}
 					});
 				}
@@ -44,13 +52,13 @@ export default {
 		},
 		// 生成带参数的小程序码
 		getMiniCode() {
-			let that = this;
 			vk.userCenter.getQQMiniCode({
 				data: {
 					//path: "pages/index/mys"
 				},
 				success:(data) =>{
-					that.imageUrl = data.base64;
+					this.data = data;
+					this.imageUrl = data.base64;
 				}
 			});
 		},

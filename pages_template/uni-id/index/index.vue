@@ -23,13 +23,6 @@
 		<!-- #ifdef MP-WEIXIN || APP-PLUS -->
 		<button type="default" @click="pageTo('../weixin/weixin')">微信登录</button>
 		<!-- #endif -->
-		<button type="default" @click="vk.navigateTo('../../openapi/weixin/weixin')">微信小程序API</button>
-		<!-- #ifdef H5 -->
-		<button type="default" @click="pageTo('../weixin/h5-weixin')">微信公众号API</button>
-		<!-- #endif -->
-		<button type="default" @click="vk.navigateTo('../../openapi/baidu/baidu')">百度开放平台API</button>
-		<button type="default" @click="vk.navigateTo('../../openapi/qq/qq')">QQ小程序API</button>
-		<button type="default" @click="vk.navigateTo('../../openapi/douyin/douyin')">抖音小程序API</button>
 		<!-- #ifdef MP-ALIPAY || APP-PLUS -->
 		<button type="default" @click="pageTo('../alipay/alipay')">支付宝登录</button>
 		<!-- #endif -->
@@ -39,11 +32,22 @@
 		<view style="margin-bottom: 20rpx;">小白也能轻松上手的数据库API</view>
 		<button type="default" @click="pageTo('../../db-test/db-test')">数据库API</button>
 		<button type="default" @click="pageTo('../util/util')">通用方法</button>
+		
 		<view style="margin-bottom: 20rpx;">插件版本1.8.7 新增 APP手机一键登录</view>
 		<button type="default" @click="pageTo('../univerify/univerify')">手机一键登录</button>
 		<view style="margin-bottom: 20rpx;">插件版本1.4.4 新增 Vuex状态管理</view>
 		<button type="default" @click="pageTo('../../vk-vuex/vk-vuex')">Vuex状态管理演示示例</button>
 		<button type="default" @click="pageTo('../login/index/index')">登录注册找回密码页面模板</button>
+		
+		<view style="margin-bottom: 20rpx;">各大小程序API扩展</view>
+		<button type="default" @click="vk.navigateTo('../../openapi/weixin/weixin')">微信小程序API</button>
+		<!-- #ifdef H5 -->
+		<button type="default" @click="pageTo('../weixin/h5-weixin')">微信公众号API</button>
+		<!-- #endif -->
+		<button type="default" @click="vk.navigateTo('../../openapi/qq/qq')">QQ小程序API</button>
+		<button type="default" @click="vk.navigateTo('../../openapi/douyin/douyin')">抖音小程序API</button>
+		<button type="default" @click="vk.navigateTo('../../openapi/alipay/alipay')">支付宝小程序API</button>
+		<button type="default" @click="vk.navigateTo('../../openapi/baidu/baidu')">百度开放平台API</button>
 
 	</view>
 </template>

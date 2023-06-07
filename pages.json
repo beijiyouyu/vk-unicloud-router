@@ -175,6 +175,12 @@
 				"style": {}
 			},
 			{
+				"path": "openapi/alipay/alipay",
+				"style": {
+					"navigationBarTitleText": "支付宝开放接口"
+				}
+			},
+			{
 				"path": "uni-id/test/test",
 				"style": {
 					"navigationStyle": "custom", // 隐藏系统导航栏

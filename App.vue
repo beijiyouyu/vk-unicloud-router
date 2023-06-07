@@ -29,10 +29,10 @@
 			// #endif
 		},
 		onShow: function() {
-			if(config.debug) console.log('App Show')
+			if(config.debug) console.log('App Show');
 		},
 		onHide: function() {
-			if(config.debug) console.log('App Hide')
+			if(config.debug) console.log('App Hide');
 		}
 	}
 </script>

@@ -101,6 +101,27 @@ module.exports = {
 					{ "appid": "", "appsecret": "" },
 					{ "appid": "", "appsecret": "" }
 				]
+			},
+			// 支付宝
+			"alipay": {
+				// 密钥列表
+				"list": [
+					{ "appid": "", "privateKey": "" }
+				]
+			},
+			// qq
+			"qq": {
+				// 密钥列表
+				"list": [
+					{ "appid": "", "appsecret": "" }
+				]
+			},
+			// 抖音
+			"toutiao": {
+				// 密钥列表
+				"list": [
+					{ "appid": "", "appsecret": "" }
+				]
 			}
 		}
 	}
