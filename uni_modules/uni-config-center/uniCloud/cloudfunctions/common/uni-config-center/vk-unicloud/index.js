@@ -50,6 +50,16 @@ module.exports = {
 						"user": "你的邮箱@qq.com",
 						"pass": "邮箱授权码"
 					}
+				},
+				// 163邮箱配置
+				"163":{
+					"host": "smtp.163.com",
+					"port": 465,
+					"secure": true,
+					"auth": {
+						"user": "",
+						"pass": ""
+					}
 				}
 			},
 			// 日志服务
@@ -106,6 +116,7 @@ module.exports = {
 			"alipay": {
 				// 密钥列表
 				"list": [
+					{ "appid": "", "privateKey": "" },
 					{ "appid": "", "privateKey": "" }
 				]
 			},
@@ -113,6 +124,7 @@ module.exports = {
 			"qq": {
 				// 密钥列表
 				"list": [
+					{ "appid": "", "appsecret": "" },
 					{ "appid": "", "appsecret": "" }
 				]
 			},
@@ -120,6 +132,7 @@ module.exports = {
 			"toutiao": {
 				// 密钥列表
 				"list": [
+					{ "appid": "", "appsecret": "" },
 					{ "appid": "", "appsecret": "" }
 				]
 			}

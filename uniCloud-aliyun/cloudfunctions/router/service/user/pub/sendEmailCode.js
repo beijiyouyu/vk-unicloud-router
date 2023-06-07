@@ -36,7 +36,7 @@ module.exports = {
 			email
 		};
 		// 发送验证码开始
-		var emailConfig = config.vk.service.email;
+		let emailConfig = config.vk.service.email;
 		// 如果配置设置了过期时间，则使用配置的过期时间，否则默认180秒
 		param.expiresIn = emailConfig.codeExpiresIn || 180;
 		let emailService = vkmail.createTransport({
