@@ -6,6 +6,8 @@ import callFunctionUtil from './vk-unicloud-callFunctionUtil.js'
 var { callFunction, config, saveToken, deleteToken } = callFunctionUtil;
 import debounce from '../function/debounce.js'
 
+const debounceTime = 1000; // 防抖时长
+
 const localeObj = {
 	"zh-Hans": {
 		"loading": "请求中...",
@@ -55,11 +57,13 @@ export default {
 	 * @param {String} uid 用户ID
 	 */
 	register(obj = {}) {
-		addLoading(obj, "register");
-		return callFunction({
-			...obj,
-			url: 'user/pub/register'
-		});
+		return debounce(() => {
+			addLoading(obj, "register");
+			return callFunction({
+				...obj,
+				url: 'user/pub/register'
+			});
+		}, debounceTime, true, "login");
 	},
 	/**
 	 * 用户登录(用户名+密码)
@@ -259,11 +263,13 @@ export default {
 	 * @param {String} tokenExpired token过期时间
 	 */
 	loginBySms(obj = {}) {
-		addLoading(obj, "login");
-		return callFunction({
-			url: 'user/pub/loginBySms',
-			...obj
-		});
+		return debounce(() => {
+			addLoading(obj, "login");
+			return callFunction({
+				url: 'user/pub/loginBySms',
+				...obj
+			});
+		}, debounceTime, true, "login");
 	},
 	/**
 	 * 发送手机号验证码
@@ -494,7 +500,7 @@ export default {
 	 */
 	loginByWeixin(obj = {}) {
 		let that = this;
-		debounce(function() {
+		debounce(() => {
 			addLoading(obj, "login");
 			let { data = {} } = obj;
 			that.getWeixinCode().then((code) => {
@@ -511,7 +517,7 @@ export default {
 					}
 				});
 			});
-		}, 500);
+		}, debounceTime, true, "login");
 	},
 	/**
 	 * 获取微信openid
@@ -612,11 +618,13 @@ export default {
 	 * @param {String} tokenExpired token过期时间
 	 */
 	loginByWeixinPhoneNumber(obj = {}) {
-		addLoading(obj, "login");
-		return callFunction({
-			url: 'user/pub/loginByWeixinPhoneNumber',
-			...obj
-		});
+		return debounce(() => {
+			addLoading(obj, "login");
+			return callFunction({
+				url: 'user/pub/loginByWeixinPhoneNumber',
+				...obj
+			});
+		}, debounceTime, true, "login");
 	},
 	/**
 	 * 生成微信小程序码
@@ -698,7 +706,7 @@ export default {
 	 */
 	loginByAlipay(obj = {}) {
 		let that = this;
-		debounce(function() {
+		debounce(() => {
 			addLoading(obj, "login");
 			let { data = {} } = obj;
 			that.getAlipayCode().then((code) => {
@@ -711,7 +719,7 @@ export default {
 					}
 				});
 			});
-		}, 500);
+		}, debounceTime, true, "login");
 	},
 	/**
 	 * 获取支付宝openid
@@ -980,7 +988,7 @@ export default {
 	 */
 	loginByQQ(obj = {}) {
 		let that = this;
-		debounce(function() {
+		debounce(() => {
 			addLoading(obj, "login");
 			let { data = {} } = obj;
 			that.getQQCode().then(({ code, accessToken } = {}) => {
@@ -994,7 +1002,7 @@ export default {
 					}
 				});
 			});
-		}, 500);
+		}, debounceTime, true, "login");
 	},
 	/**
 	 * 绑定QQ
