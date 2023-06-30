@@ -11,7 +11,7 @@
 				url: config.error.url
 			})
 		},
-		onLaunch: function() {
+		onLaunch: function(options) {
 			// 注意：config.debug 在正式环境时，值为false，故此{}内的代码只有开发环境才会执行
 			if (config.debug) {
 				// #ifndef APP-PLUS
