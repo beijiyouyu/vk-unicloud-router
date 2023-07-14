@@ -1,10 +1,7 @@
-* 1、【重要】注册接口统一去除前端的role参数（需替换目录 `router/service/user/pub`）
-* 2、【修复】云端表单验证不支持a.b的问题
-* 3、【新增】`vk.sessionStorage` 本地会话缓存，仅h5可用
-* 4、【优化】`vk.uploadFile` 新增参数 `cloudPathAsRealPath` 默认为true，代表支持阿里云目录
-* 5、【优化】`vk.uploadFile` 新增参数 `cloudDirectory` 可以设置上传至指定的云端目录 
-* 6、【优化】`vk.request` 新增 `interceptor` 参数（该参数仅前端调用时生效）[传送门](https://vkdoc.fsq.pub/client/jsapi.html#vk-request-%E8%AF%B7%E6%B1%82http%E6%8E%A5%E5%8F%A3)
-* 7、【优化】发送邮件验证码新增参数判断
-* 8、【优化】云函数、云对象404时的错误提示
+* 1、【重要】为了安全性考虑，调整前端的 `vk.request` API，需要手动指定 `uniIdToken: true` 才会自动添加 `token` 到请求头里。
+* 2、【优化】前端 `vk.request` 当满足响应规范时，会自动保存 `token` 和 `userInfo`
+* 3、【优化】新增 `vk.baseDao.setById`（根据ID判断存在则修改，不存在则添加，此为原子操作，非查询再判断）
+
+
 
 #####  框架学习Q群：`22466457` 欢迎萌新和大佬来使用和共同改进框架
