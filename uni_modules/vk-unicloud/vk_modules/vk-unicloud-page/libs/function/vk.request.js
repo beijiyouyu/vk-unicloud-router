@@ -226,7 +226,18 @@ function requestSuccess(obj = {}) {
 		}
 	}
 	if (config.debug) Logger.result = (typeof data == "object") ? vk.pubfn.copyObject(data) : data;
-	if (res.statusCode >= 400 || data.code) {
+	if ([1301, 1302, 30201, 30202, 30203, 30204].indexOf(data.code) > -1 && data.msg.indexOf("token") > -1) {
+		// 执行 login 拦截器函数（跳转到页面页面）
+		let { interceptor = {} } = vk.callFunctionUtil;
+		if (typeof interceptor.login === "function") {
+			interceptor.login({
+				res: data,
+				params,
+				vk
+			});
+		}
+		reject(data);
+	} else if (res.statusCode >= 400 || data.code) {
 		requestFail({
 			res: data,
 			params,
