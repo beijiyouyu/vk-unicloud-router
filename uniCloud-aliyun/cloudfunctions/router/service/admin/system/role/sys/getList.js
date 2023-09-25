@@ -31,7 +31,13 @@ module.exports = {
 					foreignKey: "permission_id",
 					as: "permissionList",
 					limit: 500,
-					fieldJson: { permission_id:true, permission_name:true,comment:true, enable:true, url:true },
+					fieldJson: {
+						permission_id: true,
+						permission_name: true,
+						comment: true,
+						enable: true,
+						url: true
+					}
 				},
 				{
 					dbName: "opendb-admin-menus",
@@ -40,8 +46,14 @@ module.exports = {
 					foreignKey: "menu_id",
 					as: "menuList",
 					limit: 500,
-					fieldJson: { menu_id:true, name:true,comment:true, enable:true, url:true },
-				},
+					fieldJson: {
+						menu_id: true,
+						name: true,
+						comment: true,
+						enable: true,
+						url: true
+					}
+				}
 			]
 		});
 		// 业务逻辑结束-----------------------------------------------------------
