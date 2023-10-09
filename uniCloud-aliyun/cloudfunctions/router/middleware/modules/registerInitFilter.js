@@ -25,6 +25,7 @@ module.exports = [{
 			// 你要初始化的字段数据
 			let initData = {
 				// 这里可以加你想要初始化的其他字段，如 status字段初始化为 0
+				// data 是前端传过来的参数，如在下面新增 sex: data.sex 代表接受前端sex参数并写入用户sex字段
 				status: 0, // 用户状态：0 正常 1 禁用 2 审核中 3 审核拒绝
 
 			};
