@@ -690,10 +690,11 @@ export default {
 		// #ifdef H5
 		let env = vk.h5.getEnv();
 		if (env === "h5-weixin") {
-			if (!obj.data || !obj.data.url) {
-				obj.data = {
-					url: window.location.href 
-				}
+			if (!obj.data) {
+				obj.data = {};
+			}
+			if (!obj.data.url) {
+				obj.data.url = window.location.href;
 			}
 			return callFunction({
 				...obj,
