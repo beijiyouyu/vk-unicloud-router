@@ -9,6 +9,7 @@
  * 1. notifyEventReady(eventName, data) 通知特定事件已准备就绪，并将数据传递给awaitEventReady注册的回调函数。一定会在 awaitEventReady 函数被调用之前触发。
  * 2. awaitEventReady(eventName, callback) 等待特定事件执行后再执行相应的回调函数，如果事件已准备就绪，它会立即执行回调函数；否则，它将等待事件notifyEventReady后再执行。
  * 3. checkEventReady(eventName) 检查事件是否已准备就绪，如果事件已准备就绪，它会返回true；否则，它将返回false
+ * 4. getEventReadyData(eventName) 获取事件准备就绪时的参数，如果事件未准备就绪，则返回null
  * 示例用法：
  * 如实现 onLaunch 执行后再执行页面的 onLoad（因为无法判断onLaunch和onLoad的执行顺序）
  * 1. 在 App.vue 中：
