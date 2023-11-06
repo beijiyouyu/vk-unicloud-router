@@ -4,7 +4,7 @@
 		<view class="avatar-box">
 			<button size="mini" class="avatar-button" plain open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
 				<view class="avatar-image-box">
-					<image class="avatar-image" :src="vk.getVuex('$user.userInfo.avatar') || defaultAvatarUrl"></image>
+					<image class="avatar-image" :src="vk.getVuex('$user.userInfo.avatar') || userInfo.avatar || defaultAvatarUrl"></image>
 				</view>
 			</button> 
 		</view>
@@ -101,7 +101,6 @@
 		/* #endif */
 		.avatar-button{
 			border: 0;
-			display: contents;
 		}
 		.avatar-image-box{
 			width: 120rpx;

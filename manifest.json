@@ -71,7 +71,8 @@
             "scope.userLocation" : {
                 "desc" : "方便自动填写地址"
             }
-        }
+        },
+        "__usePrivacyCheck__" : true
     },
     "mp-alipay" : {
         "usingComponents" : true
